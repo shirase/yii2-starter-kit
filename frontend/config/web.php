@@ -42,6 +42,7 @@ $config = [
             'errorAction' => 'site/error'
         ],
         'request' => [
+            'baseUrl' => '',
             'cookieValidationKey' => getenv('FRONTEND_COOKIE_VALIDATION_KEY')
         ],
         'user' => [

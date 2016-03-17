@@ -1,16 +1,54 @@
 <?php
 $config = [
+    'modules' => [
+        'datecontrol' =>  [
+            'class' => 'kartik\datecontrol\Module',
+
+            // format settings for displaying each date attribute
+            'displaySettings' => [
+                \kartik\datecontrol\Module::FORMAT_DATE => 'dd.MM.yyyy',
+                \kartik\datecontrol\Module::FORMAT_TIME => 'HH:mm:ss',
+                \kartik\datecontrol\Module::FORMAT_DATETIME => 'dd.MM.yyyy HH:mm:ss',
+            ],
+
+            // format settings for saving each date attribute
+            'saveSettings' => [
+                \kartik\datecontrol\Module::FORMAT_DATE => 'php:Y-m-d',
+                \kartik\datecontrol\Module::FORMAT_TIME => 'php:H:i:s',
+                \kartik\datecontrol\Module::FORMAT_DATETIME => 'php:Y-m-d H:i:s',
+            ],
+
+            // set your display timezone
+            //'displayTimezone' => 'Europe/Moscow',
+
+            // set your timezone for date saved to db
+            //'saveTimezone' => 'UTC',
+
+            // automatically use kartik\widgets for each of the above formats
+            'autoWidget' => true,
+
+            // use ajax conversion for processing dates from display format to save format.
+            'ajaxConversion' => false,
+
+            // default settings for each widget from kartik\widgets used when autoWidget is true
+            'autoWidgetSettings' => [
+                \kartik\datecontrol\Module::FORMAT_DATE => ['type'=>2, 'pluginOptions'=>['autoclose'=>true]],
+                \kartik\datecontrol\Module::FORMAT_DATETIME => [], // setup if needed
+                \kartik\datecontrol\Module::FORMAT_TIME => [], // setup if needed
+            ],
+        ],
+    ],
     'components' => [
         'assetManager' => [
             'class' => 'yii\web\AssetManager',
-            'linkAssets' => true,
+            //'linkAssets' => true,
             'appendTimestamp' => YII_ENV_DEV
         ]
     ],
-    'as locale' => [
+    /*'as locale' => [
         'class' => 'common\behaviors\LocaleBehavior',
-        'enablePreferredLanguage' => true
-    ]
+        'enablePreferredLanguage' => false
+    ]*/
 ];
 
 if (YII_DEBUG) {
