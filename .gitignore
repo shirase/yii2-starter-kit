@@ -29,3 +29,4 @@ phpunit.phar
 /.vagrant
 /vagrant.yaml
 /frontend/web/admin/assets
+/frontend/web/admin
