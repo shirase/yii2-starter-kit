@@ -28,7 +28,7 @@ $(function() {
                 .wrap('<div class="box collapsed-box" />')
                 .parent()
                 .prependTo($('.content-wrapper .content'))
-                .prepend($('<div class="box-header"><div class="box-title" onclick="$.AdminLTE.boxWidget.collapse($(this).next().find(\'button\'))" style="cursor: pointer">Поиск</div><div class="box-tools pull-right"><button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button></div></div>'));
+                .prepend($('<div class="box-header"><div class="box-title" onclick="$.AdminLTE.boxWidget.collapse($(this).next().find(\'button\'))" style="cursor: pointer">'+searchForm.find('.btn-primary:first').text()+'</div><div class="box-tools pull-right"><button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button></div></div>'));
         }
     })();
 })
