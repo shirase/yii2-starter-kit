@@ -29,6 +29,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/shirase/yii2-gii"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/shirase/yii2-admin"
         }
     ],
     "require": {
@@ -65,7 +69,8 @@
         "kartik-v/yii2-widget-datetimepicker": "*",
         "kartik-v/yii2-widget-datepicker": "*",
         "kartik-v/yii2-widget-timepicker": "*",
-        "kartik-v/php-date-formatter": "*"
+        "kartik-v/php-date-formatter": "*",
+        "shirase/yii2-admin": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "^2.0.0",

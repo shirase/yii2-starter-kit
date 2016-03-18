@@ -42,6 +42,18 @@ $config = [
         'gridview' => [
             'class' => 'kartik\grid\Module',
         ],
+        'roles' => [
+            'class' => 'mdm\admin\Module',
+            'layout' => 'right-menu',
+            'mainLayout' => '@backend/views/layouts/main.php',
+            'controllerMap' => [
+                'assignment' => [
+                    'class' => 'mdm\admin\controllers\AssignmentController',
+                    'userClassName' => 'common\models\User',
+                    'idField' => 'id'
+                ]
+            ],
+        ],
     ],
     'as globalAccess'=>[
         'class'=>'\common\behaviors\GlobalAccessBehavior',
