@@ -95,7 +95,10 @@ $config = [
                 'roles' => ['manager'],
             ]
         ]
-    ]
+    ],
+    'as saverestore'=>[
+        'class'=>'\shirase\returned\SaveRestoreBehavior'
+    ],
 ];
 
 if (YII_ENV_DEV) {
