@@ -4,14 +4,12 @@ $config = [
         'datecontrol' =>  [
             'class' => 'kartik\datecontrol\Module',
 
-            // format settings for displaying each date attribute
             'displaySettings' => [
-                \kartik\datecontrol\Module::FORMAT_DATE => 'dd.MM.yyyy',
-                \kartik\datecontrol\Module::FORMAT_TIME => 'HH:mm:ss',
-                \kartik\datecontrol\Module::FORMAT_DATETIME => 'dd.MM.yyyy HH:mm:ss',
+                \kartik\datecontrol\Module::FORMAT_DATE => 'php:d.m.Y',
+                \kartik\datecontrol\Module::FORMAT_TIME => 'php:H:i:s',
+                \kartik\datecontrol\Module::FORMAT_DATETIME => 'php:d.m.Y H:i:s',
             ],
 
-            // format settings for saving each date attribute
             'saveSettings' => [
                 \kartik\datecontrol\Module::FORMAT_DATE => 'php:Y-m-d',
                 \kartik\datecontrol\Module::FORMAT_TIME => 'php:H:i:s',
