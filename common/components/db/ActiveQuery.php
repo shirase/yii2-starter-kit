@@ -1,6 +1,7 @@
 <?php
 namespace common\components\db;
 use Aws\Common\Enum\DateFormat;
+use yii\helpers\FormatConverter;
 
 /**
  * Class ActiveQuery
@@ -36,11 +37,11 @@ class ActiveQuery extends \yii\db\ActiveQuery {
             $m = explode(' - ', $range);
             if(sizeof($m)==2) {
                 if($m[0] && $m[1]) {
-                    $this->andFilterWhere(['AND', ['>=', 'DATE('.$db->quoteColumnName($column).')', $m[0]], ['<=', 'DATE('.$db->quoteColumnName($column).')', $m[1]]]);
+                    $this->andFilterWhere(['AND', ['>=', 'DATE('.$db->quoteColumnName($column).')', self::normalizeDate($m[0])], ['<=', 'DATE('.$db->quoteColumnName($column).')', self::normalizeDate($m[1])]]);
                 } elseif($m[0]) {
-                    $this->andFilterWhere(['>=', 'DATE('.$db->quoteColumnName($column).')', $m[0]]);
+                    $this->andFilterWhere(['>=', 'DATE('.$db->quoteColumnName($column).')', self::normalizeDate($m[0])]);
                 } elseif($m[1]) {
-                    $this->andFilterWhere(['<=', 'DATE('.$db->quoteColumnName($column).')', $m[1]]);
+                    $this->andFilterWhere(['<=', 'DATE('.$db->quoteColumnName($column).')', self::normalizeDate($m[1])]);
                 }
             } else {
                 $this->andFilterWhere(['like', 'DATE('.$column.')', $range]);
@@ -48,5 +49,10 @@ class ActiveQuery extends \yii\db\ActiveQuery {
         }
 
         return $this;
+    }
+
+    private static function normalizeDate($date) {
+        $format = (($m=\Yii::$app->getModule('datecontrol')) ? \kartik\datecontrol\Module::parseFormat($m->displaySettings['date'], 'date') : 'Y-m-d');
+        return \DateTime::createFromFormat($format, $date)->format('Y-m-d');
     }
 }
