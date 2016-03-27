@@ -27,7 +27,7 @@ class ActiveQuery extends \yii\db\ActiveQuery {
         return $this;
     }
 
-    public function andDateRange($column, $range) {
+    public function andFilterDateRange($column, $range) {
         /* @var $modelClass ActiveRecord */
         $modelClass = $this->modelClass;
         $db = $modelClass::getDb();
