@@ -17,6 +17,8 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $status
  * @property integer $created_at
  * @property integer $updated_at
+ * @property integer $pid
+ * @property integer $pos
  */
 class Page extends \yii\db\ActiveRecord
 {
@@ -43,6 +45,9 @@ class Page extends \yii\db\ActiveRecord
                 'attribute'=>'title',
                 'ensureUnique'=>true,
                 'immutable'=>true
+            ],
+            [
+                'class' => \shirase\tree\TreeBehavior::className(),
             ]
         ];
     }
@@ -55,11 +60,11 @@ class Page extends \yii\db\ActiveRecord
         return [
             [['title', 'body'], 'required'],
             [['body'], 'string'],
-            [['status'], 'integer'],
+            [['status', '!pos', '!pid'], 'integer'],
             [['slug'], 'unique'],
             [['slug'], 'string', 'max' => 2048],
             [['title'], 'string', 'max' => 512],
-            [['view'], 'string', 'max' => 255]
+            [['view'], 'string', 'max' => 255],
         ];
     }
 
