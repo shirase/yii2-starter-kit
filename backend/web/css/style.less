@@ -26,3 +26,24 @@ body {
     word-break: break-all;
   }
 }
+
+.grid-view {
+    a.asc:after, a.desc:after {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 0.3em;
+
+        font: normal normal normal 14px/1 FontAwesome;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    a.asc:after {
+        content: "\f0de";
+        vertical-align: bottom;
+    }
+    a.desc:after {
+        content: "\f0dd";
+        vertical-align: top;
+    }
+}

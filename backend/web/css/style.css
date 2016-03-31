@@ -19,4 +19,21 @@ body .user-panel > .info {
 body .table {
   word-break: break-all;
 }
-/*# sourceMappingURL=style.map *//*# sourceMappingURL=style.map */
+.grid-view a.asc:after,
+.grid-view a.desc:after {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0.3em;
+  font: normal normal normal 14px/1 FontAwesome;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.grid-view a.asc:after {
+  content: "\f0de";
+  vertical-align: bottom;
+}
+.grid-view a.desc:after {
+  content: "\f0dd";
+  vertical-align: top;
+}
