@@ -27,12 +27,15 @@ $config = [
             'cookieValidationKey' => getenv('BACKEND_COOKIE_VALIDATION_KEY')
         ],
         'user' => [
-            'class'=>'yii\web\User',
+            'class'=>'backend\components\web\User',
             'identityClass' => 'common\models\User',
             'loginUrl'=>['sign-in/login'],
             'enableAutoLogin' => true,
             'as afterLogin' => 'common\behaviors\LoginTimestampBehavior'
         ],
+    ],
+    'bootstrap' => [
+        'roles',
     ],
     'modules'=>[
         'i18n' => [
@@ -44,18 +47,16 @@ $config = [
         ],
         'roles' => [
             'class' => 'mdm\admin\Module',
-            'layout' => 'right-menu',
-            'mainLayout' => '@backend/views/layouts/main.php',
-            'controllerMap' => [
-                'assignment' => [
-                    'class' => 'mdm\admin\controllers\AssignmentController',
-                    'userClassName' => 'common\models\User',
-                    'idField' => 'id'
-                ]
-            ],
+            'layout' => '@backend/views/layouts/main.php',
         ],
     ],
-    'as globalAccess'=>[
+    'as access' => [
+        'class' => 'mdm\admin\classes\AccessControl',
+        /*'allowActions' => [
+            'roles/*',
+        ]*/
+    ],
+    /*'as globalAccess'=>[
         'class'=>'\common\behaviors\GlobalAccessBehavior',
         'rules'=>[
             [
@@ -95,7 +96,7 @@ $config = [
                 'roles' => ['manager'],
             ]
         ]
-    ],
+    ],*/
     'as saverestore'=>[
         'class'=>'\shirase\returned\SaveRestoreBehavior'
     ],
