@@ -20,7 +20,7 @@ trait ActiveQueryTrait {
                     $this->andFilterWhere(['<=', $column, $m[1]]);
                 }
             } else {
-                $this->andFilterWhere(['like', $column, $range]);
+                $this->andFilterWhere([$column=>$range]);
             }
         }
 
