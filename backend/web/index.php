@@ -12,7 +12,6 @@ require(__DIR__ . '/../../vendor/yiisoft/yii2/Yii.php');
 require(__DIR__ . '/../../common/config/bootstrap.php');
 require(__DIR__ . '/../config/bootstrap.php');
 
-
 $config = \yii\helpers\ArrayHelper::merge(
     require(__DIR__ . '/../../common/config/base.php'),
     require(__DIR__ . '/../../common/config/web.php'),
@@ -20,4 +19,23 @@ $config = \yii\helpers\ArrayHelper::merge(
     require(__DIR__ . '/../config/web.php')
 );
 
-(new yii\web\Application($config))->run();
+$app = new yii\web\Application($config);
+
+\Yii::$container->set('yii\imperavi\Widget', function ($container, $params, $config) {
+    return new yii\imperavi\Widget(
+        \yii\helpers\ArrayHelper::merge(
+            [
+                'plugins' => ['fullscreen'],
+                'options' => [
+                    'minHeight' => 200,
+                    'convertDivs' => false,
+                    'removeEmptyTags' => false,
+                    'imageUpload' => Yii::$app->urlManager->createUrl(['/file-storage/upload-imperavi'])
+                ],
+            ],
+            $config
+        )
+    );
+});
+
+$app->run();
