@@ -10,6 +10,7 @@ trait ActiveQueryTrait {
 
     public function andFilterRange($column, $range) {
         if($range) {
+            $range = (string)$range;
             $m = explode(' - ', $range);
             if(sizeof($m)==2) {
                 if($m[0] && $m[1]) {
@@ -20,7 +21,27 @@ trait ActiveQueryTrait {
                     $this->andFilterWhere(['<=', $column, $m[1]]);
                 }
             } else {
-                $this->andFilterWhere([$column=>$range]);
+                if($range[0]==='>') {
+                    if($range[1]==='=') {
+                        $this->andFilterWhere(['>=', $column, substr($range, 2)]);
+                    } elseif ($range[1]==='<') {
+                        $this->andFilterWhere(['!=', $column, substr($range, 2)]);
+                    } else {
+                        $this->andFilterWhere(['>', $column, substr($range, 2)]);
+                    }
+                } elseif ($range[0]==='<') {
+                    if($range[1]==='=') {
+                        $this->andFilterWhere(['<=', $column, substr($range, 2)]);
+                    } elseif ($range[1]==='>') {
+                        $this->andFilterWhere(['!=', $column, substr($range, 2)]);
+                    } else {
+                        $this->andFilterWhere(['<', $column, substr($range, 2)]);
+                    }
+                } elseif ($range[0]==='!' && $range[1]==='=') {
+                    $this->andFilterWhere(['!=', $column, substr($range, 2)]);
+                } else {
+                    $this->andFilterWhere([$column=>$range]);
+                }
             }
         }
 
@@ -33,6 +54,7 @@ trait ActiveQueryTrait {
         $db = $modelClass::getDb();
 
         if($range) {
+            $range = (string)$range;
             $m = explode(' - ', $range);
             if(sizeof($m)==2) {
                 if($m[0] && $m[1]) {
