@@ -80,6 +80,7 @@
         "symfony/process": "^3.0",
         "mdmsoft/yii2-admin": "*",
         "creocoder/yii2-nested-sets": "*",
+        "voskobovich/yii2-many-many-behavior": "*",
         "kartik-v/yii2-widgets": "*",
         "kartik-v/yii2-grid": "*",
         "kartik-v/yii2-mpdf": "*",
