@@ -93,8 +93,7 @@
         "shirase/yii2-sortable": "dev-master",
         "shirase/yii2-tree-behavior": "dev-master",
         "shirase/yii2-returned": "dev-master",
-        "shirase/yii2-widgets-activeform": "dev-master",
-        "shirase/yii2-range": "dev-master"
+        "shirase/yii2-widgets-activeform": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "^2.0.0",
