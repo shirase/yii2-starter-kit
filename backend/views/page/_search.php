@@ -32,11 +32,11 @@ use yii\helpers\ArrayHelper;
 
     <?php //echo $form->field($model, 'view_params_json') ?>
 
-    <?php //echo $form->field($model, 'status')->dropDownList([''=>'-', '1'=>Yii::t('common', 'Yes'), '0'=>Yii::t('common', 'No')]) ?>
+    <?php //echo $form->field($model, 'status')->dropDownList([''=>'-', '1'=>Yii::t('backend', 'Yes'), '0'=>Yii::t('backend', 'No')]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('common', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('common', 'Reset'), Url::current(['TestSearch'=>null]), ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton(Yii::t('backend', 'Search'), ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('backend', 'Reset'), Url::current(['TestSearch'=>null]), ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
