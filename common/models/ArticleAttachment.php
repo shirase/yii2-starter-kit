@@ -38,6 +38,7 @@ class ArticleAttachment extends \yii\db\ActiveRecord
         return [
             [
                 'class' => TimestampBehavior::className(),
+                'value' => function() {return date(DATE_ISO8601);},
                 'updatedAtAttribute' => false
             ]
         ];

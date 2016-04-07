@@ -42,10 +42,13 @@ class ArticleCategory extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            TimestampBehavior::className(),
+            [
+                'class' => TimestampBehavior::className(),
+                'value' => function() {return date(DATE_ISO8601);}
+            ],
             [
                 'class'=>SluggableBehavior::className(),
-                'attribute'=>'title',
+                'attribute'=>'name',
                 'immutable' => true
             ]
         ];
@@ -58,8 +61,8 @@ class ArticleCategory extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title'], 'required'],
-            [['title'], 'string', 'max' => 512],
+            [['name'], 'required'],
+            [['name'], 'string', 'max' => 100],
             [['slug'], 'unique'],
             [['slug'], 'string', 'max' => 1024],
             ['status', 'integer'],

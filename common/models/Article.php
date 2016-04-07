@@ -70,7 +70,10 @@ class Article extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            TimestampBehavior::className(),
+            [
+                'class' => TimestampBehavior::className(),
+                'value' => function() {return date(DATE_ISO8601);}
+            ],
             [
                 'class'=>BlameableBehavior::className(),
                 'createdByAttribute' => 'author_id',
@@ -79,7 +82,7 @@ class Article extends \yii\db\ActiveRecord
             ],
             [
                 'class'=>SluggableBehavior::className(),
-                'attribute'=>'title',
+                'attribute'=>'name',
                 'immutable' => true
             ],
             [
@@ -89,7 +92,7 @@ class Article extends \yii\db\ActiveRecord
                 'uploadRelation' => 'articleAttachments',
                 'pathAttribute' => 'path',
                 'baseUrlAttribute' => 'base_url',
-                'orderAttribute' => 'order',
+                'orderAttribute' => 'pos',
                 'typeAttribute' => 'type',
                 'sizeAttribute' => 'size',
                 'nameAttribute' => 'name',
@@ -109,20 +112,24 @@ class Article extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'body', 'category_id'], 'required'],
+            [['name', 'category_id'], 'required'],
             [['slug'], 'unique'],
             [['body'], 'string'],
             [['published_at'], 'default', 'value' => function() {
                 return date(DATE_ISO8601);
             }],
-            [['published_at'], 'filter', 'filter' => 'strtotime', 'skipOnEmpty' => true],
             [['category_id'], 'exist', 'targetClass' => ArticleCategory::className(), 'targetAttribute'=>'id'],
             [['author_id', 'updater_id', 'status'], 'integer'],
             [['slug', 'thumbnail_base_url', 'thumbnail_path'], 'string', 'max' => 1024],
+            [['name'], 'string', 'max' => 100],
             [['title'], 'string', 'max' => 512],
             [['view'], 'string', 'max' => 255],
             [['attachments', 'thumbnail'], 'safe']
         ];
+    }
+
+    public function makeTitle() {
+        return ($this->title ? $this->title : $this->name);
     }
 
     /**
@@ -133,6 +140,7 @@ class Article extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('common', 'ID'),
             'slug' => Yii::t('common', 'Slug'),
+            'name' => Yii::t('common', 'Name'),
             'title' => Yii::t('common', 'Title'),
             'body' => Yii::t('common', 'Body'),
             'view' => Yii::t('common', 'Article View'),
