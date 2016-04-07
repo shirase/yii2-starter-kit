@@ -79,7 +79,7 @@ class Page extends \yii\db\ActiveRecord
         return ($this->title ? $this->title : $this->name);
     }
 
-    public function getView_prams() {
+    public function getView_params() {
         return $this->view_params_json ? Json::decode($this->view_params_json) : [];
     }
 
