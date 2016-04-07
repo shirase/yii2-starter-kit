@@ -1,39 +1,44 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
-
+use kartik\grid\GridView;
+use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel \backend\models\search\PageSearch */
+/* @var $searchModel common\models\search\PageSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('backend', 'Pages');
+$this->title = Yii::t('common', 'Pages');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="page-index">
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <h1><?= Html::encode($this->title) ?></h1>
+    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?php echo Html::a(Yii::t('backend', 'Create {modelClass}', [
-    'modelClass' => 'Page',
-]), ['create'], ['class' => 'btn btn-success']) ?>
+        <?php if (\Yii::$app->user->can('/'.$this->context->uniqueId.'/create')) echo Html::a(Yii::t('common', 'Create Page'), ['create']+$this->context->actionParams, ['class' => 'btn btn-success']) ?>
     </p>
-
-    <?php echo GridView::widget([
+    <?= GridView::widget([
+        'id' => 'page-grid',
+        'pjax' => true,
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'columns' => [
-            'id',
-            'title',
+            ['class' => 'shirase\grid\sortable\SerialColumn'],
+
+            ['class'=>'kartik\grid\BooleanColumn', 'attribute'=>'status'],
+            'name',
             'slug',
-            'status',
+            ['attribute'=>'view_id', 'value'=>function($model) {return $model->view->name;}],
 
             [
-                'class' => 'yii\grid\ActionColumn',
-                'template'=>'{update} {delete}'
+                'class' => 'kartik\grid\ActionColumn',
+                'visibleButtons'=>[
+                    'view' => \Yii::$app->user->can('/' . \common\components\helpers\Url::normalizeRoute('view')),
+                    'update' => \Yii::$app->user->can('/' . \common\components\helpers\Url::normalizeRoute('update')),
+                    'delete' => \Yii::$app->user->can('/' . \common\components\helpers\Url::normalizeRoute('delete')),
+                ],
             ],
         ],
     ]); ?>
-
 </div>
