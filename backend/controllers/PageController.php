@@ -155,6 +155,60 @@ class PageController extends Controller
         }
     }
 
+    public function actionTree($id)
+    {
+        $model = $this->findModel($id);
+        return $this->render('tree', ['model'=>$model]);
+    }
+
+    public function actionJTree($root, $id=null) {
+        if (!$id || $id=='#') {
+            $id = $root;
+        }
+
+        $model = $this->findModel($id);
+
+        $data = [
+            [
+                'id' => $model->id,
+                'parent' => '#',
+                'text' => $model->name,
+                'state' => [
+                    'opened' => true,
+                ],
+                'type' => 'page',
+            ]
+        ];
+
+        if($rows = Page::find()->orderBy('pos')->children($id)->all()) {
+            foreach ($rows as $row) {
+                $data[] = [
+                    'id' => $row->id,
+                    'parent' => $row->pid,
+                    'text' => $row->name,
+                    'type' => 'page',
+                ];
+            }
+        }
+
+        return Json::encode($data);
+    }
+
+    public function actionJMove($id, $position, $parent)
+    {
+        $model = $this->findModel($id);
+        if ($position > 0) {
+            if($node = Page::find()->orderBy('pos')->andWhere(['pid'=>$parent])->andFilterWhere(['!=', 'id', $model->id])->limit(1)->offset($position-1)->one()) {
+                $model->insertAfter($node->id);
+            }
+        } else {
+            if($node = Page::find()->orderBy('pos')->andWhere(['pid'=>$parent])->one()) {
+                $model->insertBefore($node->id);
+            }
+        }
+        return '{}';
+    }
+
     /**
      * Finds the Page model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

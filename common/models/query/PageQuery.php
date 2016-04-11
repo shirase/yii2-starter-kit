@@ -9,6 +9,13 @@ namespace common\models\query;
  */
 class PageQuery extends \common\components\db\ActiveQuery
 {
+
+    public function behaviors() {
+        return [
+            'shirase\tree\TreeQueryBehavior'
+        ];
+    }
+
     /*public function active()
     {
         return $this->andWhere('[[status]]=1');
