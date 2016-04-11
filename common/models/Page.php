@@ -64,7 +64,7 @@ class Page extends \common\components\db\ActiveRecord
     public function rules()
     {
         return [
-            [['slug', 'name', 'title'], 'required'],
+            [['slug', 'name'], 'required'],
             [['body', 'view_params_json'], 'string'],
             [['view_params'], 'safe'],
             [['view_id', 'status'], 'integer'],

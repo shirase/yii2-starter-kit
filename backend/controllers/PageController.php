@@ -6,6 +6,7 @@ use Yii;
 use common\models\Page;
 use common\models\search\PageSearch;
 use common\components\web\Controller;
+use yii\web\MethodNotAllowedHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Json;
@@ -196,6 +197,9 @@ class PageController extends Controller
 
     public function actionJMove($id, $position, $parent)
     {
+        if (!Yii::$app->request->isAjax) {
+            throw new MethodNotAllowedHttpException();
+        }
         $model = $this->findModel($id);
         if ($position > 0) {
             if($node = Page::find()->orderBy('pos')->andWhere(['pid'=>$parent])->andFilterWhere(['!=', 'id', $model->id])->limit(1)->offset($position-1)->one()) {
@@ -207,6 +211,39 @@ class PageController extends Controller
             }
         }
         return '{}';
+    }
+
+    public function actionJDelete($id)
+    {
+        if (!Yii::$app->request->isAjax) {
+            throw new MethodNotAllowedHttpException();
+        }
+        $model = $this->findModel($id);
+        $model->delete();
+        return '{}';
+    }
+
+    public function actionJRename($id, $name)
+    {
+        if (!Yii::$app->request->isAjax) {
+            throw new MethodNotAllowedHttpException();
+        }
+        $model = $this->findModel($id);
+        $model->name = $name;
+        $model->save();
+        return '{}';
+    }
+
+    public function actionJCreate($parent, $name)
+    {
+        if (!Yii::$app->request->isAjax) {
+            throw new MethodNotAllowedHttpException();
+        }
+        $model = new Page();
+        $model->pid = $parent;
+        $model->name = $name;
+        $model->save();
+        return Json::encode(['id'=>$model->id]);
     }
 
     /**
