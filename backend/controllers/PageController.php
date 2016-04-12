@@ -2,15 +2,18 @@
 
 namespace backend\controllers;
 
+use kartik\grid\EditableColumnAction;
 use Yii;
 use common\models\Page;
 use common\models\search\PageSearch;
 use common\components\web\Controller;
+use yii\helpers\ArrayHelper;
 use yii\web\MethodNotAllowedHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Json;
 use yii\helpers\Url;
+use yii\db\Expression;
 
 /**
  * PageController implements the CRUD actions for Page model.
@@ -32,35 +35,47 @@ class PageController extends Controller
         ];
     }
 
+    public function actions()
+    {
+        return ArrayHelper::merge(parent::actions(), [
+            'editt' => [
+                'class' => EditableColumnAction::className(),
+                'modelClass' => Page::className(),
+                'showModelErrors' => true,
+            ]
+        ]);
+    }
+
     /**
      * Lists all Page models.
      * @return mixed
      */
     public function actionIndex()
     {
-        if (Yii::$app->request->post('hasEditable')) {
-            if (!Yii::$app->user->can('/' . \common\components\helpers\Url::normalizeRoute('update'))) {
-                throw new HttpException(403);
-            }
-
-            $model = $this->findModel(Yii::$app->request->post('editableKey'));
-
-            $out = Json::encode(['output'=>'', 'message'=>'']);
-
-            $posted = current($_POST['Page']);
-            $post = ['Page' => $posted];
-
-            if ($model->load($post)) {
-                $model->save();
-            }
-            echo $out;
-            return;
-        }
-
         $searchModel = new PageSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $dataProvider->query->andFilterWhere(['IS', 'pid', new Expression('NULL')]);
+
         return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * Lists all Page models.
+     * @return mixed
+     */
+    public function actionMenu()
+    {
+        $this->actionParams['return'] = Url::current();
+
+        $searchModel = new PageSearch();
+        $searchModel->pid = '0';
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('menu', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -91,12 +106,12 @@ class PageController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($return=null)
     {
         $model = new Page();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index', 'returned'=>true]);
+            return $this->redirect($return ? $return : ['index', 'returned'=>true]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -110,12 +125,12 @@ class PageController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
+    public function actionUpdate($id, $return=null)
     {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index', 'returned'=>true]);
+            return $this->redirect($return ? $return : ['index', 'returned'=>true]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -129,7 +144,7 @@ class PageController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id) {
+    public function actionDelete($id, $return=null) {
         $post = Yii::$app->request->post();
         if (Yii::$app->request->isAjax && isset($post['j-delete'])) {
             if ($this->findModel($id)->delete()) {
@@ -152,7 +167,7 @@ class PageController extends Controller
             return;
         } else {
             $this->findModel($id)->delete();
-            $this->redirect(['index', 'returned'=>true]);
+            $this->redirect($return ? $return : ['index', 'returned'=>true]);
         }
     }
 

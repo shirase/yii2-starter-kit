@@ -132,7 +132,7 @@ $bundle = BackendAsset::register($this);
                         ['label'=>Yii::t('backend', 'Carousel Widgets'), 'url'=>['/widget-carousel/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>', 'visible'=>Yii::$app->user->can('/widget-carousel/index')],
                     ];
 
-                    if ($rows = Page::find()->andWhere(['pid'=>'0'])->all()) {
+                    if ($rows = Page::find()->andWhere(['pid'=>'0'])->orderBy('pos')->all()) {
                         foreach ($rows as $row) {
                             array_unshift($contentItems, ['label'=>$row->name, 'url'=>['/page/tree', 'id'=>$row->id], 'icon'=>'<i class="fa fa-angle-double-right"></i>', 'visible'=>Yii::$app->user->can('/page/tree'), 'activateItemByController'=>false]);
                         }
