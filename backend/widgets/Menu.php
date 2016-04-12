@@ -93,7 +93,7 @@ class Menu extends \yii\widgets\Menu
 
             $route = ltrim($route, '/');
 
-            if($this->activateItemsByController) {
+            if(ArrayHelper::getValue($item, 'activateItemByController', $this->activateItemsByController)) {
                 $m = explode('/', $route);
                 array_pop($m);
                 if (strpos($this->route.'/', implode('/', $m).'/')!==0) {

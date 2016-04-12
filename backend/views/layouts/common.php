@@ -4,6 +4,7 @@
  */
 use backend\assets\BackendAsset;
 use backend\widgets\Menu;
+use common\models\Page;
 use common\models\TimelineEvent;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -122,6 +123,21 @@ $bundle = BackendAsset::register($this);
                     </div>
                 </div>
                 <!-- sidebar menu: : style can be found in sidebar.less -->
+                <?php
+                    $contentItems = [
+                        ['label'=>Yii::t('backend', 'Static pages'), 'url'=>['/page/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>', 'visible'=>Yii::$app->user->can('/page/index'), 'activateItemByController'=>false],
+                        ['label'=>Yii::t('backend', 'Articles'), 'url'=>['/article/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>', 'visible'=>Yii::$app->user->can('/article/index')],
+                        ['label'=>Yii::t('backend', 'Article Categories'), 'url'=>['/article-category/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>', 'visible'=>Yii::$app->user->can('/article-category/index')],
+                        ['label'=>Yii::t('backend', 'Text Widgets'), 'url'=>['/widget-text/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>', 'visible'=>Yii::$app->user->can('/widget-text/index')],
+                        ['label'=>Yii::t('backend', 'Carousel Widgets'), 'url'=>['/widget-carousel/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>', 'visible'=>Yii::$app->user->can('/widget-carousel/index')],
+                    ];
+
+                    if ($rows = Page::find()->andWhere(['pid'=>'0'])->all()) {
+                        foreach ($rows as $row) {
+                            array_unshift($contentItems, ['label'=>$row->name, 'url'=>['/page/tree', 'id'=>$row->id], 'icon'=>'<i class="fa fa-angle-double-right"></i>', 'visible'=>Yii::$app->user->can('/page/tree'), 'activateItemByController'=>false]);
+                        }
+                    }
+                ?>
                 <?php echo Menu::widget([
                     'options'=>['class'=>'sidebar-menu'],
                     'linkTemplate' => '<a href="{url}">{icon}<span>{label}</span>{right-icon}{badge}</a>',
@@ -144,13 +160,7 @@ $bundle = BackendAsset::register($this);
                             'url' => '#',
                             'icon'=>'<i class="fa fa-edit"></i>',
                             'options'=>['class'=>'treeview'],
-                            'items'=>[
-                                ['label'=>Yii::t('backend', 'Static pages'), 'url'=>['/page/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>', 'visible'=>Yii::$app->user->can('/page/index')],
-                                ['label'=>Yii::t('backend', 'Articles'), 'url'=>['/article/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>', 'visible'=>Yii::$app->user->can('/article/index')],
-                                ['label'=>Yii::t('backend', 'Article Categories'), 'url'=>['/article-category/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>', 'visible'=>Yii::$app->user->can('/article-category/index')],
-                                ['label'=>Yii::t('backend', 'Text Widgets'), 'url'=>['/widget-text/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>', 'visible'=>Yii::$app->user->can('/widget-text/index')],
-                                ['label'=>Yii::t('backend', 'Carousel Widgets'), 'url'=>['/widget-carousel/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>', 'visible'=>Yii::$app->user->can('/widget-carousel/index')],
-                            ]
+                            'items'=>$contentItems
                         ],
                         [
                             'label'=>Yii::t('backend', 'System'),
