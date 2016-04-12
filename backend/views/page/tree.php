@@ -100,6 +100,16 @@ function(node) {
                 );
             });
     }
+
+    items.update = {
+        label:"'.Yii::t('backend', 'Update').'",
+        action: function(data) {
+            var inst = $.jstree.reference(data.reference),
+                obj = inst.get_node(data.reference);
+            location.href=("'.Url::toRoute(['update', 'id'=>'0']).'").replace("0", obj.id);
+        }
+    };
+
     return items;
 }'),
         ],
