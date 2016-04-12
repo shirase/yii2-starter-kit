@@ -96,7 +96,7 @@ class Menu extends \yii\widgets\Menu
             if($this->activateItemsByController) {
                 $m = explode('/', $route);
                 array_pop($m);
-                if (strpos($this->route, implode('/', $m))!==0) {
+                if (strpos($this->route.'/', implode('/', $m).'/')!==0) {
                     return false;
                 }
             } else {
