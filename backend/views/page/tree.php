@@ -106,7 +106,7 @@ function(node) {
         action: function(data) {
             var inst = $.jstree.reference(data.reference),
                 obj = inst.get_node(data.reference);
-            location.href=("'.Url::toRoute(['update', 'id'=>'0']).'").replace("0", obj.id);
+            location.href=("'.Url::toRoute(['update', 'id'=>'ID', 'return'=>Url::current()]).'").replace("ID", obj.id);
         }
     };
 
