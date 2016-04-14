@@ -5,9 +5,12 @@
 
 namespace common\widgets;
 
+use common\models\Page;
 use common\models\WidgetMenu;
 use yii\base\InvalidConfigException;
 use Yii;
+use common\components\helpers\Url;
+use yii\web\HttpException;
 use yii\widgets\Menu;
 
 /**
@@ -27,19 +30,36 @@ class DbMenu extends Menu
      */
     public $key;
 
+    private function makeItems($pid, &$tree) {
+        if (!isset($tree[$pid])) return null;
+
+        $items = [];
+        foreach ($tree[$pid] as $id=>$row) {
+            if (isset($tree[$id])) {
+                $row['items'] = $this->makeItems($id, $tree);
+            }
+            $items[] = $row;
+        }
+        return $items;
+    }
+
     public function init()
     {
-        $cacheKey = [
-            WidgetMenu::className(),
-            $this->key
-        ];
-        $this->items = Yii::$app->cache->get($cacheKey);
-        if ($this->items === false) {
-            if (!($model = WidgetMenu::findOne(['key'=>$this->key, 'status' => WidgetMenu::STATUS_ACTIVE]))) {
-                throw new InvalidConfigException;
-            }
-            $this->items =json_decode($model->items, true);
-            Yii::$app->cache->set($cacheKey, $this->items, 60*60*24);
+        if (is_numeric($this->key)) {
+            $model = Page::findOne($this->key);
+        } else {
+            $model = Page::findOne(['slug'=>$this->key]);
         }
+
+        if (!$model) throw new HttpException(500);
+
+        $tree = [];
+        if ($rows = Page::find()->orderBy('bpath')->children($model->id)->all()) {
+            foreach ($rows as $row) {
+                $tree[$row->pid][$row->id] = ['label'=>$row->name, 'url'=>Url::routeFor($row)];
+            }
+        }
+
+        $this->items = $this->makeItems($model->id, $tree);
     }
 }

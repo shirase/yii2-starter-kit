@@ -17,7 +17,7 @@ $this->title = Yii::$app->name;
         <p class="lead">You have successfully created your Yii-powered application.</p>
 
         <?php echo common\widgets\DbMenu::widget([
-            'key'=>'frontend-index',
+            'key'=>'main-menu',
             'options'=>[
                 'tag'=>'p'
             ]

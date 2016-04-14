@@ -16,7 +16,6 @@ use yii\helpers\Json;
  * @property string $title
  * @property string $body
  * @property integer $view_id
- * @property string $view_params_json
  * @property integer $status
  * @property string $created_at
  * @property string $updated_at
@@ -28,6 +27,9 @@ use yii\helpers\Json;
  */
 class Page extends \common\components\db\ActiveRecord
 {
+
+    const STATUS_PUBLISHED = 1;
+
     /**
      * @inheritdoc
      */
@@ -65,8 +67,7 @@ class Page extends \common\components\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['body', 'view_params_json'], 'string'],
-            [['view_params'], 'safe'],
+            [['body'], 'string'],
             [['view_id', 'status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['title'], 'string', 'max' => 512],
@@ -81,14 +82,6 @@ class Page extends \common\components\db\ActiveRecord
         return ($this->title ? $this->title : $this->name);
     }
 
-    public function getView_params() {
-        return $this->view_params_json ? Json::decode($this->view_params_json) : [];
-    }
-
-    public function setView_params($value) {
-        $this->view_params_json = $value ? Json::encode($value) : '';
-    }
-
     /**
      * @inheritdoc
      */
@@ -101,7 +94,6 @@ class Page extends \common\components\db\ActiveRecord
             'title' => Yii::t('common', 'Title'),
             'body' => Yii::t('common', 'Body'),
             'view_id' => Yii::t('common', 'View'),
-            'view_params' => Yii::t('common', 'View Params'),
             'status' => Yii::t('common', 'Status'),
             'created_at' => Yii::t('common', 'Created At'),
             'updated_at' => Yii::t('common', 'Updated At'),
