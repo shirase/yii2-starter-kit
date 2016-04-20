@@ -38,7 +38,7 @@ class PageController extends Controller
     public function actions()
     {
         return ArrayHelper::merge(parent::actions(), [
-            'editt' => [
+            'edit' => [
                 'class' => EditableColumnAction::className(),
                 'modelClass' => Page::className(),
                 'showModelErrors' => true,
