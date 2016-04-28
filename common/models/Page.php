@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use shirase\yii2\behaviors\JsonifyBehavior;
 use Yii;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
@@ -56,7 +57,7 @@ class Page extends \common\components\db\ActiveRecord
             ],
             [
                 'class' => \shirase\tree\TreeBehavior::className(),
-            ]
+            ],
         ];
     }
 
@@ -115,5 +116,14 @@ class Page extends \common\components\db\ActiveRecord
     public static function find()
     {
         return new \common\models\query\PageQuery(get_called_class());
+    }
+
+    private $_dataModel;
+
+    public function getDataModel() {
+        if ($this->_dataModel) return $this->_dataModel;
+        if ($plugin = $this->view->plugin) {
+            return $this->_dataModel = $plugin::dataModel($this->id);
+        }
     }
 }

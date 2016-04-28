@@ -7,6 +7,7 @@ use Yii;
 use common\models\Page;
 use common\models\search\PageSearch;
 use common\components\web\Controller;
+use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 use yii\web\MethodNotAllowedHttpException;
 use yii\web\NotFoundHttpException;
@@ -129,13 +130,35 @@ class PageController extends Controller
     {
         $model = $this->findModel($id);
 
+        $transaction = Yii::$app->db->beginTransaction();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect($return ? $return : ['index', 'returned'=>true]);
+            $dataModel = $model->dataModel;
+            if (!$dataModel || ($dataModel->load(Yii::$app->request->post()) && $dataModel->save())) {
+                $transaction->commit();
+                return $this->redirect($return ? $return : ['index', 'returned'=>true]);
+            }
         } else {
+            $transaction->rollBack();
             return $this->render('update', [
                 'model' => $model,
             ]);
         }
+    }
+
+    public function actionForm($id=null)
+    {
+        if ($id) {
+            $model = $this->findModel($id);
+        } else {
+            $model = new Page();
+        }
+
+        $model->load(Yii::$app->request->post());
+
+        return $this->renderPartial('_form', [
+            'model' => $model,
+        ]);
     }
 
     /**

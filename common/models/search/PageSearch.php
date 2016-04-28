@@ -12,11 +12,6 @@ use common\models\Page;
  */
 class PageSearch extends Page
 {
-    public function behaviors()
-    {
-        return [];
-    }
-
     /**
      * @inheritdoc
      */
@@ -24,7 +19,7 @@ class PageSearch extends Page
     {
         return [
             [['id', 'view_id', 'status', 'pid', 'pos'], 'integer'],
-            [['slug', 'name', 'title', 'body'], 'safe'],
+            [['slug', 'name', 'title', 'body', 'created_at', 'updated_at', 'bpath'], 'safe'],
         ];
     }
 
@@ -73,7 +68,10 @@ class PageSearch extends Page
         $query->andFilterWhere(['like', 'slug', $this->slug])
             ->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'body', $this->body]);
+            ->andFilterWhere(['like', 'body', $this->body])
+            ->andFilterDateRange('created_at', $this->created_at)
+            ->andFilterDateRange('updated_at', $this->updated_at)
+            ->andFilterWhere(['like', 'bpath', $this->bpath]);
 
         return $dataProvider;
     }
