@@ -25,32 +25,6 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/shirase/yii2-gii"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/shirase/yii2-sortable"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/shirase/yii2-returned"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/shirase/yii2-widgets-activeform"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/shirase/yii2-tree-behavior"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/shirase/yii2-jstree"
-        }
-    ],
     "require": {
         "php": ">=5.5.0",
         "ext-intl": "*",
@@ -96,15 +70,16 @@
         "kartik-v/yii2-datecontrol": "*",
         "kartik-v/yii2-date-range": "*",
         "kartik-v/yii2-field-range": "*",
-        "shirase/yii2-sortable": "dev-master",
-        "shirase/yii2-tree-behavior": "dev-master",
-        "shirase/yii2-returned": "dev-master",
-        "shirase/yii2-widgets-activeform": "dev-master",
-        "shirase/yii2-jstree": "dev-master"
+        "shirase55/yii2-sortable": "dev-master",
+        "shirase55/yii2-tree-behavior": "dev-master",
+        "shirase55/yii2-returned": "dev-master",
+        "shirase55/yii2-widgets-activeform": "dev-master",
+        "shirase55/yii2-jstree": "dev-master",
+        "shirase55/yii2-pjax-ex": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "^2.0.0",
-        "shirase/yii2-gii": "dev-master",
+        "shirase55/yii2-gii": "dev-master",
         "yiisoft/yii2-codeception": "^2.0.0",
         "yiisoft/yii2-faker": "^2.0.0",
         "codeception/codeception": "^2.0"
