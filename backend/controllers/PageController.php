@@ -111,9 +111,16 @@ class PageController extends Controller
     {
         $model = new Page();
 
+        $transaction = Yii::$app->db->beginTransaction();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect($return ? $return : ['index', 'returned'=>true]);
+            $dataModel = $model->dataModel;
+            if (!$dataModel || ($dataModel->load(Yii::$app->request->post()) && $dataModel->save())) {
+                $transaction->commit();
+                return $this->redirect($return ? $return : ['index', 'returned'=>true]);
+            }
         } else {
+            $transaction->rollBack();
             return $this->render('create', [
                 'model' => $model,
             ]);

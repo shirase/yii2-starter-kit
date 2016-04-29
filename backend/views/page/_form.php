@@ -38,7 +38,7 @@ $this->registerJs('$(document).on("change", "#page-view_id", function() {$.pjax.
         <?php Pjax::begin(['id'=>'view_params']) ?>
             <?php
                 if ($plugin = $model->view->plugin) {
-                    echo $plugin::widget(['form'=>$form, 'model'=>$model]);
+                    echo $plugin::widget($form, $model);
                 }
             ?>
         <?php Pjax::end() ?>

@@ -1,7 +1,10 @@
 <?php
 namespace common\plugins\page_view\link;
 
-class Plugin {
+use common\plugins\page_view\PluginInterface;
+use yii\helpers\ArrayHelper;
+
+class Plugin implements PluginInterface {
 
     public static function dataModel($pageId) {
         $model = Model::findOne($pageId);
@@ -12,7 +15,8 @@ class Plugin {
         return $model;
     }
 
-    public static function widget($options=[]) {
+    public static function widget($form, $model, $options=[]) {
+        $options = ArrayHelper::merge(['form'=>$form, 'model'=>$model], $options);
         $widget = Widget::className();
         return $widget::widget($options);
     }
