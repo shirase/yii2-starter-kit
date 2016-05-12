@@ -24,6 +24,18 @@ class PageView extends \common\components\db\ActiveRecord
         return 'page_view';
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => \shirase\tree\TreeBehavior::className(),
+            ],
+        ];
+    }
+
 
     /**
      * @inheritdoc
