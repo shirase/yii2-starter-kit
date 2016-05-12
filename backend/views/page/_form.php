@@ -33,7 +33,7 @@ $this->registerJs('$(document).on("change", "#page-view_id", function() {$.pjax.
 
         <?= $form->field($model, 'body')->widget(\yii\imperavi\Widget::className()) ?>
 
-        <?= $form->field($model, 'view_id')->widget(kartik\select2\Select2::className(), ['data'=>[''=>'-']+ArrayHelper::map(common\models\PageView::find()->all(), 'id', 'name')]) ?>
+        <?= $form->field($model, 'view_id')->widget(kartik\select2\Select2::className(), ['data'=>[''=>'-']+ArrayHelper::map(common\models\PageView::find()->orderBy('pos')->all(), 'id', 'name')]) ?>
 
         <?php Pjax::begin(['id'=>'view_params']) ?>
             <?php
