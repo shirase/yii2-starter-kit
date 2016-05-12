@@ -2,6 +2,7 @@
 namespace common\plugins\page_view\article;
 
 use common\models\ArticleCategory;
+use kartik\widgets\Select2;
 use yii\helpers\ArrayHelper;
 
 class Widget extends \yii\base\Widget {
