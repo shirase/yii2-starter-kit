@@ -29,8 +29,7 @@ use yii\behaviors\TimestampBehavior;
  *
  * @property User $author
  * @property User $updater
- * @property ArticleCategory $category
- * @property ArticleAttachment[] $articleAttachments
+  * @property ArticleAttachment[] $articleAttachments
  */
 class Article extends \yii\db\ActiveRecord
 {
@@ -81,7 +80,7 @@ class Article extends \yii\db\ActiveRecord
             ],
             [
                 'class'=>SluggableBehavior::className(),
-                'attribute'=>'name',
+                'attribute'=>'title',
                 'immutable' => true
             ],
             [
@@ -101,7 +100,13 @@ class Article extends \yii\db\ActiveRecord
                 'attribute' => 'thumbnail',
                 'pathAttribute' => 'thumbnail_path',
                 'baseUrlAttribute' => 'thumbnail_base_url'
-            ]
+            ],
+            [
+                'class' => \voskobovich\behaviors\ManyToManyBehavior::className(),
+                'relations' => [
+                    'category_ids' => 'categories',
+                ]
+            ],
         ];
     }
 
@@ -111,7 +116,7 @@ class Article extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
+            [['title'], 'required'],
             [['slug'], 'unique'],
             [['body'], 'string'],
             [['published_at'], 'default', 'value' => function() {
@@ -119,14 +124,9 @@ class Article extends \yii\db\ActiveRecord
             }],
             [['author_id', 'updater_id', 'status'], 'integer'],
             [['slug', 'thumbnail_base_url', 'thumbnail_path'], 'string', 'max' => 1024],
-            [['name'], 'string', 'max' => 100],
-            [['title'], 'string', 'max' => 512],
-            [['attachments', 'thumbnail'], 'safe']
+            [['title'], 'string', 'max' => 255],
+            [['attachments', 'thumbnail', 'category_ids'], 'safe']
         ];
-    }
-
-    public function makeTitle() {
-        return ($this->title ? $this->title : $this->name);
     }
 
     /**
@@ -137,7 +137,6 @@ class Article extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('common', 'ID'),
             'slug' => Yii::t('common', 'Slug'),
-            'name' => Yii::t('common', 'Name'),
             'title' => Yii::t('common', 'Title'),
             'body' => Yii::t('common', 'Body'),
             'thumbnail' => Yii::t('common', 'Thumbnail'),
@@ -172,5 +171,9 @@ class Article extends \yii\db\ActiveRecord
     public function getArticleAttachments()
     {
         return $this->hasMany(ArticleAttachment::className(), ['article_id' => 'id']);
+    }
+
+    public function getCategories() {
+        return $this->hasMany(Page::className(), ['id'=>'page'])->viaTable('article_page', ['article'=>'id']);
     }
 }

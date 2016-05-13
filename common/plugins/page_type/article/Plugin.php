@@ -1,10 +1,15 @@
 <?php
 namespace common\plugins\page_type\article;
 
+use common\models\PageType;
 use common\plugins\page_type\PluginInterface;
 use yii\helpers\ArrayHelper;
 
 class Plugin implements PluginInterface {
+
+    public static function getId() {
+        return PageType::find()->andFilterWhere(['plugin'=>get_called_class()])->one()->id;
+    }
 
     public static function dataModel($pageId) {
         return null;

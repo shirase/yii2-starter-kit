@@ -1,7 +1,6 @@
 <?php
 namespace common\plugins\page_type\article;
 
-use common\models\ArticleCategory;
 use kartik\widgets\Select2;
 use yii\helpers\ArrayHelper;
 

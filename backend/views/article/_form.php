@@ -2,14 +2,13 @@
 
 use common\components\helpers\TreeHelper;
 use common\models\Page;
+use kartik\widgets\Select2;
+use shirase\form\ActiveForm;
 use trntv\filekit\widget\Upload;
-use trntv\yii\datetime\DateTimeWidget;
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Article */
-/* @var $categories common\models\ArticleCategory[] */
 /* @var $form yii\bootstrap\ActiveForm */
 ?>
 
@@ -23,7 +22,16 @@ use yii\bootstrap\ActiveForm;
         ->hint(Yii::t('backend', 'If you\'ll leave this field empty, slug will be generated automatically'))
         ->textInput(['maxlength' => true]) ?>
 
-    <?php echo $form->field($model, 'category_id')->dropDownList(TreeHelper::tab(Page::find()->andFilterWhere(['type_id'=>3])->orderBy('bpath')->all(), 'id', 'pid', 'name'), ['prompt'=>'']) ?>
+    <?php echo $form->field($model, 'category_ids')
+        ->widget(
+            Select2::className(),
+            [
+                'options'=>['multiple'=>true],
+                'data'=>
+                    TreeHelper::tab(
+                        Page::find()->andFilterWhere(['type_id'=>common\plugins\page_type\article\Plugin::getId()])->orderBy('bpath')->all()
+                        , 'id', 'pid', 'name')
+            ]) ?>
 
     <?php echo $form->field($model, 'body')->widget(
         \yii\imperavi\Widget::className(),
@@ -61,10 +69,7 @@ use yii\bootstrap\ActiveForm;
     <?php echo $form->field($model, 'status')->checkbox() ?>
 
     <?php echo $form->field($model, 'published_at')->widget(
-        DateTimeWidget::className(),
-        [
-            'phpDatetimeFormat' => 'yyyy-MM-dd\'T\'HH:mm:ssZZZZZ'
-        ]
+        \kartik\date\DatePicker::className()
     ) ?>
 
     <div class="form-group">

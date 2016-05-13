@@ -5,7 +5,6 @@ namespace backend\controllers;
 use Yii;
 use common\models\Article;
 use backend\models\search\ArticleSearch;
-use \common\models\ArticleCategory;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -58,7 +57,6 @@ class ArticleController extends Controller
         } else {
             return $this->render('create', [
                 'model' => $model,
-                'categories' => ArticleCategory::find()->active()->all(),
             ]);
         }
     }
@@ -78,7 +76,6 @@ class ArticleController extends Controller
         } else {
             return $this->render('update', [
                 'model' => $model,
-                'categories' => ArticleCategory::find()->active()->all(),
             ]);
         }
     }

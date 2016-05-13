@@ -30,13 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'slug',
             'title',
             [
-                'attribute'=>'category_id',
-                'value'=>function ($model) {
-                    return $model->category ? $model->category->title : null;
-                },
-                'filter'=>\yii\helpers\ArrayHelper::map(\common\models\ArticleCategory::find()->all(), 'id', 'title')
-            ],
-            [
                 'attribute'=>'author_id',
                 'value'=>function ($model) {
                     return $model->author->username;
