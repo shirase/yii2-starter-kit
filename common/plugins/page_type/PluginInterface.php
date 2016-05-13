@@ -1,5 +1,5 @@
 <?php
-namespace common\plugins\page_view;
+namespace common\plugins\page_type;
 
 interface PluginInterface
 {

@@ -1,5 +1,6 @@
 <?php
 
+use common\components\helpers\TreeHelper;
 use yii\helpers\Html;
 use shirase\form\ActiveForm;
 use kartik\datecontrol\DateControl;
@@ -14,7 +15,7 @@ use common\components\helpers\Url;
 
 <?php
 \shirase\pjax\PjaxAsset::register($this);
-$this->registerJs('$(document).on("change", "#page-view_id", function() {$.pjax.submitForm($(this).closest("form"), "#view_params", {url: "'.Url::toRoute('form').'"})})');
+$this->registerJs('$(document).on("change", "#page-type_id", function() {$.pjax.submitForm($(this).closest("form"), "#type_params", {url: "'.Url::toRoute(['form', 'id'=>$model->id]).'"})})');
 ?>
 
 <div class="page-form">
@@ -25,7 +26,7 @@ $this->registerJs('$(document).on("change", "#page-view_id", function() {$.pjax.
 
     <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
-    <?php if ($model->pid!=='0'): ?>
+    <?php if ($model->pid!==0): ?>
 
         <?= $form->field($model, 'status')->dropDownList(['1'=>Yii::t('backend', 'Active'), '0'=>Yii::t('backend', 'Not active')]) ?>
 
@@ -33,11 +34,11 @@ $this->registerJs('$(document).on("change", "#page-view_id", function() {$.pjax.
 
         <?= $form->field($model, 'body')->widget(\yii\imperavi\Widget::className()) ?>
 
-        <?= $form->field($model, 'view_id')->widget(kartik\select2\Select2::className(), ['data'=>[''=>'-']+ArrayHelper::map(common\models\PageView::find()->orderBy('pos')->all(), 'id', 'name')]) ?>
+        <?= $form->field($model, 'type_id')->widget(kartik\select2\Select2::className(), ['data'=>[''=>'-']+ArrayHelper::map(common\models\PageType::find()->orderBy('pos')->all(), 'id', 'name')]) ?>
 
-        <?php Pjax::begin(['id'=>'view_params']) ?>
+        <?php Pjax::begin(['id'=>'type_params']) ?>
             <?php
-                if ($plugin = $model->view->plugin) {
+                if ($plugin = $model->type->plugin) {
                     echo $plugin::widget($form, $model);
                 }
             ?>

@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class'=>'kartik\grid\BooleanColumn', 'attribute'=>'status'],
             'name',
             'slug',
-            ['attribute'=>'view_id', 'value'=>function($model) {return $model->view->name;}],
+            ['attribute'=>'type_id', 'value'=>function($model) {return $model->type->name;}],
 
             [
                 'class' => 'kartik\grid\ActionColumn',

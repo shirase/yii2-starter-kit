@@ -1,5 +1,5 @@
 <?php
-namespace common\plugins\page_view\page;
+namespace common\plugins\page_type\link;
 
 use common\components\db\ActiveRecord;
 
@@ -7,24 +7,23 @@ class Model extends ActiveRecord {
 
     public static function tableName()
     {
-        return '{{%page_view_page}}';
+        return '{{%page_type_link}}';
     }
 
     public function formName()
     {
-        return 'PageViewPage';
+        return 'PageViewLink';
     }
 
     public function rules() {
         return [
-            [['page_id', 'canonical'], 'integer'],
+            [['link'], 'string', 'max'=>255],
         ];
     }
 
     public function attributeLabels() {
         return [
-            'page_id'=>\Yii::t('common', 'Page'),
-            'canonical'=>\Yii::t('common', 'Canonical'),
+            'link'=>\Yii::t('common', 'Link'),
         ];
     }
 }

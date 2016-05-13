@@ -15,10 +15,9 @@ class m140703_123104_page extends Migration
         $this->createTable('{{%page}}', [
             'id' => $this->primaryKey(),
             'slug' => $this->string(1024)->notNull(),
-            'name' => $this->string(100)->notNull(),
+            'name' => $this->string(255)->notNull(),
             'title' => $this->string(255),
             'body' => $this->text(),
-            'view_id' => $this->integer(),
             'status' => $this->smallInteger(1)->notNull()->defaultValue(0),
             'created_at' => $this->timestamp(),
             'updated_at' => $this->timestamp(),
@@ -27,7 +26,7 @@ class m140703_123104_page extends Migration
             'bpath' => 'BLOB',
         ], $tableOptions);
 
-        $this->createIndex('slug', '{{%page}}', array('slug'), true);
+        $this->createIndex('slug', '{{%page}}', array('slug(100)'), true);
         $this->createIndex('pos', '{{%page}}', array('pos'), true);
         $this->createIndex('pid_pos', '{{%page}}', array('pid', 'pos'), true);
         $this->createIndex('bpath', '{{%page}}', array('bpath(100)'), true);

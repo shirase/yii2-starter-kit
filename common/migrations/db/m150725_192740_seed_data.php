@@ -56,50 +56,6 @@ class m150725_192740_seed_data extends Migration
             'locale'=>Yii::$app->sourceLanguage
         ]);
 
-        $this->insert('{{%page}}', [
-            'slug' => 'about',
-            'title' => 'About',
-            'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            'status' => \common\models\Page::STATUS_PUBLISHED,
-            'created_at' => time(),
-            'updated_at' => time(),
-        ]);
-
-        $this->insert('{{%article_category}}', [
-            'id' => 1,
-            'slug' => 'news',
-            'title' => 'News',
-            'status' => \common\models\ArticleCategory::STATUS_ACTIVE,
-            'created_at' => time()
-        ]);
-
-        $this->insert('{{%widget_menu}}', [
-            'key'=>'frontend-index',
-            'title'=>'Frontend index menu',
-            'items'=>json_encode([
-                [
-                    'label'=>'Get started with Yii2',
-                    'url'=>'http://www.yiiframework.com',
-                    'options'=>['tag'=>'span'],
-                    'template'=>'<a href="{url}" class="btn btn-lg btn-success">{label}</a>'
-                ],
-                [
-                    'label'=>'Yii2 Starter Kit on GitHub',
-                    'url'=>'https://github.com/trntv/yii2-starter-kit',
-                    'options'=>['tag'=>'span'],
-                    'template'=>'<a href="{url}" class="btn btn-lg btn-primary">{label}</a>'
-                ],
-                [
-                    'label'=>'Find a bug?',
-                    'url'=>'https://github.com/trntv/yii2-starter-kit/issues',
-                    'options'=>['tag'=>'span'],
-                    'template'=>'<a href="{url}" class="btn btn-lg btn-danger">{label}</a>'
-                ]
-
-            ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
-            'status'=>\common\models\WidgetMenu::STATUS_ACTIVE
-        ]);
-
         $this->insert('{{%widget_text}}', [
             'key'=>'backend_welcome',
             'title'=>'Welcome to backend',

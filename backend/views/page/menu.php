@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?php if (\Yii::$app->user->can('/'.$this->context->uniqueId.'/create')) echo Html::a(Yii::t('backend', 'Create Page'), ['create']+$this->context->actionParams, ['class' => 'btn btn-success']) ?>
+        <?php if (\Yii::$app->user->can('/'.$this->context->uniqueId.'/create')) echo Html::a(Yii::t('backend', 'Create Page'), ['create', 'pid'=>0]+$this->context->actionParams, ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'id' => 'menu-grid',

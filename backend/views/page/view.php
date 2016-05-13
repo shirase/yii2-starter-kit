@@ -35,8 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'title',
             'body:ntext',
-            ['attribute'=>'view_id', 'value'=>$model->view->name],
-            'view_params_json:ntext',
+            ['attribute'=>'type_id', 'value'=>$model->type->name],
             [
                 'attribute'=>'status',
                 'format'=>'boolean',

@@ -1,5 +1,5 @@
 <?php
-namespace common\plugins\page_view\link;
+namespace common\plugins\page_type\article;
 
 use common\components\db\ActiveRecord;
 
@@ -7,23 +7,23 @@ class Model extends ActiveRecord {
 
     public static function tableName()
     {
-        return '{{%page_view_link}}';
+        return '{{%page_type_article}}';
     }
 
     public function formName()
     {
-        return 'PageViewLink';
+        return 'PageViewArticle';
     }
 
     public function rules() {
         return [
-            [['link'], 'string', 'max'=>255],
+
         ];
     }
 
     public function attributeLabels() {
         return [
-            'link'=>\Yii::t('common', 'Link'),
+
         ];
     }
 }

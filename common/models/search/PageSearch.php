@@ -18,7 +18,7 @@ class PageSearch extends Page
     public function rules()
     {
         return [
-            [['id', 'view_id', 'status', 'pid', 'pos'], 'integer'],
+            [['id', 'type_id', 'status', 'pid', 'pos'], 'integer'],
             [['slug', 'name', 'title', 'body', 'created_at', 'updated_at', 'bpath'], 'safe'],
         ];
     }
@@ -60,7 +60,7 @@ class PageSearch extends Page
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'view_id' => $this->view_id,
+            'type_id' => $this->type_id,
             'status' => $this->status,
             'pid' => $this->pid,
         ]);

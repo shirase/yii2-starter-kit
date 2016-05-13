@@ -14,14 +14,14 @@ use Yii;
  *
  * @property Page[] $pages
  */
-class PageView extends \common\components\db\ActiveRecord
+class PageType extends \common\components\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'page_view';
+        return 'page_type';
     }
 
     /**
@@ -72,10 +72,10 @@ class PageView extends \common\components\db\ActiveRecord
 
     /**
      * @inheritdoc
-     * @return \common\models\query\PageViewQuery the active query used by this AR class.
+     * @return \common\models\query\PageTypeQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new \common\models\query\PageViewQuery(get_called_class());
+        return new \common\models\query\PageTypeQuery(get_called_class());
     }
 }

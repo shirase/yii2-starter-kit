@@ -1,5 +1,7 @@
 <?php
 
+use common\components\helpers\TreeHelper;
+use common\models\Page;
 use trntv\filekit\widget\Upload;
 use trntv\yii\datetime\DateTimeWidget;
 use yii\helpers\Html;
@@ -21,11 +23,7 @@ use yii\bootstrap\ActiveForm;
         ->hint(Yii::t('backend', 'If you\'ll leave this field empty, slug will be generated automatically'))
         ->textInput(['maxlength' => true]) ?>
 
-    <?php echo $form->field($model, 'category_id')->dropDownList(\yii\helpers\ArrayHelper::map(
-            $categories,
-            'id',
-            'title'
-        ), ['prompt'=>'']) ?>
+    <?php echo $form->field($model, 'category_id')->dropDownList(TreeHelper::tab(Page::find()->andFilterWhere(['type_id'=>3])->orderBy('bpath')->all(), 'id', 'pid', 'name'), ['prompt'=>'']) ?>
 
     <?php echo $form->field($model, 'body')->widget(
         \yii\imperavi\Widget::className(),
@@ -59,8 +57,6 @@ use yii\bootstrap\ActiveForm;
             'maxNumberOfFiles' => 10
         ]);
     ?>
-
-    <?php echo $form->field($model, 'view')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'status')->checkbox() ?>
 

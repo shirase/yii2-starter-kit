@@ -7,7 +7,7 @@ namespace common\models\query;
  *
  * @see \common\models\PageView
  */
-class PageViewQuery extends \common\components\db\ActiveQuery
+class PageTypeQuery extends \common\components\db\ActiveQuery
 {
     /*public function active()
     {

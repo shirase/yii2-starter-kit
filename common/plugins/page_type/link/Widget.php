@@ -1,5 +1,5 @@
 <?php
-namespace common\plugins\page_view\link;
+namespace common\plugins\page_type\link;
 
 class Widget extends \yii\base\Widget {
     /**

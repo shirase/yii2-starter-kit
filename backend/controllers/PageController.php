@@ -107,9 +107,10 @@ class PageController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate($return=null)
+    public function actionCreate($return=null, $pid=null)
     {
         $model = new Page();
+        $model->pid = $pid;
 
         $transaction = Yii::$app->db->beginTransaction();
 

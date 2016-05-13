@@ -16,7 +16,7 @@ use yii\helpers\Json;
  * @property string $name
  * @property string $title
  * @property string $body
- * @property integer $view_id
+ * @property integer $type_id
  * @property integer $status
  * @property string $created_at
  * @property string $updated_at
@@ -69,13 +69,13 @@ class Page extends \common\components\db\ActiveRecord
         return [
             [['name'], 'required'],
             [['body'], 'string'],
-            [['view_id', 'status'], 'integer'],
+            [['type_id', 'status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['title'], 'string', 'max' => 512],
             [['slug'], 'string', 'max' => 1024],
             [['slug'], 'unique'],
             [['name'], 'string', 'max' => 100],
-            [['view_id'], 'exist', 'skipOnError' => true, 'targetClass' => PageView::className(), 'targetAttribute' => ['view_id' => 'id']],
+            [['type_id'], 'exist', 'skipOnError' => true, 'targetClass' => PageType::className(), 'targetAttribute' => ['type_id' => 'id']],
         ];
     }
 
@@ -94,7 +94,7 @@ class Page extends \common\components\db\ActiveRecord
             'name' => Yii::t('common', 'Name'),
             'title' => Yii::t('common', 'Title'),
             'body' => Yii::t('common', 'Body'),
-            'view_id' => Yii::t('common', 'View'),
+            'type_id' => Yii::t('common', 'Type'),
             'status' => Yii::t('common', 'Status'),
             'created_at' => Yii::t('common', 'Created At'),
             'updated_at' => Yii::t('common', 'Updated At'),
@@ -104,9 +104,9 @@ class Page extends \common\components\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getView()
+    public function getType()
     {
-        return $this->hasOne(PageView::className(), ['id' => 'view_id']);
+        return $this->hasOne(PageType::className(), ['id' => 'type_id']);
     }
 
     /**
@@ -122,7 +122,7 @@ class Page extends \common\components\db\ActiveRecord
 
     public function getDataModel() {
         if ($this->_dataModel) return $this->_dataModel;
-        if ($plugin = $this->view->plugin) {
+        if ($plugin = $this->type->plugin) {
             return $this->_dataModel = $plugin::dataModel($this->id);
         }
     }

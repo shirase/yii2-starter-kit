@@ -1,7 +1,7 @@
 <?php
-namespace common\plugins\page_view\link;
+namespace common\plugins\page_type\link;
 
-use common\plugins\page_view\PluginInterface;
+use common\plugins\page_type\PluginInterface;
 use yii\helpers\ArrayHelper;
 
 class Plugin implements PluginInterface {

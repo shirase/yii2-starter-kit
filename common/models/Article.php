@@ -16,7 +16,6 @@ use yii\behaviors\TimestampBehavior;
  * @property string $slug
  * @property string $title
  * @property string $body
- * @property string $view
  * @property string $thumbnail_base_url
  * @property string $thumbnail_path
  * @property array $attachments
@@ -112,18 +111,16 @@ class Article extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'category_id'], 'required'],
+            [['name'], 'required'],
             [['slug'], 'unique'],
             [['body'], 'string'],
             [['published_at'], 'default', 'value' => function() {
                 return date(DATE_ISO8601);
             }],
-            [['category_id'], 'exist', 'targetClass' => ArticleCategory::className(), 'targetAttribute'=>'id'],
             [['author_id', 'updater_id', 'status'], 'integer'],
             [['slug', 'thumbnail_base_url', 'thumbnail_path'], 'string', 'max' => 1024],
             [['name'], 'string', 'max' => 100],
             [['title'], 'string', 'max' => 512],
-            [['view'], 'string', 'max' => 255],
             [['attachments', 'thumbnail'], 'safe']
         ];
     }
@@ -143,11 +140,9 @@ class Article extends \yii\db\ActiveRecord
             'name' => Yii::t('common', 'Name'),
             'title' => Yii::t('common', 'Title'),
             'body' => Yii::t('common', 'Body'),
-            'view' => Yii::t('common', 'Article View'),
             'thumbnail' => Yii::t('common', 'Thumbnail'),
             'author_id' => Yii::t('common', 'Author'),
             'updater_id' => Yii::t('common', 'Updater'),
-            'category_id' => Yii::t('common', 'Category'),
             'status' => Yii::t('common', 'Published'),
             'published_at' => Yii::t('common', 'Published At'),
             'created_at' => Yii::t('common', 'Created At'),
@@ -169,14 +164,6 @@ class Article extends \yii\db\ActiveRecord
     public function getUpdater()
     {
         return $this->hasOne(User::className(), ['id' => 'updater_id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCategory()
-    {
-        return $this->hasOne(ArticleCategory::className(), ['id' => 'category_id']);
     }
 
     /**

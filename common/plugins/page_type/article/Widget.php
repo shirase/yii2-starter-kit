@@ -1,5 +1,5 @@
 <?php
-namespace common\plugins\page_view\article;
+namespace common\plugins\page_type\article;
 
 use common\models\ArticleCategory;
 use kartik\widgets\Select2;
@@ -21,7 +21,6 @@ class Widget extends \yii\base\Widget {
         $model = $this->model->dataModel;
 
         ob_start();
-        echo $this->form->field($model, 'category_id')->widget(Select2::className(), ['data'=>[''=>'-']+ArrayHelper::map(ArticleCategory::find()->orderBy('id')->all(), 'id', 'title')]);
         return ob_get_clean();
     }
 } 
