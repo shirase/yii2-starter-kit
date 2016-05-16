@@ -12,7 +12,6 @@ use yii\behaviors\TimestampBehavior;
  *
  * @property integer $id
  * @property integer $carousel_id
- * @property string $base_url
  * @property string $path
  * @property string $type
  * @property string $image
@@ -81,7 +80,7 @@ class WidgetCarouselItem extends \yii\db\ActiveRecord
         return [
             [['carousel_id'], 'required'],
             [['carousel_id', 'status', 'order'], 'integer'],
-            [['url', 'caption', 'base_url', 'path'], 'string', 'max' => 1024],
+            [['url', 'caption', 'path'], 'string', 'max' => 1024],
             [['type'], 'string', 'max' => 255],
             ['image', 'safe']
         ];
@@ -96,7 +95,6 @@ class WidgetCarouselItem extends \yii\db\ActiveRecord
             'id' => Yii::t('common', 'ID'),
             'carousel_id' => Yii::t('common', 'Carousel ID'),
             'image' => Yii::t('common', 'Image'),
-            'base_url' => Yii::t('common', 'Base URL'),
             'path' => Yii::t('common', 'Path'),
             'type' => Yii::t('common', 'File Type'),
             'url' => Yii::t('common', 'Url'),
@@ -119,6 +117,6 @@ class WidgetCarouselItem extends \yii\db\ActiveRecord
      */
     public function getImageUrl()
     {
-        return rtrim($this->base_url, '/') . '/' . ltrim($this->path, '/');
+        return rtrim(Yii::$app->fileStorage->baseUrl, '/') . '/' . ltrim($this->path, '/');
     }
 }

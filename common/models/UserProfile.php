@@ -16,7 +16,6 @@ use shirase55\filekit\behaviors\UploadBehavior;
  * @property string $picture
  * @property string $avatar
  * @property string $avatar_path
- * @property string $avatar_base_url
  * @property integer $gender
  *
  * @property User $user
@@ -63,7 +62,7 @@ class UserProfile extends \yii\db\ActiveRecord
             [['user_id'], 'required'],
             [['user_id', 'gender'], 'integer'],
             [['gender'], 'in', 'range' => [NULL, self::GENDER_FEMALE, self::GENDER_MALE]],
-            [['firstname', 'middlename', 'lastname', 'avatar_path', 'avatar_base_url'], 'string', 'max' => 255],
+            [['firstname', 'middlename', 'lastname', 'avatar_path'], 'string', 'max' => 255],
             ['locale', 'default', 'value' => Yii::$app->language],
             ['locale', 'in', 'range' => array_keys(Yii::$app->params['availableLocales'])],
             ['picture', 'safe']
@@ -112,7 +111,7 @@ class UserProfile extends \yii\db\ActiveRecord
     public function getAvatar($default = null)
     {
         return $this->avatar_path
-            ? Yii::getAlias($this->avatar_base_url . '/' . $this->avatar_path)
+            ? rtrim(Yii::$app->fileStorage->baseUrl, '/') . '/' . ltrim($this->avatar_path, '/')
             : $default;
     }
 }
