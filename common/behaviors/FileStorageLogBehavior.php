@@ -4,7 +4,7 @@ namespace common\behaviors;
 use League\Flysystem\File;
 use Yii;
 use yii\base\Behavior;
-use trntv\filekit\Storage;
+use shirase55\filekit\Storage;
 use common\models\FileStorageItem;
 use yii\base\InvalidConfigException;
 
@@ -26,7 +26,7 @@ class FileStorageLogBehavior extends Behavior
     }
 
     /**
-     * @param $event \trntv\filekit\events\StorageEvent
+     * @param $event \shirase55\filekit\events\StorageEvent
      */
     public function afterSave($event)
     {
@@ -45,7 +45,7 @@ class FileStorageLogBehavior extends Behavior
     }
 
     /**
-     * @param $event \trntv\filekit\events\StorageEvent
+     * @param $event \shirase55\filekit\events\StorageEvent
      */
     public function afterDelete($event)
     {
@@ -56,7 +56,7 @@ class FileStorageLogBehavior extends Behavior
     }
 
     /**
-     * @return \trntv\filekit\Storage
+     * @return \shirase55\filekit\Storage
      * @throws \yii\base\InvalidConfigException
      */
     public function getStorage()

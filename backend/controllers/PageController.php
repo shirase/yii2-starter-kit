@@ -56,7 +56,7 @@ class PageController extends Controller
         $searchModel = new PageSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $dataProvider->query->andFilterWhere(['IS', 'pid', new Expression('NULL')]);
+        $dataProvider->query->andWhere(['IS', 'pid', new Expression('NULL')]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -248,7 +248,7 @@ class PageController extends Controller
         }
         $model = $this->findModel($id);
         if ($position > 0) {
-            if($node = Page::find()->orderBy('pos')->andWhere(['pid'=>$parent])->andFilterWhere(['!=', 'id', $model->id])->limit(1)->offset($position-1)->one()) {
+            if($node = Page::find()->orderBy('pos')->andWhere(['pid'=>$parent])->andWhere(['!=', 'id', $model->id])->limit(1)->offset($position-1)->one()) {
                 $model->insertAfter($node->id);
             }
         } else {

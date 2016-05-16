@@ -38,9 +38,6 @@
         "mihaildev/yii2-ckeditor": "*",
         "trntv/yii2-aceeditor": "^2.0",
         "trntv/probe": "^0.2",
-        "trntv/yii2-file-kit": "^1.0.0",
-        "trntv/yii2-glide": "^1.0.0",
-        "trntv/yii2-datetime-widget": "^1.0.0",
         "trntv/cheatsheet": "^0.1@dev",
         "trntv/yii2-command-bus": "^1.0",
         "intervention/image": "^2.1",
@@ -75,7 +72,10 @@
         "shirase55/yii2-returned": "dev-master",
         "shirase55/yii2-widgets-activeform": "dev-master",
         "shirase55/yii2-jstree": "dev-master",
-        "shirase55/yii2-pjax-ex": "dev-master"
+        "shirase55/yii2-pjax-ex": "dev-master",
+        "shirase55/yii2-glide": "dev-master",
+        "shirase55/yii2-file-kit": "dev-master",
+        "shirase55/yii2-datetime-widget": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "^2.0.0",

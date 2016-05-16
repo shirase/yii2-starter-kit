@@ -3,7 +3,7 @@ namespace common\components\filesystem;
 
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
-use trntv\filekit\filesystem\FilesystemBuilderInterface;
+use shirase55\filekit\filesystem\FilesystemBuilderInterface;
 
 /**
  * Class LocalFlysystemProvider

@@ -31,8 +31,8 @@ $config = [
             // default settings for each widget from kartik\widgets used when autoWidget is true
             'autoWidgetSettings' => [
                 \kartik\datecontrol\Module::FORMAT_DATE => ['pluginOptions'=>['autoclose'=>true]],
-                \kartik\datecontrol\Module::FORMAT_DATETIME => [],
-                \kartik\datecontrol\Module::FORMAT_TIME => [],
+                \kartik\datecontrol\Module::FORMAT_DATETIME => ['pluginOptions'=>['autoclose'=>true]],
+                \kartik\datecontrol\Module::FORMAT_TIME => ['pluginOptions'=>['autoclose'=>true]],
             ],
         ],
     ],

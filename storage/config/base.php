@@ -7,14 +7,14 @@ return [
     'basePath' => dirname(__DIR__),
     'defaultRoute' => 'glide/index',
     'controllerMap' => [
-        'glide' => '\trntv\glide\controllers\GlideController'
+        'glide' => '\shirase55\glide\controllers\GlideController'
     ],
     'components' => [
         'urlManager'=>require(__DIR__.'/_urlManager.php'),
         'glide' => [
-            'class' => 'trntv\glide\components\Glide',
+            'class' => 'shirase55\glide\components\Glide',
             'sourcePath' => '@storage/web/source',
-            'cachePath' => '@storage/cache',
+            'cachePath' => '@storage/web/cache',
             'maxImageSize' => getenv('GLIDE_MAX_IMAGE_SIZE'),
             'signKey' => getenv('GLIDE_SIGN_KEY') === 'false' ? false : getenv('GLIDE_SIGN_KEY')
         ]

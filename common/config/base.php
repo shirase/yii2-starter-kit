@@ -38,9 +38,10 @@ $config = [
         ],
 
         'glide' => [
-            'class' => 'trntv\glide\components\Glide',
+            'class' => 'shirase55\glide\components\Glide',
             'sourcePath' => '@storage/web/source',
-            'cachePath' => '@storage/cache',
+            'cachePath' => '@storage/web/cache',
+            'baseUrl' => Yii::getAlias('@storageUrl').'/source',
             'urlManager' => 'urlManagerStorage',
             'maxImageSize' => getenv('GLIDE_MAX_IMAGE_SIZE'),
             'signKey' => getenv('GLIDE_SIGN_KEY')
@@ -112,7 +113,7 @@ $config = [
         ],
 
         'fileStorage' => [
-            'class' => '\trntv\filekit\Storage',
+            'class' => '\shirase55\filekit\Storage',
             'baseUrl' => '@storageUrl/source',
             'filesystem' => [
                 'class' => 'common\components\filesystem\LocalFlysystemBuilder',
@@ -130,19 +131,22 @@ $config = [
 
         'urlManagerBackend' => \yii\helpers\ArrayHelper::merge(
             [
-                'hostInfo' => Yii::getAlias('@backendUrl')
+                'hostInfo' => Yii::getAlias('@backendUrl'),
+                'baseUrl'=>''
             ],
             require(Yii::getAlias('@backend/config/_urlManager.php'))
         ),
         'urlManagerFrontend' => \yii\helpers\ArrayHelper::merge(
             [
-                'hostInfo' => Yii::getAlias('@frontendUrl')
+                'hostInfo' => Yii::getAlias('@frontendUrl'),
+                'baseUrl'=>''
             ],
             require(Yii::getAlias('@frontend/config/_urlManager.php'))
         ),
         'urlManagerStorage' => \yii\helpers\ArrayHelper::merge(
             [
-                'hostInfo'=>Yii::getAlias('@storageUrl')
+                'hostInfo'=>Yii::getAlias('@storageUrl'),
+                'baseUrl'=>''
             ],
             require(Yii::getAlias('@storage/config/_urlManager.php'))
         )

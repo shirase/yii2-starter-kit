@@ -2,8 +2,9 @@
 
 namespace common\models;
 
+use common\components\helpers\Url;
 use common\models\query\ArticleQuery;
-use trntv\filekit\behaviors\UploadBehavior;
+use shirase55\filekit\behaviors\UploadBehavior;
 use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\SluggableBehavior;
@@ -16,12 +17,11 @@ use yii\behaviors\TimestampBehavior;
  * @property string $slug
  * @property string $title
  * @property string $body
- * @property string $thumbnail_base_url
  * @property string $thumbnail_path
+ * @property string $thumbnail_url
  * @property array $attachments
  * @property integer $author_id
  * @property integer $updater_id
- * @property integer $category_id
  * @property integer $status
  * @property integer $published_at
  * @property integer $created_at
@@ -88,8 +88,8 @@ class Article extends \yii\db\ActiveRecord
                 'attribute' => 'attachments',
                 'multiple' => true,
                 'uploadRelation' => 'articleAttachments',
+                'urlAttribute' => 'url',
                 'pathAttribute' => 'path',
-                'baseUrlAttribute' => 'base_url',
                 'orderAttribute' => 'pos',
                 'typeAttribute' => 'type',
                 'sizeAttribute' => 'size',
@@ -99,7 +99,7 @@ class Article extends \yii\db\ActiveRecord
                 'class' => UploadBehavior::className(),
                 'attribute' => 'thumbnail',
                 'pathAttribute' => 'thumbnail_path',
-                'baseUrlAttribute' => 'thumbnail_base_url'
+                'urlAttribute' => 'thumbnail_url',
             ],
             [
                 'class' => \voskobovich\behaviors\ManyToManyBehavior::className(),
@@ -123,7 +123,7 @@ class Article extends \yii\db\ActiveRecord
                 return date(DATE_ISO8601);
             }],
             [['author_id', 'updater_id', 'status'], 'integer'],
-            [['slug', 'thumbnail_base_url', 'thumbnail_path'], 'string', 'max' => 1024],
+            [['slug', 'thumbnail_path'], 'string', 'max' => 1024],
             [['title'], 'string', 'max' => 255],
             [['attachments', 'thumbnail', 'category_ids'], 'safe']
         ];
@@ -175,5 +175,10 @@ class Article extends \yii\db\ActiveRecord
 
     public function getCategories() {
         return $this->hasMany(Page::className(), ['id'=>'page'])->viaTable('article_page', ['article'=>'id']);
+    }
+
+    public function getThumbnail_url()
+    {
+        return Url::image($this->thumbnail_path, ['w'=>200]);
     }
 }

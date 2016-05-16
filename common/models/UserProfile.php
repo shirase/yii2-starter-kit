@@ -3,7 +3,7 @@
 namespace common\models;
 
 use Yii;
-use trntv\filekit\behaviors\UploadBehavior;
+use shirase55\filekit\behaviors\UploadBehavior;
 
 /**
  * This is the model class for table "user_profile".
@@ -41,7 +41,6 @@ class UserProfile extends \yii\db\ActiveRecord
                 'class' => UploadBehavior::className(),
                 'attribute' => 'picture',
                 'pathAttribute' => 'avatar_path',
-                'baseUrlAttribute' => 'avatar_base_url'
             ]
         ];
     }

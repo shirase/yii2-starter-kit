@@ -34,7 +34,6 @@ class m140703_123000_user extends Migration
             'middlename' => $this->string(),
             'lastname' => $this->string(),
             'avatar_path' => $this->string(),
-            'avatar_base_url' => $this->string(),
             'locale' => $this->string(32)->notNull(),
             'gender' => $this->smallInteger(1)
         ], $tableOptions);

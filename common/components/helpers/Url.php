@@ -21,4 +21,9 @@ class Url extends \yii\helpers\Url {
             return ['/'.strtolower(array_pop($m)).'/view', 'id'=>$model->id];
         }
     }
+
+    public static function image($path, $params=[]) {
+        $params['path'] = $path;
+        return \Yii::$app->glide->createSignedUrl($params);
+    }
 } 

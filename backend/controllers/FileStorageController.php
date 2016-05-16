@@ -32,14 +32,14 @@ class FileStorageController extends Controller
     {
         return [
             'upload' => [
-                'class' => 'trntv\filekit\actions\UploadAction',
+                'class' => 'shirase55\filekit\actions\UploadAction',
                 'deleteRoute' => 'upload-delete'
             ],
             'upload-delete' => [
-                'class' => 'trntv\filekit\actions\DeleteAction'
+                'class' => 'shirase55\filekit\actions\DeleteAction'
             ],
             'upload-imperavi' => [
-                'class' => 'trntv\filekit\actions\UploadAction',
+                'class' => 'shirase55\filekit\actions\UploadAction',
                 'fileparam' => 'file',
                 'responseUrlParam'=> 'filelink',
                 'multiple' => false,

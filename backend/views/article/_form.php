@@ -2,9 +2,10 @@
 
 use common\components\helpers\TreeHelper;
 use common\models\Page;
+use kartik\datecontrol\DateControl;
 use kartik\widgets\Select2;
 use shirase\form\ActiveForm;
-use trntv\filekit\widget\Upload;
+use shirase55\filekit\widget\Upload;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
@@ -29,23 +30,12 @@ use yii\helpers\Html;
                 'options'=>['multiple'=>true],
                 'data'=>
                     TreeHelper::tab(
-                        Page::find()->andFilterWhere(['type_id'=>common\plugins\page_type\article\Plugin::getId()])->orderBy('bpath')->all()
+                        Page::find()->andWhere(['type_id'=>common\plugins\page_type\article\Plugin::getId()])->orderBy('bpath')->all()
                         , 'id', 'pid', 'name')
             ]) ?>
 
     <?php echo $form->field($model, 'body')->widget(
-        \yii\imperavi\Widget::className(),
-        [
-            'plugins' => ['fullscreen', 'fontcolor', 'video'],
-            'options' => [
-                'minHeight' => 400,
-                'maxHeight' => 400,
-                'buttonSource' => true,
-                'convertDivs' => false,
-                'removeEmptyTags' => false,
-                'imageUpload' => Yii::$app->urlManager->createUrl(['/file-storage/upload-imperavi'])
-            ]
-        ]
+        \yii\imperavi\Widget::className()
     ) ?>
 
     <?php echo $form->field($model, 'thumbnail')->widget(
@@ -69,7 +59,8 @@ use yii\helpers\Html;
     <?php echo $form->field($model, 'status')->checkbox() ?>
 
     <?php echo $form->field($model, 'published_at')->widget(
-        \kartik\date\DatePicker::className()
+        DateControl::className(),
+        ['type'=>DateControl::FORMAT_DATETIME]
     ) ?>
 
     <div class="form-group">
