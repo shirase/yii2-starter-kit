@@ -38,7 +38,7 @@ $this->registerJs('$(document).on("change", "#page-type_id", function() {$.pjax.
 
         <?php Pjax::begin(['id'=>'type_params']) ?>
             <?php
-                if ($plugin = $model->type->plugin) {
+                if ($model->type && $plugin = $model->type->plugin) {
                     echo $plugin::widget($form, $model);
                 }
             ?>
