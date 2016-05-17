@@ -2,17 +2,18 @@
 
 use common\components\helpers\TreeHelper;
 use common\models\Page;
-use kartik\datecontrol\DateControl;
-use kartik\widgets\Select2;
-use shirase\form\ActiveForm;
+use kartik\select2\Select2;
 use shirase55\filekit\widget\Upload;
 use shirase55\yii\datetime\DateTimeWidget;
 use yii\helpers\Html;
+use shirase\form\ActiveForm;
+use kartik\datecontrol\DateControl;
+use yii\helpers\ArrayHelper;
 use yii\web\JsExpression;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Article */
-/* @var $form yii\bootstrap\ActiveForm */
+/* @var $form yii\widgets\ActiveForm */
 ?>
 
 <div class="article-form">
@@ -75,9 +76,8 @@ use yii\web\JsExpression;
     ) ?>
 
     <div class="form-group">
-        <?php echo Html::submitButton(
-            $model->isNewRecord ? Yii::t('backend', 'Create') : Yii::t('backend', 'Update'),
-            ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('backend', 'Create') : Yii::t('backend', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('backend', 'Back'), ['index', 'returned'=>true], ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

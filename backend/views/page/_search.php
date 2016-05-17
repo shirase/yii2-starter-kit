@@ -30,7 +30,7 @@ use yii\helpers\ArrayHelper;
 
     <?php //echo $form->field($model, 'type_id')->widget(kartik\select2\Select2::className(), ['data'=>[''=>'-']+ArrayHelper::map(common\models\PageType::find()->all(), 'id', 'name')]) ?>
 
-    <?php //echo $form->field($model, 'status')->dropDownList([''=>'-', '1'=>Yii::t('backend', 'Yes'), '0'=>Yii::t('backend', 'No')]) ?>
+    <?php echo $form->field($model, 'status')->dropDownList([''=>'-', '1'=>Yii::t('backend', 'Yes'), '0'=>Yii::t('backend', 'No')]) ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('backend', 'Search'), ['class' => 'btn btn-primary']) ?>

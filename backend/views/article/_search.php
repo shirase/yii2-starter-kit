@@ -1,43 +1,45 @@
 <?php
 
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+use shirase\form\ActiveForm;
+use kartik\daterange\DateRangePicker;
+use yii\helpers\Url;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\search\ArticleSearch */
-/* @var $form yii\bootstrap\ActiveForm */
+/* @var $model common\models\search\ArticleSearch */
+/* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="article-search">
+<div class="search-form article-search" id="article-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?php echo $form->field($model, 'id') ?>
+    <?= $form->field($model, 'id') ?>
 
-    <?php echo $form->field($model, 'slug') ?>
+    <?= $form->field($model, 'slug') ?>
 
-    <?php echo $form->field($model, 'title') ?>
+    <?= $form->field($model, 'title') ?>
 
-    <?php echo $form->field($model, 'body') ?>
+    <?= $form->field($model, 'body') ?>
 
-    <?php echo $form->field($model, 'user_id') ?>
+    <?php echo $form->field($model, 'author_id')->widget(kartik\select2\Select2::className(), ['data'=>[''=>'-']+ArrayHelper::map(common\models\User::find()->all(), 'id', 'username')]) ?>
 
-    <?php // echo $form->field($model, 'status') ?>
+    <?php //echo $form->field($model, 'updater_id')->widget(kartik\select2\Select2::className(), ['data'=>[''=>'-']+ArrayHelper::map(common\models\User::find()->all(), 'id', 'username')]) ?>
 
-    <?php // echo $form->field($model, 'published_at') ?>
+    <?php echo $form->field($model, 'status')->dropDownList([''=>'-', '1'=>Yii::t('backend', 'Yes'), '0'=>Yii::t('backend', 'No')]) ?>
 
-    <?php // echo $form->field($model, 'created_at') ?>
-
-    <?php // echo $form->field($model, 'updated_at') ?>
+    <?php //echo $form->field($model, 'published_at')->widget(DateRangePicker::classname(), ['hideInput'=>true, 'convertFormat'=>true, 'pluginOptions'=>['locale'=>['format'=>(($m=\Yii::$app->getModule('datecontrol')) ? \kartik\datecontrol\Module::parseFormat($m->displaySettings['date'], 'date') : 'Y-m-d')]]]) ?>
 
     <div class="form-group">
-        <?php echo Html::submitButton(Yii::t('backend', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?php echo Html::resetButton(Yii::t('backend', 'Reset'), ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton(Yii::t('backend', 'Search'), ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('backend', 'Reset'), Url::current(['TestSearch'=>null]), ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
 
 </div>
+<?php $this->registerJs('if(jQuery.pjax && jQuery("#article-grid-pjax").length) {jQuery(document).on(\'submit\', "#article-search form", function (event) {jQuery.pjax.submit(event, \'#article-grid-pjax\', {"push":true,"replace":false,"timeout":1000,"scrollTo":false});});}'); ?>

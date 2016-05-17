@@ -8,8 +8,8 @@
 
 namespace common\models\query;
 
+use common\components\db\ActiveQuery;
 use common\models\Article;
-use yii\db\ActiveQuery;
 
 class ArticleQuery extends ActiveQuery
 {

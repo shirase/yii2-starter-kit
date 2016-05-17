@@ -95,7 +95,7 @@ class Page extends \common\components\db\ActiveRecord
             'title' => Yii::t('common', 'Title'),
             'body' => Yii::t('common', 'Body'),
             'type_id' => Yii::t('common', 'Type'),
-            'status' => Yii::t('common', 'Status'),
+            'status' => Yii::t('common', 'Published'),
             'created_at' => Yii::t('common', 'Created At'),
             'updated_at' => Yii::t('common', 'Updated At'),
         ];
