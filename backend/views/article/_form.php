@@ -6,7 +6,9 @@ use kartik\datecontrol\DateControl;
 use kartik\widgets\Select2;
 use shirase\form\ActiveForm;
 use shirase55\filekit\widget\Upload;
+use shirase55\yii\datetime\DateTimeWidget;
 use yii\helpers\Html;
+use yii\web\JsExpression;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Article */
@@ -60,7 +62,16 @@ use yii\helpers\Html;
 
     <?php echo $form->field($model, 'published_at')->widget(
         DateControl::className(),
-        ['type'=>DateControl::FORMAT_DATETIME]
+        [
+            'type'=>DateControl::FORMAT_DATETIME,
+            'widgetClass'=>DateTimeWidget::className(),
+            'options'=>[
+                'clientOptions'=>['sideBySide'=>true],
+                'clientEvents'=>[
+                    'dp.change'=>new JsExpression('function(event) {$(this).find("input.form-control").trigger("change")}'),
+                ],
+            ]
+        ]
     ) ?>
 
     <div class="form-group">
