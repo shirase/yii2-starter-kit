@@ -45,7 +45,6 @@ use yii\web\JsExpression;
         Upload::className(),
         [
             'url' => ['/file-storage/upload'],
-            'maxFileSize' => 5000000, // 5 MiB
         ]);
     ?>
 
@@ -54,7 +53,6 @@ use yii\web\JsExpression;
         [
             'url' => ['/file-storage/upload'],
             'sortable' => true,
-            'maxFileSize' => 10000000, // 10 MiB
             'maxNumberOfFiles' => 10
         ]);
     ?>
