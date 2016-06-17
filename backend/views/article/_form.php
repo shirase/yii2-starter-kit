@@ -41,8 +41,7 @@ use yii\web\JsExpression;
         \yii\imperavi\Widget::className()
     ) ?>
 
-    <?php echo $form->field($model, 'thumbnail')->widget(Upload::className());
-    ?>
+    <?php echo $form->field($model, 'thumbnail')->widget(Upload::className()); ?>
 
     <?php echo $form->field($model, 'attachments')->widget(
         Upload::className(),
