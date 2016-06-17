@@ -33,6 +33,7 @@ class Bootstrap implements BootstrapInterface
                 return new \shirase55\filekit\widget\Upload(
                     \yii\helpers\ArrayHelper::merge(
                         [
+                            'url' => ['/file-storage/upload'],
                             'maxFileSize' => 10000000,
                         ],
                         $config
