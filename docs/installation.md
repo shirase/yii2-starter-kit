@@ -8,8 +8,8 @@
     - [Configure your web server](#configure-your-web-server)
     - [Single domain installtion](#single-domain-installation)
 
-- [Docker installation](#docker)
-- [Vagrant installation](vagrant.md)
+- [Docker installation](#docker-installation)
+- [Vagrant installation](#vagrant-installation)
 - [Demo users](#demo-users)
 - [Important-notes](#important-notes)
 
@@ -54,7 +54,7 @@ Required PHP extensions:
 
 
 ### Setup application
-1. Copy `.env.dist` to `.env` in the project root (``.env.docker.dist`` if you are using docker)
+1. Copy `.env.dist` to `.env` in the project root.
 2. Adjust settings in `.env` file
 	- Set debug mode and your current environment
 	```
@@ -81,13 +81,11 @@ php console/yii app/setup
 ```
 
 ### Configure your web server
-Copy `vhost.conf.dist` to `vhost.conf`, change it with your local settings and copy (symlink) it to nginx ``sites-enabled`` directory.
+Copy `vhost.conf.dist` to `vhost.conf`, change it with your local settings and copy (symlink) it to nginx `sites-enabled` directory.
 Or configure your web server with three different web roots:
 - yii2-starter-kit.dev => /path/to/yii2-starter-kit/frontend/web
 - backend.yii2-starter-kit.dev => /path/to/yii2-starter-kit/backend/web
 - storage.yii2-starter-kit.dev => /path/to/yii2-starter-kit/storage/web
-
-
 
 ### Single domain installation
 #### Setup application
@@ -247,26 +245,34 @@ upstream php-fpm {
 ### Before installation
  - Read about [docker](https://www.docker.com)
  - Install it
+ - If you are not working on Linux (but OSX, Windows) instead, you will need a VM to run docker. 
+ If you don't intend to use Docker containers for application deployment, it might be better to 
+ use the Vagrant way to install `yii2-starter-kit`.
 
 ### Installation
-1. Copy ``.env.docker.dist`` to `.env` in the project root
-2. Copy ``vhost.conf.docker.dist`` to `vhost.conf` in the project root
-3. Run ``docker-compose build``
-4. Run ``docker-compose up -d``
-5. Setup application with ``docker-compose run cli app/setup``
-6. That's all - your application is accessible on http://yii2-starter-kit.dev:8000
+1. Copy `.env.docker.dist` to `.env` in the project root
+2. Copy `vhost.conf.docker.dist` to `vhost.conf` in the project root
+3. *Linux users can ignore this step.* Under OSX or Windows you need a VM to run docker.
+    1. Install [VirtualBox](https://www.virtualbox.org/).
+    2. Run `docker-machine create -d virtualbox default` to create the VM.
+    3. Run `eval $(docker-machine env default)` to configure docker to use it.
+4. Run `docker-compose build`
+5. Run `docker-compose up -d`
+6. Run locally `composer install --prefer-dist --optimize-autoloader`
+7. Setup application with `docker-compose run cli console/yii app/setup`
+8. That's all - your application is accessible on http://yii2-starter-kit.dev:8000
 
 ### Docker FAQ
 1. How do i run yii console command?
 
-``docker-compose run cli help``
+`docker-compose run cli help`
 
-``docker-compose run cli migrate``
+`docker-compose run cli migrate`
 
-``docker-compose run cli rbac-migrate``
+`docker-compose run cli rbac-migrate`
 
 2. How to connect to the application database with my workbench, navicat etc?
-MySQL is available on ``127.0.0.1``, port ``33060``. User - `root`, password - `root`
+MySQL is available on `127.0.0.1`, port `33060`. User - `root`, password - `root`
 
 ## Vagrant installation
 If you want, you can use bundled Vagrant instead of installing app to your local machine.
@@ -296,7 +302,6 @@ Password: user
 ```
 
 ## Important notes
-- There is a VirtualBox bug related to sendfile that can lead to
-corrupted files, if not turned-off
-Uncomment this in your nginx config:
+- There is a VirtualBox bug related to sendfile that can lead to corrupted files, if not turned-off
+Uncomment this in your nginx config if you are using Vagrant:
 ```sendfile off;```

@@ -15,8 +15,8 @@ return [
             'class' => 'shirase55\glide\components\Glide',
             'sourcePath' => '@storage/web/source',
             'cachePath' => '@storage/web/cache',
-            'maxImageSize' => getenv('GLIDE_MAX_IMAGE_SIZE'),
-            'signKey' => getenv('GLIDE_SIGN_KEY') === 'false' ? false : getenv('GLIDE_SIGN_KEY')
+            'maxImageSize' => env('GLIDE_MAX_IMAGE_SIZE'),
+            'signKey' => env('GLIDE_SIGN_KEY')
         ]
     ]
 ];

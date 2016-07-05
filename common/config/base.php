@@ -43,8 +43,8 @@ $config = [
             'cachePath' => '@storage/web/cache',
             'baseUrl' => Yii::getAlias('@storageUrl').'/source',
             'urlManager' => 'urlManagerStorage',
-            'maxImageSize' => getenv('GLIDE_MAX_IMAGE_SIZE'),
-            'signKey' => getenv('GLIDE_SIGN_KEY')
+            'maxImageSize' => env('GLIDE_MAX_IMAGE_SIZE'),
+            'signKey' => env('GLIDE_SIGN_KEY')
         ],
 
         'mailer' => [
@@ -52,16 +52,16 @@ $config = [
             //'useFileTransport' => true,
             'messageConfig' => [
                 'charset' => 'UTF-8',
-                'from' => getenv('ADMIN_EMAIL')
+                'from' => env('ADMIN_EMAIL')
             ]
         ],
 
         'db'=>[
             'class'=>'yii\db\Connection',
-            'dsn' => getenv('DB_DSN'),
-            'username' => getenv('DB_USERNAME'),
-            'password' => getenv('DB_PASSWORD'),
-            'tablePrefix' => getenv('DB_TABLE_PREFIX'),
+            'dsn' => env('DB_DSN'),
+            'username' => env('DB_USERNAME'),
+            'password' => env('DB_PASSWORD'),
+            'tablePrefix' => env('DB_TABLE_PREFIX'),
             'charset' => 'utf8',
             'enableSchemaCache' => YII_ENV_PROD,
         ],
@@ -152,8 +152,8 @@ $config = [
         )
     ],
     'params' => [
-        'adminEmail' => getenv('ADMIN_EMAIL'),
-        'robotEmail' => getenv('ROBOT_EMAIL'),
+        'adminEmail' => env('ADMIN_EMAIL'),
+        'robotEmail' => env('ROBOT_EMAIL'),
         'availableLocales'=>[
             'en-US'=>'English (US)',
             'ru-RU'=>'Русский (РФ)',
@@ -166,7 +166,7 @@ if (YII_ENV_PROD) {
         'class' => 'yii\log\EmailTarget',
         'except' => ['yii\web\HttpException:*'],
         'levels' => ['error', 'warning'],
-        'message' => ['from' => getenv('ROBOT_EMAIL'), 'to' => getenv('ADMIN_EMAIL')]
+        'message' => ['from' => env('ROBOT_EMAIL'), 'to' => env('ADMIN_EMAIL')]
     ];
 }
 
@@ -181,8 +181,8 @@ if (YII_ENV_DEV) {
     ];
     $config['components']['mailer']['transport'] = [
         'class' => 'Swift_SmtpTransport',
-        'host' => getenv('SMTP_HOST'),
-        'port' => getenv('SMTP_PORT'),
+        'host' => env('SMTP_HOST'),
+        'port' => env('SMTP_PORT'),
     ];
 }
 

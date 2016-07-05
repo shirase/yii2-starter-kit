@@ -7,6 +7,7 @@ use Yii;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\Json;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "page".
@@ -49,11 +50,11 @@ class Page extends \common\components\db\ActiveRecord
                 'class' => TimestampBehavior::className(),
                 'value' => function() {return date(DATE_ISO8601);}
             ],
-            'slug'=>[
-                'class'=>SluggableBehavior::className(),
-                'attribute'=>'name',
-                'ensureUnique'=>true,
-                'immutable'=>true
+            'slug' => [
+                'class' => SluggableBehavior::className(),
+                'attribute' => 'name',
+                'ensureUnique' => true,
+                'immutable' => true
             ],
             [
                 'class' => \shirase\tree\TreeBehavior::className(),

@@ -97,7 +97,7 @@ Password: user
 - Docker support and Vagrant support
 - Built-in [mailcatcher](http://mailcatcher.me/)
 - Assets compression and concatenation
-- [Some useful shortcuts](https://github.com/trntv/yii2-starter-kit/blob/master/common/shortcuts.php)
+- [Some useful shortcuts](https://github.com/trntv/yii2-starter-kit/blob/master/common/helpers.php)
 - many other features i'm lazy to write about :-)
 
 
@@ -268,6 +268,7 @@ Read more about command bus on in [official repository](https://github.com/trntv
 ```
 ### API
 Starter Kit has fully configured and ready-to-go REST API module. You can access it on http://yii2-starter-kit.dev/api/v1
+For some endpoints you should authenticate your requests with one of available methods - https://github.com/yiisoft/yii2/blob/master/docs/guide/rest-authentication.md#authentication
 
 ### MultiModel
 ``common\base\MultiModel`` - class for handling multiple models in one
