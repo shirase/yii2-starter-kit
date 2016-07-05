@@ -41,20 +41,12 @@ use yii\web\JsExpression;
         \yii\imperavi\Widget::className()
     ) ?>
 
-    <?php echo $form->field($model, 'thumbnail')->widget(
-        Upload::className(),
-        [
-            'url' => ['/file-storage/upload'],
-            'maxFileSize' => 5000000, // 5 MiB
-        ]);
-    ?>
+    <?php echo $form->field($model, 'thumbnail')->widget(Upload::className()); ?>
 
     <?php echo $form->field($model, 'attachments')->widget(
         Upload::className(),
         [
-            'url' => ['/file-storage/upload'],
             'sortable' => true,
-            'maxFileSize' => 10000000, // 10 MiB
             'maxNumberOfFiles' => 10
         ]);
     ?>

@@ -6,4 +6,7 @@ return [
         'urlManager' => require(__DIR__.'/_urlManager.php'),
         'frontendCache' => require(Yii::getAlias('@frontend/config/_cache.php'))
     ],
+    'bootstrap'=>[
+        'backend\components\Bootstrap'
+    ],
 ];
