@@ -2,7 +2,6 @@
 
 namespace common\models;
 
-use trntv\filekit\behaviors\UploadBehavior;
 use Yii;
 use shirase55\filekit\behaviors\UploadBehavior;
 use yii\db\ActiveRecord;
