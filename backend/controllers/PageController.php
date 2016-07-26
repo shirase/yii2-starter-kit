@@ -9,6 +9,7 @@ use common\models\search\PageSearch;
 use common\components\web\Controller;
 use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
+use yii\web\HttpException;
 use yii\web\MethodNotAllowedHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -234,6 +235,7 @@ class PageController extends Controller
                     'parent' => $row->pid,
                     'text' => $row->name,
                     'type' => 'page',
+                    'a_attr' => $row->status ? array() : array('style'=>'opacity:.5'),
                 ];
             }
         }
@@ -290,6 +292,37 @@ class PageController extends Controller
         $model->name = $name;
         $model->save();
         return Json::encode(['id'=>$model->id]);
+    }
+
+    public function actionJShow($id)
+    {
+        $node = Page::findOne($id);
+        if (!$node) {
+            throw new HttpException(500);
+        }
+        $node->status = 1;
+        $node->save();
+        echo '{}';
+    }
+
+    public function actionJHide($id)
+    {
+        $node = Page::findOne($id);
+        if (!$node) {
+            throw new HttpException(500);
+        }
+        $node->status = 0;
+        $node->save();
+        echo '{}';
+    }
+
+    public function actionGo($id)
+    {
+        $node = Page::findOne($id);
+        if (!$node) {
+            throw new HttpException(500);
+        }
+        return $this->redirect(\Yii::$app->urlManagerFrontend->createAbsoluteUrl(\common\components\helpers\Url::routeFor($node)));
     }
 
     /**

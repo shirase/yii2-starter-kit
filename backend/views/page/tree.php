@@ -110,6 +110,54 @@ function(node) {
         }
     };
 
+    items.rename.label = "'.Yii::t('backend', 'Rename').'";
+
+    items.show = {
+        label:"Показать",
+        action: function(data) {
+            var inst = $.jstree.reference(data.reference),
+                obj = inst.get_node(data.reference);
+
+            $.ajax("'.Url::toRoute(['j-show']).'",
+                {
+                    data: {id:obj.id},
+                    dataType:"json",
+                    success: function() {
+                        data.reference.css("opacity", "1");
+                    }
+                }
+            );
+        }
+    };
+
+    items.hide = {
+        label:"'.Yii::t('backend', 'Hide').'",
+        action: function(data) {
+            var inst = $.jstree.reference(data.reference),
+                obj = inst.get_node(data.reference);
+
+            $.ajax("'.Url::toRoute(['j-hide']).'",
+                {
+                    data: {id:obj.id},
+                    dataType:"json",
+                    success: function() {
+                        data.reference.css("opacity", ".5");
+                    }
+                }
+            );
+        }
+    };
+
+    items.go = {
+        label:"'.Yii::t('backend', 'Go to page').'",
+        action: function(data) {
+            var inst = $.jstree.reference(data.reference),
+                obj = inst.get_node(data.reference);
+
+            location.replace(("'.Url::toRoute(['go', 'id'=>'ID']).'").replace("ID", obj.id));
+        }
+    };
+
     return items;
 }'),
         ],
