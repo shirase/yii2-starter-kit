@@ -17,8 +17,15 @@ class Url extends \yii\helpers\Url
      */
     public static function pageUrl($model)
     {
-        $plugin = $model->plugin;
-        $url = $plugin::URI($model);
+        if ($plugin = $model->type->plugin) {
+            $url = $plugin::URI($model);
+        } else {
+            if (isset($model->slug)) {
+                $url = self::toRoute(['/page/view', 'slug'=>$model->slug]);
+            } else {
+                $url = self::toRoute(['/page/view', 'id'=>$model->id]);
+            }
+        }
 
         $urlManager = \Yii::$app->urlManagerFrontend;
 

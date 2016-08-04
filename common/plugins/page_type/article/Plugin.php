@@ -1,6 +1,7 @@
 <?php
 namespace common\plugins\page_type\article;
 
+use common\components\helpers\Url;
 use common\models\PageType;
 use common\plugins\page_type\PluginInterface;
 use yii\helpers\ArrayHelper;
@@ -30,9 +31,9 @@ class Plugin implements PluginInterface {
 
     public static function URI($Page) {
         if (isset($Page->slug)) {
-            return ['/article/index', 'slug'=>$Page->slug];
+            return Url::toRoute(['/article/index', 'slug'=>$Page->slug]);
         } else {
-            return ['/article/index', 'id'=>$Page->id];
+            return Url::toRoute(['/article/index', 'id'=>$Page->id]);
         }
     }
 } 

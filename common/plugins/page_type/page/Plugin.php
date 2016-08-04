@@ -32,9 +32,9 @@ class Plugin implements PluginInterface {
         }
 
         if (isset($Page->slug)) {
-            return ['/page/view', 'slug'=>$Page->slug];
+            return Url::toRoute(['/page/view', 'slug'=>$Page->slug]);
         } else {
-            return ['/page/view', 'id'=>$Page->id];
+            return Url::toRoute(['/page/view', 'id'=>$Page->id]);
         }
     }
 } 
