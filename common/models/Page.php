@@ -2,13 +2,9 @@
 
 namespace common\models;
 
-use common\models\search\PageViewSearch;
-use shirase\yii2\behaviors\JsonifyBehavior;
 use Yii;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
-use yii\helpers\Json;
-use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "page".
@@ -25,6 +21,7 @@ use yii\db\ActiveRecord;
  * @property integer $pid
  * @property integer $pos
  * @property resource $bpath
+ * @property PageType $type
  *
  * @method static Page|null findOne($condition)
  */

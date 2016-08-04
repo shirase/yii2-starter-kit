@@ -5,11 +5,11 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "page_view".
+ * This is the model class for table "page_type".
  *
  * @property integer $id
  * @property string $name
- * @property string $route
+ * @property string $plugin
  * @property integer $status
  *
  * @property Page[] $pages
