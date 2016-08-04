@@ -322,7 +322,7 @@ class PageController extends Controller
         if (!$node) {
             throw new HttpException(500);
         }
-        return $this->redirect(\Yii::$app->urlManagerFrontend->createAbsoluteUrl(\common\components\helpers\Url::routeFor($node)));
+        return $this->redirect(\common\components\helpers\Url::pageUrl($node));
     }
 
     /**

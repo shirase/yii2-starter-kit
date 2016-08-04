@@ -16,7 +16,7 @@ class PageTypeQuery extends \common\components\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return \common\models\PageView[]|array
+     * @return \common\models\PageType[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class PageTypeQuery extends \common\components\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return \common\models\PageView|array|null
+     * @return \common\models\PageType|array|null
      */
     public function one($db = null)
     {

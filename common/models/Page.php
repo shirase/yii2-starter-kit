@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\models\search\PageViewSearch;
 use shirase\yii2\behaviors\JsonifyBehavior;
 use Yii;
 use yii\behaviors\SluggableBehavior;
@@ -25,7 +26,7 @@ use yii\db\ActiveRecord;
  * @property integer $pos
  * @property resource $bpath
  *
- * @property PageView $view
+ * @method static Page|null findOne($condition)
  */
 class Page extends \common\components\db\ActiveRecord
 {

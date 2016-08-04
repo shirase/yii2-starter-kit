@@ -3,6 +3,10 @@ namespace common\plugins\page_type\link;
 
 use common\components\db\ActiveRecord;
 
+/**
+ * Class Model
+ * @method static Model|null findOne($condition)
+ */
 class Model extends ActiveRecord {
 
     public static function tableName()

@@ -20,4 +20,11 @@ class Plugin implements PluginInterface {
         $widget = Widget::className();
         return $widget::widget($options);
     }
+
+    public static function URI($Page) {
+        $dataModel = $Page->dataModel;
+        if (!$dataModel) return false;
+
+        return $dataModel->link;
+    }
 } 

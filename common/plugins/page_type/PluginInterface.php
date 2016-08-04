@@ -6,4 +6,6 @@ interface PluginInterface
     public static function dataModel($pageId);
 
     public static function widget($form, $model, $options=[]);
+
+    public static function URI($Page);
 } 

@@ -56,7 +56,7 @@ class DbMenu extends Menu
         $tree = [];
         if ($rows = Page::find()->orderBy('bpath')->children($model->id)->all()) {
             foreach ($rows as $row) {
-                $tree[$row->pid][$row->id] = ['label'=>$row->name, 'url'=>Url::routeFor($row)];
+                $tree[$row->pid][$row->id] = ['label'=>$row->name, 'url'=>Url::pageUrl($row)];
             }
         }
 
