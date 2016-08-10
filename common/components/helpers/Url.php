@@ -15,20 +15,16 @@ class Url extends \yii\helpers\Url
      */
     public static function pageUrl($model)
     {
+        $urlManager = \Yii::$app->urlManagerFrontend;
+
         if ($plugin = $model->type->plugin) {
             $url = $plugin::URI($model);
         } else {
             if (isset($model->slug)) {
-                $url = self::toRoute(['/page/view', 'slug'=>$model->slug]);
+                $url = $urlManager->createAbsoluteUrl(['/page/view', 'slug'=>$model->slug]);
             } else {
-                $url = self::toRoute(['/page/view', 'id'=>$model->id]);
+                $url = $urlManager->createAbsoluteUrl(['/page/view', 'id'=>$model->id]);
             }
-        }
-
-        $urlManager = \Yii::$app->urlManagerFrontend;
-
-        if (strpos($url, '://') === false) {
-            $url = $urlManager->getHostInfo() . $url;
         }
 
         return $url;
