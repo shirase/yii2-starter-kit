@@ -16,12 +16,6 @@ use yii\helpers\Html;
             <span class="article-date">
                 <?php echo Yii::$app->formatter->asDatetime($model->created_at) ?>
             </span>,
-            <span class="article-category">
-                <?php echo Html::a(
-                    $model->category->title,
-                    ['index', 'ArticleSearch[category_id]' => $model->category_id]
-                )?>
-            </span>
         </div>
         <div class="article-content">
             <?php if ($model->thumbnail_path): ?>

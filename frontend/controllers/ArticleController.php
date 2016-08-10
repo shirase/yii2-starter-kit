@@ -39,8 +39,7 @@ class ArticleController extends Controller
             throw new NotFoundHttpException;
         }
 
-        $viewFile = $model->view ?: 'view';
-        return $this->render($viewFile, ['model'=>$model]);
+        return $this->render('view', ['model'=>$model]);
     }
 
     /**
