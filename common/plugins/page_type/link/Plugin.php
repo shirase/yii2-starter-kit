@@ -27,4 +27,8 @@ class Plugin implements PluginInterface {
 
         return $dataModel->link;
     }
+
+    public static function route($Page) {
+        return 'page/view';
+    }
 } 

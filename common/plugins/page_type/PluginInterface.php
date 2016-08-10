@@ -8,4 +8,6 @@ interface PluginInterface
     public static function widget($form, $model, $options=[]);
 
     public static function URI($Page);
+
+    public static function route($Page);
 } 

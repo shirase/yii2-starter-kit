@@ -37,4 +37,8 @@ class Plugin implements PluginInterface {
             return Url::toRoute(['/page/view', 'id'=>$Page->id]);
         }
     }
+
+    public static function route($Page) {
+        return 'page/view';
+    }
 } 

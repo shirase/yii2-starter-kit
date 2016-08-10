@@ -38,4 +38,8 @@ class Plugin implements PluginInterface {
             return $urlManager->createAbsoluteUrl(['/article/index', 'id'=>$Page->id]);
         }
     }
+
+    public static function route($Page) {
+        return 'article/index';
+    }
 } 
