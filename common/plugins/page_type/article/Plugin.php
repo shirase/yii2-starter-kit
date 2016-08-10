@@ -30,10 +30,12 @@ class Plugin implements PluginInterface {
     }
 
     public static function URI($Page) {
+        $urlManager = \Yii::$app->urlManagerFrontend;
+
         if (isset($Page->slug)) {
-            return Url::toRoute(['/article/index', 'slug'=>$Page->slug]);
+            return $urlManager->createAbsoluteUrl(['/article/index', 'slug'=>$Page->slug]);
         } else {
-            return Url::toRoute(['/article/index', 'id'=>$Page->id]);
+            return $urlManager->createAbsoluteUrl(['/article/index', 'id'=>$Page->id]);
         }
     }
 } 
