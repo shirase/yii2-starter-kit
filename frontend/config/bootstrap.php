@@ -1,4 +1,2 @@
 <?php
-/**
- * @author Eugene Terentev <eugene@terentev.net>
- */
+define('ID_MAIN_MENU', 4);

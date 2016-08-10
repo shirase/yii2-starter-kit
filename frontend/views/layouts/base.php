@@ -1,7 +1,10 @@
 <?php
 
+use common\components\helpers\TreeHelper;
+use common\models\Page;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\helpers\ArrayHelper;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -18,12 +21,12 @@ $this->beginContent('@frontend/views/layouts/_clear.php')
         ],
     ]); ?>
     <?php echo Nav::widget([
+        'options' => ['class' => 'navbar-nav'],
+        'items' => TreeHelper::menuItems(TreeHelper::makeTree(Page::find()->children(ID_MAIN_MENU)->all())),
+    ]); ?>
+    <?php echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => Yii::t('frontend', 'Home'), 'url' => ['/site/index']],
-            ['label' => Yii::t('frontend', 'About'), 'url' => ['/page/view', 'slug'=>'about']],
-            ['label' => Yii::t('frontend', 'Articles'), 'url' => ['/article/index']],
-            ['label' => Yii::t('frontend', 'Contact'), 'url' => ['/site/contact']],
             ['label' => Yii::t('frontend', 'Signup'), 'url' => ['/user/sign-in/signup'], 'visible'=>Yii::$app->user->isGuest],
             ['label' => Yii::t('frontend', 'Login'), 'url' => ['/user/sign-in/login'], 'visible'=>Yii::$app->user->isGuest],
             [

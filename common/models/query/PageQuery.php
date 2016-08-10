@@ -6,6 +6,8 @@ namespace common\models\query;
  * This is the ActiveQuery class for [[\common\models\Page]].
  *
  * @see \common\models\Page
+ *
+ * @method PageQuery children($parent_id)
  */
 class PageQuery extends \common\components\db\ActiveQuery
 {

@@ -2,8 +2,6 @@
 
 namespace common\components\helpers;
 
-use common\models\Page;
-
 class Url extends \yii\helpers\Url
 {
     public static function normalizeRoute($route)
