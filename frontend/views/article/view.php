@@ -1,5 +1,7 @@
 <?php
 /* @var $this yii\web\View */
+use common\components\helpers\Url;
+
 /* @var $model common\models\Article */
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('frontend', 'Articles'), 'url' => ['index']];
@@ -11,11 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?php if ($model->thumbnail_path): ?>
             <?php echo \yii\helpers\Html::img(
-                Yii::$app->glide->createSignedUrl([
-                    'glide/index',
-                    'path' => $model->thumbnail_path,
-                    'w' => 200
-                ], true),
+                Url::image($model->thumbnail_path, ['w' => 200]),
                 ['class' => 'article-thumb img-rounded pull-left']
             ) ?>
         <?php endif; ?>
