@@ -1,6 +1,6 @@
 <?php
 /* @var $this yii\web\View */
-$this->title = Yii::t('frontend', 'Articles')
+$this->title = $this->title ?: Yii::t('frontend', 'Articles');
 ?>
 <div id="article-index">
     <h1><?php echo Yii::t('frontend', 'Articles') ?></h1>

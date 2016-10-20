@@ -4,9 +4,12 @@ namespace frontend\controllers;
 
 use common\models\Article;
 use common\models\ArticleAttachment;
+use common\models\Page;
+use frontend\components\Seo;
 use frontend\models\search\ArticleSearch;
 use Yii;
-use yii\web\Controller;
+use common\components\web\Controller;
+use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -17,8 +20,15 @@ class ArticleController extends Controller
     /**
      * @return string
      */
-    public function actionIndex()
+    public function actionIndex($slug)
     {
+        $model = Page::findOne(['slug' => $slug]);
+        if(!$model) {
+            throw new HttpException(404);
+        }
+
+        Seo::make($model);
+
         $searchModel = new ArticleSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->sort = [
@@ -38,6 +48,8 @@ class ArticleController extends Controller
         if (!$model) {
             throw new NotFoundHttpException;
         }
+
+        Seo::make($model);
 
         return $this->render('view', ['model'=>$model]);
     }

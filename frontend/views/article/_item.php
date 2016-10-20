@@ -4,6 +4,7 @@
  * @var $model common\models\Article
  */
 use yii\helpers\Html;
+use common\components\helpers\Url;
 
 ?>
 <hr/>
@@ -20,11 +21,7 @@ use yii\helpers\Html;
         <div class="article-content">
             <?php if ($model->thumbnail_path): ?>
                 <?php echo Html::img(
-                    Yii::$app->glide->createSignedUrl([
-                        'glide/index',
-                        'path' => $model->thumbnail_path,
-                        'w' => 100
-                    ], true),
+                    Url::image($model->thumbnail_path, ['w' => 100]),
                     ['class' => 'article-thumb img-rounded pull-left']
                 ) ?>
             <?php endif; ?>
