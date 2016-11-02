@@ -21,10 +21,10 @@ use yii\db\ActiveRecord;
  * @property string $thumbnail_path
  * @property string $thumbnail_url
  * @property array $attachments
- * @property integer $author_id
- * @property integer $updater_id
  * @property integer $status
  * @property integer $published_at
+ * @property integer $created_by
+ * @property integer $updated_by
  * @property integer $created_at
  * @property integer $updated_at
  *
@@ -69,15 +69,10 @@ class Article extends ActiveRecord
     public function behaviors()
     {
         return [
+            BlameableBehavior::className(),
             [
                 'class' => TimestampBehavior::className(),
                 'value' => function() {return date(DATE_ISO8601);}
-            ],
-            [
-                'class' => BlameableBehavior::className(),
-                'createdByAttribute' => 'author_id',
-                'updatedByAttribute' => 'updater_id',
-
             ],
             [
                 'class' => SluggableBehavior::className(),
@@ -123,7 +118,7 @@ class Article extends ActiveRecord
             [['published_at'], 'default', 'value' => function () {
                 return date(DATE_ISO8601);
             }],
-            [['author_id', 'updater_id', 'status'], 'integer'],
+            [['status'], 'integer'],
             [['slug', 'thumbnail_path'], 'string', 'max' => 1024],
             [['title'], 'string', 'max' => 255],
             [['attachments', 'thumbnail', 'category_ids'], 'safe']
@@ -141,10 +136,10 @@ class Article extends ActiveRecord
             'title' => Yii::t('common', 'Title'),
             'body' => Yii::t('common', 'Body'),
             'thumbnail' => Yii::t('common', 'Thumbnail'),
-            'author_id' => Yii::t('common', 'Author'),
-            'updater_id' => Yii::t('common', 'Updater'),
             'status' => Yii::t('common', 'Published'),
             'published_at' => Yii::t('common', 'Published At'),
+            'created_by' => Yii::t('common', 'Author'),
+            'updated_by' => Yii::t('common', 'Updater'),
             'created_at' => Yii::t('common', 'Created At'),
             'updated_at' => Yii::t('common', 'Updated At'),
             'category_ids' => Yii::t('common', 'Categories'),
@@ -156,7 +151,7 @@ class Article extends ActiveRecord
      */
     public function getAuthor()
     {
-        return $this->hasOne(User::className(), ['id' => 'author_id']);
+        return $this->hasOne(User::className(), ['id' => 'created_by']);
     }
 
     /**
@@ -164,7 +159,7 @@ class Article extends ActiveRecord
      */
     public function getUpdater()
     {
-        return $this->hasOne(User::className(), ['id' => 'updater_id']);
+        return $this->hasOne(User::className(), ['id' => 'updated_by']);
     }
 
     /**

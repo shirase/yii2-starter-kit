@@ -18,8 +18,8 @@ class m140703_123803_article extends Migration
             'title' => $this->string(255),
             'body' => $this->text()->notNull(),
             'thumbnail_path' => $this->string(1024),
-            'author_id' => $this->integer(),
-            'updater_id' => $this->integer(),
+            'created_by' => $this->integer(),
+            'updated_by' => $this->integer(),
             'status' => $this->smallInteger()->notNull()->defaultValue(1),
             'published_at' => $this->timestamp(),
             'created_at' => $this->timestamp(),
@@ -41,8 +41,8 @@ class m140703_123803_article extends Migration
         ], $tableOptions);
 
         $this->addForeignKey('fk_article_attachment_article', '{{%article_attachment}}', 'article_id', '{{%article}}', 'id', 'cascade', 'cascade');
-        $this->addForeignKey('fk_article_author', '{{%article}}', 'author_id', '{{%user}}', 'id', 'cascade', 'cascade');
-        $this->addForeignKey('fk_article_updater', '{{%article}}', 'updater_id', '{{%user}}', 'id', 'set null', 'cascade');
+        $this->addForeignKey('fk_article_author', '{{%article}}', 'created_by', '{{%user}}', 'id', 'cascade', 'cascade');
+        $this->addForeignKey('fk_article_updater', '{{%article}}', 'updated_by', '{{%user}}', 'id', 'set null', 'cascade');
     }
 
     public function safeDown()
