@@ -13,7 +13,7 @@ class m160512_194404_page_type extends Migration
 
         $this->createTable('{{%page_type}}', [
             'id' => $this->primaryKey(),
-            'pos' => $this->primaryKey(),
+            'pos' => $this->integer(),
             'name' => $this->string(100)->notNull(),
             'status' => $this->smallInteger(1)->notNull()->defaultValue(1),
             'plugin' => $this->string(100),
