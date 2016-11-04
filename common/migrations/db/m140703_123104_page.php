@@ -15,6 +15,7 @@ class m140703_123104_page extends Migration
         $this->createTable('{{%page}}', [
             'id' => $this->primaryKey(),
             'slug' => $this->string(1024)->notNull(),
+            'language' => $this->string(5)->notNull(),
             'name' => $this->string(255)->notNull(),
             'title' => $this->string(255),
             'body' => $this->text(),

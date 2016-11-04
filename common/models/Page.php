@@ -11,6 +11,7 @@ use yii\behaviors\TimestampBehavior;
  *
  * @property integer $id
  * @property string $slug
+ * @property string $language
  * @property string $name
  * @property string $title
  * @property string $body
@@ -38,6 +39,11 @@ class Page extends \common\components\db\ActiveRecord
         return '{{%page}}';
     }
 
+    public function init() {
+        parent::init();
+        if (!isset($this->language)) $this->language = Yii::$app->language;
+    }
+
     /**
     * @inheritdoc
     */
@@ -52,7 +58,10 @@ class Page extends \common\components\db\ActiveRecord
                 'class' => SluggableBehavior::className(),
                 'attribute' => 'name',
                 'ensureUnique' => true,
-                'immutable' => true
+                'immutable' => true,
+                'uniqueValidator' => [
+                    'filter' => ['language' => Yii::$app->language]
+                ],
             ],
             [
                 'class' => \shirase\tree\TreeBehavior::className(),
@@ -70,6 +79,7 @@ class Page extends \common\components\db\ActiveRecord
             [['body'], 'string'],
             [['type_id', 'status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
+            [['language'], 'string', 'max' => 5],
             [['title'], 'string', 'max' => 512],
             [['slug'], 'string', 'max' => 1024],
             [['slug'], 'unique'],

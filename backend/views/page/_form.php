@@ -22,6 +22,8 @@ $this->registerJs('$(document).on("change", "#page-type_id", function() {$.pjax.
 
     <?php $form = ActiveForm::begin(['id'=>'page-form']); ?>
 
+    <?= $form->field($model, 'language')->dropDownList(Yii::$app->params['availableLocales']) ?>
+
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
