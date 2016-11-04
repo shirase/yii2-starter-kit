@@ -81,6 +81,7 @@ function(node) {
             obj = inst.get_node(data.reference);
 
         inst.create_node(obj, {"type":"page", "id":"0"}, "last", function (new_node) {
+                new_node.a_attr.style = \'opacity:.5\';
                 inst.edit(new_node, "",
                     function(node) {
                         if (node.text) {
