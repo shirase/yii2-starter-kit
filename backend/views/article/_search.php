@@ -26,9 +26,9 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'body') ?>
 
-    <?php echo $form->field($model, 'author_id')->widget(kartik\select2\Select2::className(), ['data'=>[''=>'-']+ArrayHelper::map(common\models\User::find()->all(), 'id', 'username')]) ?>
+    <?php echo $form->field($model, 'created_by')->widget(kartik\select2\Select2::className(), ['data'=>[''=>'-']+ArrayHelper::map(common\models\User::find()->all(), 'id', 'username')]) ?>
 
-    <?php //echo $form->field($model, 'updater_id')->widget(kartik\select2\Select2::className(), ['data'=>[''=>'-']+ArrayHelper::map(common\models\User::find()->all(), 'id', 'username')]) ?>
+    <?php //echo $form->field($model, 'updated_by')->widget(kartik\select2\Select2::className(), ['data'=>[''=>'-']+ArrayHelper::map(common\models\User::find()->all(), 'id', 'username')]) ?>
 
     <?php echo $form->field($model, 'status')->dropDownList([''=>'-', '1'=>Yii::t('backend', 'Yes'), '0'=>Yii::t('backend', 'No')]) ?>
 
