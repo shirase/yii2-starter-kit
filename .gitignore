@@ -30,3 +30,4 @@ phpunit.phar
 /frontend/web/admin/assets
 /frontend/web/admin
 /frontend/web/storage/web
+/backend/web/bundle
