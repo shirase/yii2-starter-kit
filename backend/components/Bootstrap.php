@@ -2,6 +2,7 @@
 namespace backend\components;
 
 use yii\base\BootstrapInterface;
+use yii\web\View;
 
 class Bootstrap implements BootstrapInterface
 {
@@ -41,5 +42,11 @@ class Bootstrap implements BootstrapInterface
                 );
             }
         );
+
+        \Yii::$container->set('kartik\dialog\DialogAsset', [
+            'jsOptions' => [
+                'position' => View::POS_END
+            ]
+        ]);
     }
 }
