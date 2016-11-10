@@ -14,6 +14,10 @@ return [
 
         // Api
         ['class' => 'yii\rest\UrlRule', 'controller' => 'api/v1/article', 'only' => ['index', 'view', 'options']],
-        ['class' => 'yii\rest\UrlRule', 'controller' => 'api/v1/user', 'only' => ['index', 'view', 'options']]
+        ['class' => 'yii\rest\UrlRule', 'controller' => 'api/v1/user', 'only' => ['index', 'view', 'options']],
+
+        ['pattern'=>'<controller>', 'route'=>'<controller>/index'],
+        ['pattern'=>'<controller>/<action>', 'route'=>'<controller>/<action>'],
+        ['pattern'=>'<module>/<controller>', 'route'=>'<module>/<controller>/index'],
     ]
 ];
