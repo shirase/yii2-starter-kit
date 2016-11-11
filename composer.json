@@ -25,6 +25,12 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/shirase/yii2-aceeditor"
+        }
+    ],
     "require": {
         "php": ">=5.5.0",
         "ext-intl": "*",
@@ -36,7 +42,7 @@
         "asofter/yii2-imperavi-redactor": "dev-master@dev",
         "mihaildev/yii2-elfinder": "^1.0",
         "mihaildev/yii2-ckeditor": "*",
-        "trntv/yii2-aceeditor": "^2.0",
+        "trntv/yii2-aceeditor": "dev-master as 2.0.x-dev",
         "trntv/probe": "^0.2",
         "trntv/cheatsheet": "^0.1@dev",
         "trntv/yii2-command-bus": "^2.0",
