@@ -3,7 +3,7 @@
 use common\models\User;
 use yii\db\Migration;
 
-class m150725_192740_seed_data extends Migration
+class m160513_151501_seed_data extends Migration
 {
     public function safeUp()
     {
@@ -54,6 +54,41 @@ class m150725_192740_seed_data extends Migration
         $this->insert('{{%user_profile}}', [
             'user_id'=>3,
             'locale'=>Yii::$app->sourceLanguage
+        ]);
+
+        $this->insert('{{%page}}', [
+            'id'=>1,
+            'slug'=>'main-menu',
+            'name'=>'Main menu',
+            'pid'=>0,
+            'pos'=>1,
+            'created_at'=> time(),
+            'updated_at'=> time(),
+            'bpath'=>\shirase\tree\TreeBehavior::toBase255(array(1))
+        ]);
+
+        $this->insert('{{%page}}', [
+            'slug'=>'about',
+            'name'=>'About',
+            'status'=>1,
+            'pid'=>1,
+            'pos'=>2,
+            'created_at'=> time(),
+            'updated_at'=> time(),
+            'body'=>'Lorem ipsum',
+            'bpath'=>\shirase\tree\TreeBehavior::toBase255(array(1, 2))
+        ]);
+
+        $this->insert('{{%page}}', [
+            'slug'=>'article',
+            'name'=>'Article',
+            'status'=>1,
+            'pid'=>1,
+            'pos'=>3,
+            'created_at'=> time(),
+            'updated_at'=> time(),
+            'bpath'=>\shirase\tree\TreeBehavior::toBase255(array(1, 3)),
+            'type_id'=>3
         ]);
 
         $this->insert('{{%widget_text}}', [
@@ -162,7 +197,7 @@ class m150725_192740_seed_data extends Migration
         ]);
 
         $this->delete('{{%page}}', [
-            'slug' => 'about'
+            'slug' => ['about', 'article', 'main-menu']
         ]);
 
         $this->delete('{{%user_profile}}', [

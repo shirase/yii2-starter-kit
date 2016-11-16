@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT);
+
 $config = [
     'name'=>'Yii2 Starter Kit',
     'vendorPath'=>dirname(dirname(__DIR__)).'/vendor',

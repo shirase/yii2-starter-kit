@@ -17,7 +17,7 @@ class Url extends \yii\helpers\Url
     {
         $urlManager = \Yii::$app->urlManagerFrontend;
 
-        if ($plugin = $model->type->plugin) {
+        if ($model->type && $plugin = $model->type->plugin) {
             $url = $plugin::URI($model);
         } else {
             if (isset($model->slug)) {

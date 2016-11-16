@@ -51,11 +51,12 @@ class DbMenu extends Menu
             $model = Page::findOne(['slug'=>$this->key]);
         }
 
-        if (!$model) throw new HttpException(500);
+        if (!$model) throw new HttpException(500, 'Menu not found');
 
         $tree = [];
         if ($rows = Page::find()->orderBy('bpath')->children($model->id)->all()) {
             foreach ($rows as $row) {
+                if (!isset($tree[$row->pid])) $tree[$row->pid] = [];
                 $tree[$row->pid][$row->id] = ['label'=>$row->name, 'url'=>Url::pageUrl($row)];
             }
         }

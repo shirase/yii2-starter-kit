@@ -20,14 +20,18 @@ class ArticleController extends Controller
     /**
      * @return string
      */
-    public function actionIndex($slug)
+    public function actionIndex($slug=null)
     {
-        $model = Page::findOne(['slug' => $slug]);
-        if(!$model) {
-            throw new HttpException(404);
-        }
+        $model = null;
 
-        Seo::make($model);
+        if ($slug) {
+            $model = Page::findOne(['slug' => $slug]);
+            if(!$model) {
+                throw new HttpException(404);
+            }
+
+            Seo::make($model);
+        }
 
         $searchModel = new ArticleSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
