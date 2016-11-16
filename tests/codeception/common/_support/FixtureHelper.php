@@ -3,7 +3,6 @@
 namespace tests\codeception\common\_support;
 
 use tests\codeception\common\fixtures\ArticleAttachmentFixture;
-use tests\codeception\common\fixtures\ArticleCategoryFixture;
 use tests\codeception\common\fixtures\ArticleFixture;
 use tests\codeception\common\fixtures\RbacAuthAssignmentFixture;
 use tests\codeception\common\fixtures\UserFixture;
@@ -59,10 +58,6 @@ class FixtureHelper extends Module
             'article' => [
                 'class' => ArticleFixture::className(),
                 'dataFile' => '@tests/codeception/common/fixtures/data/article.php',
-            ],
-            'article_category' => [
-                'class' => ArticleCategoryFixture::className(),
-                'dataFile' => '@tests/codeception/common/fixtures/data/article_category.php',
             ],
             'article_attachment' => [
                 'class' => ArticleAttachmentFixture::className(),

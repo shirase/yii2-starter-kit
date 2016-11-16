@@ -3,6 +3,7 @@
  * Application configuration shared by all applications functional tests
  */
 return [
+    'language'=>'en-US',
     'components' => [
         'request' => [
             // it's not recommended to run functional tests with CSRF validation enabled

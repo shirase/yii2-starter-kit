@@ -24,5 +24,14 @@ return [
         'urlManager' => [
             'showScriptName' => true,
         ],
+        'urlManagerFrontend' => [
+            'showScriptName' => true,
+        ],
+        'urlManagerBackend' => [
+            'showScriptName' => true,
+        ],
+        'urlManagerStorage' => [
+            'showScriptName' => true,
+        ],
     ],
 ];
