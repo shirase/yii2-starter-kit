@@ -28,15 +28,39 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             //['class' => 'shirase\grid\sortable\SerialColumn'],
 
-            ['attribute'=>'key'],
             [
+                'attribute'=>'key',
+                /*'class' => \kartik\grid\EditableColumn::className(),
+                'editableOptions'=> [
+                    'formOptions' => ['action' => ['edit']],
+                ]*/
+            ],
+            [
+                'attribute'=>'status',
+                'class' => \kartik\grid\EditableColumn::className(),
+                //'refreshGrid' => true,
+                'editableOptions'=> [
+                    'formOptions' => ['action' => ['edit']],
+                    //'asPopover' => false,
+                    'inputType' => \kartik\editable\Editable::INPUT_DROPDOWN_LIST,
+                    'data' => [
+                        0 => Yii::t('backend', 'Disabled'),
+                        1 => Yii::t('backend', 'Enabled')
+                    ],
+                    'displayValueConfig' => [
+                        0 => Yii::t('backend', 'Disabled'),
+                        1 => Yii::t('backend', 'Enabled'),
+                    ]
+                ]
+            ],
+            /*[
                 'class'=>\common\grid\EnumColumn::className(),
                 'attribute'=>'status',
                 'enum'=>[
                     Yii::t('backend', 'Disabled'),
                     Yii::t('backend', 'Enabled')
                 ],
-            ],
+            ],*/
 
             [
                 'class' => 'kartik\grid\ActionColumn',
