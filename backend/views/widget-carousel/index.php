@@ -30,10 +30,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'attribute'=>'key',
-                /*'class' => \kartik\grid\EditableColumn::className(),
+                'class' => \kartik\grid\EditableColumn::className(),
                 'editableOptions'=> [
                     'formOptions' => ['action' => ['edit']],
-                ]*/
+                ]
             ],
             [
                 'attribute'=>'status',
