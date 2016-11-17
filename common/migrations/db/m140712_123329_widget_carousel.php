@@ -15,20 +15,17 @@ class m140712_123329_widget_carousel extends Migration
         $this->createTable('{{%widget_carousel}}', [
             'id' => $this->primaryKey(),
             'key' => $this->string()->notNull(),
-            'status' => $this->smallInteger()->defaultValue(0)
+            'status' => $this->smallInteger()->defaultValue(1)
         ], $tableOptions);
 
         $this->createTable('{{%widget_carousel_item}}', [
             'id' => $this->primaryKey(),
             'carousel_id' => $this->integer()->notNull(),
             'path'=>$this->string(1024),
-            'type'=>$this->string(),
             'url' => $this->string(1024),
             'caption' => $this->string(1024),
-            'status' => $this->smallInteger()->notNull()->defaultValue(0),
-            'order' => $this->integer()->defaultValue(0),
-            'created_at' => $this->integer(),
-            'updated_at' => $this->integer(),
+            'status' => $this->smallInteger()->notNull()->defaultValue(1),
+            'pos' => $this->integer(),
         ], $tableOptions);
 
         $this->addForeignKey('fk_item_carousel', '{{%widget_carousel_item}}', 'carousel_id', '{{%widget_carousel}}', 'id', 'cascade', 'cascade');

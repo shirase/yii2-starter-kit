@@ -6,15 +6,19 @@ use kartik\datecontrol\DateControl;
 use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\WidgetCarousel */
+/* @var $model common\models\WidgetCarouselItem */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="widget-carousel-form">
+<div class="widget-carousel-item-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'key')->textInput(['maxlength' => true]) ?>
+    <?php echo $form->field($model, 'image')->widget(\shirase55\filekit\widget\Upload::className()); ?>
+
+    <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'caption')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'status')->checkbox() ?>
 

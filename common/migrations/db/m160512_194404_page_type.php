@@ -49,9 +49,13 @@ class m160512_194404_page_type extends Migration
 
     public function down()
     {
-        echo "m160512_194404_page_type cannot be reverted.\n";
+        $this->dropTable('{{%page_type_page}}');
+        $this->dropTable('{{%page_type_link}}');
+        $this->dropTable('{{%page_type_article}}');
 
-        return false;
+        $this->dropForeignKey('fk_page_type', '{{%page}}');
+        $this->dropColumn('{{%page}}', 'type_id');
+        $this->dropTable('{{%page_type}}');
     }
 
     /*

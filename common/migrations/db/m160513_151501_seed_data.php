@@ -127,8 +127,8 @@ class m160513_151501_seed_data extends Migration
 
         $this->insert('{{%widget_carousel_item}}', [
             'carousel_id'=>1,
-            'type'=>'image/gif',
             'url'=>'/',
+            'path'=>'/img/yii2-starter-kit.gif',
             'status'=>1
         ]);
 
@@ -186,14 +186,6 @@ class m160513_151501_seed_data extends Migration
 
         $this->delete('{{%widget_text}}', [
             'key'=>'backend_welcome'
-        ]);
-
-        $this->delete('{{%widget_menu}}', [
-            'key'=>'frontend-index'
-        ]);
-
-        $this->delete('{{%article_category}}', [
-            'id' => 1
         ]);
 
         $this->delete('{{%page}}', [
