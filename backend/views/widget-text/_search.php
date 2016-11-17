@@ -1,34 +1,42 @@
 <?php
 
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+use shirase\form\ActiveForm;
+use kartik\daterange\DateRangePicker;
+use yii\helpers\Url;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
+/* @var $model common\models\search\WidgetTextSearch */
+/* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="text-block-search">
+<div class="search-form widget-text-search" id="widget-text-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
+        'options' => [
+            'data-pjax' => 1
+        ],
     ]); ?>
 
-    <?php echo $form->field($model, 'id') ?>
+    <?= $form->field($model, 'id') ?>
 
-    <?php echo $form->field($model, 'key') ?>
+    <?= $form->field($model, 'key') ?>
 
-    <?php echo $form->field($model, 'title') ?>
+    <?= $form->field($model, 'title') ?>
 
-    <?php echo $form->field($model, 'body') ?>
+    <?= $form->field($model, 'body') ?>
 
-    <?php echo $form->field($model, 'status') ?>
+    <?= $form->field($model, 'status') ?>
 
     <div class="form-group">
-        <?php echo Html::submitButton(Yii::t('backend', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?php echo Html::resetButton(Yii::t('backend', 'Reset'), ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton(Yii::t('backend', 'Search'), ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('backend', 'Reset'), Url::current(['TestSearch'=>null]), ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
 
 </div>
+<?php $this->registerJs('if(jQuery.pjax && jQuery("#widget-text-grid-pjax").length) {jQuery(document).on(\'submit\', "#widget-text-search form", function (event) {jQuery.pjax.submit(event, \'#widget-text-grid-pjax\', {"push":true,"replace":false,"timeout":1000,"scrollTo":false});});}'); ?>

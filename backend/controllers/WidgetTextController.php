@@ -2,28 +2,46 @@
 
 namespace backend\controllers;
 
-use backend\models\search\WidgetTextSearch;
 use Yii;
 use common\models\WidgetText;
-use yii\web\Controller;
+use common\models\search\WidgetTextSearch;
+use common\components\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\Json;
+use yii\helpers\Url;
+use yii\helpers\ArrayHelper;
+use kartik\grid\EditableColumnAction;
 
 /**
  * WidgetTextController implements the CRUD actions for WidgetText model.
  */
 class WidgetTextController extends Controller
 {
+    /**
+     * @inheritdoc
+     */
     public function behaviors()
     {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['post'],
+                    'delete' => ['POST'],
                 ],
             ],
         ];
+    }
+
+    public function actions()
+    {
+        return ArrayHelper::merge(parent::actions(), [
+            'edit' => [
+                'class' => EditableColumnAction::className(),
+                'modelClass' => WidgetText::className(),
+                'showModelErrors' => true,
+            ]
+        ]);
     }
 
     /**
@@ -42,6 +60,26 @@ class WidgetTextController extends Controller
     }
 
     /**
+     * Displays a single WidgetText model.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionView($id)
+    {
+        $model=$this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if (!Yii::$app->user->can('/' . \common\components\helpers\Url::normalizeRoute('update'))) {
+                throw new HttpException(403);
+            }
+            Yii::$app->session->setFlash('kv-detail-success', 'Saved record successfully');
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('view', ['model'=>$model]);
+        }
+    }
+
+    /**
      * Creates a new WidgetText model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -51,7 +89,7 @@ class WidgetTextController extends Controller
         $model = new WidgetText();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['index', 'returned'=>true]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -70,7 +108,7 @@ class WidgetTextController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['index', 'returned'=>true]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -84,11 +122,31 @@ class WidgetTextController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+    public function actionDelete($id) {
+        $post = Yii::$app->request->post();
+        if (Yii::$app->request->isAjax && isset($post['j-delete'])) {
+            if ($this->findModel($id)->delete()) {
+                echo Json::encode([
+                    'success' => true,
+                    'messages' => [
+                    'kv-detail-info' => 'Successfully deleted. <a href="' .
+                                                Url::to(['index']) . '" class="btn btn-sm btn-info">' .
+                        '<i class="glyphicon glyphicon-hand-right"></i>  Click here</a> to proceed.'
+                    ]
+                ]);
+            } else {
+                echo Json::encode([
+                    'success' => false,
+                    'messages' => [
+                        'kv-detail-error' => 'Cannot delete'
+                    ]
+                ]);
+            }
+            return;
+        } else {
+            $this->findModel($id)->delete();
+            $this->redirect(['index', 'returned'=>true]);
+        }
     }
 
     /**

@@ -1,34 +1,35 @@
 <?php
 
+use yii\helpers\Url;
 use yii\helpers\Html;
-use yii\grid\GridView;
-
+use kartik\grid\GridView;
+use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel \backend\models\search\WidgetTextSearch */
+/* @var $searchModel common\models\search\WidgetTextSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('backend', 'Text Blocks');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="text-block-index">
+<div class="widget-text-index">
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <h1><?= Html::encode($this->title) ?></h1>
+    <?php Pjax::begin(); ?>
+    <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?php echo Html::a(Yii::t('backend', 'Create {modelClass}', [
-            'modelClass' => 'Text Block',
-        ]), ['create'], ['class' => 'btn btn-success']) ?>
+        <?php if (\Yii::$app->user->can('/'.$this->context->uniqueId.'/create')) echo Html::a(Yii::t('backend', 'Create'), ['create']+$this->context->actionParams, ['class' => 'btn btn-success']) ?>
     </p>
-
-    <?php echo GridView::widget([
+    <?= GridView::widget([
+        'id' => 'widget-text-grid',
+        'pjax' => true,
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            //['class' => 'shirase\grid\sortable\SerialColumn'],
 
-            'id',
-            'key',
-            'title',
+            ['attribute'=>'key'],
+            ['attribute'=>'title'],
             [
                 'class'=>\common\grid\EnumColumn::className(),
                 'attribute'=>'status',
@@ -39,10 +40,21 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
 
             [
-                'class' => 'yii\grid\ActionColumn',
-                'template'=>'{update}{delete}'
+                'class' => 'kartik\grid\ActionColumn',
+                'visibleButtons'=>[
+                    //'view' => \Yii::$app->user->can('/' . \common\components\helpers\Url::normalizeRoute('view')),
+                    'update' => \Yii::$app->user->can('/' . \common\components\helpers\Url::normalizeRoute('update')),
+                    'delete' => \Yii::$app->user->can('/' . \common\components\helpers\Url::normalizeRoute('delete')),
+                ],
+                'template'=>'{update} {delete}',
+                'urlCreator' =>
+                    function ($action, $model, $key, $index) {
+                        $params = is_array($key) ? $key : ['id' => (string) $key];
+                        $params[0] = $action;
+                        return Url::toRoute($params+$this->context->actionParams);
+                    }
             ],
         ],
     ]); ?>
-
+    <?php Pjax::end(); ?>
 </div>
