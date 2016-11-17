@@ -48,5 +48,9 @@ class Bootstrap implements BootstrapInterface
                 'position' => View::POS_END
             ]
         ]);
+
+        \Yii::$container->set('kartik\dialog\Dialog', [
+            'jsPosition' => View::POS_END,
+        ]);
     }
 }
