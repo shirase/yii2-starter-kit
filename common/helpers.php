@@ -74,3 +74,7 @@ function env($key, $default = false) {
 
     return $value;
 }
+
+function encode($str){
+    return htmlspecialchars($str);
+}
