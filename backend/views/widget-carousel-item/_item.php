@@ -7,7 +7,7 @@
  */
 ?>
 <div class="panel panel-default">
-    <div class="panel-heading"><?= $model->caption ?: $model->id ?></div>
+    <div class="panel-heading"><span class="glyphicon glyphicon-sort" data-sortable-id="<?= encode($model->id) ?>"></span> <?= $model->caption ?: $model->id ?></div>
     <div class="panel-body">
         <?= \yii\helpers\Html::img($model->getImageUrl(), ['style'=>'max-width:100%']) ?>
     </div>

@@ -21,12 +21,15 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php if (\Yii::$app->user->can('/'.$this->context->uniqueId.'/create')) echo Html::a(Yii::t('backend', 'Create'), ['create']+$this->context->actionParams, ['class' => 'btn btn-success']) ?>
         <?= Html::a(Yii::t('backend', 'Back'), ['widget-carousel/index', 'returned'=>true], ['class' => 'btn btn-default']) ?>
     </p>
+
+    <?php \shirase\grid\sortable\Sortable::begin(['id'=>'widget-carousel-item-index-sortable', 'dataProvider'=>$dataProvider, 'sortItemsSelector'=>'.item']); ?>
     <?php //Pjax::begin(); ?>
         <?= ListView::widget([
             'dataProvider' => $dataProvider,
-            'layout' => '<div class="row">{items}</div>\n{pager}',
-            'itemOptions' => ['class' => 'col-md-3'],
+            'layout' => '<div class="row">{items}</div>{pager}',
+            'itemOptions' => ['class' => 'item col-md-3'],
             'itemView' => '_item',
         ]) ?>
     <?php //Pjax::end(); ?>
+    <?php \shirase\grid\sortable\Sortable::end() ?>
 </div>
