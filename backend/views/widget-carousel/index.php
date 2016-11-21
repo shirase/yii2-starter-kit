@@ -72,7 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
                 'buttons' => [
                     'items' => function ($url, $model, $key) {
-                        return Html::a(Html::tag('span', '', ['class'=>'glyphicon glyphicon-edit']), Url::to(['widget-carousel-item/index', 'carousel'=>$key]+$this->context->actionParams), ['title'=>Yii::t('backend', 'Edit')]);
+                        return Html::a(Html::tag('span', '', ['class'=>'glyphicon glyphicon-edit']), Url::to(['widget-carousel-item/index', 'carousel'=>$key]+$this->context->actionParams), ['title'=>Yii::t('backend', 'Edit'), 'data-pjax'=>0]);
                     },
                 ],
                 'template' => '{items} {update} {delete}',

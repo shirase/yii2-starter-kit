@@ -14,7 +14,7 @@
     <div class="panel-footer">
         <?php
         if (\Yii::$app->user->can('/' . \common\components\helpers\Url::normalizeRoute('update'))) {
-            echo \yii\helpers\Html::a('<span class="glyphicon glyphicon-pencil"></span> ', ['update', 'id'=>$key], ['title'=>Yii::t('backend', 'Update')]);
+            echo \yii\helpers\Html::a('<span class="glyphicon glyphicon-pencil"></span> ', ['update', 'id'=>$key], ['title'=>Yii::t('backend', 'Update'), 'data-pjax'=>0]);
         }
         if (\Yii::$app->user->can('/' . \common\components\helpers\Url::normalizeRoute('delete'))) {
             echo \yii\helpers\Html::a('<span class="glyphicon glyphicon-trash"></span> ', ['delete', 'id'=>$key], ['title'=>Yii::t('backend', 'Delete')]);
