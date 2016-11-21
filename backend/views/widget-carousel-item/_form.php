@@ -6,7 +6,7 @@ use kartik\datecontrol\DateControl;
 use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\WidgetCarouselItem */
+/* @var $model backend\models\WidgetCarouselItem */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -14,7 +14,18 @@ use yii\helpers\ArrayHelper;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?php echo $form->field($model, 'image')->widget(\shirase55\filekit\widget\Upload::className()); ?>
+    <?php
+    if ($model->isNewRecord) {
+        echo $form->field($model, 'images')->widget(
+            \shirase55\filekit\widget\Upload::className(),
+            [
+                'sortable' => true,
+                'maxNumberOfFiles' => 100
+            ]);
+    } else {
+        echo $form->field($model, 'image')->widget(\shirase55\filekit\widget\Upload::className());
+    }
+    ?>
 
     <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
 

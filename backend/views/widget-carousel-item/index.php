@@ -14,7 +14,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="widget-carousel-item-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php Pjax::begin(); ?>
     <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
@@ -23,13 +22,13 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <?php \shirase\grid\sortable\Sortable::begin(['id'=>'widget-carousel-item-index-sortable', 'dataProvider'=>$dataProvider, 'sortItemsSelector'=>'.item']); ?>
-    <?php //Pjax::begin(); ?>
+    <?php Pjax::begin(['id'=>'widget-carousel-item-pjax', 'clientOptions' => ['method'=>'post']]); ?>
         <?= ListView::widget([
             'dataProvider' => $dataProvider,
             'layout' => '<div class="row">{items}</div>{pager}',
             'itemOptions' => ['class' => 'item col-md-3'],
             'itemView' => '_item',
         ]) ?>
-    <?php //Pjax::end(); ?>
+    <?php Pjax::end(); ?>
     <?php \shirase\grid\sortable\Sortable::end() ?>
 </div>

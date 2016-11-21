@@ -6,6 +6,7 @@ use Yii;
 use common\models\WidgetCarouselItem;
 use common\models\search\WidgetCarouselItemSearch;
 use common\components\web\Controller;
+use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Json;
@@ -87,11 +88,20 @@ class WidgetCarouselItemController extends Controller
      */
     public function actionCreate($carousel)
     {
-        $model = new WidgetCarouselItem();
+        $model = new \backend\models\WidgetCarouselItem();
         $model->loadDefaultValues();
         $model->carousel_id = $carousel;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            foreach ($model->images as $image) {
+                $one = new WidgetCarouselItem();
+                $one->setAttributes($model->attributes, false);
+                $one->image = $image;
+                if (!$one->save()) {
+                    throw new HttpException(500, var_export($one->errors, true));
+                }
+            }
+
             return $this->redirect(['index', 'returned'=>true]);
         } else {
             return $this->render('create', [
