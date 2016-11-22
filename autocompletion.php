@@ -17,12 +17,12 @@ class Yii extends \yii\BaseYii
  * Class BaseApplication
  * Used for properties that are identical for both WebApplication and ConsoleApplication
  *
- * @property trntv\filekit\Storage $fileStorage
+ * @property shirase55\filekit\Storage $fileStorage
  * @property common\components\keyStorage\KeyStorage $keyStorage
  * @property yii\web\UrlManager $urlManagerFrontend UrlManager for frontend application.
  * @property yii\web\UrlManager $urlManagerBackend UrlManager for backend application.
  * @property yii\web\UrlManager $urlManagerStorage UrlManager for storage application.
- * @property trntv\glide\components\Glide $glide
+ * @property shirase55\glide\components\Glide $glide
  * @property trntv\bus\CommandBus $commandBus
  */
 abstract class BaseApplication extends yii\base\Application
