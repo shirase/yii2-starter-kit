@@ -134,21 +134,21 @@ $config = [
         'urlManagerBackend' => \yii\helpers\ArrayHelper::merge(
             [
                 'hostInfo' => Yii::getAlias('@backendUrl'),
-                'baseUrl' => Yii::getAlias('@backendUrl')
+                'baseUrl' => ''
             ],
             require(Yii::getAlias('@backend/config/_urlManager.php'))
         ),
         'urlManagerFrontend' => \yii\helpers\ArrayHelper::merge(
             [
                 'hostInfo' => Yii::getAlias('@frontendUrl'),
-                'baseUrl'=> Yii::getAlias('@frontendUrl')
+                'baseUrl' => ''
             ],
             require(Yii::getAlias('@frontend/config/_urlManager.php'))
         ),
         'urlManagerStorage' => \yii\helpers\ArrayHelper::merge(
             [
                 'hostInfo'=>Yii::getAlias('@storageUrl'),
-                'baseUrl' => Yii::getAlias('@storageUrl')
+                'baseUrl' => ''
             ],
             require(Yii::getAlias('@storage/config/_urlManager.php'))
         )
