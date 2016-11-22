@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute'=>'thumbnail',
                 'format' => 'raw',
-                'value' => function($model) {return Html::img(\common\components\helpers\Url::image($model->thumbnail_path, ['w'=>100]));}
+                'value' => function($model) {if ($model->thumbnail_path) return Html::img(\common\components\helpers\Url::image($model->thumbnail_path, ['w'=>100]));}
             ],
             ['attribute'=>'title'],
             ['attribute'=>'slug'],
