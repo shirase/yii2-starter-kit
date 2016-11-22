@@ -122,7 +122,7 @@ class WidgetCarouselItem extends \common\components\db\ActiveRecord
     public function getImageUrl()
     {
         if ($this->path && $this->path[0] === '/') {
-            return rtrim(Yii::$app->urlManagerFrontend->baseUrl, '/') . '/' . ltrim($this->path, '/');
+            return rtrim(Yii::$app->urlManagerFrontend->hostInfo, '/') . '/' . ltrim($this->path, '/');
         } else {
             return rtrim(Yii::$app->fileStorage->baseUrl, '/') . '/' . ltrim($this->path, '/');
         }
