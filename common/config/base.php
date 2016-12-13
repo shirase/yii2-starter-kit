@@ -36,7 +36,7 @@ $config = [
 
         'formatter'=>[
             'class'=>'yii\i18n\Formatter',
-            'defaultTimeZone'=>'+04:00',
+            'defaultTimeZone'=>'GMT+04:00',
         ],
 
         'glide' => [
