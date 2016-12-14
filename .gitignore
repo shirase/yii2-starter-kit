@@ -35,3 +35,6 @@ phpunit.phar
 /tests/codeception/common/_support/_generated
 /tests/codeception/console/_support/_generated
 /tests/codeception/frontend/_support/_generated
+
+# Tests
+tests/codeception/*/_support/_generated/*
