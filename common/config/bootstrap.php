@@ -15,6 +15,10 @@ Yii::setAlias('@console', realpath(__DIR__.'/../../console'));
 Yii::setAlias('@storage', realpath(__DIR__.'/../../storage'));
 Yii::setAlias('@tests', realpath(__DIR__.'/../../tests'));
 
+Yii::setAlias('@frontendWeb', '@frontend/web');
+Yii::setAlias('@backendWeb', '@backend/web');
+Yii::setAlias('@storageWeb', '@storage/web');
+
 /**
  * Setting url aliases
  */
