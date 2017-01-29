@@ -8,16 +8,23 @@
 
 namespace frontend\controllers;
 
+use frontend\actions\UpdateAction;
 use Yii;
 use common\models\Page;
-use yii\web\BadRequestHttpException;
 use yii\web\Controller;
-use yii\web\ForbiddenHttpException;
-use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 
 class PageController extends Controller
 {
+    public function actions() {
+        return [
+            'update'=>[
+                'class'=>UpdateAction::className(),
+                'modelClass'=>Page::className(),
+            ]
+        ];
+    }
+
     public function actionView($slug)
     {
         $model = Page::find()->where(['slug'=>$slug, 'status'=>Page::STATUS_PUBLISHED])->one();
@@ -30,24 +37,5 @@ class PageController extends Controller
         }
 
         return $this->render('view', ['model'=>$model]);
-    }
-
-    public function actionUpdate($id) {
-        if (!Yii::$app->request->isAjax)
-            throw new BadRequestHttpException();
-
-        if (!Yii::$app->user->can('administrator'))
-            throw new ForbiddenHttpException();
-
-        $model = Page::findOne($id);
-        if (!$model)
-            throw new NotFoundHttpException();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            echo 'OK';
-            return;
-        }
-
-        throw new HttpException('Error');
     }
 }

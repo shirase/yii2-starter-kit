@@ -2,6 +2,8 @@
 namespace frontend\widgets;
 
 use dosamigos\ckeditor\CKEditorInline;
+use frontend\assets\CKEditorAsset;
+use frontend\assets\EditableAsset;
 use yii\base\Widget;
 use yii\helpers\Html;
 
@@ -26,8 +28,11 @@ class InlineEditor extends Widget
         $content = ob_get_clean();
         echo '<div class="inline_content">';
         if (\Yii::$app->user->can('administrator')) {
-            $this->view->registerCssFile('@frontendUrl/css/admin.css');
-            $this->view->registerJs("CKEDITOR.plugins.addExternal('inlinesave', '".\Yii::getAlias('@frontendUrl')."/js/ckeditor_plugins/inlinesave/plugin.js', '');");
+            EditableAsset::register($this->view);
+
+            list(, $url) = $this->view->assetManager->publish(\Yii::getAlias('@frontend').'/assets/ckeditor_plugins');
+            $this->view->registerJs("CKEDITOR.plugins.addExternal('inlinesave', '".$url."/inlinesave/plugin.js', '');");
+
             CKEditorInline::begin([
                 'options' => [
                     'data-saveurl'=>$this->saveUrl,
