@@ -9,6 +9,7 @@
 namespace frontend\controllers;
 
 use frontend\actions\UpdateAction;
+use frontend\components\Seo;
 use Yii;
 use common\models\Page;
 use yii\web\Controller;
@@ -31,6 +32,8 @@ class PageController extends Controller
         if (!$model) {
             throw new NotFoundHttpException(Yii::t('frontend', 'Page not found'));
         }
+
+        Seo::make($model);
 
         if ($plugin = $model->type->plugin) {
             
