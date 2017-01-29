@@ -35,7 +35,6 @@
         "yiisoft/yii2-jui": "^2.0.0",
         "asofter/yii2-imperavi-redactor": "^0.0.3",
         "mihaildev/yii2-elfinder": "^1.0",
-        "mihaildev/yii2-ckeditor": "*",
         "trntv/yii2-aceeditor": "^2.0.2",
         "trntv/probe": "^0.2",
         "trntv/cheatsheet": "^0.1@dev",
@@ -67,7 +66,8 @@
         "shirase55/yii2-pjax-ex": "^1.0",
         "shirase55/yii2-glide": "^1.2",
         "shirase55/yii2-file-kit": "^1.2",
-        "shirase55/yii2-datetime-widget": "^1.0"
+        "shirase55/yii2-datetime-widget": "^1.0",
+        "2amigos/yii2-ckeditor-widget": "^2.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "^2.0.0",
@@ -92,6 +92,6 @@
         "asset-vcs-driver-options": {
             "github-no-api": true
         },
-        "asset-pattern-skip-version": "(-build|-patch)"
+        "asset-pattern-skip-version": "(-build|-patch|-beta)"
     }
 }

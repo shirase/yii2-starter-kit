@@ -10,7 +10,10 @@ namespace frontend\controllers;
 
 use Yii;
 use common\models\Page;
+use yii\web\BadRequestHttpException;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
+use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 
 class PageController extends Controller
@@ -27,5 +30,24 @@ class PageController extends Controller
         }
 
         return $this->render('view', ['model'=>$model]);
+    }
+
+    public function actionUpdate($id) {
+        if (!Yii::$app->request->isAjax)
+            throw new BadRequestHttpException();
+
+        if (!Yii::$app->user->can('administrator'))
+            throw new ForbiddenHttpException();
+
+        $model = Page::findOne($id);
+        if (!$model)
+            throw new NotFoundHttpException();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            echo 'OK';
+            return;
+        }
+
+        throw new HttpException('Error');
     }
 }
