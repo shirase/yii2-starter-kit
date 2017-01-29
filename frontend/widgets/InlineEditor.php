@@ -30,8 +30,8 @@ class InlineEditor extends Widget
         if (\Yii::$app->user->can('administrator')) {
             EditableAsset::register($this->view);
 
-            $path = \Yii::getAlias('@frontend').'/assets/ckeditor_plugins';
-            $url = \Yii::getAlias('@frontendUrl').'/assets/ckeditor_plugins';
+            $path = \Yii::getAlias('@frontend').'/web/ckeditor_plugins';
+            $url = \Yii::getAlias('@frontendUrl').'/ckeditor_plugins';
             $this->view->registerJs("CKEDITOR.plugins.addExternal('inlinesave', '".$url."/inlinesave/plugin.js?v=".filemtime($path.'/inlinesave/plugin.js')."', '');");
 
             CKEditorInline::begin([
