@@ -10,9 +10,9 @@ class Controller extends \yii\web\Controller
 {
     public function render($view, $params = []) {
         if (\Yii::$app->request->isAjax) {
-            parent::renderAjax($view, $params);
+            return parent::renderAjax($view, $params);
         } else {
-            parent::render($view, $params);
+            return parent::render($view, $params);
         }
     }
 }
