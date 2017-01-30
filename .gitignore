@@ -27,9 +27,8 @@ phpunit.phar
 # Vagrant
 /.vagrant
 /vagrant.yaml
-/frontend/web/admin/assets
 /frontend/web/admin
-/frontend/web/storage/web
+/frontend/web/storage
 /backend/web/bundle
 /tests/codeception/backend/_support/_generated
 /tests/codeception/common/_support/_generated
@@ -38,3 +37,4 @@ phpunit.phar
 
 # Tests
 tests/codeception/*/_support/_generated/*
+
