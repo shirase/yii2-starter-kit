@@ -3,7 +3,6 @@
  * @var $this \yii\web\View
  * @var $model \common\models\Page
  */
-$this->title = $this->title ?: ($model->title ?: $model->name);
 ?>
 <div class="content">
     <h1><?php echo $model->title ?: $model->name ?></h1>

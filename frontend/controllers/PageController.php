@@ -9,6 +9,7 @@
 namespace frontend\controllers;
 
 use frontend\actions\UpdateAction;
+use frontend\components\Breadcrumbs;
 use frontend\components\Seo;
 use Yii;
 use common\models\Page;
@@ -34,11 +35,13 @@ class PageController extends Controller
         }
 
         Seo::make($model);
+        Breadcrumbs::make($model);
 
         if ($plugin = $model->type->plugin) {
             
         }
 
+        $this->trigger('beforeRenderView');
         return $this->render('view', ['model'=>$model]);
     }
 }

@@ -23,11 +23,11 @@ class Seo
         if($model->hasAttribute('body') && $model->body) {
             $view->registerMetaTag(['name' => 'description', 'content'=>StringHelper::truncateWords(strip_tags($model->body), 10, '')], 'description');
         }
-        elseif($view->title) {
+        elseif($model->hasAttribute('title') && $view->title) {
             $view->registerMetaTag(['name' => 'description', 'content'=>$view->title], 'description');
         }
 
-        if($view->title) {
+        if($model->hasAttribute('title') && $view->title) {
             $view->registerMetaTag(['name' => 'keywords', 'content'=>$view->title], 'keywords');
         }
     }

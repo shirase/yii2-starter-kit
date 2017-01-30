@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use common\models\Article;
 use common\models\ArticleAttachment;
 use common\models\Page;
+use frontend\components\Breadcrumbs;
 use frontend\components\Seo;
 use frontend\models\search\ArticleSearch;
 use Yii;
@@ -31,6 +32,7 @@ class ArticleController extends Controller
             }
 
             Seo::make($model);
+            Breadcrumbs::make($model);
         }
 
         $searchModel = new ArticleSearch();
@@ -38,6 +40,8 @@ class ArticleController extends Controller
         $dataProvider->sort = [
             'defaultOrder' => ['created_at' => SORT_DESC]
         ];
+
+        $this->trigger('beforeRenderIndex');
         return $this->render('index', ['dataProvider'=>$dataProvider]);
     }
 
@@ -49,12 +53,12 @@ class ArticleController extends Controller
     public function actionView($slug)
     {
         $model = Article::find()->published()->andWhere(['slug'=>$slug])->one();
-        if (!$model) {
+        if (!$model)
             throw new NotFoundHttpException;
-        }
 
         Seo::make($model);
 
+        $this->trigger('beforeRenderView');
         return $this->render('view', ['model'=>$model]);
     }
 
