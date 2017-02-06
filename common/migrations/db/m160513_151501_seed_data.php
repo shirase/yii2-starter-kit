@@ -62,8 +62,9 @@ class m160513_151501_seed_data extends Migration
             'name'=>'Main menu',
             'pid'=>0,
             'pos'=>1,
-            'created_at'=> time(),
-            'updated_at'=> time(),
+            'language'=>Yii::$app->language,
+            'created_at'=> new \yii\db\Expression('NOW()'),
+            'updated_at'=> new \yii\db\Expression('NOW()'),
             'bpath'=>\shirase\tree\TreeBehavior::toBase255(array(1))
         ]);
 
@@ -73,8 +74,9 @@ class m160513_151501_seed_data extends Migration
             'status'=>1,
             'pid'=>1,
             'pos'=>2,
-            'created_at'=> time(),
-            'updated_at'=> time(),
+            'language'=>Yii::$app->language,
+            'created_at'=> new \yii\db\Expression('NOW()'),
+            'updated_at'=> new \yii\db\Expression('NOW()'),
             'body'=>'Lorem ipsum',
             'bpath'=>\shirase\tree\TreeBehavior::toBase255(array(1, 2))
         ]);
@@ -85,8 +87,9 @@ class m160513_151501_seed_data extends Migration
             'status'=>1,
             'pid'=>1,
             'pos'=>3,
-            'created_at'=> time(),
-            'updated_at'=> time(),
+            'language'=>Yii::$app->language,
+            'created_at'=> new \yii\db\Expression('NOW()'),
+            'updated_at'=> new \yii\db\Expression('NOW()'),
             'bpath'=>\shirase\tree\TreeBehavior::toBase255(array(1, 3)),
             'type_id'=>3
         ]);

@@ -21,9 +21,9 @@ class m140703_123803_article extends Migration
             'created_by' => $this->integer(),
             'updated_by' => $this->integer(),
             'status' => $this->smallInteger()->notNull()->defaultValue(1),
-            'published_at' => $this->timestamp(),
-            'created_at' => $this->timestamp(),
-            'updated_at' => $this->timestamp(),
+            'published_at' => $this->timestamp()->null(),
+            'created_at' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
+            'updated_at' => $this->timestamp()->null(),
             'pos' => $this->integer(),
         ], $tableOptions);
 
