@@ -9,4 +9,7 @@ return [
     'bootstrap'=>[
         'backend\components\Bootstrap'
     ],
+    /*'as locale' => [
+        'class' => 'common\behaviors\LocaleBehavior',
+    ],*/
 ];
