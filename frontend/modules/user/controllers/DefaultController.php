@@ -2,7 +2,7 @@
 
 namespace frontend\modules\user\controllers;
 
-use common\base\MultiModel;
+use shirase\yii2\helpers\MultiModel;
 use frontend\modules\user\models\AccountForm;
 use Intervention\Image\ImageManagerStatic;
 use shirase55\filekit\actions\DeleteAction;
@@ -62,10 +62,8 @@ class DefaultController extends Controller
         $accountForm->setUser(Yii::$app->user->identity);
 
         $model = new MultiModel([
-            'models' => [
-                'account' => $accountForm,
-                'profile' => Yii::$app->user->identity->userProfile
-            ]
+            'account' => $accountForm,
+            'profile' => Yii::$app->user->identity->userProfile
         ]);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
