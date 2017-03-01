@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\behaviors\UriBehavior;
 use common\components\helpers\Url;
 use common\models\query\ArticleQuery;
 use shirase55\filekit\behaviors\UploadBehavior;
@@ -103,6 +104,18 @@ class Article extends ActiveRecord
                     'category_ids' => 'categories',
                 ]
             ],
+            [
+                'class' => UriBehavior::className(),
+                'route' => 'article/view',
+                'parents' => [
+                    [
+                        'relation'=>'categories',
+                        'params' => [
+                            'category' => 'id'
+                        ],
+                    ]
+                ],
+            ],
         ];
     }
 
@@ -171,11 +184,19 @@ class Article extends ActiveRecord
     }
 
     public function getCategories() {
-        return $this->hasMany(Page::className(), ['id'=>'page'])->viaTable('article_page', ['article'=>'id']);
+        return $this->hasMany(Page::className(), ['id'=>'page_id'])->viaTable('article_page', ['article_id'=>'id']);
+    }
+
+    public function getArticleCategories() {
+        return $this->hasMany(ArticlePage::className(), ['article_id'=>'id']);
     }
 
     public function getThumbnail_url()
     {
         return Url::image($this->thumbnail_path, ['w'=>200]);
+    }
+
+    public function getUris() {
+        return $this->hasMany(Uri::className(), ['id'=>'uri_id'])->viaTable('article_uri', ['article_id'=>'id']);
     }
 }

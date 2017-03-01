@@ -10,6 +10,7 @@ use frontend\components\Seo;
 use frontend\models\search\ArticleSearch;
 use Yii;
 use common\components\web\Controller;
+use yii\db\ActiveQuery;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 
@@ -36,13 +37,17 @@ class ArticleController extends Controller
         }
 
         $searchModel = new ArticleSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search([]);
         $dataProvider->sort = [
             'defaultOrder' => ['created_at' => SORT_DESC]
         ];
+        /** @var ActiveQuery $query */
+        $query = $dataProvider->query;
+        $query->joinWith('articleCategories')
+            ->andWhere(['page_id'=>$model->id]);
 
         $this->trigger('beforeRenderIndex');
-        return $this->render('index', ['dataProvider'=>$dataProvider]);
+        return $this->render('index', ['dataProvider'=>$dataProvider, 'category'=>$model]);
     }
 
     /**
@@ -50,11 +55,15 @@ class ArticleController extends Controller
      * @return string
      * @throws NotFoundHttpException
      */
-    public function actionView($slug)
+    public function actionView($slug, $category=null)
     {
         $model = Article::find()->published()->andWhere(['slug'=>$slug])->one();
         if (!$model)
             throw new NotFoundHttpException;
+
+        if ($category && $Category = Page::findOne($category)) {
+            Breadcrumbs::make($Category, $model->title);
+        }
 
         Seo::make($model);
 

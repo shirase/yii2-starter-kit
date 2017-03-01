@@ -48,8 +48,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute'=>'body',
                 'format'=>'ntext',
             ],
-            ['attribute'=>'author_id', 'value'=>$model->author->username],
-            ['attribute'=>'updater_id', 'value'=>$model->updater->username],
+            ['attribute'=>'created_by', 'value'=>$model->author->username],
+            ['attribute'=>'updated_by', 'value'=>$model->updater->username],
             [
                 'attribute'=>'status',
                 'format'=>'boolean',

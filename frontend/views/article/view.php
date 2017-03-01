@@ -3,8 +3,6 @@
 use common\components\helpers\Url;
 
 /* @var $model common\models\Article */
-$this->params['breadcrumbs'][] = ['label' => Yii::t('frontend', 'Articles'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = $model->title;
 ?>
 <div class="content">
     <article class="article-item">

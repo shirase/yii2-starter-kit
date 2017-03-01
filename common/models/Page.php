@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\behaviors\UriBehavior;
 use Yii;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
@@ -65,6 +66,16 @@ class Page extends \common\components\db\ActiveRecord
             ],
             [
                 'class' => \shirase\tree\TreeBehavior::className(),
+            ],
+            [
+                'class' => UriBehavior::className(),
+                'route' => function($model) {
+                    if ($plugin = $model->type->plugin) {
+                        return $plugin::route($model);
+                    } else {
+                        return 'page/view';
+                    }
+                },
             ],
         ];
     }
@@ -134,5 +145,13 @@ class Page extends \common\components\db\ActiveRecord
         if ($plugin = $this->type->plugin) {
             return $this->_dataModel = $plugin::dataModel($this->id);
         }
+    }
+
+    public function getParentPage() {
+        return $this->hasOne(Page::className(), ['id'=>'pid']);
+    }
+
+    public function getUris() {
+        return $this->hasMany(Uri::className(), ['id'=>'uri_id'])->viaTable('page_uri', ['page_id'=>'id']);
     }
 }

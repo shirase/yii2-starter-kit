@@ -16,6 +16,7 @@ $this->title = $this->title ?: Yii::t('frontend', 'Articles');
         'pager'=>[
             'hideOnSinglePage'=>true,
         ],
-        'itemView'=>'_item'
+        'itemView'=>'_item',
+        'viewParams' => ['category'=>$category],
     ])?>
 </div>
