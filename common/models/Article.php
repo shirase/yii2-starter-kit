@@ -184,11 +184,7 @@ class Article extends ActiveRecord
     }
 
     public function getCategories() {
-        return $this->hasMany(Page::className(), ['id'=>'page_id'])->viaTable('article_page', ['article_id'=>'id']);
-    }
-
-    public function getArticleCategories() {
-        return $this->hasMany(ArticlePage::className(), ['article_id'=>'id']);
+        return $this->hasMany(Page::className(), ['id'=>'page'])->viaTable('article_page', ['article'=>'id']);
     }
 
     public function getThumbnail_url()
