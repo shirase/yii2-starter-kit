@@ -19,7 +19,7 @@ return [
             'signKey' => env('GLIDE_SIGN_KEY')
         ],
         'request' => [
-            'baseUrl' => env('STORAGE_URL'),
+            'baseUrl' => rtrim(env('STORAGE_URL'), '/'),
         ],
     ]
 ];

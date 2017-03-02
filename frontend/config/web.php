@@ -49,7 +49,7 @@ $config = [
             }
         ],
         'request' => [
-            'baseUrl' => env('FRONTEND_URL'),
+            'baseUrl' => rtrim(env('FRONTEND_URL'), '/'),
             'cookieValidationKey' => env('FRONTEND_COOKIE_VALIDATION_KEY')
         ],
         'user' => [
