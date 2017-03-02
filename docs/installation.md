@@ -130,13 +130,13 @@ This is an example single domain config for apache
     RewriteRule !^/frontend/web /frontend/web%{REQUEST_URI} [L]
     # redirect to the page without a trailing slash (uncomment if necessary)
     #RewriteCond %{REQUEST_URI} ^/admin/$
-    #RewriteRule ^(/admin)/ $1 [L,R=301]
+    #RewriteRule ^(admin)/ $1 [L,R=301]
     # disable the trailing slash redirect
     RewriteCond %{REQUEST_URI} ^/admin$
-    RewriteRule ^/admin /backend/web/index.php [L]
+    RewriteRule ^admin /backend/web/index.php [L]
     # the main rewrite rule for the backend application
     RewriteCond %{REQUEST_URI} ^/admin
-    RewriteRule ^/admin(.*) /backend/web$1 [L]
+    RewriteRule ^admin(.*) /backend/web$1 [L]
 
     DocumentRoot /your/path/to/yii2-starter-kit
     <Directory />
