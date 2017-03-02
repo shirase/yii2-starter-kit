@@ -6,13 +6,14 @@ return [
     'rules'=> [
         // Pages
         ['class'=>'common\components\web\UriRule', 'route'=>'page/view'],
+        ['class'=>'common\components\web\url\Page', 'route'=>'page/view'],
 
         // Articles
         ['class'=>'common\components\web\UriRule', 'route'=>'article/index'],
         ['pattern'=>'article/attachment-download', 'route'=>'article/attachment-download'],
         ['pattern'=>'article/index', 'route'=>'article/index'],
         ['class'=>'common\components\web\UriRule', 'route'=>'article/view'],
-        //['pattern'=>'article/<slug>', 'route'=>'article/view'],
+        ['pattern'=>'article/<slug>', 'route'=>'article/view'],
 
         // Api
         ['class' => 'yii\rest\UrlRule', 'controller' => 'api/v1/article', 'only' => ['index', 'view', 'options']],
