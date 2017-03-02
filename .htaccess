@@ -1,0 +1,10 @@
+RewriteEngine on
+
+RewriteCond %{REQUEST_URI} !^/(backend|admin|storage)
+RewriteRule !^frontend/web /frontend/web%{REQUEST_URI} [L]
+
+RewriteCond %{REQUEST_URI} ^/admin
+RewriteRule ^admin(.*) /backend/web$1 [L]
+
+RewriteCond %{REQUEST_URI} ^/storage
+RewriteRule ^storage(.*) /storage/web$1 [L]

@@ -17,6 +17,9 @@ return [
             'cachePath' => '@storage/web/cache',
             'maxImageSize' => env('GLIDE_MAX_IMAGE_SIZE'),
             'signKey' => env('GLIDE_SIGN_KEY')
-        ]
+        ],
+        'request' => [
+            'baseUrl' => env('STORAGE_URL'),
+        ],
     ]
 ];

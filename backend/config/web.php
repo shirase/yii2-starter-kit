@@ -23,6 +23,7 @@ $config = [
             'errorAction' => 'site/error',
         ],
         'request' => [
+            'baseUrl' => env('BACKEND_URL'),
             'cookieValidationKey' => env('BACKEND_COOKIE_VALIDATION_KEY'),
         ],
         'user' => [
