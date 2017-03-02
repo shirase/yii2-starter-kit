@@ -1,5 +1,6 @@
 <?php
 error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT);
+ini_set('date.timezone', 'Etc/GMT-3');
 
 $config = [
     'name'=>'Yii2 Starter Kit',
@@ -36,7 +37,7 @@ $config = [
 
         'formatter'=>[
             'class'=>'yii\i18n\Formatter',
-            'defaultTimeZone'=>'GMT+04:00',
+            'defaultTimeZone'=>ini_get('date.timezone'),
         ],
 
         'glide' => [
