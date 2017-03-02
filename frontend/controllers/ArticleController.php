@@ -41,10 +41,13 @@ class ArticleController extends Controller
         $dataProvider->sort = [
             'defaultOrder' => ['created_at' => SORT_DESC]
         ];
-        /** @var ActiveQuery $query */
-        $query = $dataProvider->query;
-        $query->joinWith('articleCategories')
-            ->andWhere(['page_id'=>$model->id]);
+
+        if ($model) {
+            /** @var ActiveQuery $query */
+            $query = $dataProvider->query;
+            $query->joinWith('categories')
+                ->andWhere(['article_page.page'=>$model->id]);
+        }
 
         $this->trigger('beforeRenderIndex');
         return $this->render('index', ['dataProvider'=>$dataProvider, 'category'=>$model]);
