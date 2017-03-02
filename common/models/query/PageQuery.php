@@ -18,10 +18,10 @@ class PageQuery extends \common\components\db\ActiveQuery
         ];
     }
 
-    /*public function active()
+    public function active()
     {
         return $this->andWhere('[[status]]=1');
-    }*/
+    }
 
     /**
      * @inheritdoc

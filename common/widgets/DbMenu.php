@@ -31,7 +31,7 @@ class DbMenu extends Menu
     public $key;
 
     private function makeItems($pid, &$tree) {
-        if (!isset($tree[$pid])) return null;
+        if (!isset($tree[$pid])) return [];
 
         $items = [];
         foreach ($tree[$pid] as $id=>$row) {
@@ -54,7 +54,7 @@ class DbMenu extends Menu
         if (!$model) throw new HttpException(500, 'Menu not found');
 
         $tree = [];
-        if ($rows = Page::find()->orderBy('bpath')->children($model->id)->all()) {
+        if ($rows = Page::find()->active()->orderBy('bpath')->children($model->id)->all()) {
             foreach ($rows as $row) {
                 if (!isset($tree[$row->pid])) $tree[$row->pid] = [];
                 $tree[$row->pid][$row->id] = ['label'=>$row->name, 'url'=>Url::pageUrl($row)];
