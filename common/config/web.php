@@ -59,7 +59,23 @@ if (YII_DEBUG) {
 
 if (YII_ENV_DEV) {
     $config['modules']['gii'] = [
-        'allowedIPs' => ['127.0.0.1', '::1', '192.168.33.1', '172.17.42.1', '172.17.0.1', '192.168.99.1'],
+        'allowedIPs' => ['127.0.0.1', '::1'],
+        'generators' => [
+            'migrik'=>[
+                'class'=>\insolita\migrik\gii\StructureGenerator::class,
+                'templates'=>
+                    [
+                        'custom'=>'@backend/gii/templates/migrator_schema'
+                    ]
+            ],
+            'migrikdata'=>[
+                'class'=>\insolita\migrik\gii\DataGenerator::class,
+                'templates'=>
+                    [
+                        'custom'=>'@backend/gii/templates/migrator_data'
+                    ]
+            ],
+        ],
     ];
 }
 
