@@ -31,11 +31,4 @@ $(function() {
                 .prepend($('<div class="box-header"><div class="box-title" onclick="$.AdminLTE.boxWidget.collapse($(this).next().find(\'button\'))" style="cursor: pointer">'+searchForm.find('.btn-primary:first').text()+'</div><div class="box-tools pull-right"><button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button></div></div>'));
         }
     })();
-
-    $(document).on('dblclick', '.grid-view tr', function() {
-        var href = $(this).find('a:first').trigger('click').attr('href');
-        if(href) {
-            location.href = href;
-        }
-    });
-})
+});
