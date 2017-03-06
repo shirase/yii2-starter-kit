@@ -36,7 +36,7 @@ $this->registerJs('$(document).on("change", "#page-type_id", function() {$.pjax.
 
         <?= $form->field($model, 'body')->widget(\yii\imperavi\Widget::className()) ?>
 
-        <?= $form->field($model, 'type_id')->widget(kartik\select2\Select2::className(), ['data'=>[''=>'-']+ArrayHelper::map(common\models\PageType::find()->orderBy('pos')->all(), 'id', 'name')]) ?>
+        <?php if ($model->pid!==null) echo $form->field($model, 'type_id')->widget(kartik\select2\Select2::className(), ['data'=>[''=>'-']+ArrayHelper::map(common\models\PageType::find()->orderBy('pos')->all(), 'id', 'name')]) ?>
 
         <?php Pjax::begin(['id'=>'type_params']) ?>
             <?php
