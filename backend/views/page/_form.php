@@ -28,7 +28,7 @@ $this->registerJs('$(document).on("change", "#page-type_id", function() {$.pjax.
 
     <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
-    <?php if ($model->pid!=0): ?>
+    <?php if ($model->pid || $model->pid===null): ?>
 
         <?= $form->field($model, 'status')->dropDownList(['1'=>Yii::t('backend', 'Yes'), '0'=>Yii::t('backend', 'No')]) ?>
 
