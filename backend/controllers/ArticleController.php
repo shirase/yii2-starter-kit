@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use pheme\grid\actions\ToggleAction;
 use Yii;
 use common\models\Article;
 use common\models\search\ArticleSearch;
@@ -40,6 +41,11 @@ class ArticleController extends Controller
                 'class' => EditableColumnAction::className(),
                 'modelClass' => Article::className(),
                 'showModelErrors' => true,
+            ],
+            'toggle' => [
+                'class' => ToggleAction::className(),
+                'modelClass' => Article::className(),
+                'attribute' => 'status',
             ]
         ]);
     }

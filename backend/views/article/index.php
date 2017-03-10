@@ -36,8 +36,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['attribute'=>'title'],
             ['attribute'=>'slug'],
             //['attribute'=>'author_id', 'value'=>function($model) {return $model->author->username;}],
-            ['class'=>'kartik\grid\BooleanColumn', 'attribute'=>'status'],
-
+            [
+                'class' => '\pheme\grid\ToggleColumn',
+                'attribute' => 'status',
+            ],
 
             [
                 'class' => 'kartik\grid\ActionColumn',
