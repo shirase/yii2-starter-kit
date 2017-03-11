@@ -30,7 +30,7 @@ class PageController extends Controller
     public function actionView($slug)
     {
         $model = Page::find()->where(['slug'=>$slug, 'status'=>Page::STATUS_PUBLISHED])->one();
-        if (!$model) {
+        if (!$model || $model->pid === 0) {
             throw new NotFoundHttpException(Yii::t('frontend', 'Page not found'));
         }
 
