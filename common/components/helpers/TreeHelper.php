@@ -23,6 +23,7 @@ class TreeHelper
                     $i = $rtree[$i];
                 }
 
+                if ($level<0) $level = 0;
                 $options[$row[0]] = str_repeat($tab, $level) . $row[1];
             }
         }
