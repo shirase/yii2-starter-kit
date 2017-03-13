@@ -3,5 +3,10 @@
  * @author Eugene Terentev <eugene@terentev.net>
  */
 return [
-    'homeUrl' => null
+    'homeUrl' => null,
+    'components' => [
+        'request' => [
+            'baseUrl' => '',
+        ],
+    ],
 ];
