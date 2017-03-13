@@ -47,7 +47,7 @@
         "bower-asset/jquery-slimscroll": "^1.3",
         "bower-asset/flot": "^0.8",
         "symfony/process": "^3.0",
-        "mdmsoft/yii2-admin": "^2.5",
+        "mdmsoft/yii2-admin": "~2.0",
         "voskobovich/yii2-many-many-behavior": "*",
         "kartik-v/yii2-widgets": "^3.4",
         "kartik-v/yii2-grid": "^3.1",
