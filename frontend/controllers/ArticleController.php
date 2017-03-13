@@ -62,7 +62,7 @@ class ArticleController extends Controller
     {
         $model = Article::find()->published()->andWhere(['slug'=>$slug])->one();
         if (!$model)
-            throw new NotFoundHttpException;
+            throw new NotFoundHttpException();
 
         if ($category && $Category = Page::findOne($category)) {
             Breadcrumbs::make($Category, $model->title);
