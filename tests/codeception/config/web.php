@@ -4,9 +4,4 @@
  */
 return [
     'homeUrl' => null,
-    'components' => [
-        'request' => [
-            'baseUrl' => '',
-        ],
-    ],
 ];
