@@ -11,9 +11,9 @@ return [
         'status' => 1,
         'created_by' => 1,
         'updated_by' => 1,
-        'published_at' => date('Y-m-d H:i:s', time() - 10),
-        'created_at' => date('Y-m-d H:i:s', time() - 10),
-        'updated_at' => date('Y-m-d H:i:s', time() - 10)
+        'published_at' => new \yii\db\Expression('NOW()'),
+        'created_at' => new \yii\db\Expression('NOW()'),
+        'updated_at' => new \yii\db\Expression('NOW()'),
     ],
     [
         'id' => 2,
@@ -23,8 +23,8 @@ return [
         'created_by' => 1,
         'updated_by' => 1,
         'status' => 1,
-        'published_at' => date('Y-m-d H:i:s', time() + \cheatsheet\Time::SECONDS_IN_A_YEAR),
-        'created_at' => date('Y-m-d H:i:s', time() + \cheatsheet\Time::SECONDS_IN_A_YEAR),
-        'updated_at' => date('Y-m-d H:i:s', time() + \cheatsheet\Time::SECONDS_IN_A_YEAR)
+        'published_at' => new \yii\db\Expression('NOW() + INTERVAL 1 year'),
+        'created_at' => new \yii\db\Expression('NOW() + INTERVAL 1 year'),
+        'updated_at' => new \yii\db\Expression('NOW() + INTERVAL 1 year'),
     ]
 ];
