@@ -85,7 +85,7 @@
     },
     "config": {
         "process-timeout": 1800,
-        "preferred-install": "source"
+        "preferred-install": "dist"
     },
     "extra": {
         "asset-installer-paths": {
