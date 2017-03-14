@@ -133,7 +133,7 @@ $bundle = BackendAsset::register($this);
 
                     if ($rows = Page::find()->andWhere(['pid'=>'0'])->orderBy('pos')->all()) {
                         foreach ($rows as $row) {
-                            array_unshift($contentItems, ['label'=>$row->name, 'url'=>['/page/tree', 'id'=>$row->id], 'icon'=>'<i class="fa fa-angle-double-right"></i>', 'visible'=>Yii::$app->user->can('/page/tree'), 'activateItemByController'=>false, 'active'=>Yii::$app->controller->id=='page' && Page::findOne(Yii::$app->request->get('id'))->pid!==null]);
+                            array_unshift($contentItems, ['label'=>$row->name, 'url'=>['/page/tree', 'id'=>$row->id], 'icon'=>'<i class="fa fa-angle-double-right"></i>', 'visible'=>Yii::$app->user->can('/page/tree'), 'activateItemByController'=>false, 'active'=>Yii::$app->controller->id=='page' && (Yii::$app->request->get('id')==$row->id || (Yii::$app->controller->action->id=='update' && Page::findOne(Yii::$app->request->get('id'))->path[0]==$row->id))]);
                         }
                     }
                 ?>
