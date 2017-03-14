@@ -72,6 +72,7 @@ class UriBehavior extends Behavior
 
                 foreach ($parents as $parent) {
                     $routeParams = ['slug'=>$slug];
+                    if (isset($parentConfig['params']))
                     foreach ($parentConfig['params'] as $name=>$param) {
                         if (is_numeric($name)) {
                             $name = $param;
