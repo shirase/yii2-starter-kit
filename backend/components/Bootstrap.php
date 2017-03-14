@@ -52,5 +52,9 @@ class Bootstrap implements BootstrapInterface
         \Yii::$container->set('kartik\dialog\Dialog', [
             'jsPosition' => View::POS_END,
         ]);
+
+        \Yii::$container->set('kartik\grid\GridView', [
+            'export' => false,
+        ]);
     }
 }
