@@ -18,13 +18,14 @@ cache:
     - $HOME/.composer/cache
 
 install:
-  - |
-    if [ $TRAVIS_PHP_VERSION != '5.6' ]; then
-        phpenv config-rm xdebug.ini
-    fi
+  - phpenv config-rm xdebug.ini
   - travis_retry composer self-update && composer --version
   - travis_retry composer global require "fxp/composer-asset-plugin:^1.2" "codeception/codeception:^2.0" "codeception/specify" "codeception/verify"
   - travis_retry composer install --prefer-dist --no-interaction
+  - |
+      if [ $TRAVIS_PHP_VERSION = '5.6' ]; then
+          phpenv config-add xdebug.ini
+      fi
 
 # setup application:
   - |
@@ -40,7 +41,7 @@ script:
     php -S localhost:8080 > /dev/null 2>&1 &
     cd tests
     if [ $TRAVIS_PHP_VERSION = '5.6' ]; then
-      ./../vendor/bin/codecept run --debug --coverage --coverage-xml
+      ./../vendor/bin/codecept run --debug
     else
       ./../vendor/bin/codecept run --debug
     fi
