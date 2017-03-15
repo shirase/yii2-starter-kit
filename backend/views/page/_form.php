@@ -24,7 +24,7 @@ $this->registerJs('$(document).on("change", "#page-type_id", function() {$.pjax.
 
     <?= $form->field($model, 'language')->dropDownList(Yii::$app->params['availableLocales']) ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'name')->textInput(['maxlength' => true])->hint(Yii::t('app', 'Отображается в названии пункта меню и в заголовке страницы')) ?>
 
     <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
@@ -32,9 +32,19 @@ $this->registerJs('$(document).on("change", "#page-type_id", function() {$.pjax.
 
         <?= $form->field($model, 'status')->dropDownList(['1'=>Yii::t('backend', 'Yes'), '0'=>Yii::t('backend', 'No')]) ?>
 
-        <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-
         <?= $form->field($model, 'body')->widget(\yii\imperavi\Widget::className()) ?>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">SEO</div>
+            </div>
+            <div class="panel-body">
+                <?= $form->field($model, 'title')->textInput(['maxlength' => true])->hint(Yii::t('app', 'Заголовок страницы (тег H1)')) ?>
+                <?= $form->field($model, 'page_title')->textInput(['maxlength' => true])->hint(Yii::t('app', 'Заголовок страницы (тег title)')) ?>
+                <?= $form->field($model, 'page_keywords')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'page_description')->textInput(['maxlength' => true]) ?>
+            </div>
+        </div>
 
         <?php if ($model->pid!==null) echo $form->field($model, 'type_id')->widget(kartik\select2\Select2::className(), ['data'=>[''=>'-']+ArrayHelper::map(common\models\PageType::find()->orderBy('pos')->all(), 'id', 'name')]) ?>
 

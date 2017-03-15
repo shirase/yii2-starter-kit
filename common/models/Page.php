@@ -24,6 +24,9 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $pos
  * @property resource $bpath
  * @property PageType $type
+ * @property string $page_title
+ * @property string $page_keywords
+ * @property string $page_description
  *
  * @method static Page|null findOne($condition)
  */
@@ -91,6 +94,7 @@ class Page extends \common\components\db\ActiveRecord
             [['type_id', 'status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['language'], 'string', 'max' => 5],
+            [['page_title', 'page_keywords', 'page_description'], 'string', 'max' => 255],
             [['title'], 'string', 'max' => 512],
             [['slug'], 'string', 'max' => 1024],
             [['slug'], 'unique'],
@@ -118,6 +122,9 @@ class Page extends \common\components\db\ActiveRecord
             'status' => Yii::t('common', 'Published'),
             'created_at' => Yii::t('common', 'Created At'),
             'updated_at' => Yii::t('common', 'Updated At'),
+            'page_title' => Yii::t('common', 'Page title'),
+            'page_keywords' => Yii::t('common', 'Page keywords'),
+            'page_description' => Yii::t('common', 'Page description'),
         ];
     }
 
