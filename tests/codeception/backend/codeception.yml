@@ -15,3 +15,13 @@ config:
     # the entry script URL (with host info) for functional and acceptance tests
     # PLEASE ADJUST IT TO THE ACTUAL ENTRY SCRIPT URL
     test_entry_url: http://localhost:8080/backend/web/index-test.php
+coverage:
+  enabled: true
+  c3_url: 'http://localhost:8080/backend/web/index-test.php/'
+  include:
+    - ../../../backend/components/*
+    - ../../../backend/controllers/*
+    - ../../../backend/models/*
+    - ../../../backend/views/*
+    - ../../../backend/widgets/*
+    - ../../../backend/modules/*

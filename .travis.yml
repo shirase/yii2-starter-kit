@@ -18,7 +18,6 @@ cache:
     - $HOME/.composer/cache
 
 install:
-  - phpenv config-rm xdebug.ini
   - travis_retry composer self-update && composer --version
   - travis_retry composer global require "fxp/composer-asset-plugin:^1.2" "codeception/codeception:^2.0" "codeception/specify" "codeception/verify"
   - travis_retry composer install --prefer-dist --no-interaction
@@ -36,4 +35,7 @@ script:
   - |
     php -S localhost:8080 > /dev/null 2>&1 &
     cd tests
-    ./../vendor/bin/codecept run --debug
+    ./../vendor/bin/codecept run --debug --coverage --coverage-xml
+
+after_success:
+  - ./vendor/bin/coveralls -v

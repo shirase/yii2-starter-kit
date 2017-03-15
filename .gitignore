@@ -38,3 +38,4 @@ phpunit.phar
 # Tests
 tests/codeception/*/_support/_generated/*
 
+/c3.php
