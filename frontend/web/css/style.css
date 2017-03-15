@@ -121,6 +121,7 @@ a.desc:after {
   max-width: 100%;
   height: 100%;
   z-index: 1;
+  background: url("../img/preloader.gif") center center no-repeat #FFF;
 }
 .iframe-popup iframe {
   width: 100%;
