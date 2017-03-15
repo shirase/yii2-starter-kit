@@ -10,6 +10,15 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Articles'), 'url
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
 ?>
+<div class="clearfix">
+    <?= Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->id], [
+        'class' => 'pull-right btn btn-danger btn-xs',
+        'data' => [
+            'confirm' => Yii::t('backend', 'Are you sure you want to delete this item?'),
+            'method' => 'post',
+        ],
+    ]) ?>
+</div>
 <div class="article-update">
 
     <h1><?= Html::encode($this->title) ?></h1>

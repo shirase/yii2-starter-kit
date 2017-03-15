@@ -20,6 +20,8 @@ use yii\web\JsExpression;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?php echo $form->field($model, 'status')->checkbox() ?>
+
     <?php echo $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'slug')
@@ -50,8 +52,6 @@ use yii\web\JsExpression;
             'maxNumberOfFiles' => 10
         ]);
     ?>
-
-    <?php echo $form->field($model, 'status')->checkbox() ?>
 
     <?php echo $form->field($model, 'published_at')->widget(
         DateControl::className(),

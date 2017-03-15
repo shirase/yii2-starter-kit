@@ -10,7 +10,7 @@ use common\components\helpers\Url;
 
         <?php if (Yii::$app->user->can('administrator')): ?>
             <div class="editor-panel">
-                <a class="j-frame-dialog link-update" href="<?= Yii::$app->urlManagerBackend->createAbsoluteUrl(['article/update', 'id'=>$model->id]) ?>" target="_blank"><?= Yii::t('frontend', 'Изменить') ?></a>
+                <a class="j-frame-dialog link-update" data-type="update" href="<?= Yii::$app->urlManagerBackend->createAbsoluteUrl(['article/update', 'id'=>$model->id]) ?>" target="_blank"><?= Yii::t('frontend', 'Изменить') ?></a>
             </div>
         <?php endif ?>
 

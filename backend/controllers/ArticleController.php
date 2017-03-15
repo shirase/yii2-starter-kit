@@ -97,6 +97,7 @@ class ArticleController extends Controller
         $model = new Article();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('script', '$(document).trigger("action.Create", '.Json::encode(['class'=>$model::className()]+$model->attributes).');');
             return $this->redirect(['index', 'returned'=>true]);
         } else {
             return $this->render('create', [
@@ -116,6 +117,7 @@ class ArticleController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('script', '$(document).trigger("action.Update", '.Json::encode(['class'=>$model::className()]+$model->attributes).');');
             return $this->redirect(['index', 'returned'=>true]);
         } else {
             return $this->render('update', [
@@ -152,7 +154,9 @@ class ArticleController extends Controller
             }
             return;
         } else {
-            $this->findModel($id)->delete();
+            $model = $this->findModel($id);
+            Yii::$app->session->setFlash('script', '$(document).trigger("action.Delete", '.Json::encode(['class'=>$model::className()]+$model->attributes).');');
+            $model->delete();
             $this->redirect(['index', 'returned'=>true]);
         }
     }
