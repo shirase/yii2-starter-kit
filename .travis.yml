@@ -35,7 +35,14 @@ script:
   - |
     php -S localhost:8080 > /dev/null 2>&1 &
     cd tests
-    ./../vendor/bin/codecept run --debug --coverage --coverage-xml
+    if [ $TRAVIS_PHP_VERSION = '5.6' ]; then
+      ./../vendor/bin/codecept run --debug --coverage --coverage-xml
+    else
+      ./../vendor/bin/codecept run --debug
+    fi
 
 after_success:
-  - ./vendor/bin/coveralls -v
+  - |
+    if [ $TRAVIS_PHP_VERSION = '5.6' ]; then
+      travis_retry ./vendor/bin/coveralls -v
+    fi
