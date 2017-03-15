@@ -6,9 +6,9 @@ $this->title = $this->title ?: Yii::t('frontend', 'Articles');
     <h1><?php echo Yii::t('frontend', 'Articles') ?></h1>
     <?php if (Yii::$app->user->can('administrator')): ?>
         <div class="editor-panel">
-            <a class="j-frame-dialog" href="<?= Yii::$app->urlManagerBackend->createAbsoluteUrl(['article/create']) ?>" target="_blank"><?= Yii::t('frontend', 'Добавить') ?></a>
+            <a class="j-frame-dialog link-create" href="<?= Yii::$app->urlManagerBackend->createAbsoluteUrl(['article/create']) ?>" target="_blank"><?= Yii::t('frontend', 'Добавить') ?></a>
             |
-            <a class="j-frame-dialog" href="<?= Yii::$app->urlManagerBackend->createAbsoluteUrl(['article/index']) ?>" target="_blank"><?= Yii::t('frontend', 'Список') ?></a>
+            <a class="j-frame-dialog link-index" href="<?= Yii::$app->urlManagerBackend->createAbsoluteUrl(['article/index']) ?>" target="_blank"><?= Yii::t('frontend', 'Список') ?></a>
         </div>
     <?php endif ?>
     <?php echo \yii\widgets\ListView::widget([

@@ -8,6 +8,12 @@ use common\components\helpers\Url;
     <article class="article-item">
         <h1><?php echo $model->title ?></h1>
 
+        <?php if (Yii::$app->user->can('administrator')): ?>
+            <div class="editor-panel">
+                <a class="j-frame-dialog link-update" href="<?= Yii::$app->urlManagerBackend->createAbsoluteUrl(['article/update', 'id'=>$model->id]) ?>" target="_blank"><?= Yii::t('frontend', 'Изменить') ?></a>
+            </div>
+        <?php endif ?>
+
         <?php if ($model->thumbnail_path): ?>
             <?php echo \yii\helpers\Html::img(
                 Url::image($model->thumbnail_path, ['w' => 200]),
