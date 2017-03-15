@@ -1,3 +1,7 @@
 .cke_editable_inline {
   outline: 1px solid pink;
 }
+
+.cke_editable_inline:focus {
+  outline: 1px solid red;
+}
