@@ -36,11 +36,7 @@ if (!function_exists('__c3_error')) {
         $errorLogFile = defined('C3_CODECOVERAGE_ERROR_LOG_FILE') ?
             C3_CODECOVERAGE_ERROR_LOG_FILE :
             C3_CODECOVERAGE_MEDIATE_STORAGE . DIRECTORY_SEPARATOR . 'error.txt';
-        if (is_writable($errorLogFile)) {
-            file_put_contents($errorLogFile, $message);
-        } else {
-            $message = "Could not write error to log file ($errorLogFile), original message: $message";
-        }
+        file_put_contents($errorLogFile, $message . "\n", FILE_APPEND);
         /*if (!headers_sent()) {
             header('X-Codeception-CodeCoverage-Error: ' . str_replace("\n", ' ', $message), true, 500);
         }
