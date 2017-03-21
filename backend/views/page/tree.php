@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'check_callback' => true,
         ],
         'bind' => [
-            'create_node.jstree' => 'function(event, obj) {}',
+            //'create_node.jstree' => 'function(event, obj) {}',
             'delete_node.jstree' => 'function(event, obj) {
                     if (parseInt(obj.node.id)) {
                         $.ajax("'.Url::toRoute(['j-delete']).'",
@@ -80,26 +80,26 @@ function(node) {
         var inst = $.jstree.reference(data.reference),
             obj = inst.get_node(data.reference);
 
-        inst.create_node(obj, {"type":"page", "id":"0"}, "last", function (new_node) {
-                new_node.a_attr.style = \'opacity:.5\';
-                inst.edit(new_node, "",
-                    function(node) {
-                        if (node.text) {
-                            $.ajax("'.Url::toRoute(['j-create']).'",
-                                {
-                                    data: {name:node.text, parent:node.parent},
-                                    dataType:"json",
-                                    success: function(data) {
-                                        inst.set_id(node, data["id"]);
-                                    }
+        inst.create_node(obj, {"type":"page"}, "last", function (new_node) {
+            new_node.a_attr.style = \'opacity:.5\';
+            inst.edit(new_node, "",
+                function(node) {
+                    if (node.text) {
+                        $.ajax("'.Url::toRoute(['j-create']).'",
+                            {
+                                data: {name:node.text, parent:node.parent},
+                                dataType:"json",
+                                success: function(data) {
+                                    inst.set_id(node, data["id"]);
                                 }
-                            );
-                        } else {
-                            inst.delete_node(node);
-                        }
+                            }
+                        );
+                    } else {
+                        inst.delete_node(node);
                     }
-                );
-            });
+                }
+            );
+        });
     }
 
     items.update = {
