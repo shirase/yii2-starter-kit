@@ -23,7 +23,7 @@ $config = [
             'errorAction' => 'site/error',
         ],
         'request' => [
-            'baseUrl' => rtrim(env('BACKEND_URL'), '/'),
+            'baseUrl' => rtrim(Yii::getAlias('@backendUrl'), '/'),
             'cookieValidationKey' => env('BACKEND_COOKIE_VALIDATION_KEY'),
         ],
         'user' => [
