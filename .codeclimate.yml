@@ -12,3 +12,5 @@ engines:
         enabled: false
       Naming/ShortMethodName:
         enabled: false
+      UnusedFormalParameter:
+        enabled: false
