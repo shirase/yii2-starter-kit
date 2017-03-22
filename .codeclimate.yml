@@ -4,3 +4,5 @@ engines:
     checks:
       CleanCode/StaticAccess:
         enabled: false
+      CleanCode/BooleanArgumentFlag:
+        enabled: false
