@@ -25,3 +25,5 @@ coverage:
     - ../../../frontend/views/*
     - ../../../frontend/widgets/*
     - ../../../frontend/modules/*
+  exclude:
+    - ../../../frontend/modules/api/*
