@@ -27,14 +27,15 @@ class Plugin implements PluginInterface {
         $dataModel = $Page->dataModel;
         if (!$dataModel) return false;
 
-        if ($dataModel->pageId && !$dataModel->canonical) {
-            return self::URI(Page::findOne($dataModel->pageId));
+        if ($dataModel->page_id && !$dataModel->canonical) {
+            return Url::pageUrl(Page::findOne($dataModel->page_id));
         }
 
+        $urlManager = \Yii::$app->urlManagerFrontend;
         if (isset($Page->slug)) {
-            return Url::toRoute(['/page/view', 'slug'=>$Page->slug]);
+            return $urlManager->createAbsoluteUrl(['/page/view', 'slug'=>$Page->slug]);
         } else {
-            return Url::toRoute(['/page/view', 'id'=>$Page->id]);
+            return $urlManager->createAbsoluteUrl(['/page/view', 'id'=>$Page->id]);
         }
     }
 

@@ -8,6 +8,7 @@
 
 namespace frontend\controllers;
 
+use common\components\helpers\Url;
 use frontend\actions\UpdateAction;
 use frontend\components\Breadcrumbs;
 use frontend\components\Seo;
@@ -37,8 +38,14 @@ class PageController extends Controller
         Seo::make($model);
         Breadcrumbs::make($model);
 
-        if ($plugin = $model->type->plugin) {
-            
+        if ($model->type_id == 1 && $model->dataModel->canonical) {
+            if ($canonicalPage = Page::findOne($model->dataModel->page_id)) {
+                $this->view->registerLinkTag(['rel'=>'canonical', 'href'=>Url::pageUrl($canonicalPage)]);
+            }
+        } else {
+            if ($plugin = $model->type->plugin) {
+                $this->redirect(Url::pageUrl($model));
+            }
         }
 
         $this->trigger('beforeRenderView');
