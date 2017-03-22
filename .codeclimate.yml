@@ -8,3 +8,7 @@ engines:
         enabled: false
       Design/CouplingBetweenObjects:
         enabled: false
+      Naming/LongVariable:
+        enabled: false
+      Naming/ShortMethodName:
+        enabled: false
