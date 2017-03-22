@@ -1,7 +1,23 @@
 (function($) {
+    $('body')
+        .on('fixed', function() {
+            var body = $(this);
+            var y = body.scrollTop();
+            body.addClass('fixed');
+            $('#body_scroll').scrollTop(y);
+        })
+        .on('unfixed', function() {
+            var body = $(this);
+            var y = $('#body_scroll').scrollTop();
+            body.removeClass('fixed');
+            body.scrollTop(y);
+        });
+
     $(document).on('click', '.j-frame-dialog', function(event) {
         event.preventDefault();
         var el = $(this);
+
+        $('body').trigger('fixed');
 
         var iframePopup = $('<div class="iframe-popup" />').appendTo('body');
         var iframePopupIframe = $('<div class="iframe-popup-iframe" />').appendTo(iframePopup);
@@ -9,6 +25,7 @@
         close.click(function() {
             iframePopup.remove();
             $(document).off('action');
+            $('body').trigger('unfixed');
         });
         var iframe = $('<iframe />').appendTo(iframePopupIframe);
         iframe.attr('src', el.attr('href'));
