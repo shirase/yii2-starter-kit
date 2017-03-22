@@ -51,3 +51,6 @@ after_success:
       cd ..
       travis_retry ./vendor/bin/coveralls -v
     fi
+
+notifications:
+  email: false
