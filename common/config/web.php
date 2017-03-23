@@ -75,6 +75,9 @@ if (YII_ENV_DEV) {
                         'custom'=>'@backend/gii/templates/migrator_data'
                     ]
             ],
+            'fixture' => [
+                'class' => 'elisdn\gii\fixture\Generator',
+            ],
         ],
     ];
 }
