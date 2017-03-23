@@ -14,31 +14,28 @@ class PageCest
         $I->amOnPage(['page/index']);
         $I->canSeeResponseCodeIs(200);
         $I->canSeeElement('.page-index');
-        $I->see('test-1');
+        $I->see('Static page');
     }
 
     public function testCreate(FunctionalTester $I) {
         $I->amOnPage(['page/create']);
         $I->canSeeResponseCodeIs(200);
-        $I->fillField('input[name="Page[name]"]', 'Test 2');
+        $I->fillField('input[name="Page[name]"]', 'Created');
         $I->submitForm('#page-form', []);
-        $I->seeRecord(Page::className(), ['slug'=>'test-2']);
-
-        $I->amOnPage(['page/index']);
-        $I->see('Test 2');
+        $I->seeRecord(Page::className(), ['slug'=>'created']);
     }
 
     public function testUpdate(FunctionalTester $I) {
-        $I->amOnPage(['page/update', 'id'=>2]);
-        $I->fillField('input[name="Page[name]"]', 'Test 3');
+        $I->amOnPage(['page/update', 'id'=>3]);
+        $I->fillField('input[name="Page[name]"]', 'Updated');
         $I->submitForm('#page-form', []);
-        $I->seeRecord(Page::className(), ['name'=>'Test 3']);
+        $I->seeRecord(Page::className(), ['name'=>'Updated']);
     }
 
     public function testDelete(FunctionalTester $I) {
         $I->amOnPage(['page/index']);
-        $I->seeRecord(Page::className(), ['id'=>2]);
-        $I->sendAjaxPostRequest(['page/delete', 'id'=>2]);
-        $I->dontSeeRecord(Page::className(), ['id'=>2]);
+        $I->seeRecord(Page::className(), ['id'=>3]);
+        $I->sendAjaxPostRequest(['page/delete', 'id'=>3]);
+        $I->dontSeeRecord(Page::className(), ['id'=>3]);
     }
 }
