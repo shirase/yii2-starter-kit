@@ -8,6 +8,7 @@ class ArticleCest
     public function testArticlesList(FunctionalTester $I)
     {
         $I->amOnPage(['article/index']);
+        $I->seeResponseCodeIs(200);
         $I->canSee('Articles', 'h1');
         $I->canSee('Test Article 1', 'h2');
         $I->dontSee('Test Article 2', 'h2');
@@ -16,6 +17,7 @@ class ArticleCest
     public function testArticleView(FunctionalTester $I)
     {
         $I->amOnPage(['article/view', 'slug' => 'test-article-1']);
+        $I->seeResponseCodeIs(200);
         $I->canSee('Test Article 1', 'h1');
         $I->canSee('Lorem ipsum');
         $I->canSeeElement("//a[contains(@href,'attachment-download')]");
