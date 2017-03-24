@@ -23,7 +23,7 @@ install:
         phpenv config-rm xdebug.ini
     fi
   - travis_retry composer self-update && composer --version
-  - travis_retry composer global require "fxp/composer-asset-plugin:^1.2" "codeception/codeception:^2.0" "codeception/specify" "codeception/verify"
+  - travis_retry composer global require "fxp/composer-asset-plugin:^1.2" "codeception/codeception:^2.0" "codeception/specify" "codeception/verify" "phpunit/phpunit"
   - travis_retry composer install --prefer-dist --no-interaction
 
 # setup application:
