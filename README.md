@@ -14,6 +14,16 @@ It was created and developing as a fast start for building an advanced sites bas
 
 It covers typical use cases for a new project and will help you not to waste your time doing the same work in every project
 
+## Differences from https://github.com/trntv/yii2-starter-kit
+- Hierarchical pages
+- Pages create a site structure
+- Articles link to pages
+- SEO url (automatic redirection and canonical)
+- Gii templates
+- Carousel widget backend design
+- Krajee Yii Extensions
+- X-editable support
+
 ## Before you start
 Please, consider helping project via [contributions](https://github.com/trntv/yii2-starter-kit/issues) or [donations](#donations). 
 
