@@ -8,7 +8,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\search\WidgetTextSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('backend', 'Text Blocks');
+$this->title = Yii::t('backend', 'Text blocks');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="widget-text-index">

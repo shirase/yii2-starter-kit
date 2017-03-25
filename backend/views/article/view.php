@@ -44,10 +44,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
                 'value' => Html::img(\common\components\helpers\Url::image($model->thumbnail_path, ['w'=>100])),
             ],
-            [
-                'attribute'=>'body',
-                'format'=>'ntext',
-            ],
             ['attribute'=>'created_by', 'value'=>$model->author->username],
             ['attribute'=>'updated_by', 'value'=>$model->updater->username],
             [

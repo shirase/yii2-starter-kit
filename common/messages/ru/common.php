@@ -75,4 +75,6 @@ return [
     'User ID' => 'ID пользователя',
     'Username' => 'Имя пользователя',
     'Value' => 'Значение',
+    'Categories' => 'Категории',
+    'Attachments' => 'Вложения',
 ];

@@ -156,6 +156,7 @@ class Article extends ActiveRecord
             'created_at' => Yii::t('common', 'Created At'),
             'updated_at' => Yii::t('common', 'Updated At'),
             'category_ids' => Yii::t('common', 'Categories'),
+            'attachments' => Yii::t('common', 'Attachments'),
         ];
     }
 

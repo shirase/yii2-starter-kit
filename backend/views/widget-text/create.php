@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\WidgetText */
 
-$this->title = Yii::t('backend', 'Create Widget Text');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Widget Texts'), 'url' => ['index']];
+$this->title = Yii::t('backend', 'Create');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Text blocks'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="widget-text-create">

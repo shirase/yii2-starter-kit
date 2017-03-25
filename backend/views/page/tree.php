@@ -112,9 +112,11 @@ function(node) {
     };
 
     items.rename.label = "'.Yii::t('backend', 'Rename').'";
+    items.create.label = "'.Yii::t('backend', 'Create').'";
+    items.remove.label = "'.Yii::t('backend', 'Delete').'";
 
     items.show = {
-        label:"Показать",
+        label:"'.Yii::t('backend', 'Show').'",
         action: function(data) {
             var inst = $.jstree.reference(data.reference),
                 obj = inst.get_node(data.reference);
