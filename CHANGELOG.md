@@ -1,10 +1,19 @@
 Yii Starter Kit Change Log
 ==========================
 
-dev-master
-----------
-- Enh #434: Added ability to control assets linking with env variable
-- Fixed #428: Update for article categories didn't work on Yii 2.0.8 
+3.0.2
+-----
+
+3.0.0
+-----
+- Hierarchical pages
+- Pages create a site structure
+- Articles link to pages
+- SEO url (automatic redirection and canonical)
+- Gii templates
+- Carousel widget backend design
+- Krajee Yii Extensions
+- X-editable support
 
 2.2.1
 -----
