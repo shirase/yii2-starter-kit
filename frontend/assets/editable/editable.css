@@ -2,6 +2,16 @@
   outline: 1px solid pink;
 }
 
-.cke_editable_inline:focus {
+.cke_editable_inline.cke_focus {
   outline: 1px solid red;
+}
+
+.cke_editable_inline:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.cke_editable_inline.cke_focus td {
+  outline: 1px dashed #AAA;
 }

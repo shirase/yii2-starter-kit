@@ -4,6 +4,7 @@ namespace frontend\widgets;
 use dosamigos\ckeditor\CKEditorInline;
 use frontend\assets\CKEditorAsset;
 use frontend\assets\EditableAsset;
+use iutbay\yii2kcfinder\KCFinderAsset;
 use yii\base\Widget;
 use yii\helpers\Html;
 
@@ -34,6 +35,43 @@ class InlineEditor extends Widget
             $url = \Yii::getAlias('@frontendUrl').'/ckeditor_plugins';
             $this->view->registerJs("CKEDITOR.plugins.addExternal('inlinesave', '".$url."/inlinesave/plugin.js?v=".filemtime($path.'/inlinesave/plugin.js')."', '');");
 
+            $kcfinderUrl = KCFinderAsset::register($this->view)->baseUrl;
+            \Yii::$app->session->set('KCFINDER', [
+                'uploadURL' => \Yii::getAlias('@frontendUrl') . '/data',
+                'uploadDir' => \Yii::getAlias('@frontendWeb') . '/data',
+                'disabled'=>false,
+                'denyZipDownload' => true,
+                'denyUpdateCheck' => true,
+                'denyExtensionRename' => true,
+                'theme' => 'default',
+                'access' => [
+                    'files' => [
+                        'upload' => true,
+                        'delete' => false,
+                        'copy' => false,
+                        'move' => false,
+                        'rename' => false,
+                    ],
+                    'dirs' => [
+                        'create' => true,
+                        'delete' => false,
+                        'rename' => false,
+                    ],
+                ],
+                'imageDriversPriority' => 'gd',
+                'types'=>[
+                    'files' => [
+                        'type' => '',
+                    ],
+                    'images' => [
+                        'type' => '*img',
+                    ],
+                ],
+                'thumbsDir' => '.thumbs',
+                'thumbWidth' => 100,
+                'thumbHeight' => 100,
+            ]);
+
             CKEditorInline::begin([
                 'options' => [
                     'data-saveurl'=>$this->saveUrl,
@@ -42,6 +80,8 @@ class InlineEditor extends Widget
                 'preset' => 'custom',
                 'clientOptions' => [
                     'extraPlugins' => 'inlinesave',
+                    'filebrowserBrowseUrl' => $kcfinderUrl . '/browse.php?opener=ckeditor&type=files',
+                    'filebrowserUploadUrl' => $kcfinderUrl . '/upload.php?opener=ckeditor&type=files',
                     'toolbar' => [
                         ['InlineSave', 'Sourcedialog'],
                         ['Undo', 'Redo'],
@@ -51,7 +91,7 @@ class InlineEditor extends Widget
                         ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
                         ['Link', 'Unlink'],
                         ['FontSize', 'Styles', 'Format'],
-                        ['Table'],
+                        ['Table', 'Image'],
                         ['RemoveFormat'],
                     ]
                 ],

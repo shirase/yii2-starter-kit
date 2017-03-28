@@ -172,4 +172,9 @@ a.desc:after {
 .editor-panel a {
   color: pink;
 }
+.inline_content:after {
+  content: "";
+  display: block;
+  clear: both;
+}
 /*# sourceMappingURL=style.css.map */
