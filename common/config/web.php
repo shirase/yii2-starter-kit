@@ -76,7 +76,7 @@ if (YII_ENV_DEV) {
                     ]
             ],
             'fixture' => [
-                'class' => 'elisdn\gii\fixture\Generator',
+                'class' => 'shirase55\gii\fixture\Generator',
             ],
         ],
     ];

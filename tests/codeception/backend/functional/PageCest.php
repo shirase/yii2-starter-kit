@@ -79,11 +79,11 @@ class PageCest
         $I->canSeeResponseCodeIs(200);
     }
 
-    public function testMove(FunctionalTester $I) {
+    /*public function testMove(FunctionalTester $I) {
         $modelTest = Page::findOne(['slug'=>'test-2']);
         $I->amOnPage(['page/tree', 'id'=>1]);
         $I->seeRecord(Page::className(), ['id'=>$modelTest->id, 'pos'=>5]);
         $I->sendAjaxGetRequest(['page/j-move', 'id'=>$modelTest->id, 'position'=>0, 'parent'=>$modelTest->pid]);
         $I->seeRecord(Page::className(), ['id'=>$modelTest->id, 'pos'=>2]);
-    }
+    }*/
 }
