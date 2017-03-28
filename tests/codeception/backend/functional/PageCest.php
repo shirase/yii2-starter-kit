@@ -9,7 +9,9 @@ class PageCest
 {
     public function _before(AcceptanceTester $I) {
         \Yii::$app->user->login(User::findOne(1));
+    }
 
+    public function testIndex(FunctionalTester $I) {
         $model = new Page();
         $model->setAttributes([
             'name'=>'Test 1',
@@ -17,15 +19,6 @@ class PageCest
         ], false);
         $model->save();
 
-        $model = new Page();
-        $model->setAttributes([
-            'name'=>'Test 2',
-            'pid'=>1
-        ], false);
-        $model->save();
-    }
-
-    public function testIndex(FunctionalTester $I) {
         $I->amOnPage(['page/index']);
         $I->canSeeResponseCodeIs(200);
         $I->canSeeElement('.page-index');
@@ -41,6 +34,13 @@ class PageCest
     }
 
     public function testUpdate(FunctionalTester $I) {
+        $model = new Page();
+        $model->setAttributes([
+            'name'=>'Test 1',
+            'pid'=>null
+        ], false);
+        $model->save();
+
         $model = Page::findOne(['slug'=>'test-1']);
         $I->amOnPage(['page/update', 'id'=>$model->id]);
         $I->fillField('input[name="Page[name]"]', 'Updated');
@@ -49,6 +49,13 @@ class PageCest
     }
 
     public function testDelete(FunctionalTester $I) {
+        $model = new Page();
+        $model->setAttributes([
+            'name'=>'Test 1',
+            'pid'=>null
+        ], false);
+        $model->save();
+
         $model = Page::findOne(['slug'=>'test-1']);
         $I->amOnPage(['page/index']);
         $I->seeRecord(Page::className(), ['id'=>$model->id]);
@@ -57,6 +64,13 @@ class PageCest
     }
 
     public function testView(FunctionalTester $I) {
+        $model = new Page();
+        $model->setAttributes([
+            'name'=>'Test 1',
+            'pid'=>null
+        ], false);
+        $model->save();
+
         $model = Page::findOne(['slug'=>'test-1']);
         $I->amOnPage(['page/view', 'id'=>$model->id]);
         $I->canSeeResponseCodeIs(200);
@@ -79,11 +93,20 @@ class PageCest
         $I->canSeeResponseCodeIs(200);
     }
 
-    /*public function testMove(FunctionalTester $I) {
+    public function testMove(FunctionalTester $I) {
+        $model = new Page();
+        $model->setAttributes([
+            'name'=>'Test 2',
+            'pid'=>1
+        ], false);
+        $model->save();
+
         $modelTest = Page::findOne(['slug'=>'test-2']);
         $I->amOnPage(['page/tree', 'id'=>1]);
-        $I->seeRecord(Page::className(), ['id'=>$modelTest->id, 'pos'=>5]);
         $I->sendAjaxGetRequest(['page/j-move', 'id'=>$modelTest->id, 'position'=>0, 'parent'=>$modelTest->pid]);
-        $I->seeRecord(Page::className(), ['id'=>$modelTest->id, 'pos'=>2]);
-    }*/
+        $I->seeResponseCodeIs(200);
+        $I->seeRecord(Page::className(), ['id'=>$modelTest->id, 'pos'=>1]);
+
+        $model->delete();
+    }
 }
