@@ -1,3 +1,5 @@
+@import "_iframe-popup";
+@import "_editor";
 @import "_article";
 
 html,
@@ -108,78 +110,4 @@ a.desc:after {
     border-left: 3px solid #eed3d7;
     padding: 10px 20px;
     margin: 0 0 15px 0;
-}
-
-.iframe-popup {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 65536;
-}
-
-.iframe-popup:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    opacity: .3;
-}
-
-.iframe-popup-iframe {
-    position: absolute;
-    width: 760px;
-    max-width: 100%;
-    height: 100%;
-    z-index: 1;
-    background: url("../img/preloader.gif") center center no-repeat #FFF;
-}
-
-.iframe-popup iframe {
-    width: 100%;
-    max-width: 100%;
-    height: 100%;
-    border: none;
-    z-index: 1;
-}
-
-.iframe-popup-close {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: -50px;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    text-align: center;
-    z-index: 1;
-}
-
-.iframe-popup-close:before {
-    content: "";
-    display: block;
-    background: url("../svg/close.svg") center center no-repeat / 30px 30px;
-    width: 100%;
-    height: 100%;
-}
-
-.editor-panel {
-    margin: 0.8em 0;
-    text-align: right;
-    color: pink;
-    font-size: 90%;
-}
-
-.editor-panel a {
-    color: pink;
-}
-
-.inline_content:after {
-    content: "";
-    display: block;
-    clear: both;
 }
