@@ -37,3 +37,5 @@ phpunit.phar
 
 # Tests
 tests/codeception/*/_support/_generated/*
+
+node_modules

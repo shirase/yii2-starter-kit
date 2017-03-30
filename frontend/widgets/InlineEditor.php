@@ -35,6 +35,10 @@ class InlineEditor extends Widget
             $url = \Yii::getAlias('@frontendUrl').'/ckeditor_plugins';
             $this->view->registerJs("CKEDITOR.plugins.addExternal('inlinesave', '".$url."/inlinesave/plugin.js?v=".filemtime($path.'/inlinesave/plugin.js')."', '');");
 
+            $path = \Yii::getAlias('@vendor/shirase55/ckeditor-image');
+            $url = $this->view->assetManager->publish($path.'/dist');
+            $this->view->registerJs("CKEDITOR.plugins.addExternal('image', '".$url."/plugin.js?v=".filemtime($path.'/dist/plugin.js')."', '');");
+
             $kcfinderUrl = KCFinderAsset::register($this->view)->baseUrl;
             \Yii::$app->session->set('KCFINDER', [
                 'uploadURL' => \Yii::getAlias('@frontendUrl') . '/data',
