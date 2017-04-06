@@ -40,6 +40,10 @@ class SendEmailCommand extends Object implements SelfHandlingCommand
      */
     public $html = true;
 
+    public $bcc;
+
+    public $cc;
+
     /**
      * Command init
      */
@@ -62,19 +66,30 @@ class SendEmailCommand extends Object implements SelfHandlingCommand
      */
     public function handle($command)
     {
+        $message = \Yii::$app->mailer->compose();
+
         if (!$command->body) {
-            $message = \Yii::$app->mailer->compose($command->view, $command->params);
-        } else {
-            $message = new Message();
-            if ($command->isHtml()) {
-                $message->setHtmlBody($command->body);
-            } else {
-                $message->setTextBody($command->body);
-            }
+            $command->body = \Yii::$app->view->render($command->view, $command->params);
         }
-        $message->setFrom($command->from);
+
+        if ($command->isHtml()) {
+            $message->setHtmlBody($command->body);
+        } else {
+            $message->setTextBody($command->body);
+        }
+
+        $message->setFrom([$command->from => 'AllContainerLines']);
         $message->setTo($command->to ?: \Yii::$app->params['robotEmail']);
         $message->setSubject($command->subject);
+
+        if($command->bcc) {
+            $message->setBcc($command->bcc);
+        }
+
+        if($command->cc) {
+            $message->setCc($command->cc);
+        }
+
         return $message->send();
     }
 }
