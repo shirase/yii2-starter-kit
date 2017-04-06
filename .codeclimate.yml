@@ -16,3 +16,7 @@ engines:
         enabled: false
       Naming/ShortVariable:
         enabled: false
+      Controversial/CamelCaseParameterName:
+        enabled: false
+      CleanCode/ElseExpression:
+        enabled: false
