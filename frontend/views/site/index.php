@@ -15,14 +15,6 @@ $this->title = Yii::$app->name;
         <h1>Congratulations!</h1>
 
         <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <?php echo common\widgets\DbMenu::widget([
-            'key'=>'main-menu',
-            'options'=>[
-                'tag'=>'p'
-            ]
-        ]) ?>
-
     </div>
 
     <div class="body-content">

@@ -16,7 +16,7 @@ $this->beginContent('@frontend/views/layouts/_clear.php')
         <?php
         NavBar::begin([
             'brandLabel' => Yii::$app->name,
-            'brandUrl' => Yii::$app->homeUrl,
+            'brandUrl' => '/',
             'options' => [
                 'class' => 'navbar-inverse navbar-fixed-top',
             ],

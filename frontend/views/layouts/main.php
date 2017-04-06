@@ -8,6 +8,11 @@ use yii\widgets\Breadcrumbs;
 $this->beginContent('@frontend/views/layouts/base.php')
 ?>
     <div class="container">
+        <div class="main-menu">
+            <?php echo common\widgets\DbMenu::widget([
+                'key'=>'main-menu'
+            ]) ?>
+        </div>
 
         <?php echo Breadcrumbs::widget([
             'homeLink' => ['label'=>Yii::t('frontend', 'Главная'), 'url'=>'/'],

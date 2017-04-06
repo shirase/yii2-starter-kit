@@ -3,7 +3,7 @@ var gulp = require('gulp'),
     autoprefixer = require('autoprefixer'),
     csscomb = require('gulp-csscomb');
 
-gulp.task('default', ['css']);
+gulp.task('default', ['watch']);
 
 gulp.task('css', function() {
     var processors = [
@@ -16,6 +16,6 @@ gulp.task('css', function() {
         .pipe(gulp.dest('./'));
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', ['css'], function() {
     gulp.watch('web/css/*.less', ['css']);
 });
