@@ -26,5 +26,6 @@ Yii::setAlias('@frontendUrl', env('FRONTEND_URL'));
 Yii::setAlias('@backendUrl', env('BACKEND_URL'));
 Yii::setAlias('@storageUrl', env('STORAGE_URL'));
 
-
-
+Swift_DependencyContainer::getInstance()
+    ->register('mime.qpcontentencoder')
+    ->asAliasOf('mime.base64contentencoder');
