@@ -3,7 +3,6 @@
 namespace common\commands;
 
 use yii\base\Object;
-use yii\swiftmailer\Message;
 use trntv\bus\interfaces\SelfHandlingCommand;
 
 /**
@@ -69,7 +68,7 @@ class SendEmailCommand extends Object implements SelfHandlingCommand
         $message = \Yii::$app->mailer->compose();
 
         if (!$command->body) {
-            $command->body = \Yii::$app->view->render($command->view, $command->params);
+            $command->body = \Yii::$app->mailer->render($command->view, $command->params);
         }
 
         if ($command->isHtml()) {
