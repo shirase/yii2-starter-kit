@@ -32,6 +32,11 @@ $bundle = BackendAsset::register($this);
                 </a>
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
+                        <li>
+                            <a href="<?= Yii::$app->urlManagerFrontend->createAbsoluteUrl(['/']) ?>">
+                                <i class="fa fa-home"></i>
+                            </a>
+                        </li>
                         <li id="timeline-notifications" class="notifications-menu">
                             <a href="<?php echo Url::to(['/timeline-event/index']) ?>">
                                 <i class="fa fa-bell"></i>

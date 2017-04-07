@@ -13,56 +13,59 @@ $this->beginContent('@frontend/views/layouts/_clear.php')
 ?>
 <div id="body_scroll">
     <div id="body_wrap">
-        <?php
-        NavBar::begin([
-            'brandLabel' => Yii::$app->name,
-            'brandUrl' => '/',
-            'options' => [
-                'class' => 'navbar-inverse navbar-fixed-top',
-            ],
-        ]); ?>
-        <?php echo Nav::widget([
-            'options' => ['class' => 'navbar-nav'],
-            'items' => TreeHelper::menuItems(TreeHelper::makeTree(Page::find()->children(ID_MAIN_MENU)->all())),
-        ]); ?>
-        <?php echo Nav::widget([
-            'options' => ['class' => 'navbar-nav navbar-right'],
-            'items' => [
-                ['label' => Yii::t('frontend', 'Signup'), 'url' => ['/user/sign-in/signup'], 'visible'=>Yii::$app->user->isGuest],
-                ['label' => Yii::t('frontend', 'Login'), 'url' => ['/user/sign-in/login'], 'visible'=>Yii::$app->user->isGuest],
-                [
-                    'label' => Yii::$app->user->isGuest ? '' : Yii::$app->user->identity->getPublicIdentity(),
-                    'visible'=>!Yii::$app->user->isGuest,
-                    'items'=>[
-                        [
-                            'label' => Yii::t('frontend', 'Settings'),
-                            'url' => ['/user/default/index']
-                        ],
-                        [
-                            'label' => Yii::t('frontend', 'Backend'),
-                            'url' => Yii::getAlias('@backendUrl'),
-                            'visible'=>Yii::$app->user->can('manager')
-                        ],
-                        [
-                            'label' => Yii::t('frontend', 'Logout'),
-                            'url' => ['/user/sign-in/logout'],
-                            'linkOptions' => ['data-method' => 'post']
-                        ]
-                    ]
+        <?php if (Yii::$app->user->can('manager')): ?>
+            <?php
+            NavBar::begin([
+                'brandLabel' => Yii::$app->name,
+                'brandUrl' => '/',
+                'options' => [
+                    'class' => 'navbar-inverse navbar-fixed-top',
                 ],
-                [
-                    'label'=>Yii::t('frontend', 'Language'),
-                    'items'=>array_map(function ($code) {
-                        return [
-                            'label' => Yii::$app->params['availableLocales'][$code],
-                            'url' => ['/site/set-locale', 'locale'=>$code],
-                            'active' => Yii::$app->language === $code
-                        ];
-                    }, array_keys(Yii::$app->params['availableLocales']))
+            ]); ?>
+            <?php echo Nav::widget([
+                'options' => ['class' => 'navbar-nav'],
+                'items' => TreeHelper::menuItems(TreeHelper::makeTree(Page::find()->children(ID_MAIN_MENU)->all())),
+            ]); ?>
+            <?php echo Nav::widget([
+                'options' => ['class' => 'navbar-nav navbar-right'],
+                'items' => [
+                    ['label' => Yii::t('frontend', 'Signup'), 'url' => ['/user/sign-in/signup'], 'visible'=>Yii::$app->user->isGuest],
+                    ['label' => Yii::t('frontend', 'Login'), 'url' => ['/user/sign-in/login'], 'visible'=>Yii::$app->user->isGuest],
+                    [
+                        'label' => Yii::$app->user->isGuest ? '' : Yii::$app->user->identity->getPublicIdentity(),
+                        'visible'=>!Yii::$app->user->isGuest,
+                        'items'=>[
+                            [
+                                'label' => Yii::t('frontend', 'Settings'),
+                                'url' => ['/user/default/index']
+                            ],
+                            [
+                                'label' => Yii::t('frontend', 'Backend'),
+                                'url' => Yii::getAlias('@backendUrl'),
+                                'visible'=>Yii::$app->user->can('manager')
+                            ],
+                            [
+                                'label' => Yii::t('frontend', 'Logout'),
+                                'url' => ['/user/sign-in/logout'],
+                                'linkOptions' => ['data-method' => 'post']
+                            ]
+                        ]
+                    ],
+                    [
+                        'label'=>Yii::t('frontend', 'Language'),
+                        'items'=>array_map(function ($code) {
+                            return [
+                                'label' => Yii::$app->params['availableLocales'][$code],
+                                'url' => ['/site/set-locale', 'locale'=>$code],
+                                'active' => Yii::$app->language === $code
+                            ];
+                        }, array_keys(Yii::$app->params['availableLocales']))
+                    ]
                 ]
-            ]
-        ]); ?>
-        <?php NavBar::end(); ?>
+            ]); ?>
+            <?php NavBar::end(); ?>
+            <div class="navbar navbar-holder"></div>
+        <?php endif ?>
 
         <?php echo $content ?>
 
