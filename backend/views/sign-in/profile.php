@@ -8,9 +8,14 @@ use yii\bootstrap\ActiveForm;
 /* @var $model common\models\UserProfile */
 /* @var $form yii\bootstrap\ActiveForm */
 
-$this->title = Yii::t('backend', 'Edit profile')
+$this->title = Yii::t('backend', 'Edit profile');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Users'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->user->username, 'url' => ['user/update', 'id' => $model->user_id]];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Profile')];
 ?>
-
+<div class="clearfix">
+    <?= Html::a(Yii::t('backend', 'User'), ['user/update', 'id'=>$model->user_id], ['class'=>'pull-right btn btn-info btn-xs']) ?>
+</div>
 <div class="user-profile-form">
 
     <?php $form = ActiveForm::begin(); ?>

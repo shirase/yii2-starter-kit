@@ -42,7 +42,28 @@ $this->params['breadcrumbs'][] = $this->title;
             'logged_at:datetime',
             // 'updated_at',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'visibleButtons'=>[
+                    'view' => false,
+                    'update' => \Yii::$app->user->can('/' . \common\components\helpers\Url::normalizeRoute('update')),
+                    'delete' => \Yii::$app->user->can('/' . \common\components\helpers\Url::normalizeRoute('delete')),
+                    'profile' => \Yii::$app->user->can('/' . \common\components\helpers\Url::normalizeRoute('sign-in/profile')),
+                ],
+                'template' => '{profile} {view} {update} {delete}',
+                'buttons' => [
+                    'profile' => function ($url, $model) {
+                        return Html::a(
+                            '<span class="glyphicon glyphicon-user"></span>',
+                            ['sign-in/profile', 'id'=>$model->id],
+                            [
+                                'title' => Yii::t('backend', 'Profile'),
+                                'data-pjax' => '0',
+                            ]
+                        );
+                    },
+                ],
+            ],
         ],
     ]); ?>
 
