@@ -6,17 +6,29 @@ engines:
         enabled: false
       CleanCode/BooleanArgumentFlag:
         enabled: false
+      CleanCode/ElseExpression:
+        enabled: false
       Design/CouplingBetweenObjects:
         enabled: false
       Naming/LongVariable:
         enabled: false
       Naming/ShortMethodName:
         enabled: false
-      UnusedFormalParameter:
-        enabled: false
       Naming/ShortVariable:
         enabled: false
-      Controversial/CamelCaseParameterName:
+      Controversial/CamelCasePropertyName:
         enabled: false
-      CleanCode/ElseExpression:
+      UnusedFormalParameter:
         enabled: false
+
+ratings:
+  paths:
+    - "**.js"
+    - "**.php"
+
+exclude_paths:
+  - tests/
+  - docs/
+  - common/messages/
+  - common/migrations/
+  - common/runtime/
