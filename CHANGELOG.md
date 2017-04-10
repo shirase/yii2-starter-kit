@@ -1,8 +1,9 @@
 Yii Starter Kit Change Log
 ==========================
 
-3.0.2
------
+3.0.2.1
+-------
+- Forward compatibility, page migration
 
 3.0.0
 -----
