@@ -83,6 +83,7 @@ class InlineEditor extends Widget
                 ],
                 'preset' => 'custom',
                 'clientOptions' => [
+                    'extraAllowedContent' => 'iframe[*];script;style;blockquote;img[*]{*}(*);div[*]{*}(*);span[*]{*}(*);p[*]{*}(*);',
                     'extraPlugins' => 'inlinesave',
                     'filebrowserBrowseUrl' => $kcfinderUrl . '/browse.php?opener=ckeditor&type=files',
                     'filebrowserUploadUrl' => $kcfinderUrl . '/upload.php?opener=ckeditor&type=files',
