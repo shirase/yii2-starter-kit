@@ -18,6 +18,7 @@ class Bootstrap implements BootstrapInterface
                             'options' => [
                                 'minHeight' => 200,
                                 'convertDivs' => false,
+                                'replaceDivs' => false,
                                 'removeEmptyTags' => false,
                                 'imageUpload' => \Yii::$app->urlManager->createUrl(['/file-storage/upload-imperavi'])
                             ],
