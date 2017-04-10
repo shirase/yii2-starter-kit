@@ -84,9 +84,5 @@ class SignupCest
             'username' => 'tester',
             'email' => 'tester.email@example.com',
         ]);
-
-        $I->expectTo('see that user logged in');
-        $I->seeLink('tester');
-        $I->seeLink('Logout');
     }
 }
