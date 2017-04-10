@@ -27,7 +27,7 @@ class m140703_123104_page extends Migration
             'bpath' => 'BLOB',
         ], $tableOptions);
 
-        $this->createIndex('slug', '{{%page}}', array('slug(100)'), true);
+        $this->createIndex('slug', '{{%page}}', array('slug(100)', 'language'), true);
         $this->createIndex('pos', '{{%page}}', array('pos'), false);
         $this->createIndex('pid_pos', '{{%page}}', array('pid', 'pos'), true);
         $this->createIndex('bpath', '{{%page}}', array('bpath(100)'), false);
