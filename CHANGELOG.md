@@ -1,8 +1,9 @@
 Yii Starter Kit Change Log
 ==========================
 
-3.0.2
+3.0.3
 -----
+Page slug unique as slug-language
 
 3.0.0
 -----
