@@ -9,20 +9,8 @@
         "application template",
         "yii2 advanced"
     ],
-    "authors": [
-        {
-            "name": "Eugene Terentev",
-            "email": "eugene@terentev.net",
-            "homepage": "http://terentev.net",
-            "role": "Developer"
-        }
-    ],
     "type": "project",
     "license": "BSD-3-Clause",
-    "support": {
-        "issues": "https://github.com/trntv/yii2-starter-kit/issues?state=open",
-        "source": "https://github.com/trntv/yii2-starter-kit"
-    },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
