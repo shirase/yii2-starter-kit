@@ -3,6 +3,10 @@ Yii Starter Kit Change Log
 
 3.0.3
 -----
+Switfmailer base64contentencoder bootstrap dependency
+SendEmailCommand use mailer->compose
+InlineEditor extraAllowedContent
+Imperavi off replaceDivs
 Page slug unique as slug-language
 
 3.0.0
