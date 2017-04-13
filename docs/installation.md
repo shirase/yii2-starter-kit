@@ -200,17 +200,19 @@ server {
     # }
 
     location / {
-        root /var/www/frontend/web;
-        try_files $uri /frontend/web/index.php?$args;
+        rewrite ^(/admin)$ $1/ last;
+        rewrite ^(/storage)$ $1/ last;
+        try_files /frontend/web$uri /frontend/web/index.php?$args;
     }
 
-    location /admin {
-        try_files  $uri /admin/index.php?$args;
+    location /admin/ {
+        rewrite ^/admin(.*)$ $1 break;
+        try_files /backend/web$uri /backend/web/index.php?$args;
     }
 
-    # storage access
-    location /storage {
-        try_files  $uri /storage/web/index.php?$args;
+    location /storage/ {
+        rewrite ^/storage(.*)$ $1 break;
+        try_files /storage/web$uri /storage/web/index.php?$args;
     }
 
     client_max_body_size 32m;
@@ -260,11 +262,11 @@ upstream php-fpm {
 
 ### Installation
 1. Follow [docker install](https://docs.docker.com/engine/installation/) instruction
-2. Copy `.env.dist` to `.env` in the project root
+2. Copy `.env.dist` to `.env` in the project root and change DSN host to db
 3. Run `docker-compose build`
 4. Run `docker-compose up -d`
 5. Run locally `composer install --prefer-dist --optimize-autoloader --ignore-platform-reqs`
-6. Setup application with `docker-compose run app console/yii app/setup`
+6. Setup application with `docker-compose run app php console/yii app/setup`
 7. That's all - your application is accessible on http://yii2-starter-kit.dev
 
 *PS* Also you can use bash inside application container. To do so run `docker-compose exec app bash`
@@ -272,11 +274,11 @@ upstream php-fpm {
 ### Docker FAQ
 1. How do i run yii console command?
 
-`docker-compose exec app console/yii help`
+`docker-compose exec app php console/yii help`
 
-`docker-compose exec app console/yii migrate`
+`docker-compose exec app php console/yii migrate`
 
-`docker-compose exec app console/yii rbac-migrate`
+`docker-compose exec app php console/yii rbac-migrate`
 
 2. How to connect to the application database with my workbench, navicat etc?
 MySQL is available on `yii2-starter-kit.dev`, port `3306`. User - `root`, password - `root`
