@@ -59,7 +59,8 @@
         "insolita/yii2-migration-generator": "^2.2",
         "pheme/yii2-toggle-column": "^0.7.0",
         "iutbay/yii2-kcfinder": "^0.0.1",
-        "shirase55/ckeditor-inlinesave": "dev-master"
+        "shirase55/ckeditor-inlinesave": "dev-master",
+        "shirase55/ckeditor-image": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "^2.0.0",
