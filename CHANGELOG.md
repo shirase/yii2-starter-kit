@@ -1,9 +1,6 @@
 Yii Starter Kit Change Log
 ==========================
 
-3.0.4
------
-
 3.0.3.1
 -------
 Fix InlineEditor image dependency bug
