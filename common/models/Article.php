@@ -73,7 +73,7 @@ class Article extends ActiveRecord
             BlameableBehavior::className(),
             [
                 'class' => TimestampBehavior::className(),
-                'value' => function() {return date(DATE_ISO8601);}
+                'value' => function() {return date(DATE_SQL);}
             ],
             [
                 'class' => SluggableBehavior::className(),
@@ -129,7 +129,7 @@ class Article extends ActiveRecord
             [['slug'], 'unique'],
             [['body'], 'string'],
             [['published_at'], 'default', 'value' => function () {
-                return date(DATE_ISO8601);
+                return date(DATE_SQL);
             }],
             [['status'], 'integer'],
             [['slug', 'thumbnail_path'], 'string', 'max' => 1024],

@@ -29,3 +29,5 @@ Yii::setAlias('@storageUrl', env('STORAGE_URL'));
 Swift_DependencyContainer::getInstance()
     ->register('mime.qpcontentencoder')
     ->asAliasOf('mime.base64contentencoder');
+
+define('DATE_SQL', 'Y-m-d H:i:s');
