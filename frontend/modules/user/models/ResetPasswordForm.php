@@ -1,7 +1,6 @@
 <?php
 namespace frontend\modules\user\models;
 
-use common\models\User;
 use common\models\UserToken;
 use yii\base\InvalidParamException;
 use yii\base\Model;

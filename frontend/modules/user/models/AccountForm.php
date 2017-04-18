@@ -1,8 +1,10 @@
 <?php
 namespace frontend\modules\user\models;
 
+use common\models\User;
 use yii\base\Model;
 use Yii;
+use yii\db\ActiveQuery;
 use yii\web\JsExpression;
 
 /**
@@ -15,6 +17,9 @@ class AccountForm extends Model
     public $password;
     public $password_confirm;
 
+    /**
+     * @var User
+     */
     private $user;
 
     public function setUser($user)
@@ -35,7 +40,7 @@ class AccountForm extends Model
             ['username', 'unique',
                 'targetClass' => '\common\models\User',
                 'message' => Yii::t('frontend', 'This username has already been taken.'),
-                'filter' => function ($query) {
+                'filter' => function (ActiveQuery $query) {
                     $query->andWhere(['not', ['id' => Yii::$app->user->getId()]]);
                 }
             ],
@@ -46,7 +51,7 @@ class AccountForm extends Model
             ['email', 'unique',
                 'targetClass' => '\common\models\User',
                 'message' => Yii::t('frontend', 'This email has already been taken.'),
-                'filter' => function ($query) {
+                'filter' => function (ActiveQuery $query) {
                     $query->andWhere(['not', ['id' => Yii::$app->user->getId()]]);
                 }
             ],

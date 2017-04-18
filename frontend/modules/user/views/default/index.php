@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model common\base\MultiModel */
+/* @var $model \shirase\yii2\helpers\MultiModel */
 /* @var $form yii\widgets\ActiveForm */
 
 $this->title = Yii::t('frontend', 'User Settings')

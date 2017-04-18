@@ -2,6 +2,7 @@
 /**
  * @var $this yii\web\View
  * @var $model common\models\Article
+ * @var $category \common\models\Page
  */
 use yii\helpers\Html;
 use common\components\helpers\Url;

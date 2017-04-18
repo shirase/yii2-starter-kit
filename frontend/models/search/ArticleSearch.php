@@ -17,7 +17,7 @@ class ArticleSearch extends Article
     public function rules()
     {
         return [
-            [['id', 'category_id'], 'integer'],
+            [['id'], 'integer'],
             [['slug', 'title'], 'safe'],
         ];
     }
@@ -50,7 +50,6 @@ class ArticleSearch extends Article
         $query->andFilterWhere([
             'id' => $this->id,
             'slug' => $this->slug,
-            'category_id' => $this->category_id,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title]);

@@ -178,7 +178,7 @@ class User extends ActiveRecord implements IdentityInterface
      * Finds user by username or email
      *
      * @param string $login
-     * @return static|null
+     * @return User|null
      */
     public static function findByLogin($login)
     {

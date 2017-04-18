@@ -1,5 +1,8 @@
 <?php
-/* @var $this yii\web\View */
+/**
+ * @var $this yii\web\View
+ * @var $dataProvider \yii\data\ActiveDataProvider
+ */
 $this->title = $this->title ?: Yii::t('frontend', 'Articles');
 ?>
 <div id="article-index">
