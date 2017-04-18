@@ -7,7 +7,6 @@ use Yii;
 use common\models\Page;
 use common\models\search\PageSearch;
 use common\components\web\Controller;
-use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 use yii\web\HttpException;
 use yii\web\MethodNotAllowedHttpException;

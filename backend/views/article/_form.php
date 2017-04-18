@@ -8,7 +8,6 @@ use shirase55\yii\datetime\DateTimeWidget;
 use yii\helpers\Html;
 use shirase\form\ActiveForm;
 use kartik\datecontrol\DateControl;
-use yii\helpers\ArrayHelper;
 use yii\web\JsExpression;
 
 /* @var $this yii\web\View */

@@ -3,7 +3,6 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 use kartik\grid\GridView;
-use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\search\WidgetCarouselSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */

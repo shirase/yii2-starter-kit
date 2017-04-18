@@ -6,6 +6,7 @@ use Yii;
 use common\models\WidgetText;
 use common\models\search\WidgetTextSearch;
 use common\components\web\Controller;
+use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Json;

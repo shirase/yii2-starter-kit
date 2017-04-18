@@ -1,9 +1,7 @@
 <?php
 
-use common\components\helpers\TreeHelper;
 use yii\helpers\Html;
 use shirase\form\ActiveForm;
-use kartik\datecontrol\DateControl;
 use yii\helpers\ArrayHelper;
 use yii\widgets\Pjax;
 use common\components\helpers\Url;
@@ -51,6 +49,7 @@ $this->registerJs('$(document).on("change", "#page-type_id", function() {$.pjax.
         <?php Pjax::begin(['id'=>'type_params']) ?>
             <?php
                 if ($model->type && $plugin = $model->type->plugin) {
+                    /** @var \yii\base\Widget $plugin */
                     echo $plugin::widget($form, $model);
                 }
             ?>

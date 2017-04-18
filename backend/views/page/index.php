@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use kartik\grid\GridView;
-use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\search\PageSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */

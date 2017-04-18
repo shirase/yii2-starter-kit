@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use kartik\detail\DetailView;
-use kartik\datecontrol\DateControl;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\WidgetText */
