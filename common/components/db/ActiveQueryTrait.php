@@ -1,11 +1,10 @@
 <?php
 namespace common\components\db;
-use yii\db\ActiveQuery;
 
 /**
  * Class ActiveQueryTrait
  * @package common\components\db
- * @method ActiveQuery andFilterWhere(array $condition)
+ * @method \yii\db\ActiveQuery andFilterWhere(array $condition)
  * @property $modelClass string
  */
 trait ActiveQueryTrait
