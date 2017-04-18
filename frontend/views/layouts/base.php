@@ -22,10 +22,6 @@ $this->beginContent('@frontend/views/layouts/_clear.php')
                 ],
             ]); ?>
             <?php echo Nav::widget([
-                'options' => ['class' => 'navbar-nav'],
-                'items' => TreeHelper::menuItems(TreeHelper::makeTree(Page::find()->children(Page::findOne(['slug'=>'main-menu'])->id)->all())),
-            ]); ?>
-            <?php echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => [
                     ['label' => Yii::t('frontend', 'Signup'), 'url' => ['/user/sign-in/signup'], 'visible'=>Yii::$app->user->isGuest],
