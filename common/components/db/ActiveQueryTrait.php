@@ -1,13 +1,14 @@
 <?php
-
 namespace common\components\db;
 
 /**
  * Class ActiveQueryTrait
  * @package common\components\db
+ * @method andFilterWhere(array $condition)
+ * @property $modelClass string
  */
-trait ActiveQueryTrait {
-
+trait ActiveQueryTrait
+{
     public function andFilterRange($column, $range) {
         if($range) {
             $range = (string)$range;
@@ -73,7 +74,8 @@ trait ActiveQueryTrait {
     }
 
     private static function normalizeDate($date) {
-        $format = (($m=\Yii::$app->getModule('datecontrol')) ? \kartik\datecontrol\Module::parseFormat($m->displaySettings['date'], 'date') : 'Y-m-d');
+        /** @var \kartik\datecontrol\Module $datecontrolModule */
+        $format = (($datecontrolModule=\Yii::$app->getModule('datecontrol')) ? \kartik\datecontrol\Module::parseFormat($datecontrolModule->displaySettings['date'], 'date') : 'Y-m-d');
         return \DateTime::createFromFormat($format, $date)->format('Y-m-d');
     }
 } 

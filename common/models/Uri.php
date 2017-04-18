@@ -14,9 +14,6 @@ use Yii;
  * @property string $route
  * @property string $uri
  *
- * @property ArticlePageUri[] $articlePageUris
- * @property ArticlePage[] $articlePages
- * @property PageUri[] $pageUris
  * @property Page[] $pages
  * @property Uri $parent
  * @property Uri[] $uris

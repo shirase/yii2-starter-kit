@@ -4,7 +4,6 @@ namespace common\plugins\page_type\page;
 use common\components\helpers\TreeHelper;
 use common\models\Page;
 use kartik\widgets\Select2;
-use yii\helpers\ArrayHelper;
 use yii;
 
 class Widget extends \yii\base\Widget {

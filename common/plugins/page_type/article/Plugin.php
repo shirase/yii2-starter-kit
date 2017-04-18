@@ -1,7 +1,6 @@
 <?php
 namespace common\plugins\page_type\article;
 
-use common\components\helpers\Url;
 use common\models\PageType;
 use common\plugins\page_type\PluginInterface;
 use yii\helpers\ArrayHelper;
@@ -25,6 +24,7 @@ class Plugin implements PluginInterface {
 
     public static function widget($form, $model, $options=[]) {
         $options = ArrayHelper::merge(['form'=>$form, 'model'=>$model], $options);
+        /** @var Widget $widget */
         $widget = Widget::className();
         return $widget::widget($options);
     }

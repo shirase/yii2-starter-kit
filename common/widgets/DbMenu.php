@@ -6,8 +6,6 @@
 namespace common\widgets;
 
 use common\models\Page;
-use common\models\WidgetMenu;
-use yii\base\InvalidConfigException;
 use Yii;
 use common\components\helpers\Url;
 use yii\web\HttpException;

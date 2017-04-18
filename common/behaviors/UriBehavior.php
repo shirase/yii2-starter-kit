@@ -3,11 +3,9 @@ namespace common\behaviors;
 
 use common\models\Uri;
 use yii\base\Behavior;
-use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 use yii\db\Exception;
 use yii\helpers\ArrayHelper;
-use yii\web\HttpException;
 
 class UriBehavior extends Behavior
 {
@@ -29,7 +27,7 @@ class UriBehavior extends Behavior
         ];
     }
 
-    public function afterSave($event) {
+    public function afterSave() {
         /** @var ActiveRecord $model */
         $model = $this->owner;
 
@@ -172,11 +170,10 @@ class UriBehavior extends Behavior
      * @param $parentUri Uri
      * @param $routeParams string[]
      * @param $model ActiveRecord
-     * @param $urisRelationName string
      * @return Uri
      * @throws Exception
      */
-    private function makeUrl($parentUri, $routeParams, $model, $canonical_id=null) {
+    private function makeUrl($parentUri, $routeParams, $model) {
         if (is_callable($this->route)) {
             $route = call_user_func($this->route, $model);
         } else {

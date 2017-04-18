@@ -3,7 +3,6 @@
 namespace common\widgets;
 
 use yii\base\Widget;
-use yii\web\View;
 
 class Script extends Widget
 {

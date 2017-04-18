@@ -19,6 +19,7 @@ class Plugin implements PluginInterface {
 
     public static function widget($form, $model, $options=[]) {
         $options = ArrayHelper::merge(['form'=>$form, 'model'=>$model], $options);
+        /** @var Widget $widget */
         $widget = Widget::className();
         return $widget::widget($options);
     }
