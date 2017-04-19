@@ -26,6 +26,8 @@ engines:
         enabled: false
       Controversial/CamelCaseVariableName:
         enabled: false
+      Controversial/CamelCaseParameterName:
+        enabled: false
       UnusedFormalParameter:
         enabled: false
 
