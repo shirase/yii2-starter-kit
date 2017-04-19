@@ -47,6 +47,7 @@ class WidgetCarouselItemController extends Controller
 
     /**
      * Lists all WidgetCarouselItem models.
+     * @param $carousel
      * @return mixed
      */
     public function actionIndex($carousel)
@@ -84,7 +85,9 @@ class WidgetCarouselItemController extends Controller
     /**
      * Creates a new WidgetCarouselItem model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     * @param $carousel
      * @return mixed
+     * @throws HttpException
      */
     public function actionCreate($carousel)
     {

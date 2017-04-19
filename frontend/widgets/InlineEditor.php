@@ -2,16 +2,21 @@
 namespace frontend\widgets;
 
 use dosamigos\ckeditor\CKEditorInline;
-use frontend\assets\CKEditorAsset;
 use frontend\assets\EditableAsset;
 use iutbay\yii2kcfinder\KCFinderAsset;
 use yii\base\Widget;
+use yii\db\ActiveRecord;
 use yii\helpers\Html;
 
 class InlineEditor extends Widget
 {
     public $saveUrl;
+
+    /**
+     * @var ActiveRecord
+     */
     public $model;
+
     public $attribute;
 
     public function init() {

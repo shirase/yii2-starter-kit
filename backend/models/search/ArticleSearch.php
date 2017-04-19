@@ -34,6 +34,7 @@ class ArticleSearch extends Article
 
     /**
      * Creates data provider instance with search query applied
+     * @param $params
      * @return ActiveDataProvider
      */
     public function search($params)

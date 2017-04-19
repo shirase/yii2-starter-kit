@@ -2,6 +2,7 @@
 /**
  * @var $this yii\web\View
  * @var $dataProvider \yii\data\ActiveDataProvider
+ * @var \common\models\Page $category
  */
 $this->title = $this->title ?: Yii::t('frontend', 'Articles');
 ?>

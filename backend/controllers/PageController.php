@@ -105,7 +105,10 @@ class PageController extends Controller
     /**
      * Creates a new Page model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     * @param null $return
+     * @param null $pid
      * @return mixed
+     * @throws \yii\db\Exception
      */
     public function actionCreate($return=null, $pid=null)
     {
@@ -132,7 +135,10 @@ class PageController extends Controller
      * Updates an existing Page model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
+     * @param null $return
      * @return mixed
+     * @throws NotFoundHttpException
+     * @throws \yii\db\Exception
      */
     public function actionUpdate($id, $return=null)
     {
@@ -173,7 +179,11 @@ class PageController extends Controller
      * Deletes an existing Page model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
+     * @param null $return
      * @return mixed
+     * @throws NotFoundHttpException
+     * @throws \Exception
+     * @throws \Throwable
      */
     public function actionDelete($id, $return=null) {
         $post = Yii::$app->request->post();

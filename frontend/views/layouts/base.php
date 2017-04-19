@@ -1,7 +1,5 @@
 <?php
 
-use common\components\helpers\TreeHelper;
-use common\models\Page;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 

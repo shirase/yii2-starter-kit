@@ -20,7 +20,9 @@ use yii\web\NotFoundHttpException;
 class ArticleController extends Controller
 {
     /**
+     * @param null $slug
      * @return string
+     * @throws HttpException
      */
     public function actionIndex($slug=null)
     {
@@ -55,6 +57,7 @@ class ArticleController extends Controller
 
     /**
      * @param $slug
+     * @param null $category
      * @return string
      * @throws NotFoundHttpException
      */

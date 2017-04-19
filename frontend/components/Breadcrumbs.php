@@ -2,16 +2,18 @@
 namespace frontend\components;
 
 use common\components\helpers\Url;
-use yii\db\ActiveRecord;
+use common\models\Page;
 
 class Breadcrumbs
 {
     /**
-     * @param ActiveRecord $model
+     * @param Page $model
+     * @param null $lastName
      */
     public static function make($model, $lastName=null) {
         $view = \Yii::$app->controller->view;
 
+        /** @var Page $class */
         $class = $model->className();
         if ($path = $model->getPath()) {
             $view->params['breadcrumbs'] = [];

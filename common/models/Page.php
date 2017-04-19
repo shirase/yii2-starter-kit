@@ -28,6 +28,8 @@ use yii\behaviors\TimestampBehavior;
  * @property string $page_keywords
  * @property string $page_description
  *
+ * @method int[] getPath()
+ *
  * @method static Page|null findOne($condition)
  */
 class Page extends \common\components\db\ActiveRecord

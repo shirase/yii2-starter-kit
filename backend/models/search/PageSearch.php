@@ -34,6 +34,7 @@ class PageSearch extends Page
 
     /**
      * Creates data provider instance with search query applied
+     * @param $params
      * @return ActiveDataProvider
      */
     public function search($params)
