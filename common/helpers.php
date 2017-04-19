@@ -75,6 +75,6 @@ function env($key, $default = false) {
     return $value;
 }
 
-function encode($str){
-    return htmlspecialchars($str);
+function encode($str, $flags = ENT_QUOTES) {
+    return htmlspecialchars($str, $flags, 'UTF-8');
 }
