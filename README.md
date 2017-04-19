@@ -24,9 +24,6 @@ It covers typical use cases for a new project and will help you not to waste you
 - Krajee Yii Extensions
 - X-editable support
 
-## Before you start
-Please, consider helping project via [contributions](https://github.com/trntv/yii2-starter-kit/issues) or [donations](#donations). 
-
 ## TABLE OF CONTENTS
 - [Demo](#demo)
 - [Features](#features)
