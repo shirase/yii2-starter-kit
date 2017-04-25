@@ -4,6 +4,8 @@ Yii Starter Kit Change Log
 3.0.4
 -----
 - Inspect code
+- shirase55/ckeditor-inlinesave
+- shirase55/ckeditor-image
 
 3.0.3.1
 -------

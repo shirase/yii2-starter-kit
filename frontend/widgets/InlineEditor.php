@@ -36,9 +36,13 @@ class InlineEditor extends Widget
         if (\Yii::$app->user->can('administrator')) {
             EditableAsset::register($this->view);
 
-            $path = \Yii::getAlias('@frontendWeb').'/ckeditor_plugins';
-            $url = \Yii::getAlias('@frontendUrl').'/ckeditor_plugins';
-            $this->view->registerJs("CKEDITOR.plugins.addExternal('inlinesave', '".$url."/inlinesave/plugin.js?v=".filemtime($path.'/inlinesave/plugin.js')."', '');");
+            $path = \Yii::getAlias('@vendor/shirase55/ckeditor-inlinesave');
+            $url = $this->view->assetManager->publish($path.'/dist')[1];
+            $this->view->registerJs("CKEDITOR.plugins.addExternal('inlinesave', '".$url."/plugin.js?v=".filemtime($path.'/dist/plugin.js')."', '');");
+
+            $path = \Yii::getAlias('@vendor/shirase55/ckeditor-image');
+            $url = $this->view->assetManager->publish($path.'/dist')[1];
+            $this->view->registerJs("CKEDITOR.plugins.addExternal('image-uf', '".$url."/plugin.js?v=".filemtime($path.'/dist/plugin.js')."', '');");
 
             $kcfinderUrl = KCFinderAsset::register($this->view)->baseUrl;
             \Yii::$app->session->set('KCFINDER', [
@@ -85,7 +89,8 @@ class InlineEditor extends Widget
                 'preset' => 'custom',
                 'clientOptions' => [
                     'extraAllowedContent' => 'iframe[*];script;style;blockquote;img[*]{*}(*);div[*]{*}(*);span[*]{*}(*);p[*]{*}(*);',
-                    'extraPlugins' => 'inlinesave',
+                    'extraPlugins' => 'inlinesave,image-uf',
+                    'removePlugins'=>'image',
                     'filebrowserBrowseUrl' => $kcfinderUrl . '/browse.php?opener=ckeditor&type=files',
                     'filebrowserUploadUrl' => $kcfinderUrl . '/upload.php?opener=ckeditor&type=files',
                     'toolbar' => [
@@ -97,7 +102,7 @@ class InlineEditor extends Widget
                         ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
                         ['Link', 'Unlink'],
                         ['FontSize', 'Styles', 'Format'],
-                        ['Table', 'Image'],
+                        ['Table', 'image-uf'],
                         ['RemoveFormat'],
                     ]
                 ],
