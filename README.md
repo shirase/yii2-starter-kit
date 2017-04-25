@@ -39,7 +39,7 @@ It covers typical use cases for a new project and will help you not to waste you
 - [Donations](#donations)
 - [Have any questions](#have-any-questions)
 
-##DEMO
+## DEMO
 Demo is hosted by awesome [Digital Ocean](https://m.do.co/c/d7f000191ea8)
 
 Frontend:
