@@ -6,15 +6,19 @@ Yii Starter Kit Change Log
 
 3.0.3.1
 -------
-Fix InlineEditor image dependency bug
+- Fix InlineEditor image dependency bug
 
 3.0.3
 -----
-Switfmailer base64contentencoder bootstrap dependency
-SendEmailCommand use mailer->compose
-InlineEditor extraAllowedContent
-Imperavi off replaceDivs
-Page slug unique as slug-language
+- Switfmailer base64contentencoder bootstrap dependency
+- SendEmailCommand use mailer->compose
+- InlineEditor extraAllowedContent
+- Imperavi off replaceDivs
+- Page slug unique as slug-language
+
+3.0.2.1
+-------
+- Forward compatibility, page migration
 
 3.0.0
 -----
