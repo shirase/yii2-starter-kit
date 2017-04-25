@@ -6,10 +6,10 @@
     - [Requirements](#requirements)
     - [Setup application](#setup-application)
     - [Configure your web server](#configure-your-web-server)
-    - [Single domain installtion](#single-domain-installation)
 
 - [Docker installation](#docker-installation)
 - [Vagrant installation](#vagrant-installation)
+- [Single domain installtion](#single-domain-installation)
 - [Demo users](#demo-users)
 - [Important-notes](#important-notes)
 
@@ -21,6 +21,10 @@ at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
 ```bash
 composer global require "fxp/composer-asset-plugin"
 ```
+
+3. Install NPM or Yarn to build frontend scripts
+- [NPM] (https://docs.npmjs.com/getting-started/installing-node)
+- Yarn (https://yarnpkg.com/en/docs/install)
 
 ### Get source code
 #### Download sources
@@ -50,8 +54,7 @@ Required PHP extensions:
 - intl
 - gd
 - mcrypt
-
-
+- com_dotnet (for Windows)
 
 ### Setup application
 1. Copy `.env.dist` to `.env` in the project root.
@@ -78,17 +81,74 @@ Required PHP extensions:
 3. Run in command line
 ```
 php console/yii app/setup
+npm install
+npm run build
 ```
 
 ### Configure your web server
-Copy `vhost.conf.dist` to `vhost.conf`, change it with your local settings and copy (symlink) it to nginx `sites-enabled` directory.
-Or configure your web server with three different web roots:
-- yii2-starter-kit.dev => /path/to/yii2-starter-kit/frontend/web
-- backend.yii2-starter-kit.dev => /path/to/yii2-starter-kit/backend/web
-- storage.yii2-starter-kit.dev => /path/to/yii2-starter-kit/storage/web
+- Copy `docker/vhost.conf` to your nginx config directory
+- Change it to fit your environment
 
-### Single domain installation
-#### Setup application
+## Docker installation
+1. Follow [docker install](https://docs.docker.com/engine/installation/) instruction to install docker
+2. Add ``127.0.0.1 yii2-starter-kit.dev backend.yii2-starter-kit.dev storage.yii2-starter-kit.dev``* to your `hosts` file
+2. Copy `.env.dist` to `.env` in the project root
+3. Run `docker-compose build`
+4. Run `docker-compose up -d`
+5. Log into the app container via `docker-compose exec app bash`
+6. Install composer per instuctions available at [Composer](https://getcomposer.org/download/)
+7. Run `php composer.phar global require "fxp/composer-asset-plugin"` and `composer install --profile --prefer-dist -o -v`
+- If asked for a token aquire one from your [github account](https://github.com/settings/tokens).
+8. Setup application with `php ./console/yii app/setup --interactive=0`
+9. Exit the app container by using `exit`
+10. That's all - your application is accessible on http://yii2-starter-kit.dev
+
+ * - docker host IP address may vary on Windows and MacOS systems
+ 
+*PS* Also you can use bash inside application container. To do so run `docker-compose exec app bash`
+
+### Docker FAQ
+1. How do i run yii console commands from outside a container?
+
+`docker-compose exec app console/yii help`
+
+`docker-compose exec app console/yii migrate`
+
+`docker-compose exec app console/yii rbac-migrate`
+
+2. How to connect to the application database with my workbench, navicat etc?
+MySQL is available on `yii2-starter-kit.dev`, port `3306`. User - `root`, password - `root`
+
+## Vagrant installation
+If you want, you can use bundled Vagrant instead of installing app to your local machine.
+
+1. Install [Vagrant](https://www.vagrantup.com/)
+2. Copy files from `docs/vagrant-files` to application root
+3. Copy `./vagrant/vagrant.yml.dist` to `./vagrant/vagrant.yml`
+4. Create GitHub [personal API token](https://github.com/blog/1509-personal-api-tokens)
+5. Edit values as desired including adding the GitHub personal API token to `./vagrant/vagrant.yml`
+6. Run:
+```
+vagrant plugin install vagrant-hostmanager
+vagrant up
+```
+That`s all. After provision application will be accessible on http://yii2-starter-kit.dev
+
+## Demo data
+### Demo Users
+```
+Login: webmaster
+Password: webmaster
+
+Login: manager
+Password: manager
+
+Login: user
+Password: user
+```
+
+## Single domain installation
+### Setup application
 Adjust settings in `.env` file
 
 ```
@@ -116,8 +176,8 @@ Adjust settings in `frontend/config/web.php` file
         ...
 ```
 
-#### Configure your web server
-##### Apache
+### Configure your web server
+#### Single domain apache config
 This is an example single domain config for apache
 ```
 <VirtualHost *:80>
@@ -180,7 +240,7 @@ This is an example single domain config for apache
 </VirtualHost>
 ```
 
-##### Nginx
+#### Single domain nginx config
 This is an example single domain config for nginx
 
 ```
@@ -239,13 +299,7 @@ server {
 
 ## PHP-FPM Servers ##
 upstream php-fpm {
-    server unix:/var/run/php/php7.0-fpm.sock;
-}
-```
-## PHP-FPM Servers ##
-```
-upstream php-fpm {
-    server fpm:9000;
+    server app:9000;
 }
 ```
 
