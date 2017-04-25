@@ -3,6 +3,7 @@ Yii Starter Kit Change Log
 
 3.0.4
 -----
+- Inspect code
 
 3.0.3.1
 -------
