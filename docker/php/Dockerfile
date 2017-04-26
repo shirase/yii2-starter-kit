@@ -7,11 +7,16 @@ RUN apt-get update && apt-get install -y \
         libmcrypt-dev \
         libpng12-dev \
         libicu-dev \
+        curl \
             --no-install-recommends
 
 RUN docker-php-ext-install mcrypt zip intl mbstring pdo_mysql exif \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install gd
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+RUN composer global require "fxp/composer-asset-plugin"
 
 RUN pecl install -o -f xdebug \
     && rm -rf /tmp/pear
