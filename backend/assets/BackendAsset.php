@@ -1,14 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: zein
- * Date: 7/3/14
- * Time: 3:14 PM
- */
-
 namespace backend\assets;
 
+use common\assets\AdminLte;
+use common\assets\Html5shiv;
 use yii\web\AssetBundle;
+use yii\web\YiiAsset;
 
 class BackendAsset extends AssetBundle
 {
@@ -23,8 +19,8 @@ class BackendAsset extends AssetBundle
     ];
 
     public $depends = [
-        'yii\web\YiiAsset',
-        'common\assets\AdminLte',
-        'common\assets\Html5shiv'
+        YiiAsset::class,
+        AdminLte::class,
+        Html5shiv::class,
     ];
 }

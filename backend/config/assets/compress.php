@@ -39,12 +39,23 @@ return [
 
     // Asset bundle for compression output:
     'targets' => [
-        'all' => [
+        'vendor' => [
             'class' => 'yii\web\AssetBundle',
             'basePath' => '@webroot',
             'baseUrl' => '@web',
-            'js' => 'bundle/{hash}.js',
-            'css' => 'bundle/{hash}.css',
+            'js' => 'bundle/vendor.js',
+            'css' => 'bundle/vendor.css',
+            'depends' => [],
+        ],
+        'backend' => [
+            'class' => 'yii\web\AssetBundle',
+            'basePath' => '@webroot',
+            'baseUrl' => '@web',
+            'js' => 'bundle/backend.js',
+            'css' => 'bundle/backend.css',
+            'depends' => [
+                'backend\assets\BackendAsset',
+            ],
         ],
     ],
 
