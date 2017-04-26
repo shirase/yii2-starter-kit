@@ -3,9 +3,9 @@ var gulp = require('gulp'),
     autoprefixer = require('autoprefixer'),
     csscomb = require('gulp-csscomb');
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['less-pre']);
 
-gulp.task('css', function() {
+gulp.task('less-pre', function() {
     var processors = [
         autoprefixer({browsers: 'last 2 versions, > 5%'})
     ];
@@ -16,6 +16,6 @@ gulp.task('css', function() {
         .pipe(gulp.dest('./'));
 });
 
-gulp.task('watch', ['css'], function() {
-    gulp.watch('web/css/*.less', ['css']);
+gulp.task('watch', ['less-pre'], function() {
+    gulp.watch('web/css/*.less', ['less-pre']);
 });
