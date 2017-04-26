@@ -40,7 +40,7 @@ $config = [
         'assetManager' => [
             'class' => 'yii\web\AssetManager',
             'linkAssets' => env('LINK_ASSETS'),
-            'appendTimestamp' => YII_ENV_DEV
+            'appendTimestamp' => true,
         ]
     ],
     /*'as locale' => [
