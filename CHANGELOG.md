@@ -3,6 +3,7 @@ Yii Starter Kit Change Log
 
 3.0.5
 -----
+Webpack
 
 3.0.4
 -----
