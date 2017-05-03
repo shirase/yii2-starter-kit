@@ -44,8 +44,8 @@ $config = [
             'converter' => [
                 'class' => 'yii\web\AssetConverter',
                 'commands' => [
-                    'less' => ['css',
-                        'node '.Yii::getAlias('@base').'/node_modules/gulp/bin/gulp.js --gulpfile "'.Yii::getAlias('@base').'/gulpfile.js" less --in "{from}"'],
+                    'less' => ['css', Yii::getAlias('@base') .
+                        '/node_modules/.bin/gulp --gulpfile "'.Yii::getAlias('@base').'/gulpfile.js" less --in "{from}"'],
                 ],
             ],
         ]
