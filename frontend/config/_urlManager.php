@@ -12,6 +12,7 @@ return [
         ['class'=>'common\components\web\UriRule', 'route'=>'article/index'],
         ['pattern'=>'article/attachment-download', 'route'=>'article/attachment-download'],
         ['pattern'=>'article/index', 'route'=>'article/index'],
+        ['pattern'=>'article/update', 'route'=>'article/update'],
         ['class'=>'common\components\web\UriRule', 'route'=>'article/view'],
         ['pattern'=>'article/<slug>', 'route'=>'article/view'],
 

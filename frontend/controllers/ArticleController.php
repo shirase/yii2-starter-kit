@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use common\models\Article;
 use common\models\ArticleAttachment;
 use common\models\Page;
+use frontend\actions\UpdateAction;
 use frontend\components\Breadcrumbs;
 use frontend\components\Seo;
 use frontend\models\search\ArticleSearch;
@@ -19,6 +20,15 @@ use yii\web\NotFoundHttpException;
  */
 class ArticleController extends Controller
 {
+    public function actions() {
+        return [
+            'update'=>[
+                'class'=>UpdateAction::className(),
+                'modelClass'=>Article::className(),
+            ]
+        ];
+    }
+
     /**
      * @param null $slug
      * @return string

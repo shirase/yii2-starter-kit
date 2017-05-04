@@ -5,8 +5,8 @@ use common\components\helpers\Url;
 /* @var $model common\models\Article */
 ?>
 <div class="content">
-    <article class="article-item">
-        <h1><?php echo $model->title ?></h1>
+    <article class="article-item" itemscope itemtype="http://schema.org/NewsArticle">
+        <h1 itemprop="headline"><?php echo $model->title ?></h1>
 
         <?php if (Yii::$app->user->can('administrator')): ?>
             <div class="editor-panel">
@@ -17,11 +17,15 @@ use common\components\helpers\Url;
         <?php if ($model->thumbnail_path): ?>
             <?php echo \yii\helpers\Html::img(
                 Url::image($model->thumbnail_path, ['w' => 200]),
-                ['class' => 'article-thumb img-rounded pull-left']
+                ['class' => 'article-thumb img-rounded pull-left', 'itemprop' => 'thumbnailUrl']
             ) ?>
         <?php endif; ?>
 
-        <?php echo $model->body ?>
+        <div itemprop="text">
+            <?php \frontend\widgets\InlineEditor::begin(['model'=>$model, 'attribute'=>'body']) ?>
+            <?php echo $model->body ?>
+            <?php \frontend\widgets\InlineEditor::end() ?>
+        </div>
 
         <?php if (!empty($model->articleAttachments)): ?>
             <h3><?php echo Yii::t('frontend', 'Attachments') ?></h3>
@@ -37,6 +41,5 @@ use common\components\helpers\Url;
                 <?php endforeach; ?>
             </ul>
         <?php endif; ?>
-
     </article>
 </div>
