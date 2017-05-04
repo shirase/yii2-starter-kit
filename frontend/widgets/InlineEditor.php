@@ -2,6 +2,7 @@
 namespace frontend\widgets;
 
 use dosamigos\ckeditor\CKEditorInline;
+use dosamigos\ckeditor\CKEditorWidgetAsset;
 use frontend\assets\EditableAsset;
 use iutbay\yii2kcfinder\KCFinderAsset;
 use yii\base\Widget;
@@ -80,6 +81,8 @@ class InlineEditor extends Widget
                 'thumbWidth' => 100,
                 'thumbHeight' => 100,
             ]);
+
+            CKEditorWidgetAsset::register($this->view);
 
             CKEditorInline::begin([
                 'options' => [
