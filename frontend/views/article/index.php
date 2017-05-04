@@ -25,22 +25,24 @@ $this->title = $this->title ?: Yii::t('frontend', 'Articles');
                         <a class="j-frame-dialog link-update" data-type="update" href="<?= Yii::$app->urlManagerBackend->createAbsoluteUrl(['article/update', 'id'=>$model->id]) ?>" target="_blank"><?= Yii::t('frontend', 'Изменить') ?></a>
                     </div>
                 <?php endif ?>
-                <h2 class="article-title" itemprop="name">
+                <h2 class="title" itemprop="name">
                     <?php echo \yii\helpers\Html::a($model->title, ['view', 'slug'=>$model->slug, 'category'=>$category->id], ['itemprop' => 'url']) ?>
                 </h2>
-                <div class="article-meta">
-                    <time class="article-date" datetime="<?= encode($model->created_at) ?>" itemprop="dateline">
+                <div class="meta">
+                    <time class="date" datetime="<?= encode($model->created_at) ?>" itemprop="dateline">
                         <?php echo Yii::$app->formatter->asDatetime($model->created_at) ?>
                     </time>
                 </div>
-                <div class="article-content">
+                <div class="content">
                     <?php if ($model->thumbnail_path): ?>
-                        <?php echo \yii\helpers\Html::img(
-                            \common\components\helpers\Url::image($model->thumbnail_path, ['w' => 100]),
-                            ['class' => 'article-thumb img-rounded pull-left', 'itemprop' => 'thumbnailUrl']
-                        ) ?>
+                        <div class="thumb">
+                            <?php echo \yii\helpers\Html::img(
+                                \common\components\helpers\Url::image($model->thumbnail_path, ['w' => 200]),
+                                ['itemprop' => 'thumbnailUrl']
+                            ) ?>
+                        </div>
                     <?php endif; ?>
-                    <div class="article-text">
+                    <div class="body">
                         <?php echo \yii\helpers\StringHelper::truncate($model->body, 150, '...', null, true) ?>
                     </div>
                 </div>

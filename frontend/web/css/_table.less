@@ -1,25 +1,34 @@
-div.table {
+.table() {
     display: table;
     width: 100%;
+
+    & > div {
+        display: table-cell;
+        box-sizing: border-box;
+        vertical-align: top;
+    }
 }
 
-div.table > div {
-    display: table-cell;
-    box-sizing: border-box;
-    vertical-align: top;
-}
-
-.table.center {
+.table-center() {
+    .table;
     display: flex;
     justify-content: center;
 }
 
-.table.wide {
+.table-wide() {
+    .table;
     display: flex;
     justify-content: space-between;
 }
 
-.table.left {
+.table-left() {
+    .table;
     display: flex;
     justify-content: flex-start;
+}
+
+.table-right() {
+    .table;
+    display: flex;
+    justify-content: flex-end;
 }
