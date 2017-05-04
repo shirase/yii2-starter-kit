@@ -3,7 +3,10 @@ Yii Starter Kit Change Log
 
 3.0.5
 -----
-Webpack
+- Merge trntv/yii2-starter-kit master
+- Using gulp for frontend and backend less compilation
+- Gulp watch task
+- Frontend and backend css files in git now
 
 3.0.4
 -----
