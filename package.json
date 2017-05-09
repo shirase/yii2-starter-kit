@@ -1,9 +1,16 @@
 {
   "private": true,
-  "author": "",
-  "license": "ISC",
+  "scripts": {
+    "build": "webpack --progress",
+    "watch": "webpack watch"
+  },
   "dependencies": {
     "autoprefixer": "^6.7.7",
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.0",
+    "babel-preset-latest": "^6.24.0",
+    "css-raw-loader": "^0.1.1",
+    "extract-text-webpack-plugin": "^2.1.0",
     "gulp": "^3.9.1",
     "gulp-csscomb": "^3.0.8",
     "gulp-less": "^3.3.0",
@@ -11,6 +18,8 @@
     "gulp-postcss": "^6.4.0",
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^2.6.0",
+    "less-loader": "^3.0.0",
+    "webpack": "^2.4.1",
     "yargs": "^7.1.0"
   }
 }
