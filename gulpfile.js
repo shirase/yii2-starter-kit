@@ -8,6 +8,9 @@ var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
     rename = require('gulp-rename');
 
+var fs = require('fs'),
+    path = require('path');
+
 var argv = require('yargs').argv;
 
 gulp.task('default', ['watch']);
@@ -23,6 +26,10 @@ gulp.task('less-pre', function() {
 });
 
 function lessCompile(src) {
+    if (typeof src == 'string') {
+        src = path.relative(process.cwd(), fs.realpathSync(src));
+    }
+
     var processors = [
         autoprefixer({browsers: 'last 2 versions, > 5%'})
     ];
