@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+    webpack = require('webpack'),
     postcss = require('gulp-postcss'),
     autoprefixer = require('autoprefixer'),
     csscomb = require('gulp-csscomb'),
@@ -58,6 +59,15 @@ gulp.task('less-frontend', function() {
 
 gulp.task('less-backend', function() {
     return lessCompile(['backend/web/css/*.less', '!backend/web/css/_*.less']);
+});
+
+gulp.task('pack', function(callback) {
+    webpack(require('./webpack.config.js'), function(err) {
+        if(err) {
+            console.log(err);
+        }
+        callback();
+    });
 });
 
 gulp.task('watch', ['less-frontend', 'less-backend'], function() {

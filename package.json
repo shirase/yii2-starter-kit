@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "build": "webpack --progress",
-    "watch": "webpack watch"
+    "pack": "gulp pack",
+    "watch": "gulp watch"
   },
   "dependencies": {
     "autoprefixer": "^6.7.7",
