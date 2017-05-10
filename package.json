@@ -2,7 +2,8 @@
   "private": true,
   "scripts": {
     "pack": "gulp pack",
-    "watch": "gulp watch"
+    "watch": "gulp watch",
+    "less": "gulp less"
   },
   "dependencies": {
     "autoprefixer": "^6.7.7",
