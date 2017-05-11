@@ -48,7 +48,12 @@ $config = [
                         'npm run --prefix "'.Yii::getAlias('@base').'" less -- --in "{from}"'],
                 ],
             ],
-        ]
+        ],
+        'user' => [
+            'class' => 'common\components\web\User',
+            'identityClass' => 'common\models\User',
+            'as afterLogin' => common\behaviors\LoginTimestampBehavior::class
+        ],
     ],
     /*'as locale' => [
         'class' => 'common\behaviors\LocaleBehavior',

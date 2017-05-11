@@ -1,10 +1,10 @@
 <?php
 
-namespace backend\components\web;
+namespace common\components\web;
 
 /**
  * Class User
- * @package backend\components\web
+ * @package common\components\web
  */
 class User extends \yii\web\User {
 

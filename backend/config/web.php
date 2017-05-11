@@ -27,11 +27,8 @@ $config = [
             'cookieValidationKey' => env('BACKEND_COOKIE_VALIDATION_KEY'),
         ],
         'user' => [
-            'class' => 'backend\components\web\User',
-            'identityClass' => 'common\models\User',
-            'loginUrl' => ['sign-in/login'],
+            'loginUrl'=>['sign-in/login'],
             'enableAutoLogin' => true,
-            'as afterLogin' => common\behaviors\LoginTimestampBehavior::class
         ],
     ],
     'bootstrap' => [

@@ -53,11 +53,8 @@ $config = [
             'cookieValidationKey' => env('FRONTEND_COOKIE_VALIDATION_KEY')
         ],
         'user' => [
-            'class'=>'yii\web\User',
-            'identityClass' => 'common\models\User',
             'loginUrl'=>['/user/sign-in/login'],
             'enableAutoLogin' => true,
-            'as afterLogin' => 'common\behaviors\LoginTimestampBehavior'
         ]
     ]
 ];
