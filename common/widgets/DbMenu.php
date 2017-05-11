@@ -28,13 +28,15 @@ class DbMenu extends Menu
      */
     public $key;
 
-    private function makeItems($pid, &$tree) {
-        if (!isset($tree[$pid])) return [];
+    public $level;
+
+    private function makeItems($pid, $level, &$tree) {
+        if (!isset($tree[$pid]) || ($this->level && $level>$this->level)) return [];
 
         $items = [];
         foreach ($tree[$pid] as $id=>$row) {
             if (isset($tree[$id])) {
-                $row['items'] = $this->makeItems($id, $tree);
+                $row['items'] = $this->makeItems($id, $level+1, $tree);
             }
             $items[] = $row;
         }
@@ -59,6 +61,6 @@ class DbMenu extends Menu
             }
         }
 
-        $this->items = $this->makeItems($model->id, $tree);
+        $this->items = $this->makeItems($model->id, 1, $tree);
     }
 }
