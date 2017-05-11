@@ -8,6 +8,7 @@ namespace common\widgets;
 use common\models\Page;
 use Yii;
 use common\components\helpers\Url;
+use yii\helpers\ArrayHelper;
 use yii\web\HttpException;
 use yii\widgets\Menu;
 
@@ -29,6 +30,8 @@ class DbMenu extends Menu
     public $key;
 
     public $level;
+
+    private $activeUrls = [];
 
     private function makeItems($pid, $level, &$tree) {
         if (!isset($tree[$pid]) || ($this->level && $level>$this->level)) return [];
@@ -53,6 +56,17 @@ class DbMenu extends Menu
 
         if (!$model) throw new HttpException(500, 'Menu not found');
 
+        $this->activeUrls[] = rtrim(Yii::$app->request->baseUrl, '/') . '/' . Yii::$app->request->pathInfo;
+
+        $view = \Yii::$app->controller->view;
+        if ($breadcrumbs = ArrayHelper::getValue($view->params, 'breadcrumbs')) {
+            foreach ($breadcrumbs as $row) {
+                if ($url = ArrayHelper::getValue($row, 'url')) {
+                    $this->activeUrls[] = $url;
+                }
+            }
+        }
+
         $tree = [];
         if ($rows = Page::find()->active()->orderBy('bpath')->children($model->id)->all()) {
             foreach ($rows as $row) {
@@ -62,5 +76,14 @@ class DbMenu extends Menu
         }
 
         $this->items = $this->makeItems($model->id, 1, $tree);
+    }
+
+    protected function isItemActive($item) {
+        if ($url = ArrayHelper::getValue($item, 'url')) {
+            if (array_search($url, $this->activeUrls)!==false) {
+                return true;
+            }
+        }
+        return false;
     }
 }
