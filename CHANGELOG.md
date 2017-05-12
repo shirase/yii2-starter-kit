@@ -1,6 +1,16 @@
 Yii Starter Kit Change Log
 ==========================
 
+3.0.6
+-----
+- Ignore css files
+- Use common user for frontend and backend
+- Npm less script
+- Webpack support
+- Breadcrumbs getActiveUrls, checkActive methods
+- DbMenu add level param
+- DbMenu activeUrls
+
 3.0.5
 -----
 - Merge trntv/yii2-starter-kit master

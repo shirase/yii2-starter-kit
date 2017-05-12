@@ -3,6 +3,7 @@ namespace frontend\components;
 
 use common\components\helpers\Url;
 use common\models\Page;
+use yii\helpers\ArrayHelper;
 
 class Breadcrumbs
 {
@@ -31,5 +32,36 @@ class Breadcrumbs
                 $view->params['breadcrumbs'][] = $last['label'];
             }
         }
+    }
+
+    private static $activeUrls;
+
+    public static function getActiveUrls($reload = false) {
+        if (self::$activeUrls && !$reload) {
+            return self::$activeUrls;
+        }
+
+        self::$activeUrls = [
+            rtrim(\Yii::$app->request->baseUrl, '/') . '/' . \Yii::$app->request->pathInfo
+        ];
+
+        $view = \Yii::$app->controller->view;
+        if ($breadcrumbs = ArrayHelper::getValue($view->params, 'breadcrumbs')) {
+            foreach ($breadcrumbs as $row) {
+                if ($url = ArrayHelper::getValue($row, 'url')) {
+                    self::$activeUrls[] = $url;
+                }
+            }
+        }
+
+        return self::$activeUrls;
+    }
+
+    /**
+     * @param string $url
+     */
+    public static function checkActive($url) {
+        $activeUrls = self::getActiveUrls();
+        return array_search($url, $activeUrls) !== false;
     }
 }
