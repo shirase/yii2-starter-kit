@@ -49,6 +49,6 @@ class PageController extends Controller
         }
 
         $this->trigger('beforeRenderView');
-        return $this->render('view', ['model'=>$model]);
+        return $this->render($model->template ?: 'view', ['model'=>$model]);
     }
 }
