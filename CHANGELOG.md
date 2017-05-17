@@ -1,6 +1,10 @@
 Yii Starter Kit Change Log
 ==========================
 
+3.0.5.1
+-------
+Forward compatibility
+
 3.0.5
 -----
 - Merge trntv/yii2-starter-kit master
