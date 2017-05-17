@@ -26,4 +26,3 @@ coverage:
     - ../../../backend/modules/*
   exclude:
     - ../../../backend/modules/i18n/*
-    - ../../../backend/views/_gii/*
