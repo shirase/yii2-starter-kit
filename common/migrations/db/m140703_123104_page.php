@@ -20,7 +20,6 @@ class m140703_123104_page extends Migration
             'title' => $this->string(255),
             'body' => $this->text(),
             'status' => $this->smallInteger(1)->notNull()->defaultValue(0),
-            'template' => $this->string(100),
             'created_at' => $this->timestamp(),
             'updated_at' => $this->timestamp()->null(),
             'pid' => $this->integer(),

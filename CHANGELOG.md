@@ -10,7 +10,6 @@ Yii Starter Kit Change Log
 - Breadcrumbs getActiveUrls, checkActive methods
 - DbMenu add level param
 - DbMenu activeUrls
-- Page template
 
 3.0.5
 -----

@@ -18,7 +18,6 @@ use yii\behaviors\TimestampBehavior;
  * @property string $body
  * @property integer $type_id
  * @property integer $status
- * @property string $template
  * @property string $created_at
  * @property string $updated_at
  * @property integer $pid
@@ -101,7 +100,7 @@ class Page extends \common\components\db\ActiveRecord
             [['title'], 'string', 'max' => 512],
             [['slug'], 'string', 'max' => 1024],
             [['slug'], 'unique', 'targetAttribute'=>['slug', 'language']],
-            [['name', 'template'], 'string', 'max' => 100],
+            [['name'], 'string', 'max' => 100],
             [['type_id'], 'exist', 'skipOnError' => true, 'targetClass' => PageType::className(), 'targetAttribute' => ['type_id' => 'id']],
         ];
     }
@@ -123,7 +122,6 @@ class Page extends \common\components\db\ActiveRecord
             'body' => Yii::t('common', 'Body'),
             'type_id' => Yii::t('common', 'Type'),
             'status' => Yii::t('common', 'Published'),
-            'template' => Yii::t('common', 'Template'),
             'created_at' => Yii::t('common', 'Created At'),
             'updated_at' => Yii::t('common', 'Updated At'),
             'page_title' => Yii::t('common', 'Page title'),
