@@ -9,6 +9,9 @@ use common\components\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model common\models\Page */
 /* @var $form yii\widgets\ActiveForm */
+
+/** @var \yii\web\Controller $context */
+$context = $this->context;
 ?>
 
 <?php
@@ -58,7 +61,7 @@ $this->registerJs('$(document).on("change", "#page-type_id", function() {$.pjax.
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('backend', 'Create') : Yii::t('backend', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('backend', 'Back'), ($r=ArrayHelper::getValue($this->context->actionParams, 'return')) ? $r : ['index', 'returned'=>true], ['class' => 'btn btn-default']) ?>
+        <?= Html::a(Yii::t('backend', 'Back'), ($r=ArrayHelper::getValue($context->actionParams, 'return')) ? $r : ['index', 'returned'=>true], ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
