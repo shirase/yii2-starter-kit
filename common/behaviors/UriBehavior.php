@@ -147,19 +147,21 @@ class UriBehavior extends Behavior
                     throw new Exception('Uri save error', $Uri->errors);
 
                 $model->link($this->uriRelation, $Uri);
-
-                if ($urisOld) {
-                    foreach ($urisOld as $uriOld) {
-                        $uriOld->redirect_id = $Uri->id;
-                        if (!$uriOld->save())
-                            throw new Exception('Uri save error', $uriOld->errors);
-                    }
-                }
             }
             elseif ($Uri->redirect_id) {
                 $Uri->redirect_id = null;
                 if (!$Uri->save())
                     throw new Exception('Uri save error', $Uri->errors);
+            }
+
+            if ($urisOld) {
+                foreach ($urisOld as $uriOld) {
+                    if ($uriOld->id != $Uri->id) {
+                        $uriOld->redirect_id = $Uri->id;
+                        if (!$uriOld->save())
+                            throw new Exception('Uri save error', $uriOld->errors);
+                    }
+                }
             }
         }
 
