@@ -2,7 +2,6 @@
 namespace common\plugins\page_type\link;
 
 use common\plugins\page_type\PluginInterface;
-use yii\base\Widget;
 use yii\helpers\ArrayHelper;
 
 class Plugin implements PluginInterface {
