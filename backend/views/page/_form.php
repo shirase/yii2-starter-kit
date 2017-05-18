@@ -49,7 +49,7 @@ $this->registerJs('$(document).on("change", "#page-type_id", function() {$.pjax.
         <?php Pjax::begin(['id'=>'type_params']) ?>
             <?php
                 if ($model->type && $plugin = $model->type->plugin) {
-                    /** @var \yii\base\Widget $plugin */
+                    /** @var \common\plugins\page_type\PluginInterface $plugin */
                     echo $plugin::widget($form, $model);
                 }
             ?>
