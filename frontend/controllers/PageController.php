@@ -38,12 +38,12 @@ class PageController extends Controller
         Seo::make($model);
         Breadcrumbs::make($model);
 
-        if ($model->type_id == 1 && $model->dataModel->canonical) {
+        if ($model->type_id == 2 && $model->dataModel->canonical) {
             if ($canonicalPage = Page::findOne($model->dataModel->page_id)) {
                 $this->view->registerLinkTag(['rel'=>'canonical', 'href'=>Url::pageUrl($canonicalPage)]);
             }
         } else {
-            if ($plugin = $model->type->plugin) {
+            if ($model->type_id > 2 && $plugin = $model->type->plugin) {
                 $this->redirect(Url::pageUrl($model));
             }
         }
