@@ -1,6 +1,9 @@
 Yii Starter Kit Change Log
 ==========================
 
+3.0.7
+-----
+
 3.0.6
 -----
 - Ignore css files
