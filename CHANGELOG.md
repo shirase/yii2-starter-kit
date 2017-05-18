@@ -11,6 +11,7 @@ Yii Starter Kit Change Log
 - DbMenu add level param
 - DbMenu activeUrls
 - Page template
+- Uri behaviour fix
 
 3.0.5
 -----
