@@ -29,8 +29,9 @@ class Widget extends \yii\base\Widget {
                     'data'=>
                         [''=>'-']+TreeHelper::tab(
                             Page::find()
-                                ->andFilterWhere(['!=', 'id', $this->model->id])
-                                ->andFilterWhere(['OR', ['!=', 'pid', 0], ['IS', 'pid', new yii\db\Expression('NULL')]])->orderBy('bpath')->all()
+                                ->andWhere(['!=', 'id', $this->model->id])
+                                ->andWhere(['type_id' => 1])
+                                ->andWhere(['OR', ['!=', 'pid', 0], ['IS', 'pid', new yii\db\Expression('NULL')]])->orderBy('bpath')->all()
                             , 'id', 'pid', 'name')]);
         echo $this->form->field($model, 'canonical')->dropDownList(['0'=>\Yii::t('common', 'No'), '1'=>\Yii::t('common', 'Yes')]);
         return ob_get_clean();

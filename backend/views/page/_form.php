@@ -9,6 +9,9 @@ use common\components\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model common\models\Page */
 /* @var $form yii\widgets\ActiveForm */
+
+/** @var \yii\web\Controller $context */
+$context = $this->context;
 ?>
 
 <?php
@@ -44,12 +47,12 @@ $this->registerJs('$(document).on("change", "#page-type_id", function() {$.pjax.
             </div>
         </div>
 
-        <?php if ($model->pid!==null) echo $form->field($model, 'type_id')->widget(kartik\select2\Select2::className(), ['data'=>[''=>'-']+ArrayHelper::map(common\models\PageType::find()->orderBy('pos')->all(), 'id', 'name')]) ?>
+        <?php if ($model->pid!==null) echo $form->field($model, 'type_id')->widget(kartik\select2\Select2::className(), ['data'=>ArrayHelper::map(common\models\PageType::find()->orderBy('pos')->all(), 'id', 'name')]) ?>
 
         <?php Pjax::begin(['id'=>'type_params']) ?>
             <?php
                 if ($model->type && $plugin = $model->type->plugin) {
-                    /** @var \yii\base\Widget $plugin */
+                    /** @var \common\plugins\page_type\PluginInterface $plugin */
                     echo $plugin::widget($form, $model);
                 }
             ?>
@@ -58,7 +61,7 @@ $this->registerJs('$(document).on("change", "#page-type_id", function() {$.pjax.
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('backend', 'Create') : Yii::t('backend', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('backend', 'Back'), ($r=ArrayHelper::getValue($this->context->actionParams, 'return')) ? $r : ['index', 'returned'=>true], ['class' => 'btn btn-default']) ?>
+        <?= Html::a(Yii::t('backend', 'Back'), ($r=ArrayHelper::getValue($context->actionParams, 'return')) ? $r : ['index', 'returned'=>true], ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

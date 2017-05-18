@@ -91,7 +91,7 @@ class m160513_151501_seed_data extends Migration
             'created_at'=> new \yii\db\Expression('NOW()'),
             'updated_at'=> new \yii\db\Expression('NOW()'),
             'bpath'=>\shirase\tree\TreeBehavior::toBase255(array(1, 3)),
-            'type_id'=>3
+            'type_id'=>4
         ]);
 
         $this->insert('{{%widget_text}}', [

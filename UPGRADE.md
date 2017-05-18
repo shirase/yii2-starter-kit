@@ -4,6 +4,7 @@ Upgrading Instructions
 3.0.6
 -----
 Now backend and frontend css files ignored and has removed from git
+Upgrade to 3.0.5.1 before
 
 3.0.3
 -----
