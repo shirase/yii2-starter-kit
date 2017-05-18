@@ -147,11 +147,25 @@ class UriBehavior extends Behavior
                     throw new Exception('Uri save error', $Uri->errors);
 
                 $model->link($this->uriRelation, $Uri);
-            }
-            elseif ($Uri->redirect_id) {
-                $Uri->redirect_id = null;
-                if (!$Uri->save())
-                    throw new Exception('Uri save error', $Uri->errors);
+            } else {
+                if ($Uri->redirect_id) {
+                    $Uri->redirect_id = null;
+                    if (!$Uri->save())
+                        throw new Exception('Uri save error', $Uri->errors);
+                }
+
+                $lastUrl = Uri::find()
+                    ->orderBy('id DESC')
+                    ->andWhere(['uri'=>$Uri->uri])
+                    ->one();
+
+                if ($lastUrl->id != $Uri->id) {
+                    $Uri = clone $Uri;
+                    $Uri->id = null;
+                    $Uri->isNewRecord = true;
+                    if (!$Uri->save())
+                        throw new Exception('Uri save error', $lastUrl->errors);
+                }
             }
 
             if ($urisOld) {
