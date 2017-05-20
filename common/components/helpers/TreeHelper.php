@@ -6,26 +6,21 @@ class TreeHelper
 
     public static function tab($data, $attrId = 'id', $attrPid = 'pid', $attrName = 'name', $tab = '--')
     {
-        $tree = [];
         $rtree = [];
         foreach ($data as $row) {
             $rtree[$row->{$attrId}] = $row->{$attrPid};
-            $tree[$row->{$attrPid}][] = [$row->{$attrId}, $row->{$attrName}];
         }
 
         $options = [];
-        foreach ($tree as $rows) {
-            foreach ($rows as $row) {
-                $level = -1;
-                $i = $row[0];
-                while (isset($rtree[$i])) {
-                    $level++;
-                    $i = $rtree[$i];
-                }
-
-                if ($level<0) $level = 0;
-                $options[$row[0]] = str_repeat($tab, $level) . $row[1];
+        foreach ($data as $row) {
+            $level = 0;
+            $i = $row->{$attrId};
+            while (isset($rtree[$i])) {
+                $level++;
+                $i = $rtree[$i];
             }
+
+            $options[$row->{$attrId}] = str_repeat($tab, $level) . $row->{$attrName};
         }
         return $options;
     }
