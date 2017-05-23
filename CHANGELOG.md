@@ -3,6 +3,7 @@ Yii Starter Kit Change Log
 
 3.0.7
 -----
+- Page type plugin interface changes
 
 3.0.6
 -----
