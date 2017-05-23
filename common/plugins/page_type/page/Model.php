@@ -5,6 +5,11 @@ use common\components\db\ActiveRecord;
 
 /**
  * Class Model
+ *
+ * @property int $id
+ * @property int $page_id
+ * @property int $canonical
+ *
  * @method static Model|null findOne($condition)
  */
 class Model extends ActiveRecord {

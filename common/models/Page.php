@@ -3,6 +3,7 @@
 namespace common\models;
 
 use common\behaviors\UriBehavior;
+use common\plugins\page_type\PageTypePlugin;
 use Yii;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
@@ -152,7 +153,8 @@ class Page extends \common\components\db\ActiveRecord
     public function getDataModel() {
         if ($this->_dataModel) return $this->_dataModel;
         if ($plugin = $this->type->plugin) {
-            return $this->_dataModel = $plugin::dataModel($this->id);
+            /** @var PageTypePlugin $plugin */
+            return $this->_dataModel = $plugin::model($this);
         }
     }
 

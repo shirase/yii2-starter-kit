@@ -2,7 +2,9 @@
 
 namespace backend\controllers;
 
+use common\plugins\page_type\PageTypePlugin;
 use kartik\grid\EditableColumnAction;
+use shirase\yii2\helpers\MultiModel;
 use Yii;
 use common\models\Page;
 use common\models\search\PageSearch;
@@ -115,20 +117,49 @@ class PageController extends Controller
         $model = new Page();
         $model->pid = $pid;
 
-        $transaction = Yii::$app->db->beginTransaction();
+        $models = new MultiModel([
+            $model,
+        ]);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $dataModel = $model->dataModel;
-            if (!$dataModel || ($dataModel->load(Yii::$app->request->post()) && $dataModel->save())) {
-                $transaction->commit();
-                return $this->redirect($return ? $return : ['index', 'returned'=>true]);
+        if ($models->load(Yii::$app->request->post())) {
+            $valid = true;
+            $typeModel = null;
+            $plugin = null;
+
+            if ($model->type_id && $plugin = $model->type->plugin) {
+                /** @var PageTypePlugin $plugin */
+                $typeModel = $plugin::model();
+                $typeModel->load(Yii::$app->request->post());
+                $valid = $valid & $typeModel->validate();
             }
-        } else {
-            $transaction->rollBack();
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+
+            $valid = $valid & $models->validate();
+
+            if ($valid) {
+                $tx = Yii::$app->db->beginTransaction();
+
+                $valid = $models->save();
+                if ($valid) {
+                    if ($plugin && $typeModel) {
+                        $plugin::link($typeModel, $model);
+                        $valid = $typeModel->save();
+                    }
+                }
+
+                if ($valid) {
+                    $tx->commit();
+
+                    Yii::$app->session->setFlash('script', '$(document).trigger("action.Create", '.Json::encode(['class'=>$model::className()]+$model->attributes).');');
+                    return $this->redirect($return ? $return : ['index', 'returned'=>true]);
+                } else {
+                    $tx->rollBack();
+                }
+            }
         }
+
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -144,20 +175,49 @@ class PageController extends Controller
     {
         $model = $this->findModel($id);
 
-        $transaction = Yii::$app->db->beginTransaction();
+        $models = new MultiModel([
+            $model,
+        ]);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $dataModel = $model->dataModel;
-            if (!$dataModel || ($dataModel->load(Yii::$app->request->post()) && $dataModel->save())) {
-                $transaction->commit();
-                return $this->redirect($return ? $return : ['index', 'returned'=>true]);
+        if ($models->load(Yii::$app->request->post())) {
+            $valid = true;
+            $typeModel = null;
+            $plugin = null;
+
+            if ($model->type_id && $plugin = $model->type->plugin) {
+                /** @var PageTypePlugin $plugin */
+                $typeModel = $plugin::model($model);
+                $typeModel->load(Yii::$app->request->post());
+                $valid = $valid & $typeModel->validate();
             }
-        } else {
-            $transaction->rollBack();
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+
+            $valid = $valid & $models->validate();
+
+            if ($valid) {
+                $tx = Yii::$app->db->beginTransaction();
+
+                $valid = $models->save();
+                if ($valid) {
+                    if ($plugin && $typeModel) {
+                        $plugin::link($typeModel, $model);
+                        $valid = $typeModel->save();
+                    }
+                }
+
+                if ($valid) {
+                    $tx->commit();
+
+                    Yii::$app->session->setFlash('script', '$(document).trigger("action.Update", '.Json::encode(['class'=>$model::className()]+$model->attributes).');');
+                    return $this->redirect($return ? $return : ['index', 'returned'=>true]);
+                } else {
+                    $tx->rollBack();
+                }
+            }
         }
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
     }
 
     public function actionForm($id=null)

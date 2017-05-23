@@ -20,7 +20,7 @@ class Widget extends \yii\base\Widget {
 
     public function run()
     {
-        $model = $this->model->dataModel;
+        $model = $this->model;
 
         ob_start();
         echo $this->form->field($model, 'template_id')->dropDownList(yii\helpers\ArrayHelper::map(PageTemplate::find()->orderBy('id')->all(), 'id', 'name'));

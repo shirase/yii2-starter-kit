@@ -2,7 +2,7 @@
 
 namespace common\components\web\url;
 
-use common\plugins\page_type\PluginInterface;
+use common\plugins\page_type\PageTypePlugin;
 use yii\web\UrlRule;
 
 class Page extends UrlRule
@@ -20,12 +20,12 @@ class Page extends UrlRule
                 return false;
             }
 
-            if ($Page = \common\models\Page::find()->andWhere(['slug' => $slug])->one()) {
+            if ($page = \common\models\Page::find()->andWhere(['slug' => $slug])->one()) {
                 /**
-                 * @var PluginInterface $plugin
+                 * @var PageTypePlugin $plugin
                  */
-                if ($plugin = $Page->type->plugin) {
-                    if ($res[0] === $plugin::route($Page)) {
+                if ($plugin = $page->type->plugin) {
+                    if ($res[0] === $plugin::route($page)) {
                         return $res;
                     }
                 } else {

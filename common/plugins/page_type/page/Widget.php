@@ -19,7 +19,7 @@ class Widget extends \yii\base\Widget {
 
     public function run()
     {
-        $model = $this->model->dataModel;
+        $model = $this->model;
 
         ob_start();
         echo $this->form->field($model, 'page_id')
@@ -29,7 +29,7 @@ class Widget extends \yii\base\Widget {
                     'data'=>
                         [''=>'-']+TreeHelper::tab(
                             Page::find()
-                                ->andWhere(['!=', 'id', $this->model->id])
+                                ->andWhere(['!=', 'id', $model->id])
                                 ->andWhere(['type_id' => 1])
                                 ->andWhere(['OR', ['!=', 'pid', 0], ['IS', 'pid', new yii\db\Expression('NULL')]])->orderBy('bpath')->all()
                             , 'id', 'pid', 'name')]);

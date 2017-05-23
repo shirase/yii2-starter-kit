@@ -1,45 +1,54 @@
 <?php
 namespace common\plugins\page_type\article;
 
-use common\models\PageType;
-use common\plugins\page_type\PluginInterface;
+use common\models\Page;
+use common\plugins\page_type\PageTypePlugin;
 use yii\helpers\ArrayHelper;
 
-class Plugin implements PluginInterface {
-
-    public static function getId() {
-        return PageType::find()->andFilterWhere(['plugin'=>get_called_class()])->one()->id;
-    }
-
-    public static function dataModel($pageId) {
-        return null;
-
-        /*$model = Model::findOne($pageId);
+class Plugin implements PageTypePlugin
+{
+    /**
+     * @param null|Page $page
+     * @return Model|null
+     */
+    public static function model($page = null) {
+        $model = null;
+        if ($page) {
+            $model = Model::findOne($page->id);
+        }
         if (!$model) {
             $model = new Model();
-            $model->id = $pageId;
+            $model->id = $page ? $page->id : 0;
         }
-        return $model;*/
+        return $model;
+    }
+
+    /**
+     * @param Model $model
+     * @param Page $block
+     */
+    public static function link($model, $page) {
+        $model->id = $page->id;
     }
 
     public static function widget($form, $model, $options=[]) {
-        $options = ArrayHelper::merge(['form'=>$form, 'model'=>$model], $options);
+        $options = ArrayHelper::merge(['form'=>$form, 'model'=>self::model($model)], $options);
         /** @var Widget $widget */
         $widget = Widget::className();
         return $widget::widget($options);
     }
 
-    public static function URI($Page) {
+    public static function URI($page) {
         $urlManager = \Yii::$app->urlManagerFrontend;
 
-        if (isset($Page->slug)) {
-            return $urlManager->createAbsoluteUrl(['/article/index', 'slug'=>$Page->slug]);
+        if (isset($page->slug)) {
+            return $urlManager->createAbsoluteUrl(['/article/index', 'slug'=>$page->slug]);
         } else {
-            return $urlManager->createAbsoluteUrl(['/article/index', 'id'=>$Page->id]);
+            return $urlManager->createAbsoluteUrl(['/article/index', 'id'=>$page->id]);
         }
     }
 
-    public static function route($Page) {
+    public static function route($page) {
         return 'article/index';
     }
 } 

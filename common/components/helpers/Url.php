@@ -2,6 +2,8 @@
 
 namespace common\components\helpers;
 
+use common\plugins\page_type\PageTypePlugin;
+
 class Url extends \yii\helpers\Url
 {
     public static function normalizeRoute($route)
@@ -18,6 +20,7 @@ class Url extends \yii\helpers\Url
         $urlManager = \Yii::$app->urlManagerFrontend;
 
         if ($model->type && $plugin = $model->type->plugin) {
+            /** @var PageTypePlugin $plugin */
             $url = $plugin::URI($model);
         } else {
             if (isset($model->slug)) {
