@@ -1,6 +1,10 @@
 Upgrading Instructions
 ======================
 
+3.0.7
+-----
+Update your page type plugins, use new `PageTypePlugin` interface
+
 3.0.6
 -----
 Now backend and frontend css files ignored and has removed from git
