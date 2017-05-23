@@ -3,6 +3,7 @@ var gulp = require('gulp'),
     postcss = require('gulp-postcss'),
     autoprefixer = require('autoprefixer'),
     csscomb = require('gulp-csscomb'),
+    cssnano = require('gulp-cssnano'),
     less = require('gulp-less'),
     sourcemaps = require('gulp-sourcemaps'),
     plumber = require('gulp-plumber'),
@@ -43,6 +44,7 @@ function lessCompile(src) {
         .pipe(sourcemaps.init())
         .pipe(less())
         .pipe(postcss(processors))
+        .pipe(cssnano())
         .pipe(rename({
             extname: '.css'
         }))
