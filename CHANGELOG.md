@@ -3,7 +3,10 @@ Yii Starter Kit Change Log
 
 3.0.7
 -----
-- Page type plugin interface changes
+- Page type plugin, interface changes
+- Save validation behavior
+- `common\components\helpers\TreeHelper::tab` fixes
+- Page slug ensure unique
 
 3.0.6
 -----
