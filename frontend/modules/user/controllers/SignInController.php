@@ -54,8 +54,11 @@ class SignInController extends \yii\web\Controller
                         'actions' => [
                             'signup', 'login', 'request-password-reset', 'reset-password', 'oauth', 'activation'
                         ],
-                        'allow' => true,
-                        'roles' => ['?']
+                        'allow' => false,
+                        'roles' => ['?'],
+                        'denyCallback' => function () {
+                            return Yii::$app->controller->redirect(['/']);
+                        }
                     ],
                     [
                         'actions' => [
