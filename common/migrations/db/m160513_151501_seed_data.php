@@ -94,34 +94,6 @@ class m160513_151501_seed_data extends Migration
             'type_id'=>4
         ]);
 
-        $this->insert('{{%widget_text}}', [
-            'key'=>'backend_welcome',
-            'title'=>'Welcome to backend',
-            'body'=>'<p>Welcome to Yii2 Starter Kit Dashboard</p>',
-            'status'=>1,
-            'created_at'=> time(),
-            'updated_at'=> time(),
-        ]);
-
-        $this->insert('{{%widget_text}}', [
-            'key'=>'ads-example',
-            'title'=>'Google Ads Example Block',
-            'body'=>'<div class="lead">
-                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-9505937224921657"
-                     data-ad-slot="2264361777"
-                     data-ad-format="auto"></ins>
-                <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>',
-            'status'=>0,
-            'created_at'=> time(),
-            'updated_at'=> time(),
-        ]);
-
         $this->insert('{{%widget_carousel}}', [
             'id'=>1,
             'key'=>'index',
