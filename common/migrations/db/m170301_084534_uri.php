@@ -1,5 +1,6 @@
 <?php
 
+use common\models\Page;
 use yii\db\Migration;
 
 class m170301_084534_uri extends Migration
@@ -40,6 +41,11 @@ class m170301_084534_uri extends Migration
         $this->addPrimaryKey('', '{{%article_uri}}', ['article_id', 'uri_id']);
         $this->addForeignKey('fk_article_uri_article', '{{%article_uri}}', 'article_id', '{{%article}}', 'id', 'CASCADE', 'CASCADE');
         $this->addForeignKey('fk_article_uri_uri', '{{%article_uri}}', 'uri_id', '{{%uri}}', 'id', 'CASCADE', 'CASCADE');
+
+        // generate seo url for pages
+        foreach (Page::findAll([]) as $page) {
+            $page->save();
+        }
     }
 
     public function down()
