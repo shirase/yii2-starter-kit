@@ -63,7 +63,7 @@ class Page extends \common\components\db\ActiveRecord
             'slug' => [
                 'class' => SluggableBehavior::className(),
                 'attribute' => 'name',
-                'ensureUnique' => false,
+                'ensureUnique' => true,
                 'immutable' => true,
                 'uniqueValidator' => [
                     'filter' => ['language' => Yii::$app->language]
