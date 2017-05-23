@@ -13,8 +13,8 @@ class m170315_072444_page_seo extends Migration
 
     public function down()
     {
-        echo "m170315_072444_page_seo cannot be reverted.\n";
-
-        return false;
+        $this->dropColumn('{{%page}}', 'page_title');
+        $this->dropColumn('{{%page}}', 'page_keywords');
+        $this->dropColumn('{{%page}}', 'page_description');
     }
 }
