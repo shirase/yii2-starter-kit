@@ -4,24 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a755ce88816220dcf7be811bf55468ab",
+    "content-hash": "63295805f5c002c8f9431669595bafd7",
     "packages": [
         {
             "name": "2amigos/yii2-ckeditor-widget",
-            "version": "2.0.2",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2amigos/yii2-ckeditor-widget.git",
-                "reference": "60e4d2dbb138706c8c2195a1b29c420bda044b19"
+                "reference": "7092d708661b67965a9facce9e9f5e25ff39cac2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2amigos/yii2-ckeditor-widget/zipball/60e4d2dbb138706c8c2195a1b29c420bda044b19",
-                "reference": "60e4d2dbb138706c8c2195a1b29c420bda044b19",
+                "url": "https://api.github.com/repos/2amigos/yii2-ckeditor-widget/zipball/7092d708661b67965a9facce9e9f5e25ff39cac2",
+                "reference": "7092d708661b67965a9facce9e9f5e25ff39cac2",
                 "shasum": ""
             },
             "require": {
-                "ckeditor/ckeditor": "dev-full/stable",
+                "ckeditor/ckeditor": "^4.5",
                 "yiisoft/yii2": "^2.0"
             },
             "require-dev": {
@@ -64,7 +64,7 @@
                 "yii 2",
                 "yii2"
             ],
-            "time": "2016-12-01T21:22:21+00:00"
+            "time": "2016-11-10T11:32:46+00:00"
         },
         {
             "name": "asofter/yii2-imperavi-redactor",
@@ -897,16 +897,16 @@
         },
         {
             "name": "ckeditor/ckeditor",
-            "version": "dev-full/stable",
+            "version": "4.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ckeditor/ckeditor-releases.git",
-                "reference": "2fb9111efe70608ba74dc4892371f785661eac3f"
+                "reference": "268078ab43195b6004d64bc8764c41f2f829640e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ckeditor/ckeditor-releases/zipball/2fb9111efe70608ba74dc4892371f785661eac3f",
-                "reference": "2fb9111efe70608ba74dc4892371f785661eac3f",
+                "url": "https://api.github.com/repos/ckeditor/ckeditor-releases/zipball/268078ab43195b6004d64bc8764c41f2f829640e",
+                "reference": "268078ab43195b6004d64bc8764c41f2f829640e",
                 "shasum": ""
             },
             "type": "library",
@@ -934,7 +934,7 @@
                 "text",
                 "wysiwyg"
             ],
-            "time": "2017-01-12T18:09:18+00:00"
+            "time": "2017-01-12T17:36:48+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",

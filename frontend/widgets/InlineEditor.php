@@ -46,6 +46,10 @@ class InlineEditor extends Widget
             $url = $this->view->assetManager->publish($path.'/dist')[1];
             $this->view->registerJs("CKEDITOR.plugins.addExternal('image-uf', '".$url."/plugin.js?v=".filemtime($path.'/dist/plugin.js')."', '');");
 
+            $path = \Yii::getAlias('@frontend/web/ckeditor/widgets');
+            $url = \Yii::getAlias('@frontendUrl/ckeditor/widgets');
+            $this->view->registerJs("CKEDITOR.plugins.addExternal('widgets', '".$url."/plugin.js?v=".filemtime($path.'/plugin.js')."', '');");
+
             $kcfinderUrl = KCFinderAsset::register($this->view)->baseUrl;
             \Yii::$app->session->set('KCFINDER', [
                 'uploadURL' => \Yii::getAlias('@frontendUrl') . '/data',
@@ -93,7 +97,7 @@ class InlineEditor extends Widget
                 'preset' => 'custom',
                 'clientOptions' => [
                     'extraAllowedContent' => 'iframe[*];script;style;blockquote;img[*]{*}(*);div[*]{*}(*);span[*]{*}(*);p[*]{*}(*);',
-                    'extraPlugins' => 'inlinesave,image-uf',
+                    'extraPlugins' => 'inlinesave,image-uf,widgets',
                     'removePlugins'=>'image',
                     'filebrowserBrowseUrl' => $kcfinderUrl . '/browse.php?opener=ckeditor&type=files',
                     'filebrowserUploadUrl' => $kcfinderUrl . '/upload.php?opener=ckeditor&type=files',
@@ -106,7 +110,7 @@ class InlineEditor extends Widget
                         ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
                         ['Link', 'Unlink'],
                         ['FontSize', 'Styles', 'Format'],
-                        ['Table', 'image-uf'],
+                        ['Table', 'image-uf', 'Widgets'],
                         ['RemoveFormat'],
                     ]
                 ],
