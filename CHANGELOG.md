@@ -3,6 +3,9 @@ Yii Starter Kit Change Log
 
 3.0.8-dev
 ---------
+- Block module
+- Page block template
+- Fix: `frontend/widgets/InlineEditor` broken saveUrl  when complex action name
 
 3.0.7
 -----
