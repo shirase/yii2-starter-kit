@@ -22,7 +22,7 @@ class InlineEditor extends Widget
 
     public function init() {
         if ($this->model) {
-            $this->saveUrl = \Yii::$app->urlManager->createUrl([preg_replace('/([A-Z])/', '-$1', strtolower(array_pop(explode('\\', get_class($this->model))))) . '/update', 'id'=>$this->model->primaryKey]);
+            $this->saveUrl = \Yii::$app->urlManager->createUrl([strtolower(preg_replace('/([A-Z])/', '-$1', lcfirst(array_pop(explode('\\', get_class($this->model)))))) . '/update', 'id'=>$this->model->primaryKey]);
             if ($this->attribute) {
                 $this->attribute = $this->model->formName() . '[' . $this->attribute . ']';
             }
