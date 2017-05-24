@@ -18,6 +18,12 @@ $this->title = Yii::$app->name;
     </div>
 
     <div class="body-content">
+        <div class="context-home">
+            <?php $contextBlock = \common\models\ContextBlock::get('home'); ?>
+            <?php \frontend\widgets\InlineEditor::begin(['model'=>$contextBlock, 'attribute'=>'body']) ?>
+            <?php echo $contextBlock->body ?>
+            <?php \frontend\widgets\InlineEditor::end() ?>
+        </div>
 
         <div class="row">
             <div class="col-lg-4">
