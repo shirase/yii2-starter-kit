@@ -3440,12 +3440,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/shirase/ckeditor-inlinesave.git",
-                "reference": "1aa9104cd2ca876fd8e2ff57c4377dfc7657c903"
+                "reference": "49e14dd28db4fd5c83c820ae2643afb7c2342104"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shirase/ckeditor-inlinesave/zipball/1aa9104cd2ca876fd8e2ff57c4377dfc7657c903",
-                "reference": "1aa9104cd2ca876fd8e2ff57c4377dfc7657c903",
+                "url": "https://api.github.com/repos/shirase/ckeditor-inlinesave/zipball/49e14dd28db4fd5c83c820ae2643afb7c2342104",
+                "reference": "49e14dd28db4fd5c83c820ae2643afb7c2342104",
                 "shasum": ""
             },
             "require-dev": {
@@ -3459,7 +3459,7 @@
                     "email": "shirase55@gmail.com"
                 }
             ],
-            "time": "2017-04-13T09:57:53+00:00"
+            "time": "2017-05-16T14:13:27+00:00"
         },
         {
             "name": "shirase55/yii2-datetime-widget",
@@ -3514,16 +3514,16 @@
         },
         {
             "name": "shirase55/yii2-file-kit",
-            "version": "1.2.2",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shirase/yii2-file-kit.git",
-                "reference": "da1b7ef14d638e12c943ee6f74dba7c802ae51b0"
+                "reference": "17ca3e6444995f6f72e67d70f856a2967ffb836e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shirase/yii2-file-kit/zipball/da1b7ef14d638e12c943ee6f74dba7c802ae51b0",
-                "reference": "da1b7ef14d638e12c943ee6f74dba7c802ae51b0",
+                "url": "https://api.github.com/repos/shirase/yii2-file-kit/zipball/17ca3e6444995f6f72e67d70f856a2967ffb836e",
+                "reference": "17ca3e6444995f6f72e67d70f856a2967ffb836e",
                 "shasum": ""
             },
             "require": {
@@ -3559,7 +3559,7 @@
                 }
             ],
             "description": "Yii2 file upload and storage kit",
-            "time": "2017-03-11T08:19:44+00:00"
+            "time": "2017-05-24T10:54:47+00:00"
         },
         {
             "name": "shirase55/yii2-glide",
@@ -3820,16 +3820,16 @@
         },
         {
             "name": "studio-42/elfinder",
-            "version": "2.1.23",
+            "version": "2.1.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Studio-42/elFinder.git",
-                "reference": "c02d75b37ee904117346646d19a85ef9b9defbcb"
+                "reference": "085b4f8b470335f89ca0dce0a8d31243e46e6b7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Studio-42/elFinder/zipball/c02d75b37ee904117346646d19a85ef9b9defbcb",
-                "reference": "c02d75b37ee904117346646d19a85ef9b9defbcb",
+                "url": "https://api.github.com/repos/Studio-42/elFinder/zipball/085b4f8b470335f89ca0dce0a8d31243e46e6b7d",
+                "reference": "085b4f8b470335f89ca0dce0a8d31243e46e6b7d",
                 "shasum": ""
             },
             "require": {
@@ -3874,7 +3874,7 @@
             ],
             "description": "File manager for web",
             "homepage": "http://elfinder.org",
-            "time": "2017-03-31T08:05:06+00:00"
+            "time": "2017-05-19T06:16:48+00:00"
         },
         {
             "name": "sunhater/kcfinder",
@@ -4896,16 +4896,16 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "2.2.11",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "a8681b416921ae282ccca2c485d75a3ed6756080"
+                "reference": "d4d76d18ea0ec8d504995995ae68fccac24523db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/a8681b416921ae282ccca2c485d75a3ed6756080",
-                "reference": "a8681b416921ae282ccca2c485d75a3ed6756080",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/d4d76d18ea0ec8d504995995ae68fccac24523db",
+                "reference": "d4d76d18ea0ec8d504995995ae68fccac24523db",
                 "shasum": ""
             },
             "require": {
@@ -4917,7 +4917,7 @@
                 "guzzlehttp/psr7": "~1.0",
                 "php": ">=5.4.0 <8.0",
                 "phpunit/php-code-coverage": ">=2.2.4 <6.0",
-                "phpunit/phpunit": ">4.8.20 <6.0",
+                "phpunit/phpunit": ">4.8.20 <7.0",
                 "phpunit/phpunit-mock-objects": ">2.3 <5.0",
                 "sebastian/comparator": ">1.1 <3.0",
                 "sebastian/diff": "^1.4",
@@ -4986,7 +4986,7 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2017-05-11T21:07:05+00:00"
+            "time": "2017-05-24T00:54:13+00:00"
         },
         {
             "name": "codeception/specify",
@@ -5967,16 +5967,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.7.19",
+            "version": "5.7.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "69c4f49ff376af2692bad9cebd883d17ebaa98a1"
+                "reference": "3cb94a5f8c07a03c8b7527ed7468a2926203f58b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/69c4f49ff376af2692bad9cebd883d17ebaa98a1",
-                "reference": "69c4f49ff376af2692bad9cebd883d17ebaa98a1",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3cb94a5f8c07a03c8b7527ed7468a2926203f58b",
+                "reference": "3cb94a5f8c07a03c8b7527ed7468a2926203f58b",
                 "shasum": ""
             },
             "require": {
@@ -5994,7 +5994,7 @@
                 "phpunit/php-timer": "^1.0.6",
                 "phpunit/phpunit-mock-objects": "^3.2",
                 "sebastian/comparator": "^1.2.4",
-                "sebastian/diff": "~1.2",
+                "sebastian/diff": "^1.4.3",
                 "sebastian/environment": "^1.3.4 || ^2.0",
                 "sebastian/exporter": "~2.0",
                 "sebastian/global-state": "^1.1",
@@ -6045,7 +6045,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-04-03T02:22:27+00:00"
+            "time": "2017-05-22T07:42:55+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -6322,23 +6322,23 @@
         },
         {
             "name": "sebastian/diff",
-            "version": "1.4.1",
+            "version": "1.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "13edfd8706462032c2f52b4b862974dd46b71c9e"
+                "reference": "7f066a26a962dbe58ddea9f72a4e82874a3975a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/13edfd8706462032c2f52b4b862974dd46b71c9e",
-                "reference": "13edfd8706462032c2f52b4b862974dd46b71c9e",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/7f066a26a962dbe58ddea9f72a4e82874a3975a4",
+                "reference": "7f066a26a962dbe58ddea9f72a4e82874a3975a4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": "^5.3.3 || ^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.8"
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.0"
             },
             "type": "library",
             "extra": {
@@ -6370,7 +6370,7 @@
             "keywords": [
                 "diff"
             ],
-            "time": "2015-12-08T07:14:41+00:00"
+            "time": "2017-05-22T07:24:03+00:00"
         },
         {
             "name": "sebastian/environment",
@@ -6730,12 +6730,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/shirase/yii2-gii.git",
-                "reference": "90ab5559a8d37397f4fb1f956dd7e16e09f74bd3"
+                "reference": "a3f91440cb068ae41f3453b0fa4c76e894c329b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shirase/yii2-gii/zipball/90ab5559a8d37397f4fb1f956dd7e16e09f74bd3",
-                "reference": "90ab5559a8d37397f4fb1f956dd7e16e09f74bd3",
+                "url": "https://api.github.com/repos/shirase/yii2-gii/zipball/a3f91440cb068ae41f3453b0fa4c76e894c329b0",
+                "reference": "a3f91440cb068ae41f3453b0fa4c76e894c329b0",
                 "shasum": ""
             },
             "require": {
@@ -6776,7 +6776,7 @@
                 "gii",
                 "yii2"
             ],
-            "time": "2017-05-16T08:27:46+00:00"
+            "time": "2017-05-22T21:16:39+00:00"
         },
         {
             "name": "shirase55/yii2-gii-fixture-generator",
@@ -7530,16 +7530,16 @@
         },
         {
             "name": "yiisoft/yii2-codeception",
-            "version": "2.0.5",
+            "version": "2.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-codeception.git",
-                "reference": "c916a36d09fc128b05a374e7922bc56854334d56"
+                "reference": "086c8c2d28736e7a484a7a8611b5cc84024e9fb3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-codeception/zipball/c916a36d09fc128b05a374e7922bc56854334d56",
-                "reference": "c916a36d09fc128b05a374e7922bc56854334d56",
+                "url": "https://api.github.com/repos/yiisoft/yii2-codeception/zipball/086c8c2d28736e7a484a7a8611b5cc84024e9fb3",
+                "reference": "086c8c2d28736e7a484a7a8611b5cc84024e9fb3",
                 "shasum": ""
             },
             "require": {
@@ -7572,7 +7572,7 @@
                 "yii2"
             ],
             "abandoned": "codeception/codeception",
-            "time": "2016-03-17T03:41:26+00:00"
+            "time": "2017-05-22T12:08:21+00:00"
         },
         {
             "name": "yiisoft/yii2-debug",
