@@ -9,6 +9,7 @@ use iutbay\yii2kcfinder\KCFinderAsset;
 use yii\base\Widget;
 use yii\db\ActiveRecord;
 use yii\helpers\Html;
+use yii\helpers\Json;
 
 class InlineEditor extends Widget
 {
@@ -37,6 +38,11 @@ class InlineEditor extends Widget
         echo '<div class="inline_content">';
         if (\Yii::$app->user->can('administrator')) {
             EditableAsset::register($this->view);
+
+            $stylesSet = Json::encode([
+                ['name'=>'Таблица с оформлением', 'element'=>'table', 'attributes'=> ['class'=>'table-decorated']],
+            ]);
+            $this->view->registerJs("CKEDITOR.stylesSet.add('default', {$stylesSet});");
 
             $path = \Yii::getAlias('@vendor/shirase55/ckeditor-inlinesave');
             $url = $this->view->assetManager->publish($path.'/dist')[1];
