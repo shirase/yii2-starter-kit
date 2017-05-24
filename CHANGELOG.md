@@ -1,6 +1,9 @@
 Yii Starter Kit Change Log
 ==========================
 
+3.0.8-dev
+---------
+
 3.0.7
 -----
 - Page type plugin, interface changes
