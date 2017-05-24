@@ -3,6 +3,7 @@ namespace frontend\widgets;
 
 use dosamigos\ckeditor\CKEditorInline;
 use dosamigos\ckeditor\CKEditorWidgetAsset;
+use frontend\assets\CKEditorAsset;
 use frontend\assets\EditableAsset;
 use iutbay\yii2kcfinder\KCFinderAsset;
 use yii\base\Widget;
@@ -112,6 +113,8 @@ class InlineEditor extends Widget
             ]);
             echo $content;
             CKEditorInline::end();
+
+            CKEditorAsset::register($this->view);
         } else {
             echo Html::tag('div', $content);
         }
