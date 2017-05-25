@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use shirase\form\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\WidgetCarouselItem */
+/* @var $model backend\models\GalleryItem */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="widget-carousel-item-form">
+<div class="gallery-item-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -27,7 +27,7 @@ use shirase\form\ActiveForm;
 
     <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'caption')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'status')->checkbox() ?>
 

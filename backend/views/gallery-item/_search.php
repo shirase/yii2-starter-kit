@@ -6,11 +6,11 @@ use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\search\WidgetCarouselItemSearch */
+/* @var $model common\models\search\GalleryItemSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="search-form widget-carousel-item-search" id="widget-carousel-item-search">
+<div class="search-form gallery-item-search" id="gallery-item-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -22,13 +22,13 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'carousel_id')->widget(kartik\select2\Select2::className(), ['data'=>[''=>'-']+ArrayHelper::map(common\models\WidgetCarousel::find()->all(), 'id', 'name')]) ?>
+    <?= $form->field($model, 'gallery_id')->widget(kartik\select2\Select2::className(), ['data'=>[''=>'-']+ArrayHelper::map(common\models\Gallery::find()->all(), 'id', 'name')]) ?>
 
     <?= $form->field($model, 'path') ?>
 
     <?= $form->field($model, 'url') ?>
 
-    <?= $form->field($model, 'caption') ?>
+    <?= $form->field($model, 'title') ?>
 
     <?php //echo $form->field($model, 'status') ?>
 
@@ -40,4 +40,4 @@ use yii\helpers\ArrayHelper;
     <?php ActiveForm::end(); ?>
 
 </div>
-<?php $this->registerJs('if(jQuery.pjax && jQuery("#widget-carousel-item-grid-pjax").length) {jQuery(document).on(\'submit\', "#widget-carousel-item-search form", function (event) {jQuery.pjax.submit(event, \'#widget-carousel-item-grid-pjax\', {"push":true,"replace":false,"timeout":1000,"scrollTo":false});});}'); ?>
+<?php $this->registerJs('if(jQuery.pjax && jQuery("#gallery-item-grid-pjax").length) {jQuery(document).on(\'submit\', "#gallery-item-search form", function (event) {jQuery.pjax.submit(event, \'#gallery-item-grid-pjax\', {"push":true,"replace":false,"timeout":1000,"scrollTo":false});});}'); ?>

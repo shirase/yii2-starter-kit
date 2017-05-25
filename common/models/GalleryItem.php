@@ -7,21 +7,21 @@ use shirase55\filekit\behaviors\UploadBehavior;
 use Yii;
 
 /**
- * This is the model class for table "widget_carousel_item".
+ * This is the model class for table "gallery_item".
  *
  * @property integer $id
- * @property integer $carousel_id
+ * @property integer $gallery_id
  * @property string $path
  * @property string $url
- * @property string $caption
+ * @property string $title
  * @property integer $status
  * @property integer $pos
  *
- * @property WidgetCarousel $carousel
+ * @property Gallery $gallery
  *
- * @method static WidgetCarouselItem|null findOne($condition)
+ * @method static GalleryItem|null findOne($condition)
  */
-class WidgetCarouselItem extends \common\components\db\ActiveRecord
+class GalleryItem extends \common\components\db\ActiveRecord
 {
     const STATUS_DRAFT = 0;
     const STATUS_ACTIVE = 1;
@@ -36,7 +36,7 @@ class WidgetCarouselItem extends \common\components\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'widget_carousel_item';
+        return 'gallery_item';
     }
 
     /**
@@ -60,8 +60,8 @@ class WidgetCarouselItem extends \common\components\db\ActiveRecord
                 'keys' => [
                     function ($model) {
                         return [
-                            WidgetCarousel::className(),
-                            $model->carousel->key
+                            Gallery::className(),
+                            $model->gallery->key
                         ];
                     }
                 ]
@@ -75,10 +75,10 @@ class WidgetCarouselItem extends \common\components\db\ActiveRecord
     public function rules()
     {
         return [
-            [['carousel_id'], 'required'],
-            [['carousel_id', 'status'], 'integer'],
-            [['path', 'url', 'caption'], 'string', 'max' => 1024],
-            [['carousel_id'], 'exist', 'skipOnError' => true, 'targetClass' => WidgetCarousel::className(), 'targetAttribute' => ['carousel_id' => 'id']],
+            [['gallery_id'], 'required'],
+            [['gallery_id', 'status'], 'integer'],
+            [['path', 'url', 'title'], 'string', 'max' => 1024],
+            [['gallery_id'], 'exist', 'skipOnError' => true, 'targetClass' => Gallery::className(), 'targetAttribute' => ['gallery_id' => 'id']],
             [['image'], 'safe'],
         ];
     }
@@ -90,10 +90,10 @@ class WidgetCarouselItem extends \common\components\db\ActiveRecord
     {
         return [
             'id' => Yii::t('common', 'ID'),
-            'carousel_id' => Yii::t('common', 'Carousel ID'),
+            'gallery_id' => Yii::t('common', 'Gallery'),
             'path' => Yii::t('common', 'Path'),
             'url' => Yii::t('common', 'Url'),
-            'caption' => Yii::t('common', 'Caption'),
+            'title' => Yii::t('common', 'Title'),
             'status' => Yii::t('common', 'Status'),
             'image' => Yii::t('common', 'Image'),
         ];
@@ -102,18 +102,18 @@ class WidgetCarouselItem extends \common\components\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCarousel()
+    public function getGallery()
     {
-        return $this->hasOne(WidgetCarousel::className(), ['id' => 'carousel_id']);
+        return $this->hasOne(Gallery::className(), ['id' => 'gallery_id']);
     }
 
     /**
      * @inheritdoc
-     * @return \common\models\query\WidgetCarouselItemQuery the active query used by this AR class.
+     * @return \common\models\query\GalleryItemQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new \common\models\query\WidgetCarouselItemQuery(get_called_class());
+        return new \common\models\query\GalleryItemQuery(get_called_class());
     }
 
     /**

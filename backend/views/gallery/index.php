@@ -4,23 +4,23 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use kartik\grid\GridView;
 /* @var $this yii\web\View */
-/* @var $searchModel common\models\search\WidgetCarouselSearch */
+/* @var $searchModel common\models\search\GallerySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('backend', 'Widget Carousels');
+$this->title = Yii::t('backend', 'Gallery');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="widget-carousel-index">
+<div class="gallery-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php //Pjax::begin(); ?>
     <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?php if (\Yii::$app->user->can('/'.$this->context->uniqueId.'/create')) echo Html::a(Yii::t('backend', 'Create Widget'), ['create']+$this->context->actionParams, ['class' => 'btn btn-success']) ?>
+        <?php if (\Yii::$app->user->can('/'.$this->context->uniqueId.'/create')) echo Html::a(Yii::t('backend', 'Create'), ['create']+$this->context->actionParams, ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
-        'id' => 'widget-carousel-grid',
+        'id' => 'gallery-grid',
         'pjax' => true,
         'dataProvider' => $dataProvider,
         //'filterModel' => $searchModel,
@@ -67,11 +67,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     'view' => \Yii::$app->user->can('/' . \common\components\helpers\Url::normalizeRoute('view')),
                     'update' => \Yii::$app->user->can('/' . \common\components\helpers\Url::normalizeRoute('update')),
                     'delete' => \Yii::$app->user->can('/' . \common\components\helpers\Url::normalizeRoute('delete')),
-                    'items' => \Yii::$app->user->can('/' . \common\components\helpers\Url::normalizeRoute('widget-carousel-item/index')),
+                    'items' => \Yii::$app->user->can('/' . \common\components\helpers\Url::normalizeRoute('gallery-item/index')),
                 ],
                 'buttons' => [
                     'items' => function ($url, $model, $key) {
-                        return Html::a(Html::tag('span', '', ['class'=>'glyphicon glyphicon-edit']), Url::to(['widget-carousel-item/index', 'carousel'=>$key]+$this->context->actionParams), ['title'=>Yii::t('backend', 'Edit'), 'data-pjax'=>0]);
+                        return Html::a(Html::tag('span', '', ['class'=>'glyphicon glyphicon-edit']), Url::to(['gallery-item/index', 'gallery'=>$key]+$this->context->actionParams), ['title'=>Yii::t('backend', 'Edit'), 'data-pjax'=>0]);
                     },
                 ],
                 'template' => '{items} {update} {delete}',

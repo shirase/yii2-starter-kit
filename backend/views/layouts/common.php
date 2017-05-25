@@ -132,7 +132,7 @@ $bundle = BackendAsset::register($this);
                     $contentItems = [
                         ['label'=>Yii::t('backend', 'Static pages'), 'url'=>['/page/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>', 'visible'=>Yii::$app->user->can('/page/index'), 'activateItemByController'=>false, 'active'=>Yii::$app->controller->id=='page' && Page::findOne(Yii::$app->request->get('id'))->pid===null],
                         ['label'=>Yii::t('backend', 'Articles'), 'url'=>['/article/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>', 'visible'=>Yii::$app->user->can('/article/index')],
-                        ['label'=>Yii::t('backend', 'Carousel Widgets'), 'url'=>['/widget-carousel/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>', 'visible'=>Yii::$app->user->can('/widget-carousel/index'), 'active'=>array_search(Yii::$app->controller->id, ['widget-carousel', 'widget-carousel-item'])!==false],
+                        ['label'=>Yii::t('backend', 'Gallery'), 'url'=>['/gallery/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>', 'visible'=>Yii::$app->user->can('/widget-carousel/index'), 'active'=>array_search(Yii::$app->controller->id, ['gallery', 'gallery-item'])!==false],
                     ];
 
                     if ($rows = Page::find()->andWhere(['pid'=>'0'])->orderBy('pos')->all()) {

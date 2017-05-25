@@ -3,8 +3,8 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\WidgetCarousel;
-use common\models\search\WidgetCarouselSearch;
+use common\models\GalleryItem;
+use common\models\search\GalleryItemSearch;
 use common\components\web\Controller;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
@@ -15,9 +15,9 @@ use yii\helpers\ArrayHelper;
 use kartik\grid\EditableColumnAction;
 
 /**
- * WidgetCarouselController implements the CRUD actions for WidgetCarousel model.
+ * GalleryItemController implements the CRUD actions for GalleryItem model.
  */
-class WidgetCarouselController extends Controller
+class GalleryItemController extends Controller
 {
     /**
      * @inheritdoc
@@ -39,19 +39,21 @@ class WidgetCarouselController extends Controller
         return ArrayHelper::merge(parent::actions(), [
             'edit' => [
                 'class' => EditableColumnAction::className(),
-                'modelClass' => WidgetCarousel::className(),
+                'modelClass' => GalleryItem::className(),
                 'showModelErrors' => true,
             ]
         ]);
     }
 
     /**
-     * Lists all WidgetCarousel models.
+     * Lists all GalleryItem models.
+     * @param $gallery
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($gallery)
     {
-        $searchModel = new WidgetCarouselSearch();
+        $searchModel = new GalleryItemSearch();
+        $searchModel->gallery_id = $gallery;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -61,7 +63,7 @@ class WidgetCarouselController extends Controller
     }
 
     /**
-     * Displays a single WidgetCarousel model.
+     * Displays a single GalleryItem model.
      * @param integer $id
      * @return mixed
      */
@@ -81,15 +83,28 @@ class WidgetCarouselController extends Controller
     }
 
     /**
-     * Creates a new WidgetCarousel model.
+     * Creates a new GalleryItem model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     * @param $gallery
      * @return mixed
+     * @throws HttpException
      */
-    public function actionCreate()
+    public function actionCreate($gallery)
     {
-        $model = new WidgetCarousel();
+        $model = new \backend\models\GalleryItem();
+        $model->loadDefaultValues();
+        $model->gallery_id = $gallery;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            foreach ($model->images as $image) {
+                $one = new GalleryItem();
+                $one->setAttributes($model->attributes, false);
+                $one->image = $image;
+                if (!$one->save()) {
+                    throw new HttpException(500, var_export($one->errors, true));
+                }
+            }
+
             return $this->redirect(['index', 'returned'=>true]);
         } else {
             return $this->render('create', [
@@ -99,7 +114,7 @@ class WidgetCarouselController extends Controller
     }
 
     /**
-     * Updates an existing WidgetCarousel model.
+     * Updates an existing GalleryItem model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -118,7 +133,7 @@ class WidgetCarouselController extends Controller
     }
 
     /**
-     * Deletes an existing WidgetCarousel model.
+     * Deletes an existing GalleryItem model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -151,15 +166,15 @@ class WidgetCarouselController extends Controller
     }
 
     /**
-     * Finds the WidgetCarousel model based on its primary key value.
+     * Finds the GalleryItem model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return WidgetCarousel the loaded model
+     * @return GalleryItem the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = WidgetCarousel::findOne($id)) !== null) {
+        if (($model = GalleryItem::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

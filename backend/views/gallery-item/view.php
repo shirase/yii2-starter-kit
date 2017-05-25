@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use kartik\detail\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\WidgetCarouselItem */
+/* @var $model common\models\GalleryItem */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Widget Carousel Items'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Gallery Items'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="widget-carousel-item-view">
+<div class="gallery-item-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

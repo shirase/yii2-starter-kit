@@ -5,8 +5,8 @@
 
 namespace common\widgets;
 
-use common\models\WidgetCarousel;
-use common\models\WidgetCarouselItem;
+use common\models\Gallery;
+use common\models\GalleryItem;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\bootstrap\Carousel;
@@ -40,22 +40,22 @@ class DbCarousel extends Carousel
             throw new InvalidConfigException;
         }
         $cacheKey = [
-            WidgetCarousel::className(),
+            Gallery::className(),
             $this->key
         ];
         $items = Yii::$app->cache->get($cacheKey);
         if ($items === false) {
             $items = [];
-            $query = WidgetCarouselItem::find()
-                ->joinWith('carousel')
+            $query = GalleryItem::find()
+                ->joinWith('gallery')
                 ->where([
-                    '{{%widget_carousel_item}}.status' => WidgetCarouselItem::STATUS_ACTIVE,
-                    '{{%widget_carousel}}.status' => WidgetCarousel::STATUS_ACTIVE,
-                    '{{%widget_carousel}}.key' => $this->key,
+                    '{{%gallery_item}}.status' => GalleryItem::STATUS_ACTIVE,
+                    '{{%gallery}}.status' => Gallery::STATUS_ACTIVE,
+                    '{{%gallery}}.key' => $this->key,
                 ])
                 ->orderBy(['pos' => SORT_ASC]);
             foreach ($query->all() as $k => $item) {
-                /** @var $item \common\models\WidgetCarouselItem */
+                /** @var $item \common\models\GalleryItem */
                 if ($item->path) {
                     $items[$k]['content'] = Html::img($item->getImageUrl());
                 }
@@ -64,8 +64,8 @@ class DbCarousel extends Carousel
                     $items[$k]['content'] = Html::a($items[$k]['content'], $item->url, ['target'=>'_blank']);
                 }
 
-                if ($item->caption) {
-                    $items[$k]['caption'] = $item->caption;
+                if ($item->title) {
+                    $items[$k]['caption'] = $item->title;
                 }
             }
             Yii::$app->cache->set($cacheKey, $items, 60*60*24*365);

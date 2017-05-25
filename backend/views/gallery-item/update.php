@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\WidgetCarouselItem */
+/* @var $model common\models\GalleryItem */
 
 $this->title = Yii::t('backend', 'Update: ', [
     'modelClass' => 'Widget Carousel Item',
@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Widget Carousel 
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
 ?>
-<div class="widget-carousel-item-update">
+<div class="gallery-item-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

@@ -2,7 +2,7 @@
 
 namespace backend\models;
 
-class WidgetCarouselItem extends \common\models\WidgetCarouselItem
+class GalleryItem extends \common\models\GalleryItem
 {
     public $images;
 

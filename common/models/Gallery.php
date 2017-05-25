@@ -7,15 +7,15 @@ use Yii;
 use yii\db\ActiveRecord;
 
 /**
- * This is the model class for table "widget_carousel".
+ * This is the model class for table "gallery".
  *
  * @property integer $id
  * @property string $key
  * @property integer $status
  *
- * @property WidgetCarouselItem[] $items
+ * @property GalleryItem[] $items
  */
-class WidgetCarousel extends ActiveRecord
+class Gallery extends ActiveRecord
 {
     const STATUS_DRAFT = 0;
     const STATUS_ACTIVE = 1;
@@ -25,7 +25,7 @@ class WidgetCarousel extends ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%widget_carousel}}';
+        return '{{%gallery}}';
     }
 
     /**
@@ -79,6 +79,6 @@ class WidgetCarousel extends ActiveRecord
      */
     public function getItems()
     {
-        return $this->hasMany(WidgetCarouselItem::className(), ['carousel_id' => 'id']);
+        return $this->hasMany(GalleryItem::className(), ['carousel_id' => 'id']);
     }
 }

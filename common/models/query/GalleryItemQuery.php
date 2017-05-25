@@ -3,11 +3,11 @@
 namespace common\models\query;
 
 /**
- * This is the ActiveQuery class for [[\common\models\WidgetCarouselItem]].
+ * This is the ActiveQuery class for [[\common\models\GalleryItem]].
  *
- * @see \common\models\WidgetCarouselItem
+ * @see \common\models\GalleryItem
  */
-class WidgetCarouselItemQuery extends \common\components\db\ActiveQuery
+class GalleryItemQuery extends \common\components\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class WidgetCarouselItemQuery extends \common\components\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return \common\models\WidgetCarouselItem[]|array
+     * @return \common\models\GalleryItem[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class WidgetCarouselItemQuery extends \common\components\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return \common\models\WidgetCarouselItem|array|null
+     * @return \common\models\GalleryItem|array|null
      */
     public function one($db = null)
     {

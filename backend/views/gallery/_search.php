@@ -5,11 +5,11 @@ use shirase\form\ActiveForm;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\search\WidgetCarouselSearch */
+/* @var $model common\models\search\GallerySearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="search-form widget-carousel-search" id="widget-carousel-search">
+<div class="search-form gallery-search" id="gallery-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -33,4 +33,4 @@ use yii\helpers\Url;
     <?php ActiveForm::end(); ?>
 
 </div>
-<?php $this->registerJs('if(jQuery.pjax && jQuery("#widget-carousel-grid-pjax").length) {jQuery(document).on(\'submit\', "#widget-carousel-search form", function (event) {jQuery.pjax.submit(event, \'#widget-carousel-grid-pjax\', {"push":true,"replace":false,"timeout":1000,"scrollTo":false});});}'); ?>
+<?php $this->registerJs('if(jQuery.pjax && jQuery("#gallery-grid-pjax").length) {jQuery(document).on(\'submit\', "#gallery-search form", function (event) {jQuery.pjax.submit(event, \'#gallery-grid-pjax\', {"push":true,"replace":false,"timeout":1000,"scrollTo":false});});}'); ?>

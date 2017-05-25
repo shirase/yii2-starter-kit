@@ -5,12 +5,12 @@ namespace common\models\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\WidgetCarouselItem;
+use common\models\Gallery;
 
 /**
- * WidgetCarouselItemSearch represents the model behind the search form of `common\models\WidgetCarouselItem`.
+ * GallerySearch represents the model behind the search form of `common\models\Gallery`.
  */
-class WidgetCarouselItemSearch extends WidgetCarouselItem
+class GallerySearch extends Gallery
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class WidgetCarouselItemSearch extends WidgetCarouselItem
     public function rules()
     {
         return [
-            [['id', 'carousel_id', 'status', 'pos'], 'integer'],
-            [['path', 'url', 'caption'], 'safe'],
+            [['id', 'status'], 'integer'],
+            [['key'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class WidgetCarouselItemSearch extends WidgetCarouselItem
      */
     public function search($params)
     {
-        $query = WidgetCarouselItem::find()->indexBy($this::primaryKey()[0]);
+        $query = Gallery::find()->indexBy($this::primaryKey()[0]);
 
         // add conditions that should always apply here
 
@@ -60,13 +60,10 @@ class WidgetCarouselItemSearch extends WidgetCarouselItem
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'carousel_id' => $this->carousel_id,
             'status' => $this->status,
         ]);
 
-        $query->andFilterWhere(['like', 'path', $this->path])
-            ->andFilterWhere(['like', 'url', $this->url])
-            ->andFilterWhere(['like', 'caption', $this->caption]);
+        $query->andFilterWhere(['like', 'key', $this->key]);
 
         return $dataProvider;
     }
