@@ -3,10 +3,8 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Block */
-/* @var $pluginModel common\plugins\block_type\operation_photo\Model */
 
-$this->title = Yii::t('backend', 'Create Block');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Blocks'), 'url' => ['index']];
+$this->title = Yii::t('backend', 'Create');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="block-create">
@@ -15,7 +13,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model' => $model,
-        'pluginModel' => $pluginModel,
     ]) ?>
 
 </div>

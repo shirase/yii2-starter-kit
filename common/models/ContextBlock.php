@@ -29,7 +29,7 @@ class ContextBlock extends \common\components\db\ActiveRecord
     public function rules()
     {
         return [
-            [['key', 'body'], 'required'],
+            [['key'], 'required'],
             [['body'], 'string'],
             [['key'], 'string', 'max' => 50],
         ];

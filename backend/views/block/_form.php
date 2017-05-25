@@ -7,7 +7,6 @@ use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $model common\models\Block */
 /* @var $form yii\widgets\ActiveForm */
-/* @var $pluginModel common\plugins\block_type\operation_photo\Model */
 ?>
 
 <?php

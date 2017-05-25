@@ -4,13 +4,10 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Block */
-/* @var $pluginModel common\plugins\block_type\operation_photo\Model */
 
-$this->title = Yii::t('backend', 'Update {modelClass}: ', [
+$this->title = Yii::t('backend', 'Update: ', [
     'modelClass' => 'Block',
 ]) . $model->title;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Blocks'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
 ?>
 <div class="block-update">
@@ -19,7 +16,6 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
 
     <?= $this->render('_form', [
         'model' => $model,
-        'pluginModel' => $pluginModel,
     ]) ?>
 
 </div>

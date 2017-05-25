@@ -69,9 +69,9 @@ class Block extends \common\components\db\ActiveRecord
     {
         return [
             'id' => Yii::t('common', 'ID'),
-            'vis' => Yii::t('common', 'Vis'),
-            'page_id' => Yii::t('common', 'Page ID'),
-            'type_id' => Yii::t('common', 'Type ID'),
+            'vis' => Yii::t('common', 'Показывать'),
+            'page_id' => Yii::t('common', 'Page'),
+            'type_id' => Yii::t('common', 'Тип'),
             'title' => Yii::t('common', 'Title'),
             'body' => Yii::t('common', 'Body'),
         ];
