@@ -75,7 +75,7 @@
     "require-dev": {
         "yiisoft/yii2-debug": "^2.0.0",
         "shirase55/yii2-gii": "dev-master",
-        "shirase55/yii2-gii-fixture-generator": "^2.0",
+        "elisdn/yii2-gii-fixture-generator": "*",
         "yiisoft/yii2-codeception": "^2.0.0",
         "yiisoft/yii2-faker": "^2.0.0",
         "codeception/codeception": "^2.0",

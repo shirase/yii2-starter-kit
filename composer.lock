@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "63295805f5c002c8f9431669595bafd7",
+    "content-hash": "4b3e6192db7e16c714e3d5d8a6996b1f",
     "packages": [
         {
             "name": "2amigos/yii2-ckeditor-widget",
@@ -3411,12 +3411,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/shirase/ckeditor-image.git",
-                "reference": "aeeea238a67d137ee7d4ea37d8a5db568a6a4aac"
+                "reference": "c10952c3fa236f8814b9d955061c8bed60aba1e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shirase/ckeditor-image/zipball/aeeea238a67d137ee7d4ea37d8a5db568a6a4aac",
-                "reference": "aeeea238a67d137ee7d4ea37d8a5db568a6a4aac",
+                "url": "https://api.github.com/repos/shirase/ckeditor-image/zipball/c10952c3fa236f8814b9d955061c8bed60aba1e5",
+                "reference": "c10952c3fa236f8814b9d955061c8bed60aba1e5",
                 "shasum": ""
             },
             "require-dev": {
@@ -3432,7 +3432,7 @@
                 }
             ],
             "description": "User frendly ckeditor image plugin",
-            "time": "2017-04-13T11:25:59+00:00"
+            "time": "2017-05-25T08:45:16+00:00"
         },
         {
             "name": "shirase55/ckeditor-inlinesave",
@@ -5119,6 +5119,59 @@
             "time": "2015-06-14T21:17:01+00:00"
         },
         {
+            "name": "elisdn/yii2-gii-fixture-generator",
+            "version": "1.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ElisDN/yii2-gii-fixture-generator.git",
+                "reference": "648782b60d346a17baa273a32e9a424717b6f0c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ElisDN/yii2-gii-fixture-generator/zipball/648782b60d346a17baa273a32e9a424717b6f0c9",
+                "reference": "648782b60d346a17baa273a32e9a424717b6f0c9",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2-gii": "~2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "asset-installer-paths": {
+                    "npm-asset-library": "vendor/npm",
+                    "bower-asset-library": "vendor/bower"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "elisdn\\gii\\fixture\\": "src/",
+                    "elisdn\\gii\\fixture\\tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Dmitriy Yeliseyev",
+                    "email": "mail@elisdn.ru",
+                    "homepage": "http://www.elisdn.ru"
+                }
+            ],
+            "description": "Fixture class generator for Gii module of Yii2 Framework.",
+            "keywords": [
+                "Fixture",
+                "gii",
+                "yii 2",
+                "yii2"
+            ],
+            "time": "2016-12-21T10:20:37+00:00"
+        },
+        {
             "name": "facebook/webdriver",
             "version": "1.4.1",
             "source": {
@@ -6730,12 +6783,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/shirase/yii2-gii.git",
-                "reference": "a3f91440cb068ae41f3453b0fa4c76e894c329b0"
+                "reference": "3400989acbbada66736554f59176f9f55976d272"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shirase/yii2-gii/zipball/a3f91440cb068ae41f3453b0fa4c76e894c329b0",
-                "reference": "a3f91440cb068ae41f3453b0fa4c76e894c329b0",
+                "url": "https://api.github.com/repos/shirase/yii2-gii/zipball/3400989acbbada66736554f59176f9f55976d272",
+                "reference": "3400989acbbada66736554f59176f9f55976d272",
                 "shasum": ""
             },
             "require": {
@@ -6743,6 +6796,9 @@
                 "phpspec/php-diff": ">=1.0.2",
                 "yiisoft/yii2": "~2.0.4",
                 "yiisoft/yii2-bootstrap": "~2.0.0"
+            },
+            "replace": {
+                "yiisoft/yii2-gii": "*"
             },
             "type": "yii2-extension",
             "extra": {
@@ -6776,58 +6832,7 @@
                 "gii",
                 "yii2"
             ],
-            "time": "2017-05-22T21:16:39+00:00"
-        },
-        {
-            "name": "shirase55/yii2-gii-fixture-generator",
-            "version": "2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/shirase/yii2-gii-fixture-generator.git",
-                "reference": "7ab5def29888c684d7f5c0f856e949f8da06ba0b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/shirase/yii2-gii-fixture-generator/zipball/7ab5def29888c684d7f5c0f856e949f8da06ba0b",
-                "reference": "7ab5def29888c684d7f5c0f856e949f8da06ba0b",
-                "shasum": ""
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.*",
-                "yiisoft/yii2-gii": "~2.0"
-            },
-            "type": "yii2-extension",
-            "extra": {
-                "asset-installer-paths": {
-                    "npm-asset-library": "vendor/npm",
-                    "bower-asset-library": "vendor/bower"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "shirase55\\gii\\fixture\\": "src/",
-                    "shirase55\\gii\\fixture\\tests\\": "tests/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Dmitriy Yeliseyev",
-                    "email": "mail@elisdn.ru",
-                    "homepage": "http://www.elisdn.ru"
-                }
-            ],
-            "description": "Fixture class generator for Gii module of Yii2 Framework.",
-            "keywords": [
-                "Fixture",
-                "gii",
-                "yii 2",
-                "yii2"
-            ],
-            "time": "2017-04-12T10:11:22+00:00"
+            "time": "2017-05-25T11:44:16+00:00"
         },
         {
             "name": "stecman/symfony-console-completion",
