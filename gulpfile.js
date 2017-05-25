@@ -4,6 +4,7 @@ var gulp = require('gulp'),
     autoprefixer = require('autoprefixer'),
     csscomb = require('gulp-csscomb'),
     cssnano = require('gulp-cssnano'),
+    mergeRules = require('postcss-merge-rules'),
     less = require('gulp-less'),
     sourcemaps = require('gulp-sourcemaps'),
     plumber = require('gulp-plumber'),
@@ -31,7 +32,8 @@ function lessCompile(src) {
     }
 
     var processors = [
-        autoprefixer({browsers: 'last 2 versions, > 5%'})
+        autoprefixer({browsers: 'last 2 versions, > 5%'}),
+        mergeRules()
     ];
 
     return gulp.src(src, {base: './'})
