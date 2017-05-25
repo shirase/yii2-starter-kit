@@ -6783,12 +6783,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/shirase/yii2-gii.git",
-                "reference": "3400989acbbada66736554f59176f9f55976d272"
+                "reference": "95db6fe73ffc3aea53b52c1955c200a743975cb9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shirase/yii2-gii/zipball/3400989acbbada66736554f59176f9f55976d272",
-                "reference": "3400989acbbada66736554f59176f9f55976d272",
+                "url": "https://api.github.com/repos/shirase/yii2-gii/zipball/95db6fe73ffc3aea53b52c1955c200a743975cb9",
+                "reference": "95db6fe73ffc3aea53b52c1955c200a743975cb9",
                 "shasum": ""
             },
             "require": {
@@ -6832,7 +6832,7 @@
                 "gii",
                 "yii2"
             ],
-            "time": "2017-05-25T11:44:16+00:00"
+            "time": "2017-05-25T11:48:30+00:00"
         },
         {
             "name": "stecman/symfony-console-completion",
