@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
     webpack = require('webpack'),
     postcss = require('gulp-postcss'),
+    base64 = require('gulp-base64'),
     autoprefixer = require('autoprefixer'),
     csscomb = require('gulp-csscomb'),
     cssnano = require('gulp-cssnano'),
@@ -45,6 +46,7 @@ function lessCompile(src) {
         }))
         .pipe(sourcemaps.init())
         .pipe(less())
+        .pipe(base64())
         .pipe(postcss(processors))
         .pipe(cssnano())
         .pipe(rename({
