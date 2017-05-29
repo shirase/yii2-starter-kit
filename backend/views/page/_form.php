@@ -25,7 +25,7 @@ $this->registerJs('$(document).on("change", "#page-type_id", function() {$.pjax.
 
     <?= $form->field($model, 'language')->dropDownList(Yii::$app->params['availableLocales']) ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true])->hint(Yii::t('app', 'Отображается в названии пункта меню и в заголовке страницы')) ?>
+    <?= $form->field($model, 'name')->textInput(['maxlength' => true])->hint(Yii::t('backend', 'Отображается в названии пункта меню и в заголовке страницы')) ?>
 
     <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
@@ -40,8 +40,8 @@ $this->registerJs('$(document).on("change", "#page-type_id", function() {$.pjax.
                 <div class="panel-title">SEO</div>
             </div>
             <div class="panel-body">
-                <?= $form->field($model, 'title')->textInput(['maxlength' => true])->hint(Yii::t('app', 'Заголовок страницы (тег H1)')) ?>
-                <?= $form->field($model, 'page_title')->textInput(['maxlength' => true])->hint(Yii::t('app', 'Заголовок страницы (тег title)')) ?>
+                <?= $form->field($model, 'title')->textInput(['maxlength' => true])->hint(Yii::t('backend', 'Заголовок страницы (тег H1)')) ?>
+                <?= $form->field($model, 'page_title')->textInput(['maxlength' => true])->hint(Yii::t('backend', 'Заголовок страницы (тег title)')) ?>
                 <?= $form->field($model, 'page_keywords')->textInput(['maxlength' => true]) ?>
                 <?= $form->field($model, 'page_description')->textInput(['maxlength' => true]) ?>
             </div>
