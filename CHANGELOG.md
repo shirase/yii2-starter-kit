@@ -4,8 +4,14 @@ Yii Starter Kit Change Log
 3.0.8-dev
 ---------
 - Block module
+- Remove text widgets
+- Add context blocks
 - Page block template
-- Fix: `frontend/widgets/InlineEditor` broken saveUrl  when complex action name
+- Fix: `frontend/widgets/InlineEditor` broken saveUrl when complex action name
+- Carousel widget rename to gallery
+- CKEditor own styles
+- CKEditor block widgets
+- `CKEditorAsset` table dialog user friendly
 
 3.0.7
 -----
