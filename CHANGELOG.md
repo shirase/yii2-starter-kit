@@ -1,6 +1,9 @@
 Yii Starter Kit Change Log
 ==========================
 
+3.0.9-dev
+---------
+
 3.0.8
 -----
 - Block module
