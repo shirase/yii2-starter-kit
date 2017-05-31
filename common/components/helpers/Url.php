@@ -38,4 +38,9 @@ class Url extends \yii\helpers\Url
         $params['path'] = $path;
         return \Yii::$app->glide->createSignedUrl($params);
     }
+
+    public static function storage($path)
+    {
+        return rtrim(\Yii::$app->fileStorage->baseUrl, '/') . '/' . ltrim($path, '/');
+    }
 } 
