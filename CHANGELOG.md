@@ -1,8 +1,8 @@
 Yii Starter Kit Change Log
 ==========================
 
-3.0.8-dev
----------
+3.0.8
+-----
 - Block module
 - Remove text widgets
 - Add context blocks
