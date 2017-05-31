@@ -84,7 +84,7 @@ class m160513_151501_seed_data extends Migration
         $this->insert('{{%widget_carousel}}', [
             'id'=>1,
             'key'=>'index',
-            'status'=>\common\models\WidgetCarousel::STATUS_ACTIVE
+            'status'=>1
         ]);
 
         $this->insert('{{%widget_carousel_item}}', [
