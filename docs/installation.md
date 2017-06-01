@@ -111,7 +111,6 @@ Adjust settings in `frontend/config/web.php` file
 
 ## Docker installation
 1. Follow [docker install](https://docs.docker.com/engine/installation/) instruction to install docker
-2. Add ``127.0.0.1 yii2-starter-kit.dev backend.yii2-starter-kit.dev storage.yii2-starter-kit.dev``* to your `hosts` file
 2. Copy `.env.dist` to `.env` in the project root
 3. Run `docker-compose build`
 4. Run `docker-compose up -d`
@@ -121,7 +120,7 @@ Adjust settings in `frontend/config/web.php` file
 - If asked for a token aquire one from your [github account](https://github.com/settings/tokens).
 8. Setup application with `php ./console/yii app/setup --interactive=0`
 9. Exit the app container by using `exit`
-10. That's all - your application is accessible on http://yii2-starter-kit.dev
+10. That's all - your application is accessible on http://127.0.0.1:81
 
  * - docker host IP address may vary on Windows and MacOS systems
  
