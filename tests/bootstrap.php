@@ -8,6 +8,8 @@ require_once( dirname(__DIR__) . '/vendor/autoload.php');
 // Set environment
 defined('YII_ENV') or define('YII_ENV', 'test');
 
+require_once(__DIR__ . '/compatibility.php');
+
 // Environment
 $dotenv = new \Dotenv\Dotenv( dirname(__DIR__) );
 $dotenv->load();
