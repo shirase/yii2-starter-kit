@@ -16,8 +16,6 @@ RUN docker-php-ext-install mcrypt zip intl mbstring pdo_mysql exif \
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-RUN composer global require "fxp/composer-asset-plugin"
-
 RUN pecl install -o -f xdebug \
     && rm -rf /tmp/pear
 

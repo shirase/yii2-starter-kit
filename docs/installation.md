@@ -17,12 +17,7 @@
 1. If you do not have [Composer](http://getcomposer.org/), you may install it by following the instructions
 at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
 
-2. Install composer-asset-plugin needed for yii assets management
-```bash
-composer global require "fxp/composer-asset-plugin"
-```
-
-3. Install NPM or Yarn to build frontend scripts
+2. Install NPM or Yarn to build frontend scripts
 - [NPM] (https://docs.npmjs.com/getting-started/installing-node)
 - Yarn (https://yarnpkg.com/en/docs/install)
 
