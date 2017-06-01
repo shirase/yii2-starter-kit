@@ -80,10 +80,6 @@ npm install
 npm run build
 ```
 
-### Configure your web server
-- Copy `docker/vhost.conf` to your nginx config directory
-- Change it to fit your environment
-
 ## Single domain installation
 ### Setup application
 Adjust settings in `.env` file
