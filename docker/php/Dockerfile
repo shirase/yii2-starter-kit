@@ -10,6 +10,8 @@ RUN apt-get update && apt-get install -y \
         curl \
             --no-install-recommends
 
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && apt-get install -y nodejs
+
 RUN docker-php-ext-install mcrypt zip intl mbstring pdo_mysql exif \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install gd

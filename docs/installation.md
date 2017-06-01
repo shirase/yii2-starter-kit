@@ -112,15 +112,17 @@ Adjust settings in `frontend/config/web.php` file
 ## Docker installation
 1. Follow [docker install](https://docs.docker.com/engine/installation/) instruction to install docker
 2. Copy `.env.dist` to `.env` in the project root
-3. Run `docker-compose build`
-4. Run `docker-compose up -d`
-5. Log into the app container via `docker-compose exec app bash`
-6. Install composer per instuctions available at [Composer](https://getcomposer.org/download/)
-7. Run `composer install --profile --prefer-dist -o -v`
+3. Change `.env` DB_DSN host to "db"
+4. Run `docker-compose build`
+5. Run `docker-compose up -d`
+6. Log into the app container via `docker-compose exec app bash`
+7. Install composer per instuctions available at [Composer](https://getcomposer.org/download/)
+8. Run `composer install --profile --prefer-dist -o -v`
 - If asked for a token aquire one from your [github account](https://github.com/settings/tokens).
-8. Setup application with `php ./console/yii app/setup --interactive=0`
-9. Exit the app container by using `exit`
-10. That's all - your application is accessible on http://127.0.0.1:81
+9. Setup application with `php ./console/yii app/setup --interactive=0`
+10. Run `npm install`
+11. Exit the app container by using `exit`
+12. That's all - your application is accessible on http://127.0.0.1:81
 
  * - docker host IP address may vary on Windows and MacOS systems
  
