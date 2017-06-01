@@ -17,6 +17,8 @@ var argv = require('yargs').argv;
 
 gulp.task('default', ['watch']);
 
+gulp.task('build', ['less-frontend', 'less-backend']);
+
 gulp.task('less-pre', function() {
     gulp.src('frontend/web/css/*.less', {base: './'})
         .pipe(csscomb())
