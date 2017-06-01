@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4b3e6192db7e16c714e3d5d8a6996b1f",
+    "content-hash": "4d905dd81605a6cb4d8f08a096f3faca",
     "packages": [
         {
             "name": "2amigos/yii2-ckeditor-widget",
@@ -3514,16 +3514,16 @@
         },
         {
             "name": "shirase55/yii2-file-kit",
-            "version": "1.2.3",
+            "version": "1.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shirase/yii2-file-kit.git",
-                "reference": "17ca3e6444995f6f72e67d70f856a2967ffb836e"
+                "reference": "b28201e198abb8a74db6f5e745af79c2cf51bcc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shirase/yii2-file-kit/zipball/17ca3e6444995f6f72e67d70f856a2967ffb836e",
-                "reference": "17ca3e6444995f6f72e67d70f856a2967ffb836e",
+                "url": "https://api.github.com/repos/shirase/yii2-file-kit/zipball/b28201e198abb8a74db6f5e745af79c2cf51bcc0",
+                "reference": "b28201e198abb8a74db6f5e745af79c2cf51bcc0",
                 "shasum": ""
             },
             "require": {
@@ -3559,7 +3559,7 @@
                 }
             ],
             "description": "Yii2 file upload and storage kit",
-            "time": "2017-05-24T10:54:47+00:00"
+            "time": "2017-06-01T13:22:15+00:00"
         },
         {
             "name": "shirase55/yii2-glide",
