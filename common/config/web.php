@@ -45,7 +45,7 @@ $config = [
                 'class' => 'yii\web\AssetConverter',
                 'commands' => [
                     'less' => ['css',
-                        'npm run --prefix "'.Yii::getAlias('@base').'" less -- --in "{from}"'],
+                        'npm run --prefix "'.Yii::getAlias('@base').'" less -- --in {from}'],
                 ],
             ],
         ],
