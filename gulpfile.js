@@ -50,7 +50,7 @@ function lessCompile(src) {
         .pipe(less())
         .pipe(base64())
         .pipe(postcss(processors))
-        .pipe(cssnano())
+        .pipe(cssnano({zindex: false}))
         .pipe(rename({
             extname: '.css'
         }))
