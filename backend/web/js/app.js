@@ -1,5 +1,15 @@
 "use strict";
 (function($) {
+    if (window.parent && window.frameElement) {
+        var $parent = window.parent.jQuery;
+        $(function() {
+            $parent(window.frameElement).trigger("iframeready");
+        });
+        $(window).unload(function() {
+            $parent(window.frameElement).trigger("iframeunloaded");
+        });
+    }
+
     $(function() {
         //Make the dashboard widgets sortable Using jquery UI
         $(".connectedSortable").sortable({
