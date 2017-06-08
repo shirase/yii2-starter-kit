@@ -46,6 +46,9 @@ $config = [
             'class' => 'mdm\admin\Module',
             'mainLayout' => '@backend/views/layouts/main.php',
             'layout' => 'left-menu',
+            'menus' => [
+                'user' => null,
+            ],
         ],
     ],
     'as access' => [
