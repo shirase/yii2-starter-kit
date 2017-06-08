@@ -48,4 +48,44 @@
             parent.window.jQuery(parent.window.document).trigger(event, data);
         }
     });
+
+    $('body')
+        .on('fixed', function() {
+            var body = $(this);
+            body.css({overflow:'hidden'});
+        })
+        .on('unfixed', function() {
+            var body = $(this);
+            body.css({overflow:''});
+        });
+
+    $(document).on('click', '.j-frame-dialog', function(event) {
+        event.preventDefault();
+        var el = $(this);
+
+        $('body').trigger('fixed');
+
+        var iframePopup = $('<div class="iframe-popup" />').appendTo('body');
+        var iframePopupIframe = $('<div class="iframe-popup-iframe" />').appendTo(iframePopup);
+        var close = $('<a class="iframe-popup-close" />').appendTo(iframePopupIframe);
+        close.click(function() {
+            iframePopup.remove();
+            $('body').trigger('unfixed');
+        });
+        var iframe = $('<iframe />').appendTo(iframePopupIframe);
+        var iframesrc;
+        iframe.on('iframeloading', function() {
+            var doc = $(this).contents();
+            doc.find('body').addClass('sidebar-collapse');
+            if (!iframesrc) {
+                iframesrc = iframe[0].contentWindow.location.href;
+            } else {
+                if (iframesrc != iframe[0].contentWindow.location.href) {
+                    iframePopup.remove();
+                    $('body').trigger('unfixed');
+                }
+            }
+        });
+        iframe.attr('src', el.attr('href'));
+    });
 })(jQuery);
