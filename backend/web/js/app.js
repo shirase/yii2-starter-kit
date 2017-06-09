@@ -31,7 +31,7 @@
             }
 
             var searchForm = $('.content-wrapper .content .search-form');
-            if(searchForm.length) {
+            if(searchForm.length && searchForm.closest('.box-body-main').length) {
                 searchForm
                     .wrap('<div class="box-body" />')
                     .parent()
