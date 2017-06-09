@@ -37,7 +37,7 @@ if (Yii::$app->session->hasFlash('script')) {
         Yii::$app->keyStorage->get('backend.layout-collapsed-sidebar') ? 'sidebar-collapse' : null,
     ])
 ])?>
-    <script type="javascript">
+    <script type="text/javascript">
         if (window.parent && window.frameElement) {
             var event = window.parent.document.createEvent('Event');
             event.initEvent('iframeloading', true, true);
