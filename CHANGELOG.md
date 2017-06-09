@@ -3,6 +3,11 @@ Yii Starter Kit Change Log
 
 3.0.9-dev
 ---------
+Use asset-packagist.org, remove `fxp/composer-asset-plugin` for speedup
+Add nodejs to docker
+Backend iframe events
+Backend iframe dialog
+Gulp cssnano off zindex
 
 3.0.8
 -----
