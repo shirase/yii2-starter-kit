@@ -1,6 +1,9 @@
 Yii Starter Kit Change Log
 ==========================
 
+3.0.10-dev
+----------
+
 3.0.9
 -----
 - Use asset-packagist.org, remove `fxp/composer-asset-plugin` for speedup
