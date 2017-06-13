@@ -13,4 +13,9 @@ class RbacAuthAssignmentFixture extends ActiveFixture
     public $depends = [
         'tests\codeception\common\fixtures\UserFixture'
     ];
+
+    public function load() {
+        $this->resetTable();
+        parent::load();
+    }
 }

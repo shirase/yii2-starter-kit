@@ -10,4 +10,9 @@ use yii\test\ActiveFixture;
 class UserFixture extends ActiveFixture
 {
     public $modelClass = 'common\models\User';
+
+    public function load() {
+        $this->resetTable();
+        parent::load();
+    }
 }
