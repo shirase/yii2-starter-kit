@@ -1,6 +1,10 @@
 Upgrading Instructions
 ======================
 
+3.0.9
+-----
+Remove global `fxp/composer-asset-plugin` or comment changing aliases in `common\components\Bootstrap` for using `fxp/composer-asset-plugin`
+
 3.0.7
 -----
 Update your page type plugins, use new `PageTypePlugin` interface, or pull `bc-3.0.7` release for backward compatibility
