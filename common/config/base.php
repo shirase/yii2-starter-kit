@@ -66,7 +66,7 @@ $config = [
             'password' => env('DB_PASSWORD'),
             'tablePrefix' => env('DB_TABLE_PREFIX'),
             'charset' => 'utf8',
-            'enableSchemaCache' => YII_ENV_PROD,
+            'enableSchemaCache' => false,
         ],
 
         'log' => [
