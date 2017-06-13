@@ -3,11 +3,14 @@ Yii Starter Kit Change Log
 
 3.0.9-dev
 ---------
-Use asset-packagist.org, remove `fxp/composer-asset-plugin` for speedup
-Add nodejs to docker
-Backend iframe events
-Backend iframe dialog
-Gulp cssnano off zindex
+- Use asset-packagist.org, remove `fxp/composer-asset-plugin` for speedup
+- Add nodejs to docker
+- Backend iframe events
+- Backend iframe dialog
+- Gulp cssnano off zindex
+- Article search box
+- `mdm\admin\Module` layout config
+- `mdm\admin\Module` disable user menu
 
 3.0.8
 -----
