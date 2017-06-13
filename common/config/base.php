@@ -8,7 +8,10 @@ $config = [
     'extensions' => require(__DIR__ . '/../../vendor/yiisoft/extensions.php'),
     //'sourceLanguage'=>'en-US',
     'language'=>'ru-RU',
-    'bootstrap' => ['log'],
+    'bootstrap' => [
+        'log',
+        common\components\Bootstrap::class,
+    ],
     'components' => [
 
         'authManager' => [

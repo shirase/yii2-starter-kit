@@ -4,10 +4,12 @@ namespace backend\components;
 use yii\base\BootstrapInterface;
 use yii\web\View;
 
-class Bootstrap implements BootstrapInterface
+class Bootstrap extends \common\components\Bootstrap
 {
     public function bootstrap($app)
     {
+        parent::bootstrap($app);
+
         \Yii::$container->set(
             'yii\imperavi\Widget',
             function ($container, $params, $config) {
