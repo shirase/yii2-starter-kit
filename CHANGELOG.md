@@ -12,6 +12,7 @@ Yii Starter Kit Change Log
 - `mdm\admin\Module` layout config
 - `mdm\admin\Module` disable user menu
 - Seed data migration remove user, manager
+- Common bootstrap alias directory exists check
 
 3.0.8
 -----
