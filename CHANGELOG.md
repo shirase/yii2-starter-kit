@@ -11,6 +11,7 @@ Yii Starter Kit Change Log
 - Article search box
 - `mdm\admin\Module` layout config
 - `mdm\admin\Module` disable user menu
+- Seed data migration remove user, manager
 
 3.0.8
 -----
