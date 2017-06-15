@@ -16,7 +16,7 @@ $this->registerJs('$(document).on("change", "#block-type_id", function() {$.pjax
 
 <div class="block-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['id'=>'block-form']); ?>
 
     <?= $form->field($model, 'vis')->dropDownList(['1'=>Yii::t('common', 'Yes'), '0'=>Yii::t('common', 'No')]) ?>
 
