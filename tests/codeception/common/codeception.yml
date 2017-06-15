@@ -11,3 +11,15 @@ settings:
     colors: true
     memory_limit: 1024M
     log: true
+coverage:
+  enabled: true
+  include:
+    - ../../../common/actions/*
+    - ../../../common/behaviors/*
+    - ../../../common/commands/*
+    - ../../../common/components/*
+    - ../../../common/filters/*
+    - ../../../common/models/*
+    - ../../../common/plugins/*
+    - ../../../common/validators/*
+    - ../../../common/widgets/*

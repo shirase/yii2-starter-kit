@@ -18,6 +18,15 @@ coverage:
   enabled: true
   c3_url: 'http://localhost:8080/frontend/web/index-test.php/'
   include:
+    - ../../../common/actions/*
+    - ../../../common/behaviors/*
+    - ../../../common/commands/*
+    - ../../../common/components/*
+    - ../../../common/filters/*
+    - ../../../common/models/*
+    - ../../../common/plugins/*
+    - ../../../common/validators/*
+    - ../../../common/widgets/*
     - ../../../frontend/actions/*
     - ../../../frontend/components/*
     - ../../../frontend/controllers/*
