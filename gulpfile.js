@@ -67,6 +67,48 @@ gulp.task('less', function() {
     return lessCompile(argv.in);
 });
 
+function cssCompile(src, dest) {
+    if (typeof src == 'string') {
+        src = path.relative(process.cwd(), src);
+    }
+
+    if (typeof dest == 'string') {
+        dest = path.relative(process.cwd(), dest);
+    }
+
+    var processors = [
+        autoprefixer({browsers: 'last 2 versions, > 5%'}),
+        mergeRules()
+    ];
+
+    return gulp.src(src, {base: './'})
+        .pipe(plumber({
+            errorHandler: function (err) {
+                console.log(err);
+                this.emit('end');
+            }
+        }))
+        .pipe(base64())
+        .pipe(postcss(processors))
+        .pipe(cssnano({zindex: false}))
+        .pipe(rename(dest))
+        .pipe(gulp.dest('./'));
+}
+
+gulp.task('css', function() {
+    if (!argv.in) {
+        console.log('In argument is required');
+        return;
+    }
+
+    if (!argv.out) {
+        console.log('Out argument is required');
+        return;
+    }
+
+    return cssCompile(argv.in, argv.out);
+});
+
 gulp.task('less-frontend', function() {
     return lessCompile(['frontend/web/css/*.less', '!frontend/web/css/_*.less']);
 });

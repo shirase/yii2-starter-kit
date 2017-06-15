@@ -12,7 +12,7 @@ return [
     // Adjust command/callback for JavaScript files compressing:
     'jsCompressor' => 'uglifyjs {from} -o {to}',
     // Adjust command/callback for CSS files compressing:
-    'cssCompressor' => 'yuicompressor --type css {from} -o {to}',
+    'cssCompressor' => 'npm run --prefix "'.\Yii::getAlias('@base').'" css -- --in {from} --out {to}',
 
     // The list of asset bundles to compress:
     'bundles' => [
