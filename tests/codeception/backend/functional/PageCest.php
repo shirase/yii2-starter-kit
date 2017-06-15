@@ -3,7 +3,6 @@ namespace tests\codeception\backend;
 
 use common\models\Page;
 use common\models\User;
-use yii\base\Exception;
 
 class PageCest
 {

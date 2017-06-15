@@ -17,7 +17,7 @@ use yii\web\JsExpression;
 
 <div class="article-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['id'=>'article-form']); ?>
 
     <?php echo $form->field($model, 'status')->checkbox() ?>
 
