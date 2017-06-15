@@ -7,6 +7,8 @@ use yii\helpers\ArrayHelper;
 
 class Plugin implements PageTypePlugin
 {
+    const PAGE_TYPE_ID = 4;
+
     /**
      * @param null|Page $page
      * @return Model|null
