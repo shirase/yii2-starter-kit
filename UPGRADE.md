@@ -7,7 +7,7 @@ Remove global `fxp/composer-asset-plugin` or comment changing aliases in `common
 
 3.0.7
 -----
-Update your page type plugins, use new `PageTypePlugin` interface, or pull `bc-3.0.7` release for backward compatibility
+Update your page type plugins, use new `PageTypePlugin` interface
 
 3.0.6
 -----
