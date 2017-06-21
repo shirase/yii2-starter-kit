@@ -28,7 +28,7 @@ class m160512_194404_page_type extends Migration
 
         $this->createTable('{{%page_type_content}}', [
             'id' => $this->primaryKey(),
-            'template_id' => $this->integer()->notNull(),
+            'template_id' => $this->integer()->notNull()->defaultValue(1),
         ], $tableOptions);
         $this->addForeignKey('fk_page_type_content_id', '{{%page_type_content}}', 'id', '{{%page}}', 'id', 'CASCADE', 'CASCADE');
         $this->addForeignKey('fk_page_type_content_template', '{{%page_type_content}}', 'template_id', '{{%page_template}}', 'id', 'RESTRICT', 'CASCADE');
