@@ -1,6 +1,10 @@
 Upgrading Instructions
 ======================
 
+3.0.10
+------
+Set default value `page_type_content.template_id=1`
+
 3.0.9
 -----
 Remove global `fxp/composer-asset-plugin` or comment changing aliases in `common\components\Bootstrap` for using `fxp/composer-asset-plugin`
