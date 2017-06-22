@@ -49,7 +49,10 @@ function lessCompile(src) {
         }))
         .pipe(sourcemaps.init())
         .pipe(less())
-        .pipe(base64())
+        .pipe(base64({
+            extensions: ['svg', 'png'],
+            maxImageSize: 8*1024
+        }))
         .pipe(postcss(processors))
         .pipe(cssnano({zindex: false}))
         .pipe(rename({
@@ -89,7 +92,10 @@ function cssCompile(src, dest) {
                 this.emit('end');
             }
         }))
-        .pipe(base64())
+        .pipe(base64({
+            extensions: ['svg', 'png'],
+            maxImageSize: 8*1024
+        }))
         .pipe(postcss(processors))
         .pipe(cssnano({zindex: false}))
         .pipe(rename(dest))
