@@ -124,15 +124,6 @@ gulp.task('less-backend', function() {
     return lessCompile(['backend/web/css/*.less', '!backend/web/css/_*.less']);
 });
 
-gulp.task('pack', function(callback) {
-    webpack(require('./webpack.config.js'), function(err) {
-        if(err) {
-            console.log(err);
-        }
-        callback();
-    });
-});
-
 gulp.task('closure-compiler', function() {
     var src = path.relative(process.cwd(), argv.in);
     var dest = path.relative(process.cwd(), argv.out);

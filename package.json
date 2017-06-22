@@ -1,7 +1,6 @@
 {
   "private": true,
   "scripts": {
-    "pack": "gulp pack",
     "watch": "gulp watch",
     "less": "gulp less",
     "css": "gulp css",
