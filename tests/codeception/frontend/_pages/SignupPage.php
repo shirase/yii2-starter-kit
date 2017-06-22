@@ -2,14 +2,22 @@
 
 namespace tests\codeception\frontend\_pages;
 
-use \yii\codeception\BasePage;
+use yii\base\Component;
 
 /**
  * Represents signup page
- * @property \codeception_frontend\AcceptanceTester|\codeception_frontend\FunctionalTester $actor
  */
-class SignupPage extends BasePage
+class SignupPage extends Component
 {
+    /**
+     * @var \Codeception\Actor the testing guy object
+     */
+    protected $actor;
+
+    public function __construct($I)
+    {
+        $this->actor = $I;
+    }
 
     public $route = '/user/sign-in/signup';
 
