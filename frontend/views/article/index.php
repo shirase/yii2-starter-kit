@@ -6,7 +6,7 @@
  */
 $this->title = $this->title ?: Yii::t('frontend', 'Articles');
 ?>
-<div id="article-index">
+<section class="article-index">
     <h1><?php echo Yii::t('frontend', 'Articles') ?></h1>
     <?php if (Yii::$app->user->can('administrator')): ?>
         <div class="editor-panel">
@@ -50,4 +50,4 @@ $this->title = $this->title ?: Yii::t('frontend', 'Articles');
         <?php endforeach ?>
         <?= \yii\widgets\LinkPager::widget(['pagination' => $dataProvider->pagination]) ?>
     <?php endif ?>
-</div>
+</section>
