@@ -9,7 +9,8 @@ var gulp = require('gulp'),
     less = require('gulp-less'),
     sourcemaps = require('gulp-sourcemaps'),
     plumber = require('gulp-plumber'),
-    rename = require('gulp-rename');
+    rename = require('gulp-rename'),
+    closureCompiler = require('gulp-closure-compiler');
 
 var path = require('path');
 
@@ -124,6 +125,15 @@ gulp.task('pack', function(callback) {
         }
         callback();
     });
+});
+
+gulp.task('closure-compiler', function() {
+    var src = path.relative(process.cwd(), argv.in);
+    var dest = path.relative(process.cwd(), argv.out);
+
+    return gulp.src(src, {base: './'})
+        .pipe(closureCompiler(dest))
+        .pipe(gulp.dest('./'));
 });
 
 gulp.task('watch', ['less-frontend', 'less-backend'], function() {
