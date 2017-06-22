@@ -128,9 +128,10 @@ class PageController extends Controller
 
             if ($model->type_id && $plugin = $model->type->plugin) {
                 /** @var PageTypePlugin $plugin */
-                $typeModel = $plugin::model();
-                $typeModel->load(Yii::$app->request->post());
-                $valid = $valid & $typeModel->validate();
+                if ($typeModel = $plugin::model()) {
+                    $typeModel->load(Yii::$app->request->post());
+                    $valid = $valid & $typeModel->validate();
+                }
             }
 
             $valid = $valid & $models->validate();
@@ -186,9 +187,10 @@ class PageController extends Controller
 
             if ($model->type_id && $plugin = $model->type->plugin) {
                 /** @var PageTypePlugin $plugin */
-                $typeModel = $plugin::model($model);
-                $typeModel->load(Yii::$app->request->post());
-                $valid = $valid & $typeModel->validate();
+                if ($typeModel = $plugin::model($model)) {
+                    $typeModel->load(Yii::$app->request->post());
+                    $valid = $valid & $typeModel->validate();
+                }
             }
 
             $valid = $valid & $models->validate();
