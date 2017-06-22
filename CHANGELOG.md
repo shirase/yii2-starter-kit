@@ -1,6 +1,9 @@
 Yii Starter Kit Change Log
 ==========================
 
+3.0.11-dev
+----------
+
 3.0.10
 ------
 - Seed data migration remove user, manager
