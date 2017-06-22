@@ -33,7 +33,6 @@ phpunit.phar
 /vagrant.yaml
 /frontend/web/admin
 /frontend/web/storage
-/backend/web/bundle
 /tests/codeception/backend/_support/_generated
 /tests/codeception/common/_support/_generated
 /tests/codeception/console/_support/_generated
