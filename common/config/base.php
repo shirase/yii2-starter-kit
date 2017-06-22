@@ -12,6 +12,10 @@ $config = [
         'log',
         common\components\Bootstrap::class,
     ],
+    'aliases' => [
+        '@bower' => '@vendor/bower-asset',
+        '@npm'   => '@vendor/npm-asset',
+    ],
     'components' => [
 
         'authManager' => [
