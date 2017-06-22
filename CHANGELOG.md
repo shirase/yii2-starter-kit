@@ -9,6 +9,7 @@ Yii Starter Kit Change Log
 - Fix: Call to undefined method `common\plugins\page_type\article\Plugin::getId()`
 - Remove webpack
 - Composer fxp-asset installer-paths
+- Page type plugin, empty model
 
 3.0.9
 -----
