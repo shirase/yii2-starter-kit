@@ -1,8 +1,14 @@
 Yii Starter Kit Change Log
 ==========================
 
-3.0.10-dev
-----------
+3.0.10
+------
+- Seed data migration remove user, manager
+- Use gulp for bundle css compressor
+- Remove yiisoft/yii2-codeception
+- Fix: Call to undefined method `common\plugins\page_type\article\Plugin::getId()`
+- Remove webpack
+- Composer fxp-asset installer-paths
 
 3.0.9
 -----
