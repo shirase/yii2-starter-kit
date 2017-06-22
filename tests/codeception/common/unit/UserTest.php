@@ -1,15 +1,11 @@
 <?php
 namespace tests\codeception\common\unit;
 
-
-
+use PHPUnit\Framework\TestCase;
 use Yii;
 use Codeception\Specify;
-use common\models\LoginForm;
-use tests\codeception\common\fixtures\UserFixture;
-use yii\codeception\TestCase as Yii2TestCase;
 
-class UserTest extends Yii2TestCase
+class UserTest extends TestCase
 {
     public $appConfig = '@tests/codeception/config/common/unit.php';
 

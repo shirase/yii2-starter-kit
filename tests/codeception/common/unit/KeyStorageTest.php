@@ -1,6 +1,7 @@
 <?php
 
 namespace tests\codeception\common\unit;
+use PHPUnit\Framework\TestCase;
 use Yii;
 
 /**
