@@ -1,5 +1,4 @@
 var gulp = require('gulp'),
-    webpack = require('webpack'),
     postcss = require('gulp-postcss'),
     base64 = require('gulp-base64'),
     autoprefixer = require('autoprefixer'),
