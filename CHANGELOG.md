@@ -3,6 +3,9 @@ Yii Starter Kit Change Log
 
 3.0.11-dev
 ----------
+- Page type plugin, empty model
+- Closure-compiler
+- Config bower, npm aliases
 
 3.0.10
 ------
