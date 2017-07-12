@@ -25,7 +25,7 @@ class Plugin implements PageTypePlugin
 
     /**
      * @param Model $model
-     * @param Page $block
+     * @param Page $page
      */
     public static function link($model, $page) {
         $model->id = $page->id;
