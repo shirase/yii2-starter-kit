@@ -1,8 +1,9 @@
 <?php
 
+use common\models\User;
 use yii\db\Migration;
 
-class m170712_201246_seed_data extends Migration
+class m160513_151501_seed_data extends Migration
 {
     public function safeUp()
     {
@@ -13,7 +14,7 @@ class m170712_201246_seed_data extends Migration
             'password_hash' => Yii::$app->getSecurity()->generatePasswordHash('webmaster'),
             'auth_key' => Yii::$app->getSecurity()->generateRandomString(),
             'access_token' => Yii::$app->getSecurity()->generateRandomString(40),
-            'status' => \common\models\User::STATUS_ACTIVE,
+            'status' => User::STATUS_ACTIVE,
             'created_at' => time(),
             'updated_at' => time()
         ]);
@@ -50,14 +51,14 @@ class m170712_201246_seed_data extends Migration
             'bpath'=>\shirase\tree\TreeBehavior::toBase255(array(1, 2))
         ]);
 
-        $this->insert('{{%gallery}}', [
+        $this->insert('{{%widget_carousel}}', [
             'id'=>1,
             'key'=>'index',
             'status'=>1
         ]);
 
-        $this->insert('{{%gallery_item}}', [
-            'gallery_id'=>1,
+        $this->insert('{{%widget_carousel_item}}', [
+            'carousel_id'=>1,
             'url'=>'/',
             'path'=>'/img/yii2-starter-kit.gif',
             'status'=>1
@@ -89,6 +90,7 @@ class m170712_201246_seed_data extends Migration
             'value' => 'disabled',
             'comment' => 'Set it to "true" to turn on maintenance mode'
         ]);
+
     }
 
     public function safeDown()
@@ -106,11 +108,11 @@ class m170712_201246_seed_data extends Migration
             ],
         ]);
 
-        $this->delete('{{%gallery_item}}', [
+        $this->delete('{{%widget_carousel_item}}', [
             'carousel_id'=>1
         ]);
 
-        $this->delete('{{%gallery}}', [
+        $this->delete('{{%widget_carousel}}', [
             'id'=>1
         ]);
 
