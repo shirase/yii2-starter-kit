@@ -6,21 +6,34 @@ class m170525_135141_gallery extends Migration
 {
     public function up()
     {
-        $this->dropForeignKey('fk_item_carousel', '{{%widget_carousel_item}}');
-        $this->renameTable('{{%widget_carousel_item}}', '{{%gallery_item}}');
-        $this->renameColumn('{{%gallery_item}}', 'carousel_id', 'gallery_id');
-        $this->renameColumn('{{%gallery_item}}', 'caption', 'title');
-        $this->renameTable('{{%widget_carousel}}', '{{%gallery}}');
+        $tableOptions = null;
+        if ($this->db->driverName === 'mysql') {
+            $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
+        }
+
+        $this->createTable('{{%gallery}}', [
+            'id' => $this->primaryKey(),
+            'key' => $this->string()->notNull(),
+            'status' => $this->smallInteger()->defaultValue(1)
+        ], $tableOptions);
+
+        $this->createTable('{{%gallery_item}}', [
+            'id' => $this->primaryKey(),
+            'gallery_id' => $this->integer()->notNull(),
+            'path'=>$this->string(1024),
+            'url' => $this->string(1024),
+            'title' => $this->string(1024),
+            'status' => $this->smallInteger()->notNull()->defaultValue(1),
+            'pos' => $this->integer(),
+        ], $tableOptions);
+
         $this->addForeignKey('fk_gallery', '{{%gallery_item}}', 'gallery_id', '{{%gallery}}', 'id', 'RESTRICT', 'RESTRICT');
     }
 
     public function down()
     {
         $this->dropForeignKey('fk_gallery', '{{%gallery_item}}');
-        $this->renameTable('{{%gallery_item}}', '{{%widget_carousel_item}}');
-        $this->renameColumn('{{%widget_carousel_item}}', 'gallery_id', 'carousel_id');
-        $this->renameColumn('{{%widget_carousel_item}}', 'title', 'caption');
-        $this->renameTable('{{%gallery}}', '{{%widget_carousel}}');
-        $this->addForeignKey('fk_item_carousel', '{{%widget_carousel_item}}', 'carousel_id', '{{%widget_carousel}}', 'id', 'RESTRICT', 'RESTRICT');
+        $this->dropTable('{{%gallery_item}}');
+        $this->dropTable('{{%gallery}}');
     }
 }

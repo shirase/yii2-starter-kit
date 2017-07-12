@@ -1,9 +1,8 @@
 <?php
 
-use common\models\User;
 use yii\db\Migration;
 
-class m160513_151501_seed_data extends Migration
+class m170712_201246_seed_data extends Migration
 {
     public function safeUp()
     {
@@ -51,14 +50,14 @@ class m160513_151501_seed_data extends Migration
             'bpath'=>\shirase\tree\TreeBehavior::toBase255(array(1, 2))
         ]);
 
-        $this->insert('{{%widget_carousel}}', [
+        $this->insert('{{%gallery}}', [
             'id'=>1,
             'key'=>'index',
             'status'=>1
         ]);
 
-        $this->insert('{{%widget_carousel_item}}', [
-            'carousel_id'=>1,
+        $this->insert('{{%gallery_item}}', [
+            'gallery_id'=>1,
             'url'=>'/',
             'path'=>'/img/yii2-starter-kit.gif',
             'status'=>1
@@ -90,7 +89,6 @@ class m160513_151501_seed_data extends Migration
             'value' => 'disabled',
             'comment' => 'Set it to "true" to turn on maintenance mode'
         ]);
-
     }
 
     public function safeDown()
@@ -108,11 +106,11 @@ class m160513_151501_seed_data extends Migration
             ],
         ]);
 
-        $this->delete('{{%widget_carousel_item}}', [
+        $this->delete('{{%gallery_item}}', [
             'carousel_id'=>1
         ]);
 
-        $this->delete('{{%widget_carousel}}', [
+        $this->delete('{{%gallery}}', [
             'id'=>1
         ]);
 
