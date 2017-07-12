@@ -1,6 +1,10 @@
 Upgrading Instructions
 ======================
 
+3.0.11
+------
+Pull 3.0.11-bc
+
 3.0.10
 ------
 Set default value `page_type_content.template_id=1`
