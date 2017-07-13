@@ -34,7 +34,7 @@ use yii\web\JsExpression;
                 'options'=>['multiple'=>true],
                 'data'=>
                     TreeHelper::tab(
-                        Page::find()->andWhere(['type_id'=>common\plugins\page_type\article\Plugin::PAGE_TYPE_ID])->orderBy('bpath')->all()
+                        Page::find()->andWhere(['type_id'=>common\plugins\page_type\article\Plugin::getTypeId()])->orderBy('bpath')->all()
                         , 'id', 'pid', 'name')
             ]) ?>
 

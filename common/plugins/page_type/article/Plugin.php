@@ -2,12 +2,15 @@
 namespace common\plugins\page_type\article;
 
 use common\models\Page;
+use common\models\PageType;
 use common\plugins\page_type\PageTypePlugin;
 use yii\helpers\ArrayHelper;
 
 class Plugin implements PageTypePlugin
 {
-    const PAGE_TYPE_ID = 4;
+    public static function getTypeId() {
+        return PageType::findOne(['plugin'=>self::class])->id;
+    }
 
     /**
      * @param null|Page $page
