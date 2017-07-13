@@ -1,6 +1,9 @@
 Yii Starter Kit Change Log
 ==========================
 
+3.0.12-dev
+----------
+
 3.0.11
 ------
 - Page type plugin, empty model
