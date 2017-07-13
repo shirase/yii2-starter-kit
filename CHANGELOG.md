@@ -6,6 +6,7 @@ Yii Starter Kit Change Log
 - Page type plugin, empty model
 - Closure-compiler
 - Config bower, npm aliases
+- Update migrations
 
 3.0.10
 ------
