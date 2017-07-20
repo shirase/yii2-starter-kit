@@ -3,6 +3,7 @@
  * @var $this yii\web\View
  * @var $dataProvider \yii\data\ActiveDataProvider
  * @var \common\models\Page $category
+ * @var int $categoryId
  */
 $this->title = $this->title ?: Yii::t('frontend', 'Articles');
 ?>
@@ -26,11 +27,11 @@ $this->title = $this->title ?: Yii::t('frontend', 'Articles');
                     </div>
                 <?php endif ?>
                 <h2 class="title" itemprop="name">
-                    <?php echo \yii\helpers\Html::a($model->title, ['view', 'slug'=>$model->slug, 'category'=>$category->id], ['itemprop' => 'url']) ?>
+                    <?php echo \yii\helpers\Html::a($model->title, ['view', 'slug'=>$model->slug, 'category'=>$categoryId ?: $model->category->id], ['itemprop' => 'url']) ?>
                 </h2>
                 <div class="meta">
-                    <time class="date" datetime="<?= encode($model->created_at) ?>" itemprop="dateline">
-                        <?php echo Yii::$app->formatter->asDatetime($model->created_at) ?>
+                    <time class="date" datetime="<?= encode($model->published_at) ?>" itemprop="dateline">
+                        <?php echo Yii::$app->formatter->asDatetime($model->published_at) ?>
                     </time>
                 </div>
                 <div class="content">
@@ -43,7 +44,7 @@ $this->title = $this->title ?: Yii::t('frontend', 'Articles');
                         </div>
                     <?php endif; ?>
                     <div class="body">
-                        <?php echo \yii\helpers\StringHelper::truncate($model->body, 150, '...', null, true) ?>
+                        <?php echo \yii\helpers\StringHelper::truncateWords(strip_tags($model->body), 25, '...') ?>
                     </div>
                 </div>
             </article>

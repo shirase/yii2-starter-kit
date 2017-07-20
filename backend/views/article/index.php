@@ -1,5 +1,6 @@
 <?php
 
+use common\models\Article;
 use yii\helpers\Url;
 use yii\helpers\Html;
 use kartik\grid\GridView;
@@ -65,7 +66,21 @@ $controller->layout = 'common';
                                 $params = is_array($key) ? $key : ['id' => (string) $key];
                                 $params[0] = $action;
                                 return Url::toRoute($params+$this->context->actionParams);
-                            }
+                            },
+                        'template' => '{home} {update} {delete}',
+                        'buttons' => [
+                            'home' => function ($url, Article $model) {
+                                return Html::a(
+                                    '<span class="glyphicon glyphicon-home"></span>',
+                                    Yii::$app->urlManagerFrontend->createAbsoluteUrl(['article/view', 'slug'=>$model->slug, 'category'=>$model->category->id]),
+                                    [
+                                        'title' => Yii::t('backend', 'Site'),
+                                        'data-pjax' => '0',
+                                        'target' => '_top',
+                                    ]
+                                );
+                            },
+                        ],
                     ],
                 ],
             ]); ?>

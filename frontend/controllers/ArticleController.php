@@ -12,6 +12,8 @@ use frontend\models\search\ArticleSearch;
 use Yii;
 use common\components\web\Controller;
 use yii\db\ActiveQuery;
+use yii\db\Query;
+use yii\helpers\ArrayHelper;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 
@@ -51,18 +53,36 @@ class ArticleController extends Controller
         $searchModel = new ArticleSearch();
         $dataProvider = $searchModel->search([]);
         $dataProvider->sort = [
-            'defaultOrder' => ['created_at' => SORT_DESC]
+            'defaultOrder' => ['published_at' => SORT_DESC]
         ];
 
+        $categoryId = null;
+
         if ($model) {
-            /** @var ActiveQuery $query */
-            $query = $dataProvider->query;
-            $query->joinWith('categories')
-                ->andWhere(['article_page.page'=>$model->id]);
+            $ids = ArrayHelper::getColumn(Page::find()->children($model->id)->all(), 'id');
+            if ($ids) {
+                // With sub categories
+                $ids[] = $model->id;
+
+                $query = new Query();
+                $query
+                    ->from('article_page')
+                    ->andWhere('article_page.article=article.id')
+                    ->andWhere(['article_page.page' => $ids])
+                ;
+                $dataProvider->query->andWhere(['exists', $query]);
+            } else {
+                $categoryId = $model->id;
+
+                /** @var ActiveQuery $query */
+                $query = $dataProvider->query;
+                $query->joinWith('categories')
+                    ->andWhere(['article_page.page'=>$model->id]);
+            }
         }
 
         $this->trigger('beforeRenderIndex');
-        return $this->render('index', ['dataProvider'=>$dataProvider, 'category'=>$model]);
+        return $this->render('index', ['dataProvider'=>$dataProvider, 'category'=>$model, 'categoryId'=>$categoryId]);
     }
 
     /**
@@ -73,7 +93,11 @@ class ArticleController extends Controller
      */
     public function actionView($slug, $category=null)
     {
-        $model = Article::find()->published()->andWhere(['slug'=>$slug])->one();
+        $query = Article::find()->andWhere(['slug'=>$slug]);
+        if (!Yii::$app->user->can('manager')) {
+            $query->published();
+        }
+        $model = $query->one();
         if (!$model)
             throw new NotFoundHttpException();
 

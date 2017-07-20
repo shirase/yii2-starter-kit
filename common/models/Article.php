@@ -31,7 +31,9 @@ use yii\db\ActiveRecord;
  *
  * @property User $author
  * @property User $updater
-  * @property ArticleAttachment[] $articleAttachments
+ * @property ArticleAttachment[] $articleAttachments
+ * @property Page[] $categories
+ * @property Page $category
  */
 class Article extends ActiveRecord
 {
@@ -186,6 +188,10 @@ class Article extends ActiveRecord
 
     public function getCategories() {
         return $this->hasMany(Page::className(), ['id'=>'page'])->viaTable('article_page', ['article'=>'id']);
+    }
+
+    public function getCategory() {
+        return $this->hasOne(Page::className(), ['id'=>'page'])->viaTable('article_page', ['article'=>'id']);
     }
 
     public function getThumbnail_url()
