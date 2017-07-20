@@ -163,7 +163,14 @@ $bundle = BackendAsset::register($this);
                             'url' => '#',
                             'icon'=>'<i class="fa fa-edit"></i>',
                             'options'=>['class'=>'treeview'],
-                            'items'=>$contentItems
+                            'items'=>$contentItems,
+                            'visible'=>
+                                array_filter($contentItems, function($row) {
+                                    if (ArrayHelper::getValue($row, 'visible')) {
+                                        return true;
+                                    }
+                                    return false;
+                                }),
                         ],
                         [
                             'label'=>Yii::t('backend', 'System'),
