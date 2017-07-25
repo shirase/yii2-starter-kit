@@ -3,6 +3,11 @@ Yii Starter Kit Change Log
 
 3.0.12-dev
 ----------
+`plugins/page_type/article/Plugin::getTypeId`
+`common/components/validators/DateValidator`
+Article changes
+Check content visibility form backend left menu
+User module, edit profile together
 
 3.0.11
 ------
