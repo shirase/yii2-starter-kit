@@ -2,10 +2,12 @@
 
 namespace backend\controllers;
 
+use common\models\UserProfile;
 use Yii;
 use common\models\User;
 use backend\models\UserForm;
 use backend\models\search\UserSearch;
+use yii\db\Exception;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -63,7 +65,7 @@ class UserController extends Controller
     public function actionCreate()
     {
         $model = new UserForm();
-        $model->setScenario('create');
+        $model->scenario = 'create';
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         }
@@ -82,7 +84,7 @@ class UserController extends Controller
     public function actionUpdate($id)
     {
         $model = new UserForm();
-        $model->setModel($this->findModel($id));
+        $model->setUser($this->findModel($id));
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         }

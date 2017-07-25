@@ -2,10 +2,10 @@
 namespace backend\models;
 
 use common\models\User;
-use yii\base\Exception;
+use common\models\UserProfile;
 use yii\base\Model;
 use Yii;
-use yii\db\ActiveQuery;
+use yii\db\Exception;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -13,13 +13,8 @@ use yii\helpers\ArrayHelper;
  */
 class UserForm extends Model
 {
-    public $username;
-    public $email;
     public $password;
-    public $status;
     public $roles;
-
-    private $model;
 
     /**
      * @inheritdoc
@@ -27,28 +22,9 @@ class UserForm extends Model
     public function rules()
     {
         return [
-            ['username', 'filter', 'filter' => 'trim'],
-            ['username', 'required'],
-            ['username', 'unique', 'targetClass' => User::className(), 'filter' => function (ActiveQuery $query) {
-                if (!$this->getModel()->isNewRecord) {
-                    $query->andWhere(['not', ['id'=>$this->getModel()->id]]);
-                }
-            }],
-            ['username', 'string', 'min' => 2, 'max' => 255],
-
-            ['email', 'filter', 'filter' => 'trim'],
-            ['email', 'required'],
-            ['email', 'email'],
-            ['email', 'unique', 'targetClass'=> User::className(), 'filter' => function (ActiveQuery $query) {
-                if (!$this->getModel()->isNewRecord) {
-                    $query->andWhere(['not', ['id'=>$this->getModel()->id]]);
-                }
-            }],
-
-            ['password', 'required', 'on' => 'create'],
+            ['password', 'required', 'on'=>'create'],
             ['password', 'string', 'min' => 6],
 
-            [['status'], 'integer'],
             [['roles'], 'each',
                 'rule' => ['in', 'range' => ArrayHelper::getColumn(
                     Yii::$app->authManager->getRoles(),
@@ -64,40 +40,57 @@ class UserForm extends Model
     public function attributeLabels()
     {
         return [
-            'username' => Yii::t('backend', 'Username'),
-            'email' => Yii::t('backend', 'Email'),
-            'status' => Yii::t('backend', 'Status'),
             'password' => Yii::t('backend', 'Password'),
             'roles' => Yii::t('backend', 'Roles')
         ];
     }
 
+    private $_user;
+
     /**
      * @param User $model
      * @return mixed
      */
-    public function setModel($model)
+    public function setUser($model)
     {
-        $this->username = $model->username;
-        $this->email = $model->email;
-        $this->status = $model->status;
-        $this->model = $model;
+        $this->_user = $model;
+        $this->_profile = $model->userProfile;
         $this->roles = ArrayHelper::getColumn(
             Yii::$app->authManager->getRolesByUser($model->getId()),
             'name'
         );
-        return $this->model;
+        return $this->_user;
     }
 
     /**
      * @return User
      */
-    public function getModel()
+    public function getUser()
     {
-        if (!$this->model) {
-            $this->model = new User();
+        if (!$this->_user) {
+            $this->_user = new User();
         }
-        return $this->model;
+        return $this->_user;
+    }
+
+    private $_profile;
+
+    /**
+     * @return UserProfile
+     */
+    public function getProfile() {
+        if (!$this->_profile) {
+            $this->_profile = new UserProfile();
+        }
+        return $this->_profile;
+    }
+
+    public function load($data, $formName = null) {
+        return parent::load($data, $formName) & $this->getUser()->load($data) & $this->getProfile()->load($data);
+    }
+
+    public function validate($attributeNames = null, $clearErrors = true) {
+        return parent::validate($attributeNames, $clearErrors) & $this->getUser()->validate() & $this->getProfile()->validate();
     }
 
     /**
@@ -108,31 +101,46 @@ class UserForm extends Model
     public function save()
     {
         if ($this->validate()) {
-            $model = $this->getModel();
-            $isNewRecord = $model->getIsNewRecord();
-            $model->username = $this->username;
-            $model->email = $this->email;
-            $model->status = $this->status;
-            if ($this->password) {
-                $model->setPassword($this->password);
-            }
-            if (!$model->save()) {
-                throw new Exception('Model not saved');
-            }
-            if ($isNewRecord) {
-                $model->afterSignup();
-            }
-            $auth = Yii::$app->authManager;
-            $auth->revokeAll($model->getId());
+            $user = $this->getUser();
+            $profile = $this->getProfile();
 
-            if ($this->roles && is_array($this->roles)) {
-                foreach ($this->roles as $role) {
-                    $auth->assign($auth->getRole($role), $model->getId());
+            $transaction = $user->getDb()->beginTransaction();
+
+            $isNewRecord = $user->getIsNewRecord();
+
+            if ($this->password) {
+                $user->setPassword($this->password);
+            }
+            if (!$user->save())
+                throw new Exception('User save error', $user->errors);
+
+            if ($isNewRecord) {
+                $profile->user_id = $user->getId();
+                $profile->locale = Yii::$app->language;
+            }
+
+            if (!$profile->save())
+                throw new Exception('User profile save error', $profile->errors);
+
+            if ($isNewRecord) {
+                $user->afterSignup();
+            }
+
+            if (is_array($this->roles)) {
+                $auth = Yii::$app->authManager;
+                $auth->revokeAll($user->getId());
+                if ($this->roles) {
+                    foreach ($this->roles as $role) {
+                        $auth->assign($auth->getRole($role), $user->getId());
+                    }
                 }
             }
 
-            return !$model->hasErrors();
+            $transaction->commit();
+
+            return true;
         }
+
         return null;
     }
 }

@@ -17,9 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?php echo Html::a(Yii::t('backend', 'Create {modelClass}', [
-    'modelClass' => 'User',
-]), ['create'], ['class' => 'btn btn-success']) ?>
+        <?php echo Html::a(Yii::t('backend', 'Create'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php echo GridView::widget([
@@ -48,21 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'view' => false,
                     'update' => \Yii::$app->user->can('/' . \common\components\helpers\Url::normalizeRoute('update')),
                     'delete' => \Yii::$app->user->can('/' . \common\components\helpers\Url::normalizeRoute('delete')),
-                    'profile' => \Yii::$app->user->can('/' . \common\components\helpers\Url::normalizeRoute('sign-in/profile')),
-                ],
-                'template' => '{profile} {view} {update} {delete}',
-                'buttons' => [
-                    'profile' => function ($url, $model) {
-                        return Html::a(
-                            '<span class="glyphicon glyphicon-user"></span>',
-                            ['sign-in/profile', 'id'=>$model->id],
-                            [
-                                'title' => Yii::t('backend', 'Profile'),
-                                'data-pjax' => '0',
-                            ]
-                        );
-                    },
-                ],
+                ]
             ],
         ],
     ]); ?>

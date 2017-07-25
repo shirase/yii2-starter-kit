@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\behaviors\SaveValidationBehavior;
 use Yii;
 use shirase55\filekit\behaviors\UploadBehavior;
 use yii\db\ActiveRecord;
@@ -41,7 +42,8 @@ class UserProfile extends ActiveRecord
                 'class' => UploadBehavior::className(),
                 'attribute' => 'picture',
                 'pathAttribute' => 'avatar_path',
-            ]
+            ],
+            SaveValidationBehavior::class,
         ];
     }
 
@@ -60,7 +62,7 @@ class UserProfile extends ActiveRecord
     public function rules()
     {
         return [
-            [['user_id'], 'required'],
+            [['user_id'], 'required', 'on' => SaveValidationBehavior::SCENARIO],
             [['user_id', 'gender'], 'integer'],
             [['gender'], 'in', 'range' => [NULL, self::GENDER_FEMALE, self::GENDER_MALE]],
             [['firstname', 'middlename', 'lastname', 'avatar_path'], 'string', 'max' => 255],

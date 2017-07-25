@@ -77,32 +77,11 @@ class SignInController extends Controller
         return $this->goHome();
     }
 
-    public function actionProfile()
-    {
-        $model = Yii::$app->user->identity->userProfile;
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('alert', [
-                'options'=>['class'=>'alert-success'],
-                'body'=>Yii::t('backend', 'Your profile has been successfully saved', [], $model->locale)
-            ]);
-            return $this->refresh();
-        }
-        return $this->render('profile', ['model'=>$model]);
-    }
-
     public function actionAccount()
     {
-        $user = Yii::$app->user->identity;
         $model = new AccountForm();
-        $model->username = $user->username;
-        $model->email = $user->email;
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            $user->username = $model->username;
-            $user->email = $model->email;
-            if ($model->password) {
-                $user->setPassword($model->password);
-            }
-            $user->save();
+        $model->setUser(Yii::$app->user->identity);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('alert', [
                 'options'=>['class'=>'alert-success'],
                 'body'=>Yii::t('backend', 'Your account has been successfully saved')
