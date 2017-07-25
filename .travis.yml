@@ -27,7 +27,7 @@ install:
     fi
   - travis_retry composer self-update && composer --version
   - travis_retry composer global require "codeception/codeception" "codeception/specify" "codeception/verify" "phpunit/phpunit"
-  - travis_retry composer install --prefer-dist --no-interaction
+  - travis_retry composer update --prefer-dist --no-interaction
   - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
   - npm install
 
