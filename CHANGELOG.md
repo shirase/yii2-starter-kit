@@ -1,8 +1,8 @@
 Yii Starter Kit Change Log
 ==========================
 
-3.0.12-dev
-----------
+3.0.12
+------
 `plugins/page_type/article/Plugin::getTypeId`
 `common/components/validators/DateValidator`
 Article changes
