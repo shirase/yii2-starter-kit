@@ -3730,16 +3730,16 @@
         },
         {
             "name": "shirase55/yii2-tree-behavior",
-            "version": "1.0.6",
+            "version": "1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shirase/yii2-tree-behavior.git",
-                "reference": "7387b405260a93f47e2340f5ac8a97597041c24f"
+                "reference": "51ca8145738ad48687bb2bbf56b3bc75b2f7e9a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shirase/yii2-tree-behavior/zipball/7387b405260a93f47e2340f5ac8a97597041c24f",
-                "reference": "7387b405260a93f47e2340f5ac8a97597041c24f",
+                "url": "https://api.github.com/repos/shirase/yii2-tree-behavior/zipball/51ca8145738ad48687bb2bbf56b3bc75b2f7e9a9",
+                "reference": "51ca8145738ad48687bb2bbf56b3bc75b2f7e9a9",
                 "shasum": ""
             },
             "require": {
@@ -3757,7 +3757,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2017-07-05T12:07:38+00:00"
+            "time": "2017-07-25T20:48:08+00:00"
         },
         {
             "name": "shirase55/yii2-widgets-activeform",
