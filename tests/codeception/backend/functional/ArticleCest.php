@@ -38,6 +38,8 @@ class ArticleCest
         $I->fillField('input[name="Article[title]"]', 'Updated');
         $I->submitForm('#article-form', []);
         $I->seeRecord(Article::className(), ['slug'=>'test-1','title'=>'Updated']);
+
+        $model->delete();
     }
 
     public function testDelete(FunctionalTester $I) {
@@ -53,6 +55,8 @@ class ArticleCest
         $I->seeRecord(Article::className(), ['id'=>$model->id]);
         $I->sendAjaxPostRequest(['article/delete', 'id'=>$model->id]);
         $I->dontSeeRecord(Article::className(), ['id'=>$model->id]);
+
+        $model->delete();
     }
 
     public function testView(FunctionalTester $I) {
@@ -67,6 +71,8 @@ class ArticleCest
         $I->amOnPage(['article/view', 'id'=>$model->id]);
         $I->canSeeResponseCodeIs(200);
         $I->canSee('Test 1');
+
+        $model->delete();
     }
 
     public function testUnexist(FunctionalTester $I) {
