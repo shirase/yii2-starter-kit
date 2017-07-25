@@ -22,6 +22,8 @@ class PageCest
         $I->canSeeResponseCodeIs(200);
         $I->canSeeElement('.page-index');
         $I->see('test-1');
+
+        $model->delete();
     }
 
     public function testCreate(FunctionalTester $I) {
@@ -45,6 +47,8 @@ class PageCest
         $I->fillField('input[name="Page[name]"]', 'Updated');
         $I->submitForm('#page-form', []);
         $I->seeRecord(Page::className(), ['slug'=>'test-1','name'=>'Updated']);
+
+        $model->delete();
     }
 
     public function testDelete(FunctionalTester $I) {
@@ -60,6 +64,8 @@ class PageCest
         $I->seeRecord(Page::className(), ['id'=>$model->id]);
         $I->sendAjaxPostRequest(['page/delete', 'id'=>$model->id]);
         $I->dontSeeRecord(Page::className(), ['id'=>$model->id]);
+
+        $model->delete();
     }
 
     public function testView(FunctionalTester $I) {
@@ -73,6 +79,8 @@ class PageCest
         $model = Page::findOne(['slug'=>'test-1']);
         $I->amOnPage(['page/view', 'id'=>$model->id]);
         $I->canSeeResponseCodeIs(200);
+
+        $model->delete();
     }
 
     public function testMenu(FunctionalTester $I) {
@@ -104,7 +112,7 @@ class PageCest
         $I->amOnPage(['page/tree', 'id'=>1]);
         $I->sendAjaxGetRequest(['page/j-move', 'id'=>$modelTest->id, 'position'=>0, 'parent'=>$modelTest->pid]);
         $I->seeResponseCodeIs(200);
-        $I->seeRecord(Page::className(), ['id'=>$modelTest->id, 'pos'=>1]);
+        $I->seeRecord(Page::className(), ['id'=>$modelTest->id, 'pos'=>2]);
 
         $model->delete();
     }
