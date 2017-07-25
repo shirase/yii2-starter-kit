@@ -50,7 +50,7 @@ return [
     'Cache' => 'Кеш',
     'Cache entry has been successfully deleted' => 'Запись была успешно удалена из кеша',
     'Cache has been successfully flushed' => 'Кеш был успешно сброшен',
-    'Category' => 'Категория',
+    'Category' => 'Раздел',
     'Clear' => 'Очистить',
     'Content' => 'Контент',
     'Count' => 'Количество',

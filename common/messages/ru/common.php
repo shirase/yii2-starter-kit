@@ -49,7 +49,7 @@ return [
     'Author' => 'Автор',
     'Base Url' => 'Базовый Url',
     'Body' => 'Текст',
-    'Categories' => 'Категории',
+    'Categories' => 'Разделы',
     'Comment' => 'Комментарий',
     'Component' => 'Компонент',
     'Created At' => 'Создано',

@@ -38,9 +38,15 @@ use yii\web\JsExpression;
                         , 'id', 'pid', 'name')
             ]) ?>
 
-    <?php echo $form->field($model, 'body')->widget(
-        \yii\imperavi\Widget::className()
-    ) ?>
+    <?php
+    if ($model->isNewRecord) {
+        echo $form->field($model, 'body')->widget(
+            \yii\imperavi\Widget::className()
+        );
+    } else {
+        echo '<div class="form-group">'.Html::activeLabel($model, 'body').'<br>'.Html::a(Yii::t('backend', 'Edit text on site'), Yii::$app->urlManagerFrontend->createAbsoluteUrl(['article/view', 'slug'=>$model->slug, 'category'=>$model->category->id]), ['target'=>'_blank']).'</div>';
+    }
+    ?>
 
     <?php echo $form->field($model, 'thumbnail')->widget(Upload::className()); ?>
 
