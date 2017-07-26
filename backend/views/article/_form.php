@@ -27,16 +27,20 @@ use yii\web\JsExpression;
         ->hint(Yii::t('backend', 'If you\'ll leave this field empty, slug will be generated automatically'))
         ->textInput(['maxlength' => true]) ?>
 
-    <?php echo $form->field($model, 'category_ids')
-        ->widget(
-            Select2::className(),
-            [
-                'options'=>['multiple'=>true],
-                'data'=>
-                    TreeHelper::tab(
-                        Page::find()->andWhere(['type_id'=>common\plugins\page_type\article\Plugin::getTypeId()])->orderBy('bpath')->all()
-                        , 'id', 'pid', 'name')
-            ]) ?>
+    <?php
+    $options = TreeHelper::tab(Page::find()->andWhere(['type_id'=>common\plugins\page_type\article\Plugin::getTypeId()])->orderBy('bpath')->all(), 'id', 'pid', 'name');
+    if (sizeof($options)>1) {
+        echo $form->field($model, 'category_ids')
+            ->widget(
+                Select2::className(),
+                [
+                    'options'=>['multiple'=>true],
+                    'data'=> $options
+                ]);
+    } else {
+        echo Html::activeHiddenInput($model, 'category_ids[]', ['value'=>key($options)]);
+    }
+    ?>
 
     <?php
     if ($model->isNewRecord) {
