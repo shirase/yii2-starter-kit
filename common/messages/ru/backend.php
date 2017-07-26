@@ -177,4 +177,5 @@ return [
     'i18n' => 'I18N',
     'i18n Message' => 'Перевод',
     'i18n Source Message' => 'Текст',
+    'Edit text on site' => 'Редактировать текст на сайте',
 ];
