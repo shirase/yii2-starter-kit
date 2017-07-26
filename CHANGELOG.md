@@ -8,6 +8,7 @@ Yii Starter Kit Change Log
 Article changes
 Check content visibility form backend left menu
 User module, edit profile together
+Article, hide categories when one
 
 3.0.11
 ------
