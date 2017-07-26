@@ -38,7 +38,9 @@ use yii\web\JsExpression;
                     'data'=> $options
                 ]);
     } else {
-        echo Html::activeHiddenInput($model, 'category_ids[]', ['value'=>key($options)]);
+        if ($options) {
+            echo Html::activeHiddenInput($model, 'category_ids[]', ['value'=>key($options)]);
+        }
     }
     ?>
 
