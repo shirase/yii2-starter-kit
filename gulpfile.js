@@ -162,7 +162,7 @@ gulp.task('js-frontend', function() {
         .pipe(gulp.dest('frontend/web/js'));
 });
 
-gulp.task('watch', ['less-frontend', 'less-backend'], function() {
+gulp.task('watch', ['less-frontend', 'less-backend', 'js-frontend'], function() {
     gulp.watch('frontend/web/css/*.less', ['less-frontend']);
     gulp.watch('backend/web/css/*.less', ['less-backend']);
     gulp.watch('frontend/js/**/*.js', ['js-frontend']);
