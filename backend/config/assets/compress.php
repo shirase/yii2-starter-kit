@@ -16,7 +16,6 @@ return [
 
     // The list of asset bundles to compress:
     'bundles' => [
-        'backend\assets\BackendAsset',
         'common\assets\AdminLte',
         'yii\web\YiiAsset',
         'yii\web\JqueryAsset',
@@ -46,16 +45,6 @@ return [
             'js' => 'bundle/vendor.js',
             'css' => 'bundle/vendor.css',
             'depends' => [],
-        ],
-        'backend' => [
-            'class' => 'yii\web\AssetBundle',
-            'basePath' => '@webroot',
-            'baseUrl' => '@web',
-            'js' => 'bundle/backend.js',
-            'css' => 'bundle/backend.css',
-            'depends' => [
-                'backend\assets\BackendAsset',
-            ],
         ],
     ],
 
