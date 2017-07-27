@@ -1,6 +1,9 @@
 Yii Starter Kit Change Log
 ==========================
 
+3.0.13-dev
+----------
+
 3.0.12
 ------
 `plugins/page_type/article/Plugin::getTypeId`
