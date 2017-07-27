@@ -11,6 +11,8 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     rollup = require('gulp-rollup'),
     rollupBabel = require('rollup-plugin-babel'),
+    resolve = require('rollup-plugin-node-resolve'),
+    commonjs = require('rollup-plugin-commonjs'),
     uglify = require('gulp-uglify');
 
 var path = require('path');
@@ -127,15 +129,31 @@ gulp.task('less-backend', function() {
 
 gulp.task('js-frontend', function() {
     return gulp.src('frontend/js/**/*.js')
+        .pipe(plumber({
+            errorHandler: function (err) {
+                console.log(err);
+                this.emit('end');
+            }
+        }))
         .pipe(rollup({
             entry: 'frontend/js/app.js',
+            allowRealFiles: true,
             format: 'iife',
             plugins: [
+                resolve({
+                    jsnext: true,
+                    browser: true,
+                    customResolveOptions: {
+                        moduleDirectory: ['node_modules', 'vendor/npm-asset', 'vendor/bower-asset']
+                    }
+                }),
+                commonjs(),
                 rollupBabel({
                     babelrc: false,
                     presets: [
                         ['babel-preset-es2015-rollup']
-                    ]
+                    ],
+                    exclude: ['node_modules', 'vendor/npm-asset', 'vendor/bower-asset']
                 })
             ]
         }))
@@ -147,4 +165,5 @@ gulp.task('js-frontend', function() {
 gulp.task('watch', ['less-frontend', 'less-backend'], function() {
     gulp.watch('frontend/web/css/*.less', ['less-frontend']);
     gulp.watch('backend/web/css/*.less', ['less-backend']);
+    gulp.watch('frontend/js/**/*.js', ['js-frontend']);
 });
