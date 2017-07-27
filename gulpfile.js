@@ -8,7 +8,10 @@ var gulp = require('gulp'),
     less = require('gulp-less'),
     sourcemaps = require('gulp-sourcemaps'),
     plumber = require('gulp-plumber'),
-    rename = require('gulp-rename');
+    rename = require('gulp-rename'),
+    rollup = require('gulp-rollup'),
+    rollupBabel = require('rollup-plugin-babel'),
+    uglify = require('gulp-uglify');
 
 var path = require('path');
 
@@ -120,6 +123,25 @@ gulp.task('less-frontend', function() {
 
 gulp.task('less-backend', function() {
     return lessCompile(['backend/web/css/*.less', '!backend/web/css/_*.less']);
+});
+
+gulp.task('js-frontend', function() {
+    return gulp.src('frontend/js/**/*.js')
+        .pipe(rollup({
+            entry: 'frontend/js/app.js',
+            format: 'iife',
+            plugins: [
+                rollupBabel({
+                    babelrc: false,
+                    presets: [
+                        ['babel-preset-es2015-rollup']
+                    ]
+                })
+            ]
+        }))
+        .pipe(rename('bundle.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('frontend/web/js'));
 });
 
 gulp.task('watch', ['less-frontend', 'less-backend'], function() {

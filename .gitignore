@@ -46,3 +46,4 @@ tests/codeception/*/_support/_generated/*
 /backend/web/css/style.css.map
 /frontend/web/css/style.css
 /frontend/web/css/style.css.map
+/frontend/web/js/bundle.min.js
