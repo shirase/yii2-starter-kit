@@ -12,19 +12,35 @@
 .table-center() {
     display: flex;
     justify-content: center;
+
+    & > * {
+        flex-shrink: 1;
+    }
 }
 
 .table-wide() {
     display: flex;
     justify-content: space-between;
+
+    & > * {
+        flex-shrink: 1;
+    }
 }
 
 .table-left() {
     display: flex;
     justify-content: flex-start;
+
+    & > * {
+        flex-shrink: 1;
+    }
 }
 
 .table-right() {
     display: flex;
     justify-content: flex-end;
+
+    & > * {
+        flex-shrink: 1;
+    }
 }
