@@ -14,6 +14,7 @@ use yii\helpers\Html;
     <title><?php echo Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     <?php if (http_response_code() == 200) echo Html::csrfMetaTags() ?>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 </head>
 <body>
 <?php $this->beginBody() ?>
