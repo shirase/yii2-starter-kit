@@ -1,17 +1,24 @@
 Yii Starter Kit Change Log
 ==========================
 
-3.0.13-dev
-----------
+3.0.13
+------
+- Add rollup support
+- Compress bundle exclude frontend and backend assets
+- Flex layout
+- Body has class is-frame-dialog when loaded by j-frame-dialog
+- Manager can view hidden page
+- Frontend j-frame-dialog expand button
+- Frontend j-frame-dialog add sidebar-collapse class
 
 3.0.12
 ------
-`plugins/page_type/article/Plugin::getTypeId`
-`common/components/validators/DateValidator`
-Article changes
-Check content visibility form backend left menu
-User module, edit profile together
-Article, hide categories when one
+- `plugins/page_type/article/Plugin::getTypeId`
+- `common/components/validators/DateValidator`
+- Article changes
+- Check content visibility form backend left menu
+- User module, edit profile together
+- Article, hide categories when one
 
 3.0.11
 ------
