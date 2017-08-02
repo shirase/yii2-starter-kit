@@ -62,11 +62,10 @@ $this->beginContent('@frontend/views/layouts/_clear.php')
 
         <?php echo $content ?>
 
-        <div id="footer-helper"></div>
         <footer id="footer">
             <div class="container">
-                <p class="pull-left">&copy; My Company <?php echo date('Y') ?></p>
-                <p class="pull-right"><?php echo Yii::powered() ?></p>
+                <div class="pull-left">&copy; My Company <?php echo date('Y') ?></div>
+                <div class="pull-right"><?php echo Yii::powered() ?></div>
             </div>
         </footer>
     </div>
