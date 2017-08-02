@@ -28,6 +28,11 @@
             $('body').trigger('unfixed');
         });
         var iframe = $('<iframe />').appendTo(iframePopupIframe);
+
+        iframe.on('iframeloading', function() {
+            iframe.contents().find('body').addClass('is-frame-dialog');
+        });
+
         iframe.attr('src', el.attr('href'));
 
         var dataType = el.data('type');
