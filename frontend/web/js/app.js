@@ -37,6 +37,7 @@
 
         iframe.on('iframeloading', function() {
             iframe.contents().find('body').addClass('is-frame-dialog');
+            iframe.contents().find('body').addClass('sidebar-collapse');
         });
 
         iframe.attr('src', el.attr('href'));
