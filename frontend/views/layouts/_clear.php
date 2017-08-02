@@ -13,7 +13,7 @@ use yii\helpers\Html;
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo Html::encode($this->title) ?></title>
     <?php $this->head() ?>
-    <?php if (http_response_code() == 200) echo Html::csrfMetaTags() ?>
+    <?php if (http_response_code() != 404) echo Html::csrfMetaTags() ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 </head>
 <body>

@@ -23,7 +23,7 @@ if (Yii::$app->session->hasFlash('script')) {
     <meta charset="<?php echo Yii::$app->charset ?>">
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
-    <?php if (http_response_code() == 200) echo Html::csrfMetaTags() ?>
+    <?php if (http_response_code() != 404) echo Html::csrfMetaTags() ?>
     <title><?php echo Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 
