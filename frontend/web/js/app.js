@@ -27,6 +27,12 @@
             $(document).off('action');
             $('body').trigger('unfixed');
         });
+
+        var expand = $('<a class="iframe-popup-expand" />').appendTo(iframePopupIframe);
+        expand.click(function() {
+            iframePopup.toggleClass('iframe-popup-expanded');
+        });
+
         var iframe = $('<iframe />').appendTo(iframePopupIframe);
 
         iframe.on('iframeloading', function() {
