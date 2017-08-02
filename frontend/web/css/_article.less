@@ -1,32 +1,42 @@
-@import "_list-view";
-
 .article-index {
 }
 
 .article-item {
-    .list-view-item;
+    margin-top: 1.3em;
+    display: flex;
+    flex-wrap: wrap;
+
+    & > div {
+        width: 100%;
+        box-sizing: border-box;
+        flex-shrink: 1;
+        flex-grow: 1;
+    }
 
     .title {
-        .list-view-title;
+        font-size: 1.1em;
+        margin: 0 0 .3em 0;
     }
 
     .meta {
-        .list-view-meta;
+        margin-bottom: 0.3em;
 
         .date {
             font-size: 90%;
         }
     }
 
-    .content {
-        .list-view-content;
+    .thumb {
+        flex-basis: 1px;
+        margin-right: 1.3em;
 
-        .thumb {
-            .list-view-thumb;
+        img {
+            max-width: 100%;
+            display: block;
         }
+    }
 
-        .body {
-            .list-view-body;
-        }
+    .body {
+        width: 80%;
     }
 }

@@ -34,18 +34,16 @@ $this->title = $this->title ?: Yii::t('frontend', 'Articles');
                         <?php echo Yii::$app->formatter->asDatetime($model->published_at) ?>
                     </time>
                 </div>
-                <div class="content">
-                    <?php if ($model->thumbnail_path): ?>
-                        <div class="thumb">
-                            <?php echo \yii\helpers\Html::img(
-                                \common\components\helpers\Url::image($model->thumbnail_path, ['w' => 200]),
-                                ['itemprop' => 'thumbnailUrl']
-                            ) ?>
-                        </div>
-                    <?php endif; ?>
-                    <div class="body">
-                        <?php echo \yii\helpers\StringHelper::truncateWords(strip_tags($model->body), 25, '...') ?>
+                <?php if ($model->thumbnail_path): ?>
+                    <div class="thumb">
+                        <?php echo \yii\helpers\Html::img(
+                            \common\components\helpers\Url::image($model->thumbnail_path, ['w' => 200]),
+                            ['itemprop' => 'thumbnailUrl']
+                        ) ?>
                     </div>
+                <?php endif; ?>
+                <div class="body">
+                    <?php echo \yii\helpers\StringHelper::truncateWords(strip_tags($model->body), 25, '...') ?>
                 </div>
             </article>
         <?php endforeach ?>
