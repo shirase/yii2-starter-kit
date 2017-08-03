@@ -74,6 +74,9 @@ $config = [
             'tablePrefix' => env('DB_TABLE_PREFIX'),
             'charset' => 'utf8',
             'enableSchemaCache' => false,
+            'on afterOpen' => function($event) {
+                $event->sender->createCommand("SET time_zone = '".date('P')."'")->execute();
+            },
         ],
 
         'log' => [
