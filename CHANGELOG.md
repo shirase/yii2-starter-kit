@@ -10,6 +10,7 @@ Yii Starter Kit Change Log
 - Manager can view hidden page
 - Frontend j-frame-dialog expand button
 - Frontend j-frame-dialog add sidebar-collapse class
+- Set SQL timezone on connect
 
 3.0.12
 ------
