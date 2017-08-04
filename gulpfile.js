@@ -33,9 +33,17 @@ gulp.task('less-pre', function() {
         .pipe(gulp.dest('./'));
 });
 
-function lessCompile(src) {
+function lessCompile(src, base) {
     if (typeof src == 'string') {
         src = path.relative(process.cwd(), src);
+
+        if (!base && src.indexOf('*')==-1) {
+            base = path.dirname(src);
+        }
+    }
+
+    if (!base) {
+        base = '.';
     }
 
     var processors = [
@@ -43,7 +51,7 @@ function lessCompile(src) {
         mergeRules()
     ];
 
-    return gulp.src(src, {base: './'})
+    return gulp.src(src, {base: base})
         .pipe(plumber({
             errorHandler: function (err) {
                 console.log(err);
@@ -62,7 +70,7 @@ function lessCompile(src) {
             extname: '.css'
         }))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('./'));
+        .pipe(gulp.dest(base));
 }
 
 gulp.task('less', function() {
@@ -120,11 +128,11 @@ gulp.task('css', function() {
 });
 
 gulp.task('less-frontend', function() {
-    return lessCompile(['frontend/web/css/*.less', '!frontend/web/css/_*.less']);
+    return lessCompile(['frontend/web/css/*.less', '!**/_*.less'], 'frontend/web/css');
 });
 
 gulp.task('less-backend', function() {
-    return lessCompile(['backend/web/css/*.less', '!backend/web/css/_*.less']);
+    return lessCompile(['backend/web/css/*.less', '!**/_*.less'], 'backend/web/css');
 });
 
 gulp.task('js-frontend', function() {
