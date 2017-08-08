@@ -1,144 +1,62 @@
-input {
-    box-sizing: border-box;
-}
+.form {
+    input {
+        box-sizing: border-box;
+    }
 
-input[type=text],
-input[type=password],
-input[type=tel],
-input[type=email] {
-    line-height: 2em;
-    height: 2em;
-    border: 1px solid #BFBFBF;
-    padding: 0 .6em;
-}
+    input:focus {
+        outline: none;
+    }
 
-textarea {
-    border: 1px solid #BFBFBF;
-    overflow: auto;
-    box-sizing: border-box;
-    padding: .6em;
-}
+    input[type=text],
+    input[type=password],
+    input[type=tel],
+    input[type=email] {
+        width: 100%;
+        line-height: 2.3em;
+        height: 2.3em;
+        border: 1px solid #BFBFBF;
+        padding: 0 .6em;
+    }
 
-select {
-    border: 1px solid #BFBFBF;
-    height: 2em;
-}
+    textarea {
+        border: 1px solid #BFBFBF;
+        overflow: auto;
+        box-sizing: border-box;
+        padding: .6em;
+        width: 100%;
+        min-height: 100px;
+    }
 
-.form span.required {
-    font-size: 86%;
-    display: inline-block;
-    vertical-align: top;
-    color: red;
-}
+    select {
+        border: 1px solid #BFBFBF;
+        height: 2em;
+    }
 
-.form .error label,
-.form label.error,
-.form span.error {
-    color: #C00;
-}
+    label {
+        display: block;
+        margin-bottom: .3em;
+    }
 
-.form .error input,
-.form .error textarea,
-.form .error select,
-.form input.error,
-.form textarea.error,
-.form select.error {
-    background: #FEE;
-    border-color: #C00;
-}
+    .error label,
+    label.error,
+    span.error {
+        color: #C00;
+    }
 
-.form .success input,
-.form .success textarea,
-.form .success select,
-.form input.success,
-.form textarea.success,
-.form select.success {
-    background: #E6EFC2;
-    border-color: #C6D880;
-}
+    .error input,
+    .error textarea,
+    .error select,
+    input.error,
+    textarea.error,
+    select.error {
+        background: #FEE;
+        border-color: #C00;
+    }
 
-.form .errorSummary {
-    border: 2px solid #C00;
-    padding: .4em .4em .8em .4em;
-    margin: 0 0 1.3em 0;
-    background: #FEE;
-}
-
-.form .errorSummary p {
-    margin: 0;
-    padding: .3em;
-}
-
-.form .errorSummary ul {
-    margin: 0;
-    padding: 0 0 0 1.3em;
-}
-
-.form .errorMessage {
-    color: red;
-    font-size: 90%;
-    margin-top: .33em;
-    margin-bottom: .67em;
-}
-
-.form .row,
-.form .form-group {
-    position: relative;
-    margin: .8em 0;
-}
-
-.form label {
-    display: block;
-    margin: .2em 0;
-}
-
-.form input {
-    width: 100%;
-    margin: .2em 0;
-}
-
-.form input:focus {
-    outline: none;
-}
-
-.form input[type=checkbox] {
-    border: none;
-    width: auto;
-    height: auto;
-}
-
-.form input[type=radio] {
-    border: none;
-    width: auto;
-    height: auto;
-}
-
-.form select {
-    margin: .2em 0;
-}
-
-.form textarea {
-    width: 100%;
-    min-height: 100px;
-    margin: .2em 0;
-}
-
-.form-horizontal .row,
-.form-horizontal .form-group {
-    position: relative;
-    padding-left: 20%;
-}
-
-.form-horizontal .row > label,
-.form-horizontal .form-group > label {
-    float: left;
-    margin-left: -25%;
-    margin-top: .3em;
-    width: 24%;
-}
-
-.form-horizontal .row-checkbox label {
-    float: none;
-    width: auto;
-    text-align: left;
+    .error_summary {
+        border: 2px solid #C00;
+        padding: .4em .4em .8em .4em;
+        margin: 0 0 1.3em 0;
+        background: #FEE;
+    }
 }
