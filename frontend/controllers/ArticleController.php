@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use common\models\Article;
 use common\models\ArticleAttachment;
 use common\models\Page;
+use common\models\query\ArticleQuery;
 use frontend\actions\UpdateAction;
 use frontend\components\Breadcrumbs;
 use frontend\components\Seo;
@@ -59,26 +60,9 @@ class ArticleController extends Controller
         $categoryId = null;
 
         if ($model) {
-            $ids = ArrayHelper::getColumn(Page::find()->children($model->id)->all(), 'id');
-            if ($ids) {
-                // With sub categories
-                $ids[] = $model->id;
-
-                $query = new Query();
-                $query
-                    ->from('article_page')
-                    ->andWhere('article_page.article=article.id')
-                    ->andWhere(['article_page.page' => $ids])
-                ;
-                $dataProvider->query->andWhere(['exists', $query]);
-            } else {
-                $categoryId = $model->id;
-
-                /** @var ActiveQuery $query */
-                $query = $dataProvider->query;
-                $query->joinWith('categories')
-                    ->andWhere(['article_page.page'=>$model->id]);
-            }
+            /** @var ArticleQuery $query */
+            $query = $dataProvider->query;
+            $query->category($model->id);
         }
 
         $this->trigger('beforeRenderIndex');
