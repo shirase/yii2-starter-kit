@@ -14,3 +14,23 @@
     display: block;
     clear: both;
 }
+
+.inline_content {
+    table {
+        border-collapse: collapse;
+
+        td {
+            border: none;
+        }
+    }
+}
+
+.cke_editable {
+    &.cke_focus {
+        table {
+            td {
+                min-width: 8px;
+            }
+        }
+    }
+}
