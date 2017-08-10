@@ -1,4 +1,9 @@
 (function($) {
+    if ($.pjax) {
+        $.pjax.defaults.scrollTo = false;
+        $.pjax.defaults.timeout = 5000;
+    }
+
     $('body')
         .on('fixed', function() {
             var body = $(this);

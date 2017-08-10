@@ -1,5 +1,10 @@
 "use strict";
 (function($) {
+    if ($.pjax) {
+        $.pjax.defaults.scrollTo = false;
+        $.pjax.defaults.timeout = 5000;
+    }
+
     if (window.parent && window.frameElement) {
         var $parent = window.parent.jQuery;
         $(function() {
