@@ -147,6 +147,12 @@ gulp.task('js-frontend', function() {
             entry: 'frontend/js/app.js',
             allowRealFiles: true,
             format: 'iife',
+            external: [
+                'jquery'
+            ],
+            globals: {
+                'jquery': 'jQuery'
+            },
             plugins: [
                 resolve({
                     jsnext: true,
@@ -155,9 +161,7 @@ gulp.task('js-frontend', function() {
                         moduleDirectory: ['node_modules', 'vendor/npm-asset', 'vendor/bower-asset']
                     }
                 }),
-                commonjs({
-                    exclude: ['node_modules', 'vendor/npm-asset', 'vendor/bower-asset']
-                }),
+                commonjs(),
                 rollupBabel({
                     babelrc: false,
                     presets: [
