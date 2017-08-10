@@ -155,9 +155,7 @@ gulp.task('js-frontend', function() {
                         moduleDirectory: ['node_modules', 'vendor/npm-asset', 'vendor/bower-asset']
                     }
                 }),
-                commonjs({
-                    ignore: ['jquery']
-                }),
+                commonjs(),
                 rollupBabel({
                     babelrc: false,
                     presets: [
