@@ -1,7 +1,6 @@
 <?php
 namespace backend\components;
 
-use kartik\grid\GridView;
 use yii\base\BootstrapInterface;
 use yii\web\View;
 
@@ -59,9 +58,6 @@ class Bootstrap extends \common\components\Bootstrap
 
         \Yii::$container->set('kartik\grid\GridView', [
             'export' => false,
-        ]);
-
-        \Yii::$container->set(GridView::class, [
             'toggleData' => false,
         ]);
     }
