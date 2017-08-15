@@ -7,7 +7,7 @@
     $('body')
         .on('fixed', function() {
             var body = $(this);
-            var y = body.scrollTop();
+            var y = $(window).scrollTop();
             body.addClass('fixed');
             $('#body_scroll').scrollTop(y);
         })
@@ -15,7 +15,7 @@
             var body = $(this);
             var y = $('#body_scroll').scrollTop();
             body.removeClass('fixed');
-            body.scrollTop(y);
+            $(window).scrollTop(y);
         });
 
     $(document).on('click', '.j-frame-dialog', function(event) {
