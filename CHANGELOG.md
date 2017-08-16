@@ -3,6 +3,11 @@ Yii Starter Kit Change Log
 
 3.0.14-dev
 ----------
+Base for gulp less
+Article query category
+Gulp rollup external jquery
+Pjax defaults
+Backend GridView defaults toggleData to false
 
 3.0.13
 ------
