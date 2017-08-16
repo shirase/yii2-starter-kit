@@ -12,7 +12,7 @@ class UriRule extends UrlRule
     {
         $Uri = Uri::find()
             ->orderBy('id DESC')
-            ->andWhere(['uri'=>$request->url])
+            ->andWhere(['uri'=>'/'.$request->pathInfo])
             ->one();
 
         if ($Uri) {
