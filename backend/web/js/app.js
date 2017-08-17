@@ -28,8 +28,7 @@
 
         (function() {
             var pageTitle = $('.content-wrapper .content-header h1:first');
-            var firstTitle = $('.content-wrapper .content h1:first');
-            if(pageTitle.text() && pageTitle.text() == firstTitle.text()) {
+            if(pageTitle.html()) {
                 $('.content-wrapper .content h1:first').remove();
             } else {
                 var h1 = $('.content-wrapper .content h1:first');
