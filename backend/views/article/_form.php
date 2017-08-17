@@ -19,7 +19,7 @@ use yii\web\JsExpression;
 
     <?php $form = ActiveForm::begin(['id'=>'article-form']); ?>
 
-    <?php echo $form->field($model, 'status')->checkbox() ?>
+    <?php echo $form->field($model, 'status')->dropDownList(['1'=>Yii::t('backend', 'Yes'), '0'=>Yii::t('backend', 'No')]) ?>
 
     <?php echo $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
