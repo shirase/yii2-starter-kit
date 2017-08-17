@@ -46,16 +46,6 @@ class Bootstrap extends \common\components\Bootstrap
             }
         );
 
-        \Yii::$container->set('kartik\dialog\DialogAsset', [
-            'jsOptions' => [
-                'position' => View::POS_END
-            ]
-        ]);
-
-        \Yii::$container->set('kartik\dialog\Dialog', [
-            'jsPosition' => View::POS_END,
-        ]);
-
         \Yii::$container->set('kartik\grid\GridView', [
             'export' => false,
             'toggleData' => false,

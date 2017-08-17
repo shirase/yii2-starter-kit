@@ -26,7 +26,6 @@ return [
         'kartik\form\ActiveFormAsset',
         'kartik\grid\GridViewAsset',
         'kartik\dialog\DialogBootstrapAsset',
-        'kartik\dialog\DialogAsset',
         'kartik\grid\GridExportAsset',
         'kartik\grid\GridResizeColumnsAsset',
         'kartik\grid\ActionColumnAsset',
