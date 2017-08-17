@@ -96,6 +96,7 @@ class ArticleController extends Controller
     public function actionCreate()
     {
         $model = new Article();
+        $model->status = Article::STATUS_PUBLISHED;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('script', '$(document).trigger("action.Create", '.Json::encode(['class'=>$model::className()]+$model->attributes).');');
