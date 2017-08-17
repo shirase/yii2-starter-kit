@@ -158,7 +158,9 @@ class ArticleController extends Controller
             $model = $this->findModel($id);
             Yii::$app->session->setFlash('script', '$(document).trigger("action.Delete", '.Json::encode(['class'=>$model::className()]+$model->attributes).');');
             $model->delete();
-            $this->redirect(['index', 'returned'=>true]);
+            if (!Yii::$app->request->isAjax) {
+                $this->redirect(['index', 'returned'=>true]);
+            }
         }
     }
 
