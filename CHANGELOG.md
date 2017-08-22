@@ -8,6 +8,12 @@ Article query category
 Gulp rollup external jquery
 Pjax defaults
 Backend GridView defaults toggleData to false
+UrlRule use pathInfo
+Backend article delete, is ajax check
+Article dropdown status
+Article default status is published
+Backend breadcrumb h1 fix
+`kartik\dialog\DialogAsset` removed from backend bundle
 
 3.0.13
 ------
