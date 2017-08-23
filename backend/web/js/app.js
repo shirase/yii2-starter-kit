@@ -5,7 +5,7 @@
         $.pjax.defaults.timeout = 5000;
     }
 
-    if (window.parent && window.frameElement) {
+    if (window.parent && window.frameElement && window.parent.jQuery) {
         var $parent = window.parent.jQuery;
         $(function() {
             $parent(window.frameElement).trigger("iframeready");
@@ -49,8 +49,8 @@
     });
 
     $(document).on('action.Create action.Update action.Delete', function(event, data) {
-        if(parent != window && parent.jQuery) {
-            parent.jQuery(parent.document).trigger(event, data);
+        if(window.parent && window.frameElement && window.parent.jQuery) {
+            window.parent.jQuery(window.parent.document).trigger(event, data);
         }
     });
 
