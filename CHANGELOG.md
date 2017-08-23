@@ -14,6 +14,8 @@ Article dropdown status
 Article default status is published
 Backend breadcrumb h1 fix
 `kartik\dialog\DialogAsset` removed from backend bundle
+Backend js `parent != window` check
+Travis `composer global require` fixes
 
 3.0.13
 ------
