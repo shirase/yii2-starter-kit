@@ -1,8 +1,8 @@
 Yii Starter Kit Change Log
 ==========================
 
-3.0.14-dev
-----------
+3.0.14
+------
 Base for gulp less
 Article query category
 Gulp rollup external jquery
