@@ -49,8 +49,8 @@
     });
 
     $(document).on('action.Create action.Update action.Delete', function(event, data) {
-        if(parent.window && parent.window.jQuery) {
-            parent.window.jQuery(parent.window.document).trigger(event, data);
+        if(parent != window && parent.jQuery) {
+            parent.jQuery(parent.document).trigger(event, data);
         }
     });
 
