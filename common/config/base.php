@@ -36,6 +36,7 @@ $config = [
             'middlewares' => [
                 [
                     'class' => '\trntv\bus\middlewares\BackgroundCommandMiddleware',
+                    'backgroundHandlerBinary'=>'php',
                     'backgroundHandlerPath' => '@console/yii',
                     'backgroundHandlerRoute' => 'command-bus/handle',
                 ]
