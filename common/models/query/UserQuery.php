@@ -29,4 +29,22 @@ class UserQuery extends ActiveQuery
         $this->andWhere(['status' => User::STATUS_ACTIVE]);
         return $this;
     }
+
+    /**
+     * @inheritdoc
+     * @return \common\models\User[]|array
+     */
+    public function all($db = null)
+    {
+        return parent::all($db);
+    }
+
+    /**
+     * @inheritdoc
+     * @return \common\models\User|array|null
+     */
+    public function one($db = null)
+    {
+        return parent::one($db);
+    }
 }
