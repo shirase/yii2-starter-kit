@@ -33,7 +33,7 @@ $this->registerJs('$(document).on("change", "#page-type_id", function() {$.pjax.
 
         <?= $form->field($model, 'status')->dropDownList(['1'=>Yii::t('backend', 'Yes'), '0'=>Yii::t('backend', 'No')]) ?>
 
-        <?= $form->field($model, 'body')->widget(\yii\imperavi\Widget::className()) ?>
+        <?php if ($model->isNewRecord) echo $form->field($model, 'body')->widget(\yii\imperavi\Widget::className()) ?>
 
         <div class="panel panel-default">
             <div class="panel-heading">
