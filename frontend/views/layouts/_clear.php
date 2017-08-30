@@ -1,4 +1,5 @@
 <?php
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -11,7 +12,7 @@ use yii\helpers\Html;
 <head>
     <meta charset="<?php echo Yii::$app->charset ?>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo Html::encode($this->title) ?></title>
+    <title><?php echo Html::encode(ArrayHelper::getValue($this->params, 'page_title') ?: $this->title) ?></title>
     <?php $this->head() ?>
     <?php if (http_response_code() != 404) echo Html::csrfMetaTags() ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />

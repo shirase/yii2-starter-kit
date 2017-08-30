@@ -21,7 +21,7 @@ var argv = require('yargs').argv;
 
 gulp.task('default', ['watch']);
 
-gulp.task('build', ['sass-frontend', 'sass-backend']);
+gulp.task('build', ['sass-frontend', 'sass-backend', 'js-frontend']);
 
 gulp.task('sass-pre', function() {
     gulp.src('frontend/web/css/*.sass', {base: './'})

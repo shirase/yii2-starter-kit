@@ -89,6 +89,7 @@ class ArticleController extends Controller
             Breadcrumbs::make($Category, $model->title);
         }
 
+        $this->view->params['seoKey'] = 'article-'.$model->id;
         Seo::make($model);
 
         $this->trigger('beforeRenderView');
