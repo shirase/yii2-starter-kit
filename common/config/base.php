@@ -176,12 +176,12 @@ $config = [
 ];
 
 if (YII_ENV_PROD) {
-    $config['components']['log']['targets']['email'] = [
+    /*$config['components']['log']['targets']['email'] = [
         'class' => 'yii\log\EmailTarget',
-        'except' => ['yii\web\HttpException:*'],
+        'except' => ['yii\web\HttpException:*', 'yii\i18n\*', 'yii\debug\Module*'],
         'levels' => ['error', 'warning'],
         'message' => ['from' => env('ROBOT_EMAIL'), 'to' => env('ADMIN_EMAIL')]
-    ];
+    ];*/
 }
 
 if (YII_ENV_DEV) {
