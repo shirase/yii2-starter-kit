@@ -2,11 +2,13 @@
 namespace common\components\web;
 
 use common\models\Uri;
+use yii\helpers\ArrayHelper;
 use yii\web\UrlRule;
 
 class UriRule extends UrlRule
 {
     public $pattern = '<slug>';
+    public $externalParams = [];
 
     public function parseRequest($manager, $request)
     {
@@ -48,6 +50,14 @@ class UriRule extends UrlRule
             return false;
         }
 
+        $externalParams = [];
+        foreach ($this->externalParams as $paramName) {
+            if (array_key_exists($paramName, $params)) {
+                $externalParams[$paramName] = $params[$paramName];
+                unset($params[$paramName]);
+            }
+        }
+
         ksort($params);
 
         $Uri = Uri::find()
@@ -57,7 +67,7 @@ class UriRule extends UrlRule
             ->one();
 
         if ($Uri) {
-            return ltrim($Uri->uri, '/');
+            return ltrim($Uri->uri, '/') . ($externalParams ? ('?' . http_build_query($externalParams)) : '');
         }
 
         return false;
