@@ -5,7 +5,7 @@ return [
     'showScriptName'=>false,
     'rules'=> [
         // Pages
-        ['class'=>'common\components\web\UriRule', 'route'=>'page/view'],
+        ['class'=>'common\components\web\UriRule', 'route'=>'page/view', 'externalParams' => ['page']],
         ['class'=>'common\components\web\url\Page', 'route'=>'page/view'],
 
         // Articles
