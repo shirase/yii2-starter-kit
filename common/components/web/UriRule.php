@@ -9,6 +9,7 @@ class UriRule extends UrlRule
 {
     public $pattern = '<slug>';
     public $externalParams = [];
+    public $targetRoute;
 
     public function parseRequest($manager, $request)
     {
@@ -39,6 +40,10 @@ class UriRule extends UrlRule
             $params = [];
             parse_str($params1, $params);
 
+            if ($this->targetRoute !== null && $this->targetRoute !== $route) {
+                return false;
+            }
+
             return [$route, $params];
         }
 
@@ -47,6 +52,10 @@ class UriRule extends UrlRule
 
     public function createUrl($manager, $route, $params) {
         if ($this->mode === self::PARSING_ONLY) {
+            return false;
+        }
+
+        if ($this->targetRoute !== null && $this->targetRoute !== $route) {
             return false;
         }
 
