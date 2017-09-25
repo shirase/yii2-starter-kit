@@ -13,7 +13,10 @@ return [
         'migrate' => [
             'class' => 'yii\console\controllers\MigrateController',
             'migrationPath' => '@common/migrations/db',
-            'migrationTable' => '{{%system_db_migration}}'
+            'migrationTable' => '{{%system_db_migration}}',
+            'migrationNamespaces' => [
+                'yii\queue\db\migrations',
+            ],
         ],
         'rbac-migrate' => [
             'class' => 'console\controllers\RbacMigrateController',

@@ -90,6 +90,9 @@ if (YII_ENV_DEV) {
             'fixture' => [
                 'class' => 'elisdn\gii\fixture\Generator',
             ],
+            'job' => [
+                'class' => \yii\queue\gii\Generator::class,
+            ],
         ],
     ];
 }

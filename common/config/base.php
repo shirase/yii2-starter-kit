@@ -10,6 +10,7 @@ $config = [
     'language'=>'ru-RU',
     'bootstrap' => [
         'log',
+        'queue',
         common\components\Bootstrap::class,
     ],
     'aliases' => [
@@ -41,6 +42,14 @@ $config = [
                     'backgroundHandlerRoute' => 'command-bus/handle',
                 ]
             ]
+        ],
+
+        'queue' => [
+            'class' => \yii\queue\db\Queue::class,
+            'db' => 'db',
+            'tableName' => '{{%queue}}',
+            'channel' => 'default',
+            'mutex' => \yii\mutex\MysqlMutex::class,
         ],
 
         'formatter'=>[
