@@ -3,7 +3,12 @@ Yii Starter Kit Change Log
 
 3.0.15-dev
 ----------
-
+- commandBus backgroundHandlerBinary
+- Backed page body editor only for new record
+- Disable production email target log
+- `common/components/web/UriRule::externalParams`
+- Add page as external params for `common\components\web\UriRule`
+- `common/components/web/UriRule::targetRoute`
 
 3.0.14
 ------
