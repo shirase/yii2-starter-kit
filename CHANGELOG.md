@@ -9,6 +9,7 @@ Yii Starter Kit Change Log
 - `common/components/web/UriRule::externalParams`
 - Add page as external params for `common\components\web\UriRule`
 - `common/components/web/UriRule::targetRoute`
+- Add yiisoft/yii2-queue
 
 3.0.14
 ------
