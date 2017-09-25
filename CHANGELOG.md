@@ -7,19 +7,19 @@ Yii Starter Kit Change Log
 
 3.0.14
 ------
-Base for gulp less
-Article query category
-Gulp rollup external jquery
-Pjax defaults
-Backend GridView defaults toggleData to false
-UrlRule use pathInfo
-Backend article delete, is ajax check
-Article dropdown status
-Article default status is published
-Backend breadcrumb h1 fix
-`kartik\dialog\DialogAsset` removed from backend bundle
-Backend js `parent != window` check
-Travis `composer global require` fixes
+- Base for gulp less
+- Article query category
+- Gulp rollup external jquery
+- Pjax defaults
+- Backend GridView defaults toggleData to false
+- UrlRule use pathInfo
+- Backend article delete, is ajax check
+- Article dropdown status
+- Article default status is published
+- Backend breadcrumb h1 fix
+- `kartik\dialog\DialogAsset` removed from backend bundle
+- Backend js `parent != window` check
+- Travis `composer global require` fixes
 
 3.0.13
 ------
