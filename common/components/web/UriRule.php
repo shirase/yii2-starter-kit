@@ -10,6 +10,7 @@ class UriRule extends UrlRule
     public $pattern = '<slug>';
     public $externalParams = [];
     public $targetRoute;
+    public $targetParams;
 
     public function parseRequest($manager, $request)
     {
@@ -64,6 +65,15 @@ class UriRule extends UrlRule
             if (array_key_exists($paramName, $params)) {
                 $externalParams[$paramName] = $params[$paramName];
                 unset($params[$paramName]);
+            }
+        }
+
+        if ($this->targetParams) {
+            foreach ($params as $key => $val) {
+                if (!array_key_exists($key, $this->targetParams)) {
+                    $externalParams[$key] = $val;
+                    unset($params[$key]);
+                }
             }
         }
 
