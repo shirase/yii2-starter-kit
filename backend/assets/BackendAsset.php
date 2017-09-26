@@ -12,7 +12,7 @@ class BackendAsset extends AssetBundle
     public $baseUrl = '@web';
 
     public $css = [
-        'css/style.scss'
+        'css/style.less'
     ];
     public $js = [
         'js/app.js'

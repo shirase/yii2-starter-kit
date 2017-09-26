@@ -5,7 +5,7 @@ var gulp = require('gulp'),
     csscomb = require('gulp-csscomb'),
     cssnano = require('gulp-cssnano'),
     mergeRules = require('postcss-merge-rules'),
-    sass = require('gulp-sass'),
+    less = require('gulp-less'),
     sourcemaps = require('gulp-sourcemaps'),
     plumber = require('gulp-plumber'),
     rename = require('gulp-rename'),
@@ -21,19 +21,19 @@ var argv = require('yargs').argv;
 
 gulp.task('default', ['watch']);
 
-gulp.task('build', ['sass-frontend', 'sass-backend']);
+gulp.task('build', ['less-frontend', 'less-backend']);
 
-gulp.task('sass-pre', function() {
-    gulp.src('frontend/web/css/*.sass', {base: './'})
+gulp.task('less-pre', function() {
+    gulp.src('frontend/web/css/*.less', {base: './'})
         .pipe(csscomb())
         .pipe(gulp.dest('./'));
 
-    gulp.src('backend/web/css/*.sass', {base: './'})
+    gulp.src('backend/web/css/*.less', {base: './'})
         .pipe(csscomb())
         .pipe(gulp.dest('./'));
 });
 
-function sassCompile(src, base) {
+function lessCompile(src, base) {
     if (typeof src == 'string') {
         src = path.relative(process.cwd(), src);
 
@@ -59,7 +59,7 @@ function sassCompile(src, base) {
             }
         }))
         .pipe(sourcemaps.init())
-        .pipe(sass())
+        .pipe(less())
         .pipe(base64({
             extensions: ['svg', 'png'],
             maxImageSize: 8*1024
@@ -73,13 +73,13 @@ function sassCompile(src, base) {
         .pipe(gulp.dest(base));
 }
 
-gulp.task('sass', function() {
+gulp.task('less', function() {
     if (!argv.in) {
         console.log('In argument is required');
         return;
     }
 
-    return sassCompile(argv.in);
+    return lessCompile(argv.in);
 });
 
 function cssCompile(src, dest) {
@@ -127,12 +127,12 @@ gulp.task('css', function() {
     return cssCompile(argv.in, argv.out);
 });
 
-gulp.task('sass-frontend', function() {
-    return sassCompile(['frontend/web/css/*.sass', '!**/_*.sass'], 'frontend/web/css');
+gulp.task('less-frontend', function() {
+    return lessCompile(['frontend/web/css/*.less', '!**/_*.less'], 'frontend/web/css');
 });
 
-gulp.task('sass-backend', function() {
-    return sassCompile(['backend/web/css/*.sass', '!**/_*.sass'], 'backend/web/css');
+gulp.task('less-backend', function() {
+    return lessCompile(['backend/web/css/*.less', '!**/_*.less'], 'backend/web/css');
 });
 
 gulp.task('js-frontend', function() {
@@ -176,8 +176,8 @@ gulp.task('js-frontend', function() {
         .pipe(gulp.dest('frontend/web/js'));
 });
 
-gulp.task('watch', ['sass-frontend', 'sass-backend', 'js-frontend'], function() {
-    gulp.watch('frontend/web/css/*.sass', ['sass-frontend']);
-    gulp.watch('backend/web/css/*.sass', ['sass-backend']);
+gulp.task('watch', ['less-frontend', 'less-backend', 'js-frontend'], function() {
+    gulp.watch('frontend/web/css/*.less', ['less-frontend']);
+    gulp.watch('backend/web/css/*.less', ['less-backend']);
     gulp.watch('frontend/js/**/*.js', ['js-frontend']);
 });
