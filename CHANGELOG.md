@@ -1,8 +1,8 @@
 Yii Starter Kit Change Log
 ==========================
 
-3.0.15
-------
+3.0.15-bc
+---------
 - commandBus backgroundHandlerBinary
 - Backed page body editor only for new record
 - Disable production email target log
@@ -11,7 +11,7 @@ Yii Starter Kit Change Log
 - `common/components/web/UriRule::targetRoute`
 - Add yiisoft/yii2-queue
 - Glide jpeg default quality 80
-- Replace less to sass
+- Replace less to sass (reverted for BC)
 
 3.0.14
 ------
