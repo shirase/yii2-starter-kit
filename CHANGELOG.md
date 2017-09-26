@@ -12,6 +12,7 @@ Yii Starter Kit Change Log
 - Add yiisoft/yii2-queue
 - Glide jpeg default quality 80
 - Replace less to sass
+- `common/components/web/UriRule::targetParams`
 
 3.0.14
 ------
