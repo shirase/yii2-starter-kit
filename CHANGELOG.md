@@ -1,8 +1,8 @@
 Yii Starter Kit Change Log
 ==========================
 
-3.0.15-dev
-----------
+3.0.15
+------
 - commandBus backgroundHandlerBinary
 - Backed page body editor only for new record
 - Disable production email target log
