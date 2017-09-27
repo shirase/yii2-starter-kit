@@ -22,6 +22,8 @@ class InlineEditor extends Widget
 
     public $attribute;
 
+    public $content;
+
     public function init() {
         if ($this->model) {
             $this->saveUrl = \Yii::$app->urlManager->createUrl([strtolower(preg_replace('/([A-Z])/', '-$1', lcfirst(array_pop(explode('\\', get_class($this->model)))))) . '/update', 'id'=>$this->model->primaryKey]);
@@ -35,6 +37,9 @@ class InlineEditor extends Widget
 
     public function run() {
         $content = ob_get_clean();
+        if ($this->content) {
+            $content = $this->content;
+        }
         echo '<div class="inline_content">';
         if (\Yii::$app->user->can('administrator')) {
             EditableAsset::register($this->view);
