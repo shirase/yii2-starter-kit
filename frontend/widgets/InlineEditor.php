@@ -28,6 +28,9 @@ class InlineEditor extends Widget
         if ($this->model) {
             $this->saveUrl = \Yii::$app->urlManager->createUrl([strtolower(preg_replace('/([A-Z])/', '-$1', lcfirst(array_pop(explode('\\', get_class($this->model)))))) . '/update', 'id'=>$this->model->primaryKey]);
             if ($this->attribute) {
+                if ($this->content === null) {
+                    $this->content = $this->model->{$this->attribute};
+                }
                 $this->attribute = $this->model->formName() . '[' . $this->attribute . ']';
             }
         }

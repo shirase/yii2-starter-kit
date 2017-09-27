@@ -20,9 +20,7 @@ $this->title = Yii::$app->name;
     <div class="body-content">
         <div class="context-home">
             <?php $contextBlock = \common\models\ContextBlock::get('home'); ?>
-            <?php \frontend\widgets\InlineEditor::begin(['model'=>$contextBlock, 'attribute'=>'body']) ?>
-            <?php echo $contextBlock->body ?>
-            <?php \frontend\widgets\InlineEditor::end() ?>
+            <?= \frontend\widgets\InlineEditorBuilder::build($contextBlock, 'body') ?>
         </div>
 
         <div class="row">
