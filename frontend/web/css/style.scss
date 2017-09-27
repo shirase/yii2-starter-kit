@@ -69,6 +69,25 @@ body.fixed #body_scroll {
     padding: 20px 15px;
 }
 
+.admin-menu {
+    background: #F5F5F5;
+
+    ul {
+        margin: 0;
+        padding: 8px 0;
+        display: flex;
+    }
+
+    li {
+        list-style: none;
+        margin-right: 1.3em;
+    }
+
+    a {
+        color: #333;
+    }
+}
+
 .main-menu {
     margin-bottom: 16px;
 }
