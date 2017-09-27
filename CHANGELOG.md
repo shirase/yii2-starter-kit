@@ -1,6 +1,9 @@
 Yii Starter Kit Change Log
 ==========================
 
+3.0.16-dev
+----------
+
 3.0.15
 ------
 - commandBus backgroundHandlerBinary
