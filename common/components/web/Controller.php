@@ -6,13 +6,4 @@ namespace common\components\web;
  * Class Controller
  * @package common\components\web
  */
-class Controller extends \yii\web\Controller
-{
-    public function render($view, $params = []) {
-        if (\Yii::$app->request->isAjax) {
-            return parent::renderAjax($view, $params);
-        } else {
-            return parent::render($view, $params);
-        }
-    }
-}
+class Controller extends \common\web\Controller {}
