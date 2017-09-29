@@ -50,7 +50,7 @@ $config = [
             ],
         ],
         'user' => [
-            'class' => 'common\components\web\User',
+            'class' => 'common\web\User',
             'identityClass' => 'common\models\User',
             'as afterLogin' => common\behaviors\LoginTimestampBehavior::class
         ],
