@@ -8,7 +8,7 @@ use shirase\yii2\helpers\MultiModel;
 use Yii;
 use common\models\Page;
 use common\models\search\PageSearch;
-use common\components\web\Controller;
+use common\web\Controller;
 use yii\helpers\ArrayHelper;
 use yii\web\HttpException;
 use yii\web\MethodNotAllowedHttpException;

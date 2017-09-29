@@ -11,7 +11,7 @@ use frontend\components\Breadcrumbs;
 use frontend\components\Seo;
 use frontend\models\search\ArticleSearch;
 use Yii;
-use common\components\web\Controller;
+use common\web\Controller;
 use yii\db\ActiveQuery;
 use yii\db\Query;
 use yii\helpers\ArrayHelper;

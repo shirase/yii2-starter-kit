@@ -5,15 +5,15 @@ return [
     'showScriptName'=>false,
     'rules'=> [
         // Pages
-        ['class'=>'common\components\web\UriRule', 'route'=>'page/view', 'externalParams' => ['page']],
-        ['class'=>'common\components\web\url\Page', 'route'=>'page/view'],
+        ['class'=>'common\web\UriRule', 'route'=>'page/view', 'externalParams' => ['page']],
+        ['class'=>'common\web\url\Page', 'route'=>'page/view'],
 
         // Articles
-        ['class'=>'common\components\web\UriRule', 'route'=>'article/index'],
+        ['class'=>'common\web\UriRule', 'route'=>'article/index'],
         ['pattern'=>'article/attachment-download', 'route'=>'article/attachment-download'],
         ['pattern'=>'article/index', 'route'=>'article/index'],
         ['pattern'=>'article/update', 'route'=>'article/update'],
-        ['class'=>'common\components\web\UriRule', 'route'=>'article/view'],
+        ['class'=>'common\web\UriRule', 'route'=>'article/view'],
         ['pattern'=>'article/<slug>', 'route'=>'article/view'],
 
         // Api

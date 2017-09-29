@@ -6,7 +6,7 @@ use common\plugins\block_type\BlockTypePlugin;
 use Yii;
 use common\models\Block;
 use common\models\search\BlockSearch;
-use common\components\web\Controller;
+use common\web\Controller;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

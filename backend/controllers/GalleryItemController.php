@@ -5,7 +5,7 @@ namespace backend\controllers;
 use Yii;
 use common\models\GalleryItem;
 use common\models\search\GalleryItemSearch;
-use common\components\web\Controller;
+use common\web\Controller;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
