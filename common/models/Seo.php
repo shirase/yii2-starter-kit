@@ -15,7 +15,7 @@ use Yii;
  *
  * @method static Seo|null findOne($condition)
  */
-class Seo extends \common\components\db\ActiveRecord
+class Seo extends \common\db\ActiveRecord
 {
     /**
      * @inheritdoc

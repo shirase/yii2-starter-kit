@@ -18,7 +18,7 @@ use Yii;
  *
  * @method static BlockType|null findOne($condition)
  */
-class BlockType extends \common\components\db\ActiveRecord
+class BlockType extends \common\db\ActiveRecord
 {
     /**
      * @inheritdoc

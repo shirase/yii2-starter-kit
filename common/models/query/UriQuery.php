@@ -7,7 +7,7 @@ namespace common\models\query;
  *
  * @see \common\models\Uri
  */
-class UriQuery extends \common\components\db\ActiveQuery
+class UriQuery extends \common\db\ActiveQuery
 {
     /*public function active()
     {

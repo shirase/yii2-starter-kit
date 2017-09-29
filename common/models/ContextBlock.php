@@ -12,7 +12,7 @@ use Yii;
  *
  * @method static ContextBlock|null findOne($condition)
  */
-class ContextBlock extends \common\components\db\ActiveRecord
+class ContextBlock extends \common\db\ActiveRecord
 {
     /**
      * @inheritdoc

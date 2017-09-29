@@ -1,7 +1,7 @@
 <?php
 namespace common\plugins\page_type\content;
 
-use common\components\db\ActiveRecord;
+use common\db\ActiveRecord;
 use common\models\PageTemplate;
 
 /**

@@ -1,9 +1,9 @@
 <?php
-namespace common\components\db;
+namespace common\db;
 
 /**
  * Class ActiveQueryTrait
- * @package common\components\db
+ * @package common\db
  * @method \yii\db\ActiveQuery andFilterWhere(array $condition)
  * @property $modelClass string
  */

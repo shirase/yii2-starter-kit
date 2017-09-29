@@ -20,7 +20,7 @@ use Yii;
  *
  * @method static Uri|null findOne($condition)
  */
-class Uri extends \common\components\db\ActiveRecord
+class Uri extends \common\db\ActiveRecord
 {
     /**
      * @inheritdoc

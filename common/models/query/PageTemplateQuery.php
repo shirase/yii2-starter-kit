@@ -7,7 +7,7 @@ namespace common\models\query;
  *
  * @see \common\models\PageTemplate
  */
-class PageTemplateQuery extends \common\components\db\ActiveQuery
+class PageTemplateQuery extends \common\db\ActiveQuery
 {
     /*public function active()
     {

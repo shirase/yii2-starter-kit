@@ -14,7 +14,7 @@ use Yii;
  *
  * @property Page[] $pages
  */
-class PageType extends \common\components\db\ActiveRecord
+class PageType extends \common\db\ActiveRecord
 {
     /**
      * @inheritdoc

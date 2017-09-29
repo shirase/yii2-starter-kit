@@ -25,7 +25,7 @@ use yii\db\ActiveRecord;
  *
  * @method static Block|null findOne($condition)
  */
-class Block extends \common\components\db\ActiveRecord
+class Block extends \common\db\ActiveRecord
 {
     /**
      * @inheritdoc

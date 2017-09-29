@@ -1,7 +1,7 @@
 <?php
 namespace common\plugins\page_type\link;
 
-use common\components\db\ActiveRecord;
+use common\db\ActiveRecord;
 
 /**
  * Class Model

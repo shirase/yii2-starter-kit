@@ -7,7 +7,7 @@ namespace common\models\query;
  *
  * @see \common\models\Block
  */
-class BlockQuery extends \common\components\db\ActiveQuery
+class BlockQuery extends \common\db\ActiveQuery
 {
     /*public function active()
     {

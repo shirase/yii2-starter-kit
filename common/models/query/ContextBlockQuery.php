@@ -7,7 +7,7 @@ namespace common\models\query;
  *
  * @see \common\models\ContextBlock
  */
-class ContextBlockQuery extends \common\components\db\ActiveQuery
+class ContextBlockQuery extends \common\db\ActiveQuery
 {
     /*public function active()
     {

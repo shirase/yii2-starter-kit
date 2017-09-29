@@ -7,7 +7,7 @@ namespace common\models\query;
  *
  * @see \common\models\Seo
  */
-class SeoQuery extends \common\components\db\ActiveQuery
+class SeoQuery extends \common\db\ActiveQuery
 {
     /*public function active()
     {

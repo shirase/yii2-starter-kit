@@ -8,7 +8,7 @@
 
 namespace common\models\query;
 
-use common\components\db\ActiveQuery;
+use common\db\ActiveQuery;
 use common\models\Article;
 use common\models\Page;
 use yii\db\Query;

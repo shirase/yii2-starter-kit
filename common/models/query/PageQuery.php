@@ -9,7 +9,7 @@ namespace common\models\query;
  *
  * @method PageQuery children($parent_id)
  */
-class PageQuery extends \common\components\db\ActiveQuery
+class PageQuery extends \common\db\ActiveQuery
 {
 
     public function behaviors() {

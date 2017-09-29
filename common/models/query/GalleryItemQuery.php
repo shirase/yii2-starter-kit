@@ -7,7 +7,7 @@ namespace common\models\query;
  *
  * @see \common\models\GalleryItem
  */
-class GalleryItemQuery extends \common\components\db\ActiveQuery
+class GalleryItemQuery extends \common\db\ActiveQuery
 {
     /*public function active()
     {

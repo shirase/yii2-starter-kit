@@ -21,7 +21,7 @@ use Yii;
  *
  * @method static GalleryItem|null findOne($condition)
  */
-class GalleryItem extends \common\components\db\ActiveRecord
+class GalleryItem extends \common\db\ActiveRecord
 {
     const STATUS_DRAFT = 0;
     const STATUS_ACTIVE = 1;

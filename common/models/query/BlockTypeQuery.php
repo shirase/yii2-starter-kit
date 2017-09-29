@@ -7,7 +7,7 @@ namespace common\models\query;
  *
  * @see \common\models\BlockType
  */
-class BlockTypeQuery extends \common\components\db\ActiveQuery
+class BlockTypeQuery extends \common\db\ActiveQuery
 {
     /*public function active()
     {

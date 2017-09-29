@@ -15,7 +15,7 @@ use Yii;
  *
  * @method static PageTemplate|null findOne($condition)
  */
-class PageTemplate extends \common\components\db\ActiveRecord
+class PageTemplate extends \common\db\ActiveRecord
 {
     /**
      * @inheritdoc

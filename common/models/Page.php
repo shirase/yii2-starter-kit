@@ -33,7 +33,7 @@ use yii\behaviors\TimestampBehavior;
  *
  * @method static Page|null findOne($condition)
  */
-class Page extends \common\components\db\ActiveRecord
+class Page extends \common\db\ActiveRecord
 {
 
     const STATUS_PUBLISHED = 1;
