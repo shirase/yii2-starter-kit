@@ -1,6 +1,10 @@
 Upgrading Instructions
 ======================
 
+3.0.16
+------
+Removed deprecated namespace, pull 3.0.16-bc for BC
+
 3.0.15
 ------
 Pull 3.0.15-bc
