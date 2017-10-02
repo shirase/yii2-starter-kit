@@ -1,6 +1,9 @@
 Yii Starter Kit Change Log
 ==========================
 
+3.0.17-dev
+----------
+
 3.0.16
 ------
 - Enable bundle for prod
