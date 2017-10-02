@@ -1,13 +1,13 @@
 Yii Starter Kit Change Log
 ==========================
 
-3.0.16
-------
+3.0.16-bc
+---------
 - Enable bundle for prod
 - `frontend/widgets/InlineEditor::content`
 - InlineEditorBuilder
 - SEO by key
-- Remove deprecated namespace
+- Remove deprecated namespace (reverted)
 
 3.0.15
 ------
