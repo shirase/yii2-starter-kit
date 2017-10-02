@@ -1,8 +1,8 @@
 Yii Starter Kit Change Log
 ==========================
 
-3.0.16-dev
-----------
+3.0.16
+------
 - Enable bundle for prod
 - `frontend/widgets/InlineEditor::content`
 - InlineEditorBuilder
