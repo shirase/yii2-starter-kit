@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\commands\SendEmailCommand;
 use Yii;
 use frontend\models\ContactForm;
 use yii\web\Controller;
@@ -56,5 +57,22 @@ class SiteController extends Controller
         return $this->render('contact', [
             'model' => $model
         ]);
+    }
+
+    public function actionTestTime() {
+        echo ini_get('date.timezone')."<br>";
+        echo date('Y-m-d H:i:s e')."<br>";
+        echo Yii::$app->formatter->asDatetime(time())."<br>";
+        $now = Yii::$app->db->createCommand('SELECT NOW()')->queryScalar();
+        echo $now."<br>";
+        echo Yii::$app->formatter->asDatetime($now)."<br>";
+    }
+
+    public function actionTestMail() {
+        \Yii::$app->commandBus->handle(new SendEmailCommand([
+            'subject' => 'test',
+            'body' => 'test',
+            'to' => 'test@test.com',
+        ]));
     }
 }

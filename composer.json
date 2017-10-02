@@ -39,9 +39,9 @@
         "asofter/yii2-imperavi-redactor": "^0.0.3",
         "mihaildev/yii2-elfinder": "^1.0",
         "trntv/yii2-aceeditor": "^2.0.2",
-        "trntv/probe": "^0.2",
+        "trntv/probe": "^1.0",
         "trntv/cheatsheet": "^0.1@dev",
-        "trntv/yii2-command-bus": "^2.0",
+        "trntv/yii2-command-bus": "^3.0",
         "intervention/image": "^2.1",
         "vlucas/phpdotenv": "^2.0",
         "bower-asset/admin-lte": "^2.0",
@@ -86,7 +86,7 @@
         "yiisoft/yii2-faker": "^2.0.0",
         "codeception/codeception": "^2.0",
         "codeception/specify": "^0.4.3",
-        "codeception/verify": "^0.3.0",
+        "codeception/verify": "^0.4",
         "satooshi/php-coveralls": "^1.0"
     },
     "suggest": {

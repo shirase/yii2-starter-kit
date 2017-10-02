@@ -25,7 +25,6 @@ class SendEmailBackground extends SendEmailCommand implements SelfHandlingComman
      */
     public function handle($command) {
         \Yii::setAlias('@app', $command->appPath);
-        qwe();
         return parent::handle($command);
     }
 }
