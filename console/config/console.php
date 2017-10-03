@@ -24,5 +24,8 @@ return [
             'migrationTable' => '{{%system_rbac_migration}}',
             'templateFile' => '@common/rbac/views/migration.php'
         ],
+        'asset' => [
+            'class' => \console\controllers\AssetController::class,
+        ],
     ],
 ];
