@@ -1,6 +1,9 @@
 Yii Starter Kit Change Log
 ==========================
 
+3.0.18-dev
+----------
+
 3.0.17
 ------
 - Comment using bundles
