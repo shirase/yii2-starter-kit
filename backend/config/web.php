@@ -105,9 +105,9 @@ $config = [
 
 if (YII_ENV_PROD) {
     // Compressed assets
-    $config['components']['assetManager'] = [
+    /*$config['components']['assetManager'] = [
        'bundles' => require(__DIR__ . '/assets/_bundles.php')
-    ];
+    ];*/
 }
 
 return $config;
