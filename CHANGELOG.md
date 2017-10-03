@@ -1,8 +1,8 @@
 Yii Starter Kit Change Log
 ==========================
 
-3.0.17-dev
-----------
+3.0.17
+------
 - Comment using bundles
 - jquery min by default
 
