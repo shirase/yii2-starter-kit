@@ -5,6 +5,7 @@ Yii Starter Kit Change Log
 ------
 - console/controllers/AssetController, generate bundle with sourcePath
 - Uncomment bundles config for prod
+- Bundle generator slash fix
 
 3.0.17
 ------
