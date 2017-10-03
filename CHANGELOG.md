@@ -3,7 +3,8 @@ Yii Starter Kit Change Log
 
 3.0.18
 ------
-console/controllers/AssetController, generate bundle with sourcePath
+- console/controllers/AssetController, generate bundle with sourcePath
+- Uncomment bundles config for prod
 
 3.0.17
 ------
