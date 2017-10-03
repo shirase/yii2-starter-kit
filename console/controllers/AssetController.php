@@ -33,7 +33,7 @@ class AssetController extends \yii\console\controllers\AssetController
                 if ($this->isBundleExternal($target)) {
                     $array[$name] = $this->composeBundleConfig($target);
                 } else {
-                    $sourcePath = $this->checkAliases($target->sourcePath, ['@bower', '@npm', '@vendor', '@base']);
+                    $sourcePath = $this->checkAliases($target->sourcePath, ['@bower', '@npm', '@yii', '@vendor', '@base']);
                     $array[$name] = [
                         'sourcePath' => $sourcePath,
                         'js' => [],
@@ -84,7 +84,7 @@ EOD;
         foreach ($aliases as $alias) {
             $prefix = Yii::getAlias($alias);
             if (strpos($path, $prefix)===0) {
-                return $alias.substr($path, strlen($prefix));
+                return $alias.str_replace('\\', '/', substr($path, strlen($prefix)));
             }
         }
         return null;
