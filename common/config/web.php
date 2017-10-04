@@ -38,7 +38,7 @@ $config = [
     ],
     'components' => [
         'assetManager' => [
-            'class' => \common\web\AssetManager::class,
+            'class' => \yii\web\AssetManager::class,
             'linkAssets' => env('LINK_ASSETS'),
             'appendTimestamp' => true,
             'converter' => [
@@ -48,6 +48,13 @@ $config = [
                         'npm run --prefix "'.Yii::getAlias('@base').'" sass -- --in {from}'],
                 ],
             ],
+            'hashCallback' => function($path) {
+                $prefix = \Yii::getAlias('@base');
+                if ($prefix === substr($path, 0, strlen($prefix))) {
+                    $path = substr($path, strlen($prefix)+1);
+                }
+                return sprintf('%x', crc32($path . Yii::getVersion()));
+            },
         ],
         'user' => [
             'class' => 'common\web\User',
