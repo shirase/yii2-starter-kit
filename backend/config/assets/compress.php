@@ -22,7 +22,7 @@ return [
         'yii\validators\ValidationAsset',
         'yii\widgets\ActiveFormAsset',
         'yii\grid\GridViewAsset',
-        'yii\widgets\PjaxAsset',
+        // end semicolon bug/'yii\widgets\PjaxAsset',
         'kartik\form\ActiveFormAsset',
         'kartik\grid\GridViewAsset',
         'kartik\dialog\DialogBootstrapAsset',
