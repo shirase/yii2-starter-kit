@@ -8,6 +8,7 @@ Yii Starter Kit Change Log
 - Bundle generator slash fix
 - AssetManager publish directory hash, without base
 - Asset console config
+- Bundle for fix `yii\widgets\PjaxAsset` end semicolon bug
 
 3.0.17
 ------
