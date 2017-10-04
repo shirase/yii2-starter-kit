@@ -49,11 +49,7 @@ $config = [
                 ],
             ],
             'hashCallback' => function($path) {
-                $prefix = \Yii::getAlias('@base');
-                if ($prefix === substr($path, 0, strlen($prefix))) {
-                    $path = substr($path, strlen($prefix)+1);
-                }
-                return sprintf('%x', crc32(str_replace('\\', '/', $path) . Yii::getVersion()));
+                return \common\components\helpers\AssetHelper::hashCallback($path);
             },
         ],
         'user' => [

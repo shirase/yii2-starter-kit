@@ -50,6 +50,17 @@ return [
     // Asset manager configuration:
     'assetManager' => [
         'basePath' => '@webroot/assets',
-        'baseUrl' => '@web/assets'
+        'baseUrl' => '@web/assets',
+        'linkAssets' => env('LINK_ASSETS'),
+        'converter' => [
+            'class' => 'yii\web\AssetConverter',
+            'commands' => [
+                'scss' => ['css',
+                    'npm run --prefix "'.Yii::getAlias('@base').'" sass -- --in {from}'],
+            ],
+        ],
+        'hashCallback' => function($path) {
+            return \common\components\helpers\AssetHelper::hashCallback($path);
+        },
     ],
 ];

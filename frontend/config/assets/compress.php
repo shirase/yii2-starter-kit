@@ -35,6 +35,10 @@ return [
     // Asset manager configuration:
     'assetManager' => [
         'basePath' => '@webroot/assets',
-        'baseUrl' => '@web/assets'
+        'baseUrl' => '@web/assets',
+        'linkAssets' => env('LINK_ASSETS'),
+        'hashCallback' => function($path) {
+            return \common\components\helpers\AssetHelper::hashCallback($path);
+        },
     ],
 ];
