@@ -7,6 +7,7 @@ Yii Starter Kit Change Log
 - Uncomment bundles config for prod
 - Bundle generator slash fix
 - AssetManager publish directory hash, without base
+- Asset console config
 
 3.0.17
 ------
