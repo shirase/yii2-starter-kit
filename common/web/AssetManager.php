@@ -8,7 +8,7 @@ class AssetManager extends \yii\web\AssetManager
         $prefix = \Yii::getAlias('@base');
         chdir($prefix);
         if ($prefix === substr($src, 0, strlen($prefix))) {
-            $src = substr($src, strlen($prefix)+1);
+            $src = './' . substr($src, strlen($prefix)+1);
         }
         $ret = parent::publishDirectory($src, $options);
         chdir($cwd);
