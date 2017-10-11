@@ -128,11 +128,11 @@ gulp.task('css', function() {
 });
 
 gulp.task('sass-frontend', function() {
-    return sassCompile(['frontend/web/css/*.sass', '!**/_*.sass'], 'frontend/web/css');
+    return sassCompile(['frontend/web/css/*.scss', '!**/_*.scss'], 'frontend/web/css');
 });
 
 gulp.task('sass-backend', function() {
-    return sassCompile(['backend/web/css/*.sass', '!**/_*.sass'], 'backend/web/css');
+    return sassCompile(['backend/web/css/*.scss', '!**/_*.scss'], 'backend/web/css');
 });
 
 gulp.task('js-frontend', function() {
@@ -177,7 +177,7 @@ gulp.task('js-frontend', function() {
 });
 
 gulp.task('watch', ['sass-frontend', 'sass-backend', 'js-frontend'], function() {
-    gulp.watch('frontend/web/css/*.sass', ['sass-frontend']);
-    gulp.watch('backend/web/css/*.sass', ['sass-backend']);
+    gulp.watch('frontend/web/css/*.scss', ['sass-frontend']);
+    gulp.watch('backend/web/css/*.scss', ['sass-backend']);
     gulp.watch('frontend/js/**/*.js', ['js-frontend']);
 });
