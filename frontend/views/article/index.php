@@ -42,7 +42,7 @@ $this->title = $this->title ?: Yii::t('frontend', 'Articles');
                         ) ?>
                     </div>
                 <?php endif; ?>
-                <div class="body">
+                <div class="body" itemprop="description">
                     <?php echo \yii\helpers\StringHelper::truncateWords(strip_tags($model->body), 25, '...') ?>
                 </div>
             </article>
