@@ -29,6 +29,8 @@ use yii\behaviors\TimestampBehavior;
  * @property string $page_keywords
  * @property string $page_description
  *
+ * @property Page $parentPage
+ *
  * @method int[] getPath()
  *
  * @method static Page|null findOne($condition)
@@ -44,11 +46,6 @@ class Page extends \common\db\ActiveRecord
     public static function tableName()
     {
         return '{{%page}}';
-    }
-
-    public function init() {
-        parent::init();
-        if (!isset($this->language)) $this->language = Yii::$app->language;
     }
 
     /**
@@ -164,5 +161,16 @@ class Page extends \common\db\ActiveRecord
 
     public function getUris() {
         return $this->hasMany(Uri::className(), ['id'=>'uri_id'])->viaTable('page_uri', ['page_id'=>'id']);
+    }
+
+    public function beforeSave($insert)
+    {
+        if ($insert) {
+            if (!$this->language && ($parent = $this->parentPage)) {
+                $this->language = $parent->language;
+            }
+        }
+
+        return parent::beforeSave($insert);
     }
 }

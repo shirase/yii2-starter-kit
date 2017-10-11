@@ -3,7 +3,8 @@ Yii Starter Kit Change Log
 
 3.0.19-dev
 ----------
-- gulp scss extension fix
+- Gulp scss extension fix
+- Creating page use parent language
 
 3.0.18
 ------
