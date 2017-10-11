@@ -5,6 +5,7 @@ Yii Starter Kit Change Log
 ------
 - Gulp scss extension fix
 - Creating page use parent language
+- Article title use title
 
 3.0.18
 ------

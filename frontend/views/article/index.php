@@ -8,7 +8,7 @@
 $this->title = $this->title ?: Yii::t('frontend', 'Articles');
 ?>
 <section class="article-index">
-    <h1><?php echo Yii::t('frontend', 'Articles') ?></h1>
+    <h1><?php echo $this->title ?></h1>
     <?php if (Yii::$app->user->can('administrator')): ?>
         <div class="editor-panel">
             <a class="j-frame-dialog link-create" data-type="create" href="<?= Yii::$app->urlManagerBackend->createAbsoluteUrl(['article/create']) ?>" target="_blank"><?= Yii::t('frontend', 'Добавить') ?></a>
