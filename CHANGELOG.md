@@ -7,6 +7,7 @@ Yii Starter Kit Change Log
 - Creating page use parent language
 - Article title use title
 - Article itemprop description
+- Article design
 
 3.0.18
 ------

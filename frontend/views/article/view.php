@@ -5,7 +5,7 @@
  */
 use common\components\helpers\Url;
 ?>
-<article class="article-view" itemscope itemtype="http://schema.org/NewsArticle">
+<article class="article_view" itemscope itemtype="http://schema.org/NewsArticle">
     <h1 itemprop="headline"><?php echo $this->title ?></h1>
 
     <?php if (Yii::$app->user->can('administrator')): ?>

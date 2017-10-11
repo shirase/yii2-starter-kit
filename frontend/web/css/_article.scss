@@ -1,8 +1,10 @@
-.article-index {
+.article_list {
+    &__item {
+        margin-bottom: 1.3em;
+    }
 }
 
-.article-item {
-    margin-top: 1.3em;
+.article_row {
     display: flex;
     flex-wrap: wrap;
 
