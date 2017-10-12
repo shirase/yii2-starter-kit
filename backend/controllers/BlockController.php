@@ -98,9 +98,10 @@ class BlockController extends Controller
 
             if ($model->type_id && $plugin = $model->type->plugin) {
                 /** @var BlockTypePlugin $plugin */
-                $typeModel = $plugin::model();
-                $typeModel->load(Yii::$app->request->post());
-                $valid = $valid & $typeModel->validate();
+                if ($typeModel = $plugin::model()) {
+                    $typeModel->load(Yii::$app->request->post());
+                    $valid = $valid & $typeModel->validate();
+                }
             }
 
             $valid = $valid & $models->validate();
@@ -153,9 +154,10 @@ class BlockController extends Controller
 
             if ($model->type_id && $plugin = $model->type->plugin) {
                 /** @var BlockTypePlugin $plugin */
-                $typeModel = $plugin::model($model);
-                $typeModel->load(Yii::$app->request->post());
-                $valid = $valid & $typeModel->validate();
+                if ($typeModel = $plugin::model($model)) {
+                    $typeModel->load(Yii::$app->request->post());
+                    $valid = $valid & $typeModel->validate();
+                }
             }
 
             $valid = $valid & $models->validate();
