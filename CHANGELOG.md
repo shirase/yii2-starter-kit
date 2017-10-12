@@ -1,6 +1,9 @@
 Yii Starter Kit Change Log
 ==========================
 
+3.0.20-dev
+----------
+
 3.0.19
 ------
 - Gulp scss extension fix
