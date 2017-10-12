@@ -21,7 +21,6 @@ use yii\db\ActiveRecord;
  *
  * @property Page $page
  * @property BlockType $type
- * @property ActiveRecord $pluginModel
  *
  * @method static Block|null findOne($condition)
  */
