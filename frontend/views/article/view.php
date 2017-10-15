@@ -22,9 +22,7 @@ use common\components\helpers\Url;
     <?php endif; ?>
 
     <div itemprop="text">
-        <?php \frontend\widgets\InlineEditor::begin(['model'=>$model, 'attribute'=>'body']) ?>
-        <?php echo $model->body ?>
-        <?php \frontend\widgets\InlineEditor::end() ?>
+        <?= \frontend\widgets\InlineEditor::widget(['model'=>$model, 'attribute'=>'body']) ?>
     </div>
 
     <?php if (!empty($model->articleAttachments)): ?>
