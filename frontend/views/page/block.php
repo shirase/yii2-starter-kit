@@ -4,7 +4,7 @@
  * @var $model \common\models\Page
  */
 ?>
-<section class="page-block">
+<section class="page_block">
     <?php if (Yii::$app->user->can('administrator')): ?>
         <div class="editor-panel">
             <a class="j-frame-dialog link-create" data-type="create" href="<?= Yii::$app->urlManagerBackend->createAbsoluteUrl(['block/create', 'page_id'=>$model->id]) ?>" target="_blank"><?= Yii::t('frontend', 'Добавить блок') ?></a>

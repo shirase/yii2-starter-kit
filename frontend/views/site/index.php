@@ -2,7 +2,7 @@
 /* @var $this yii\web\View */
 $this->title = Yii::$app->name;
 ?>
-<div class="site-index">
+<div class="site_index">
 
     <?php echo \common\widgets\DbCarousel::widget([
         'key'=>'index',
