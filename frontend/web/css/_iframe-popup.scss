@@ -1,4 +1,4 @@
-.iframe-popup {
+.iframe_popup {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -7,90 +7,88 @@
     z-index: 65536;
     padding-right: 60px;
     box-sizing: border-box;
-}
 
-.iframe-popup:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    opacity: .3;
-}
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        opacity: .3;
+    }
 
-.iframe-popup-iframe {
-    position: relative;
-    width: 760px;
-    max-width: 100%;
-    height: 100%;
-    z-index: 1;
-    background: url("../img/preloader.gif") center center no-repeat #FFF;
-    transition: 500ms width;
-}
+    &__iframe {
+        position: relative;
+        width: 760px;
+        max-width: 100%;
+        height: 100%;
+        z-index: 1;
+        background: url("../img/preloader.gif") center center no-repeat #FFF;
+        transition: 500ms width;
+    }
 
-.iframe-popup-expanded {
-    .iframe-popup-iframe {
+    &__expanded &__iframe {
         width: 100%;
         transition: 500ms width;
     }
-}
 
-.iframe-popup iframe {
-    width: 100%;
-    max-width: 100%;
-    height: 100%;
-    border: none;
-    z-index: 1;
-}
-
-.iframe-popup-close {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: -50px;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    text-align: center;
-    z-index: 1;
-
-    &:hover {
-        transform: rotate(180deg);
-        transition: 500ms transform;
+    iframe {
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        border: none;
+        z-index: 1;
     }
-}
 
-.iframe-popup-close:before {
-    content: "";
-    display: block;
-    background: url("../svg/close.svg") center center no-repeat / 30px 30px;
-    width: 100%;
-    height: 100%;
-}
+    &__close {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: -50px;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        text-align: center;
+        z-index: 1;
 
-.iframe-popup-expand {
-    display: block;
-    position: absolute;
-    top: 50px;
-    right: -50px;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    text-align: center;
-    z-index: 1;
+        &:hover {
+            transform: rotate(180deg);
+            transition: 500ms transform;
+        }
 
-    &:hover {
-        transform: rotate(180deg);
-        transition: 500ms transform;
+        &:before {
+            content: "";
+            display: block;
+            background: url("../svg/close.svg") center center no-repeat / 30px 30px;
+            width: 100%;
+            height: 100%;
+        }
     }
-}
 
-.iframe-popup-expand:before {
-    content: "";
-    display: block;
-    background: url("../svg/expand.svg") center center no-repeat / 30px 30px;
-    width: 100%;
-    height: 100%;
+    &__expand {
+        display: block;
+        position: absolute;
+        top: 50px;
+        right: -50px;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        text-align: center;
+        z-index: 1;
+
+        &:hover {
+            transform: rotate(180deg);
+            transition: 500ms transform;
+        }
+
+        &:before {
+            content: "";
+            display: block;
+            background: url("../svg/expand.svg") center center no-repeat / 30px 30px;
+            width: 100%;
+            height: 100%;
+        }
+    }
 }

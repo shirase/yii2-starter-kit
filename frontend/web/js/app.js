@@ -18,24 +18,24 @@
             $(window).scrollTop(y);
         });
 
-    $(document).on('click', '.j-frame-dialog', function(event) {
+    $(document).on('click', '.j-frame-dialog, .j_frame_dialog', function(event) {
         event.preventDefault();
         var el = $(this);
 
         $('body').trigger('fixed');
 
-        var iframePopup = $('<div class="iframe-popup" />').appendTo('body');
-        var iframePopupIframe = $('<div class="iframe-popup-iframe" />').appendTo(iframePopup);
-        var close = $('<a class="iframe-popup-close" />').appendTo(iframePopupIframe);
+        var iframePopup = $('<div class="iframe_popup" />').appendTo('body');
+        var iframePopupIframe = $('<div class="iframe_popup__iframe" />').appendTo(iframePopup);
+        var close = $('<a class="iframe_popup__close" />').appendTo(iframePopupIframe);
         close.click(function() {
             iframePopup.remove();
             $(document).off('action');
             $('body').trigger('unfixed');
         });
 
-        var expand = $('<a class="iframe-popup-expand" />').appendTo(iframePopupIframe);
+        var expand = $('<a class="iframe_popup__expand" />').appendTo(iframePopupIframe);
         expand.click(function() {
-            iframePopup.toggleClass('iframe-popup-expanded');
+            iframePopup.toggleClass('iframe_popup__expanded');
         });
 
         var iframe = $('<iframe />').appendTo(iframePopupIframe);
