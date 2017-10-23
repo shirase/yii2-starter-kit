@@ -1,8 +1,10 @@
 Yii Starter Kit Change Log
 ==========================
 
-3.0.20-dev
-----------
+3.0.20
+------
+- iframe popup classes
+- composer.lock and bundles
 
 3.0.19
 ------
