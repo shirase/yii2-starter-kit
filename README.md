@@ -20,12 +20,11 @@ It covers typical use cases for a new project and will help you not to waste you
 - Articles link to pages
 - SEO url (automatic redirection and canonical)
 - Gii templates
-- Carousel widget backend design
+- Image gallery
 - Krajee Yii Extensions
 - X-editable support
 
 ## TABLE OF CONTENTS
-- [Demo](#demo)
 - [Features](#features)
 - [Installation](docs/installation.md)
     - [Manual installation](docs/installation.md#manual-installation)
@@ -35,40 +34,10 @@ It covers typical use cases for a new project and will help you not to waste you
 - [Console commands](docs/console.md)
 - [Testing](docs/testing.md)
 - [FAQ](docs/faq.md)
-- [How to contribute?](#how-to-contribute)
-- [Donations](#donations)
-- [Have any questions](#have-any-questions)
-
-## DEMO
-Demo is hosted by awesome [Digital Ocean](https://m.do.co/c/d7f000191ea8)
-
-Frontend:
-http://yii2-starter-kit.terentev.net
-
-Backend:
-http://backend.yii2-starter-kit.terentev.net
-
-`administrator` role account
-```
-Login: webmaster
-Password: webmaster
-```
-
-`manager` role account
-```
-Login: manager
-Password: manager
-```
-
-`user` role account
-```
-Login: user
-Password: user
-```
 
 ## FEATURES
 - Beautiful and open source dashboard theme for backend [AdminLTE 2](http://almsaeedstudio.com/AdminLTE)
-- Translations: English, Spanish, Russian, Ukrainian, Chinese, Vietnamese
+- Translations: English, Russian
 - Translations Editor
 - Language change action + behavior to choose locale based on browser preferred language 
 - Sign in, Sign up, profile(avatar, locale, personal data), email activation etc
@@ -77,7 +46,6 @@ Password: user
 - RBAC with predefined `guest`, `user`, `manager` and `administrator` roles
 - RBAC migrations support
 - Content management components: articles, categories, static pages, editable menu, editable carousels, text blocks
-- [Webpack](https://webpack.js.org/) configuration
 - Key-value storage component
 - Application settings form (based on KeyStorage component)
 - Ready-to-go RESTful API module
@@ -105,7 +73,6 @@ Password: user
 - Assets compression and concatenation
 - [Some useful shortcuts](https://github.com/trntv/yii2-starter-kit/blob/master/common/helpers.php)
 - many other features i'm lazy to write about :-)
-
 
 # Application Components
 
@@ -233,28 +200,6 @@ It will allow access to you application only for authentificated users.
 ### Command Bus
 Read more about command bus on in [official repository](https://github.com/trntv/yii2-command-bus#yii2-command-bus)
 
-### Widgets configurable from backend
-#### Carousel
-1. Create carousel in backend
-2. Use it:
-```php
-<?php echo DbCarousel::widget(['key' => 'key-from-backend']) ?>
-```
-
-#### DbText
-1. Create text block in backend
-2. Use it:
-```php
-<?php echo DbText::widget(['key' => 'key-from-backend']) ?>
-```
-
-#### DbMenu
-1. Create text block in backend
-2. Use it:
-```php
-<?php echo DbMenu::widget(['key' => 'key-from-backend']) ?>
-```
-
 ### Widgets
 - [WYSIWYG Redactor widget](https://github.com/asofter/yii2-imperavi-redactor)  
 - [DateTime picker](https://github.com/trntv/yii2-bootstrap-datetimepicker)
@@ -262,16 +207,6 @@ Read more about command bus on in [official repository](https://github.com/trntv
 - [File upload](https://github.com/trntv/yii2-file-kit)
 - [ElFinder](https://github.com/MihailDev/yii2-elfinder)
 
-
-### Grid
-#### EnumColumn
-```php
- [
-      'class' => '\common\grid\EnumColumn',
-      'attribute' => 'status',
-      'enum' => User::getStatuses() // [0=>'Deleted', 1=>'Active']
- ]
-```
 ### API
 Starter Kit has fully configured and ready-to-go REST API module. You can access it on http://yii2-starter-kit.dev/api/v1
 For some endpoints you should authenticate your requests with one of available methods - https://github.com/yiisoft/yii2/blob/master/docs/guide/rest-authentication.md#authentication
@@ -281,10 +216,8 @@ For some endpoints you should authenticate your requests with one of available m
 In controller:
 ```php
 $model = new MultiModel([
-    'models' => [
-        'user' => $userModel,
-        'profile' => $userProfileModel
-    ]
+    'user' => $userModel,
+    'profile' => $userProfileModel
 ]);
 
 if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -325,16 +258,6 @@ public function behaviors()
         ];
     }
 ```
-
-## How to contribute?
-You can contribute in any way you want. Any help appreciated, but most of all i need help with docs (^_^)
-
-## Have any questions?
-mail to [eugene@terentev.net](mailto:eugene@terentev.net)
-
-## READ MORE
-https://github.com/yiisoft/yii2/blob/master/apps/advanced/README.md
-https://github.com/yiisoft/yii2/tree/master/docs
 
 ### NOTE
 This template was created mostly for developers NOT for end users.

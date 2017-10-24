@@ -6,7 +6,7 @@
     - [Requirements](#requirements)
     - [Setup application](#setup-application)
     - [Configure your web server](#configure-your-web-server)
-
+- [Usual hosting installation](#usual-hosting-installation)
 - [Docker installation](#docker-installation)
 - [Vagrant installation](#vagrant-installation)
 - [Single domain installtion](#single-domain-installation)
@@ -44,11 +44,12 @@ composer create-project --prefer-dist --stability=dev shirase/yii2-starter-kit
 ## Manual installation
 
 ### REQUIREMENTS
-The minimum requirement by this application template that your Web server supports PHP 5.5.0.
+The minimum requirement by this application template that your Web server supports PHP 5.6.0.
 Required PHP extensions:
 - intl
 - gd
 - mcrypt
+- zip
 - com_dotnet (for Windows)
 
 ### Setup application
@@ -79,6 +80,11 @@ php console/yii app/setup
 npm install
 npm run build
 ```
+
+## Usual hosting installation
+Remove asset section from `.gitignore`
+Build assets, run `npm run build` (install npm before)
+Copy all files to hosting webroot directory
 
 ## Single domain installation
 ### Setup application
@@ -165,7 +171,7 @@ This is an example single domain config for apache
     RewriteEngine on
     # the main rewrite rule for the frontend application
     RewriteCond %{HTTP_HOST} ^yii2-starter-kit.dev$ [NC]
-    RewriteCond %{REQUEST_URI} !^/(backend/web|admin|storage/web)
+    RewriteCond %{REQUEST_URI} !^/(backend|admin|storage)
     RewriteRule !^/frontend/web /frontend/web%{REQUEST_URI} [L]
     # redirect to the page without a trailing slash (uncomment if necessary)
     #RewriteCond %{REQUEST_URI} ^/admin/$
@@ -176,6 +182,9 @@ This is an example single domain config for apache
     # the main rewrite rule for the backend application
     RewriteCond %{REQUEST_URI} ^/admin
     RewriteRule ^admin(.*) /backend/web$1 [L]
+    # the main rewrite rule for the storage application
+    RewriteCond %{REQUEST_URI} ^/storage
+    RewriteRule ^storage(.*) /storage/web$1 [L]
 
     DocumentRoot /your/path/to/yii2-starter-kit
     <Directory />
