@@ -82,9 +82,9 @@ npm run build
 ```
 
 ## Usual hosting installation
-Remove asset section from `.gitignore`
-Build assets, run `npm run build` (install npm before)
-Copy all files to hosting webroot directory
+- Remove asset section from `.gitignore`
+- Build assets, run `npm run build` (install npm before)
+- Copy all files to hosting webroot directory
 
 ## Single domain installation
 ### Setup application
