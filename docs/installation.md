@@ -5,7 +5,6 @@
 - [Manual installation](#manual-installation)
     - [Requirements](#requirements)
     - [Setup application](#setup-application)
-    - [Configure your web server](#configure-your-web-server)
 - [Usual hosting installation](#usual-hosting-installation)
 - [Docker installation](#docker-installation)
 - [Vagrant installation](#vagrant-installation)
@@ -161,7 +160,6 @@ vagrant up
 ```
 That`s all. After provision application will be accessible on http://yii2-starter-kit.dev
 
-### Configure your web server
 #### Single domain apache config
 This is an example single domain config for apache
 ```
