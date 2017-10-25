@@ -3,11 +3,11 @@ error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT);
 ini_set('date.timezone', 'Etc/GMT-3');
 
 $config = [
-    'name'=>'Yii2 Starter Kit',
-    'vendorPath'=>dirname(dirname(__DIR__)).'/vendor',
+    'name' => 'Yii2 Starter Kit',
+    'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'extensions' => require(__DIR__ . '/../../vendor/yiisoft/extensions.php'),
     //'sourceLanguage'=>'en-US',
-    'language'=>'ru-RU',
+    'language' => 'ru-RU',
     'bootstrap' => [
         'log',
         'queue',
@@ -15,7 +15,7 @@ $config = [
     ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
     ],
     'components' => [
 
@@ -37,7 +37,7 @@ $config = [
             'middlewares' => [
                 [
                     'class' => '\trntv\bus\middlewares\BackgroundCommandMiddleware',
-                    'backgroundHandlerBinary'=>'php',
+                    'backgroundHandlerBinary' => 'php',
                     'backgroundHandlerPath' => '@console/yii',
                     'backgroundHandlerRoute' => 'command-bus/handle',
                 ]
@@ -52,16 +52,16 @@ $config = [
             'mutex' => \yii\mutex\MysqlMutex::class,
         ],
 
-        'formatter'=>[
-            'class'=>'yii\i18n\Formatter',
-            'defaultTimeZone'=>ini_get('date.timezone'),
+        'formatter' => [
+            'class' => 'yii\i18n\Formatter',
+            'defaultTimeZone' => ini_get('date.timezone'),
         ],
 
         'glide' => [
             'class' => 'shirase55\glide\components\Glide',
             'sourcePath' => '@storage/web/source',
             'cachePath' => '@storage/web/cache',
-            'baseUrl' => Yii::getAlias('@storageUrl').'/source',
+            'baseUrl' => Yii::getAlias('@storageUrl') . '/source',
             'urlManager' => 'urlManagerStorage',
             'maxImageSize' => env('GLIDE_MAX_IMAGE_SIZE'),
             'signKey' => env('GLIDE_SIGN_KEY')
@@ -75,49 +75,49 @@ $config = [
             ]
         ],
 
-        'db'=>[
-            'class'=>'yii\db\Connection',
+        'db' => [
+            'class' => 'yii\db\Connection',
             'dsn' => env('DB_DSN'),
             'username' => env('DB_USERNAME'),
             'password' => env('DB_PASSWORD'),
             'tablePrefix' => env('DB_TABLE_PREFIX'),
             'charset' => 'utf8',
             'enableSchemaCache' => false,
-            'on afterOpen' => function($event) {
-                $event->sender->createCommand("SET time_zone = '".date('P')."'")->execute();
+            'on afterOpen' => function ($event) {
+                $event->sender->createCommand("SET time_zone = '" . date('P') . "'")->execute();
             },
         ],
 
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
-                'db'=>[
+                'db' => [
                     'class' => 'yii\log\DbTarget',
                     'levels' => ['error', 'warning'],
-                    'except'=>['yii\web\HttpException:*', 'yii\i18n\*', 'yii\debug\Module*'],
-                    'prefix'=>function () {
+                    'except' => ['yii\web\HttpException:*', 'yii\i18n\*', 'yii\debug\Module*'],
+                    'prefix' => function () {
                         $url = !Yii::$app->request->isConsoleRequest ? Yii::$app->request->getUrl() : null;
                         return sprintf('[%s][%s]', Yii::$app->id, $url);
                     },
-                    'logVars'=>[],
-                    'logTable'=>'{{%system_log}}'
+                    'logVars' => [],
+                    'logTable' => '{{%system_log}}'
                 ]
             ],
         ],
 
         'i18n' => [
             'translations' => [
-                'app'=>[
+                'app' => [
                     'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath'=>'@common/messages',
+                    'basePath' => '@common/messages',
                 ],
-                '*'=> [
+                '*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath'=>'@common/messages',
-                    'fileMap'=>[
-                        'common'=>'common.php',
-                        'backend'=>'backend.php',
-                        'frontend'=>'frontend.php',
+                    'basePath' => '@common/messages',
+                    'fileMap' => [
+                        'common' => 'common.php',
+                        'backend' => 'backend.php',
+                        'frontend' => 'frontend.php',
                     ],
                     'on missingTranslation' => ['\backend\modules\i18n\Module', 'missingTranslation']
                 ],
@@ -167,7 +167,7 @@ $config = [
         ),
         'urlManagerStorage' => \yii\helpers\ArrayHelper::merge(
             [
-                'hostInfo'=>Yii::getAlias('@storageUrl'),
+                'hostInfo' => Yii::getAlias('@storageUrl'),
                 'baseUrl' => ''
             ],
             require(Yii::getAlias('@storage/config/_urlManager.php'))
@@ -176,9 +176,9 @@ $config = [
     'params' => [
         'adminEmail' => env('ADMIN_EMAIL'),
         'robotEmail' => env('ROBOT_EMAIL'),
-        'availableLocales'=>[
-            'ru-RU'=>'Русский (РФ)',
-            'en-US'=>'English (US)',
+        'availableLocales' => [
+            'ru-RU' => 'Русский (РФ)',
+            'en-US' => 'English (US)',
         ],
     ],
 ];
@@ -195,7 +195,7 @@ if (YII_ENV_PROD) {
 if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
-        'class'=>'yii\gii\Module'
+        'class' => 'yii\gii\Module'
     ];
 
     $config['components']['cache'] = [
