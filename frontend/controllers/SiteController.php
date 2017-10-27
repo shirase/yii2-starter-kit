@@ -1,10 +1,10 @@
 <?php
 namespace frontend\controllers;
 
-use common\commands\SendEmailCommand;
 use Yii;
+use common\commands\SendEmailCommand;
+use common\web\Controller;
 use frontend\models\ContactForm;
-use yii\web\Controller;
 
 /**
  * Site controller

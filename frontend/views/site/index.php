@@ -1,5 +1,9 @@
 <?php
 /* @var $this yii\web\View */
+use common\widgets\Script;
+use yii\helpers\Url;
+use yii\widgets\Pjax;
+
 $this->title = Yii::$app->name;
 ?>
 <div class="site_index">
@@ -56,5 +60,15 @@ $this->title = Yii::$app->name;
             </div>
         </div>
 
+        <?php Pjax::begin(['id' => 'contact_form_container', 'enablePushState' => false]) ?><?php Pjax::end() ?>
+        <?php Script::begin() ?>
+        <script>
+            $.ajax('<?= Url::to(['/site/contact']) ?>', {
+                success: function(html) {
+                    $('#contact_form_container').html(html);
+                }
+            });
+        </script>
+        <?php Script::end() ?>
     </div>
 </div>
