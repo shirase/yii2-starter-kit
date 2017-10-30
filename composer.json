@@ -42,7 +42,6 @@
         "trntv/probe": "^1.0",
         "trntv/cheatsheet": "^0.1@dev",
         "trntv/yii2-command-bus": "^3.0",
-        "intervention/image": "^2.1",
         "vlucas/phpdotenv": "^2.0",
         "bower-asset/admin-lte": "^2.0",
         "bower-asset/font-awesome": "^4.0",
