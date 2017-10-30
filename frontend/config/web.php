@@ -55,7 +55,13 @@ $config = [
         'user' => [
             'loginUrl'=>['/user/sign-in/login'],
             'enableAutoLogin' => true,
-        ]
+        ],
+        'reCaptcha' => [
+            'name' => 'reCaptcha',
+            'class' => 'himiklab\yii2\recaptcha\ReCaptcha',
+            'siteKey' => env('RECAPCHA_KEY'),
+            'secret' => env('RECAPCHA_SECRET'),
+        ],
     ]
 ];
 
