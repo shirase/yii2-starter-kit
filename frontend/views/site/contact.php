@@ -2,6 +2,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\captcha\Captcha;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $form yii\widgets\ActiveForm */
@@ -15,6 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row">
         <div class="col-lg-5">
+            <?php Pjax::begin(['id' => 'contact_form_container', 'enablePushState' => false]) ?>
             <?php $form = ActiveForm::begin(['id' => 'contact-form', 'options' => ['data-pjax' => true]]); ?>
                 <?php echo $form->field($model, 'name') ?>
                 <?php echo $form->field($model, 'email') ?>
@@ -27,6 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php echo Html::submitButton(Yii::t('frontend', 'Submit'), ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
                 </div>
             <?php ActiveForm::end(); ?>
+            <?php Pjax::end() ?>
         </div>
     </div>
 

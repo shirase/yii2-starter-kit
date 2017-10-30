@@ -60,15 +60,20 @@ $this->title = Yii::$app->name;
             </div>
         </div>
 
-        <?php Pjax::begin(['id' => 'contact_form_container', 'enablePushState' => false]) ?><?php Pjax::end() ?>
-        <?php Script::begin() ?>
-        <script>
-            $.ajax('<?= Url::to(['/site/contact']) ?>', {
-                success: function(html) {
-                    $('#contact_form_container').html(html);
-                }
-            });
-        </script>
-        <?php Script::end() ?>
+        <div class="row">
+            <div class="col-lg-5">
+                <h2><?= \Yii::t('frontend', 'Contact') ?></h2>
+                <?php Pjax::begin(['id' => 'contact_form_container', 'enablePushState' => false]) ?><?php Pjax::end() ?>
+                <?php Script::begin() ?>
+                <script>
+                    $.pjax({
+                        url: '<?= Url::to(['/site/contact']) ?>',
+                        container: '#contact_form_container',
+                        push: false
+                    });
+                </script>
+                <?php Script::end() ?>
+            </div>
+        </div>
     </div>
 </div>
