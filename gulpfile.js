@@ -24,11 +24,11 @@ gulp.task('default', ['watch']);
 gulp.task('build', ['sass-frontend', 'sass-backend', 'js-frontend']);
 
 gulp.task('sass-pre', function() {
-    gulp.src('frontend/web/css/*.sass', {base: './'})
+    gulp.src('frontend/web/css/*.scss', {base: './'})
         .pipe(csscomb())
         .pipe(gulp.dest('./'));
 
-    gulp.src('backend/web/css/*.sass', {base: './'})
+    gulp.src('backend/web/css/*.scss', {base: './'})
         .pipe(csscomb())
         .pipe(gulp.dest('./'));
 });
