@@ -5,7 +5,5 @@
 ?>
 <div class="content-block">
     <h3><?= encode($model->title) ?></h3>
-    <?php \frontend\widgets\InlineEditor::begin(['model'=>$model, 'attribute'=>'body']) ?>
-    <?php echo $model->body ?>
-    <?php \frontend\widgets\InlineEditor::end() ?>
+    <?= \frontend\widgets\InlineEditorBuilder::build($model, 'body') ?>
 </div>
