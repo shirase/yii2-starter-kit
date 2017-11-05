@@ -64,6 +64,8 @@ class InlineEditor extends Widget
             $url = \Yii::getAlias('@frontendUrl/ckeditor/widgets');
             $this->view->registerJs("CKEDITOR.plugins.addExternal('widgets', '".$url."/plugin.js?v=".filemtime($path.'/plugin.js')."', '');");
 
+            $this->view->registerJs('if(CKEDITOR.instances["'.$this->id.'"]) delete CKEDITOR.instances["'.$this->id.'"];');
+
             $kcfinderUrl = KCFinderAsset::register($this->view)->baseUrl;
             \Yii::$app->session->set('KCFINDER', [
                 'uploadURL' => \Yii::getAlias('@frontendUrl') . '/data',
