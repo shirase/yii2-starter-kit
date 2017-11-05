@@ -104,6 +104,7 @@ class InlineEditor extends Widget
             CKEditorWidgetAsset::register($this->view);
 
             CKEditorInline::begin([
+                'id' => $this->id,
                 'options' => [
                     'data-saveurl'=>$this->saveUrl,
                     'data-attribute'=>$this->attribute,

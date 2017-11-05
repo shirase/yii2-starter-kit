@@ -8,6 +8,7 @@ use common\components\WidgetBuilder;
  * @static InlineEditorBuilder build($model, $attribute)
  * @method InlineEditorBuilder setContent($value)
  * @method InlineEditorBuilder setSaveUrl($value)
+ * @method InlineEditorBuilder setId($value)
  */
 class InlineEditorBuilder extends WidgetBuilder
 {
