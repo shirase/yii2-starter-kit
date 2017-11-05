@@ -1,6 +1,14 @@
 Yii Starter Kit Change Log
 ==========================
 
+3.0.21-dev
+----------
+- Mailer uses file transport for dev
+- Contact form recapcha
+- Remove intervention/image
+- `yiisoft/yii2` 2.0.13
+- bundles
+
 3.0.20
 ------
 - iframe popup classes
