@@ -1,6 +1,10 @@
 Yii Starter Kit Change Log
 ==========================
 
+3.0.21.1
+--------
+- Bug: CKEditor disableAutoInline pos ready
+
 3.0.21
 ------
 - Mailer uses file transport for dev

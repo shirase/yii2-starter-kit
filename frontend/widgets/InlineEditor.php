@@ -10,6 +10,7 @@ use yii\base\Widget;
 use yii\db\ActiveRecord;
 use yii\helpers\Html;
 use yii\helpers\Json;
+use yii\web\View;
 
 class InlineEditor extends Widget
 {
@@ -64,7 +65,7 @@ class InlineEditor extends Widget
             $url = \Yii::getAlias('@frontendUrl/ckeditor/widgets');
             $this->view->registerJs("CKEDITOR.plugins.addExternal('widgets', '".$url."/plugin.js?v=".filemtime($path.'/plugin.js')."', '');");
 
-            $this->view->registerJs('if(CKEDITOR.instances["'.$this->id.'"]) delete CKEDITOR.instances["'.$this->id.'"];');
+            $this->view->registerJs('CKEDITOR.disableAutoInline = true;', View::POS_END);
 
             $kcfinderUrl = KCFinderAsset::register($this->view)->baseUrl;
             \Yii::$app->session->set('KCFINDER', [
