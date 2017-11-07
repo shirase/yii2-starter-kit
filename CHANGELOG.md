@@ -1,8 +1,8 @@
 Yii Starter Kit Change Log
 ==========================
 
-3.0.21-dev
-----------
+3.0.21
+------
 - Mailer uses file transport for dev
 - Contact form recapcha
 - Remove intervention/image
