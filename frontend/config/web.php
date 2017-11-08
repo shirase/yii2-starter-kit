@@ -49,7 +49,7 @@ $config = [
             }
         ],
         'request' => [
-            'baseUrl' => rtrim(Yii::getAlias('@frontendUrl'), '/'),
+            'baseUrl' => rtrim(env('FRONTEND_URL'), '/'),
             'cookieValidationKey' => env('FRONTEND_COOKIE_VALIDATION_KEY')
         ],
         'user' => [

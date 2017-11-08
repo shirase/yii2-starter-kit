@@ -22,7 +22,7 @@ return [
             ],
         ],
         'request' => [
-            'baseUrl' => rtrim(Yii::getAlias('@storageUrl'), '/'),
+            'baseUrl' => rtrim(env('STORAGE_URL'), '/'),
         ],
     ]
 ];

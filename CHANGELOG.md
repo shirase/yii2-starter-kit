@@ -1,6 +1,9 @@
 Yii Starter Kit Change Log
 ==========================
 
+3.0.22-dev
+----------
+
 3.0.21.1
 --------
 - Bug: CKEditor disableAutoInline pos ready

@@ -22,9 +22,9 @@ Yii::setAlias('@storageWeb', '@storage/web');
 /**
  * Setting url aliases
  */
-Yii::setAlias('@frontendUrl', env('FRONTEND_URL'));
-Yii::setAlias('@backendUrl', env('BACKEND_URL'));
-Yii::setAlias('@storageUrl', env('STORAGE_URL'));
+Yii::setAlias('@frontendUrl', env('FRONTEND_HOST') . env('FRONTEND_URL'));
+Yii::setAlias('@backendUrl', env('BACKEND_HOST') . env('BACKEND_URL'));
+Yii::setAlias('@storageUrl', env('STORAGE_HOST') . env('STORAGE_URL'));
 
 Swift_DependencyContainer::getInstance()
     ->register('mime.qpcontentencoder')

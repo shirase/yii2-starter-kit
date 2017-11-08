@@ -153,22 +153,22 @@ $config = [
 
         'urlManagerBackend' => \yii\helpers\ArrayHelper::merge(
             [
-                'hostInfo' => Yii::getAlias('@backendUrl'),
-                'baseUrl' => ''
+                'hostInfo' => env('BACKEND_HOST') ?: null,
+                'baseUrl' => rtrim(env('BACKEND_URL'), '/'),
             ],
             require(Yii::getAlias('@backend/config/_urlManager.php'))
         ),
         'urlManagerFrontend' => \yii\helpers\ArrayHelper::merge(
             [
-                'hostInfo' => Yii::getAlias('@frontendUrl'),
-                'baseUrl' => ''
+                'hostInfo' => env('FRONTEND_HOST') ?: null,
+                'baseUrl' => rtrim(env('FRONTEND_URL'), '/'),
             ],
             require(Yii::getAlias('@frontend/config/_urlManager.php'))
         ),
         'urlManagerStorage' => \yii\helpers\ArrayHelper::merge(
             [
-                'hostInfo' => Yii::getAlias('@storageUrl'),
-                'baseUrl' => ''
+                'hostInfo' => env('STORAGE_HOST') ?: null,
+                'baseUrl' => rtrim(env('STORAGE_URL'), '/'),
             ],
             require(Yii::getAlias('@storage/config/_urlManager.php'))
         )

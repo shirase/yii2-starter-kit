@@ -1,6 +1,15 @@
 Upgrading Instructions
 ======================
 
+3.0.22
+------
+New `.env` variables (use current host if empty)
+```
+FRONTEND_HOST =
+BACKEND_HOST =
+STORAGE_HOST = 
+```
+
 3.0.16
 ------
 Removed deprecated namespace, pull 3.0.16-bc for BC
