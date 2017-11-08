@@ -81,8 +81,9 @@ npm run build
 ```
 
 ## Usual hosting installation
-- Remove asset section from `.gitignore`
+- Remove `Assets` section from `.gitignore`
 - Build assets, run `npm run build` (install npm before)
+- Build bundle, run `./bin/bundle.sh` (Linux) or `bin\bundle.bat` (Windows)
 - Copy all files to hosting webroot directory
 
 ## Single domain installation
