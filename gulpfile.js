@@ -144,7 +144,7 @@ gulp.task('js-frontend', function() {
             }
         }))
         .pipe(rollup({
-            entry: 'frontend/js/app.js',
+            input: ['frontend/js/app.js'],
             allowRealFiles: true,
             format: 'iife',
             external: [
@@ -171,9 +171,8 @@ gulp.task('js-frontend', function() {
                 })
             ]
         }))
-        .pipe(rename('bundle.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('frontend/web/js'));
+        .pipe(gulp.dest('frontend/web/bundle'));
 });
 
 gulp.task('watch', ['sass-frontend', 'sass-backend', 'js-frontend'], function() {

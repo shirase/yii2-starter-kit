@@ -10,6 +10,8 @@ BACKEND_HOST =
 STORAGE_HOST = 
 ```
 
+Changed rollup target folder on `frontend/web/bundle`, check frontend asset config
+
 3.0.16
 ------
 Removed deprecated namespace, pull 3.0.16-bc for BC
