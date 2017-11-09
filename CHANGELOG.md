@@ -3,6 +3,7 @@ Yii Starter Kit Change Log
 
 3.0.22-dev
 ----------
+- Request baseUrl configuration
 
 3.0.21.1
 --------
