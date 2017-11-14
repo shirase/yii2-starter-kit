@@ -1,8 +1,8 @@
 Yii Starter Kit Change Log
 ==========================
 
-3.0.22-dev
-----------
+3.0.22
+------
 - Request baseUrl configuration
 - npm move dependencies to devDependencies
 - Changed rollup target folder on `frontend/web/bundle`
