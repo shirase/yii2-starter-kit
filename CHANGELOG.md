@@ -6,6 +6,7 @@ Yii Starter Kit Change Log
 - Request baseUrl configuration
 - npm move dependencies to devDependencies
 - Changed rollup target folder on `frontend/web/bundle`
+- jquery migrate
 
 3.0.21.1
 --------

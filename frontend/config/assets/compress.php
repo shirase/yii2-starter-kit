@@ -18,6 +18,7 @@ return [
     'bundles' => [
         'yii\web\YiiAsset',
         'yii\web\JqueryAsset',
+        'common\assets\JqueryMigrateAsset',
     ],
 
     // Asset bundle for compression output:

@@ -19,6 +19,7 @@ return [
         'common\assets\AdminLte',
         'yii\web\YiiAsset',
         'yii\web\JqueryAsset',
+        'common\assets\JqueryMigrateAsset',
         'yii\validators\ValidationAsset',
         'yii\widgets\ActiveFormAsset',
         'yii\grid\GridViewAsset',

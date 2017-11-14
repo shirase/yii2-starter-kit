@@ -3,6 +3,7 @@ namespace backend\assets;
 
 use common\assets\AdminLte;
 use common\assets\Html5shiv;
+use common\assets\JqueryMigrateAsset;
 use yii\web\AssetBundle;
 use yii\web\YiiAsset;
 
@@ -21,6 +22,6 @@ class BackendAsset extends AssetBundle
     public $depends = [
         YiiAsset::class,
         AdminLte::class,
-        Html5shiv::class,
+        JqueryMigrateAsset::class,
     ];
 }

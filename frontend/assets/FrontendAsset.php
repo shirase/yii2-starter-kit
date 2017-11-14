@@ -7,6 +7,7 @@
 
 namespace frontend\assets;
 
+use common\assets\JqueryMigrateAsset;
 use yii\bootstrap\BootstrapAsset;
 use yii\web\AssetBundle;
 use yii\web\YiiAsset;
@@ -46,6 +47,6 @@ class FrontendAsset extends AssetBundle
     public $depends = [
         YiiAsset::class,
         BootstrapAsset::class,
-        Html5shiv::class,
+        JqueryMigrateAsset::class,
     ];
 }
