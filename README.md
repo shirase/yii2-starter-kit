@@ -2,7 +2,6 @@
 
 <!-- BADGES/ -->
 
-[![Dependency Status](https://www.versioneye.com/user/projects/5a0ca7150fb24f2a31716ea2/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/58c6a60cd01cb2003db31e46)
 [![Build Status](https://travis-ci.org/shirase/yii2-starter-kit.svg?branch=master)](https://travis-ci.org/shirase/yii2-starter-kit)
 [![Coverage Status](https://coveralls.io/repos/github/shirase/yii2-starter-kit/badge.svg?branch=master)](https://coveralls.io/github/shirase/yii2-starter-kit?branch=master)
 
