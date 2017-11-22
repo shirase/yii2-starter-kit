@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "fb5a857e9ad42c6b7392dbd5b9016591",
+    "content-hash": "87ae58e8d523020a458b746e777926a3",
     "packages": [
         {
             "name": "2amigos/yii2-ckeditor-widget",
@@ -782,16 +782,16 @@
         },
         {
             "name": "ckeditor/ckeditor",
-            "version": "4.7.2",
+            "version": "4.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ckeditor/ckeditor-releases.git",
-                "reference": "e1db4f159d7743c076e464ce90dc8b421ebc8ef0"
+                "reference": "d62153e131ad4187700342fc044cf069c2fb5d8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ckeditor/ckeditor-releases/zipball/e1db4f159d7743c076e464ce90dc8b421ebc8ef0",
-                "reference": "e1db4f159d7743c076e464ce90dc8b421ebc8ef0",
+                "url": "https://api.github.com/repos/ckeditor/ckeditor-releases/zipball/d62153e131ad4187700342fc044cf069c2fb5d8a",
+                "reference": "d62153e131ad4187700342fc044cf069c2fb5d8a",
                 "shasum": ""
             },
             "type": "library",
@@ -819,7 +819,7 @@
                 "text",
                 "wysiwyg"
             ],
-            "time": "2017-08-17T17:01:28+00:00"
+            "time": "2017-06-28T14:36:40+00:00"
         },
         {
             "name": "doctrine/lexer",

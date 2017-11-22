@@ -75,7 +75,7 @@
         "iutbay/yii2-kcfinder": "^0.0.1",
         "shirase55/ckeditor-inlinesave": "dev-master",
         "shirase55/ckeditor-image": "dev-master",
-        "ckeditor/ckeditor": "4.7.2",
+        "ckeditor/ckeditor": "4.7.1",
         "yiisoft/yii2-queue": "^2.0",
         "himiklab/yii2-recaptcha-widget": "^1.0",
         "bower-asset/jquery-migrate": "^3.0"
