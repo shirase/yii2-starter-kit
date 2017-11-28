@@ -82,7 +82,7 @@ class SeoController extends Controller
             }
 
             if ($valid) {
-                Yii::$app->session->setFlash('script', '$(document).trigger("action.Update", '.Json::encode(['class'=>$model::className()]+$model->attributes).');');
+                Yii::$app->session->setFlash('script', '$(document).trigger("action.Update", '.Json::encode(['class'=>get_class($model)]+$model->attributes).');');
                 return $this->redirect(['index', 'returned'=>true]);
             }
         }
@@ -121,7 +121,7 @@ class SeoController extends Controller
             return;
         } else {
             $model = $this->findModel($id);
-            Yii::$app->session->setFlash('script', '$(document).trigger("action.Delete", '.Json::encode(['class'=>$model::className()]+$model->attributes).');');
+            Yii::$app->session->setFlash('script', '$(document).trigger("action.Delete", '.Json::encode(['class'=>get_class($model)]+$model->attributes).');');
             $model->delete();
             if (!Yii::$app->request->isAjax) {
                 $this->redirect(['index', 'returned'=>true]);

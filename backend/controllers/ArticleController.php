@@ -99,7 +99,7 @@ class ArticleController extends Controller
         $model->status = Article::STATUS_PUBLISHED;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('script', '$(document).trigger("action.Create", '.Json::encode(['class'=>$model::className()]+$model->attributes).');');
+            Yii::$app->session->setFlash('script', '$(document).trigger("action.Create", '.Json::encode(['class'=>get_class($model)]+$model->attributes).');');
             return $this->redirect(['index', 'returned'=>true]);
         } else {
             return $this->render('create', [
@@ -119,7 +119,7 @@ class ArticleController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('script', '$(document).trigger("action.Update", '.Json::encode(['class'=>$model::className()]+$model->attributes).');');
+            Yii::$app->session->setFlash('script', '$(document).trigger("action.Update", '.Json::encode(['class'=>get_class($model)]+$model->attributes).');');
             return $this->redirect(['index', 'returned'=>true]);
         } else {
             return $this->render('update', [
@@ -157,7 +157,7 @@ class ArticleController extends Controller
             return;
         } else {
             $model = $this->findModel($id);
-            Yii::$app->session->setFlash('script', '$(document).trigger("action.Delete", '.Json::encode(['class'=>$model::className()]+$model->attributes).');');
+            Yii::$app->session->setFlash('script', '$(document).trigger("action.Delete", '.Json::encode(['class'=>get_class($model)]+$model->attributes).');');
             $model->delete();
             if (!Yii::$app->request->isAjax) {
                 $this->redirect(['index', 'returned'=>true]);

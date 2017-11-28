@@ -120,7 +120,7 @@ class BlockController extends Controller
                 if ($valid) {
                     $tx->commit();
 
-                    Yii::$app->session->setFlash('script', '$(document).trigger("action.Create", '.Json::encode(['class'=>$model::className()]+$model->attributes).');');
+                    Yii::$app->session->setFlash('script', '$(document).trigger("action.Create", '.Json::encode(['class'=>get_class($model)]+$model->attributes).');');
                     return $this->redirect(['index', 'returned'=>true, 'page_id'=>$model->page_id]);
                 } else {
                     $tx->rollBack();
@@ -176,7 +176,7 @@ class BlockController extends Controller
                 if ($valid) {
                     $tx->commit();
 
-                    Yii::$app->session->setFlash('script', '$(document).trigger("action.Update", '.Json::encode(['class'=>$model::className()]+$model->attributes).');');
+                    Yii::$app->session->setFlash('script', '$(document).trigger("action.Update", '.Json::encode(['class'=>get_class($model)]+$model->attributes).');');
                     return $this->redirect(['index', 'returned'=>true, 'page_id'=>$model->page_id]);
                 } else {
                     $tx->rollBack();
@@ -233,7 +233,7 @@ class BlockController extends Controller
             return;
         } else {
             $model = $this->findModel($id);
-            Yii::$app->session->setFlash('script', '$(document).trigger("action.Delete", '.Json::encode(['class'=>$model::className()]+$model->attributes).');');
+            Yii::$app->session->setFlash('script', '$(document).trigger("action.Delete", '.Json::encode(['class'=>get_class($model)]+$model->attributes).');');
             $model->delete();
             $this->redirect(['index', 'returned'=>true, 'page_id'=>$model->page_id]);
         }
