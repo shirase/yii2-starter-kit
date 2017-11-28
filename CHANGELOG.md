@@ -1,6 +1,11 @@
 Yii Starter Kit Change Log
 ==========================
 
+3.0.23-dev
+----------
+- Fix version of `ckeditor/ckeditor: 4.7.1` for editor style bug
+- Change ::className() to ::class
+
 3.0.22
 ------
 - Request baseUrl configuration
