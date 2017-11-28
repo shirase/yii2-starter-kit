@@ -35,7 +35,7 @@ class BlockType extends \common\db\ActiveRecord
     {
         return [
             [
-                'class' => \shirase\tree\TreeBehavior::className(),
+                'class' => \shirase\tree\TreeBehavior::class,
             ],
         ];
     }
@@ -71,7 +71,7 @@ class BlockType extends \common\db\ActiveRecord
      */
     public function getBlocks()
     {
-        return $this->hasMany(Block::className(), ['type_id' => 'id']);
+        return $this->hasMany(Block::class, ['type_id' => 'id']);
     }
 
     /**

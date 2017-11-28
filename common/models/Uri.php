@@ -40,7 +40,7 @@ class Uri extends \common\db\ActiveRecord
             [['parent_id', 'redirect_id', 'canonical_id'], 'integer'],
             [['route', 'uri'], 'required'],
             [['route', 'uri'], 'string', 'max' => 1000],
-            [['parent_id'], 'exist', 'skipOnError' => true, 'targetClass' => Uri::className(), 'targetAttribute' => ['parent_id' => 'id']],
+            [['parent_id'], 'exist', 'skipOnError' => true, 'targetClass' => Uri::class, 'targetAttribute' => ['parent_id' => 'id']],
         ];
     }
 
@@ -64,7 +64,7 @@ class Uri extends \common\db\ActiveRecord
      */
     public function getParent()
     {
-        return $this->hasOne(Uri::className(), ['id' => 'parent_id']);
+        return $this->hasOne(Uri::class, ['id' => 'parent_id']);
     }
 
     /**

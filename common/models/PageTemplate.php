@@ -53,7 +53,7 @@ class PageTemplate extends \common\db\ActiveRecord
      */
     public function getPageTypeContents()
     {
-        return $this->hasMany(PageTypeContent::className(), ['template_id' => 'id']);
+        return $this->hasMany(PageTypeContent::class, ['template_id' => 'id']);
     }
 
     /**

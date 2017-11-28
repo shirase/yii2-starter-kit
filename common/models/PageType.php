@@ -31,7 +31,7 @@ class PageType extends \common\db\ActiveRecord
     {
         return [
             [
-                'class' => \shirase\tree\TreeBehavior::className(),
+                'class' => \shirase\tree\TreeBehavior::class,
             ],
         ];
     }
@@ -67,7 +67,7 @@ class PageType extends \common\db\ActiveRecord
      */
     public function getPages()
     {
-        return $this->hasMany(Page::className(), ['view_id' => 'id']);
+        return $this->hasMany(Page::class, ['view_id' => 'id']);
     }
 
     /**

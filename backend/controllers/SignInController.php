@@ -26,7 +26,7 @@ class SignInController extends Controller
     {
         return [
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'logout' => ['post']
                 ]
@@ -38,7 +38,7 @@ class SignInController extends Controller
     {
         return [
             'avatar-upload' => [
-                'class' => UploadAction::className(),
+                'class' => UploadAction::class,
                 'deleteRoute' => 'avatar-delete',
                 'on afterSave' => function ($event) {
                     /* @var $file \League\Flysystem\File */
@@ -48,7 +48,7 @@ class SignInController extends Controller
                 }
             ],
             'avatar-delete' => [
-                'class' => DeleteAction::className()
+                'class' => DeleteAction::class
             ]
         ];
     }

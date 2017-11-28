@@ -29,14 +29,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'attribute'=>'key',
-                'class' => \kartik\grid\EditableColumn::className(),
+                'class' => \kartik\grid\EditableColumn::class,
                 'editableOptions'=> [
                     'formOptions' => ['action' => ['edit']],
                 ]
             ],
             [
                 'attribute'=>'status',
-                'class' => \kartik\grid\EditableColumn::className(),
+                'class' => \kartik\grid\EditableColumn::class,
                 //'refreshGrid' => true,
                 'editableOptions'=> [
                     'formOptions' => ['action' => ['edit']],
@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]
             ],
             /*[
-                'class'=>\common\grid\EnumColumn::className(),
+                'class'=>\common\grid\EnumColumn::class,
                 'attribute'=>'status',
                 'enum'=>[
                     Yii::t('backend', 'Disabled'),

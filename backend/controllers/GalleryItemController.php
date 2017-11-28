@@ -26,7 +26,7 @@ class GalleryItemController extends Controller
     {
         return [
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'delete' => ['POST'],
                 ],
@@ -38,8 +38,8 @@ class GalleryItemController extends Controller
     {
         return ArrayHelper::merge(parent::actions(), [
             'edit' => [
-                'class' => EditableColumnAction::className(),
-                'modelClass' => GalleryItem::className(),
+                'class' => EditableColumnAction::class,
+                'modelClass' => GalleryItem::class,
                 'showModelErrors' => true,
             ]
         ]);

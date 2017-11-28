@@ -46,21 +46,21 @@ class GalleryItem extends \common\db\ActiveRecord
     {
         return [
             [
-                'class' => \shirase\tree\TreeBehavior::className(),
+                'class' => \shirase\tree\TreeBehavior::class,
             ],
             [
-                'class' => UploadBehavior::className(),
+                'class' => UploadBehavior::class,
                 'attribute' => 'image',
                 'pathAttribute' => 'path',
                 'urlAttribute' => 'imageUrl'
             ],
             'cacheInvalidate' => [
-                'class' => CacheInvalidateBehavior::className(),
+                'class' => CacheInvalidateBehavior::class,
                 'cacheComponent' => 'frontendCache',
                 'keys' => [
                     function ($model) {
                         return [
-                            Gallery::className(),
+                            Gallery::class,
                             $model->gallery->key
                         ];
                     }
@@ -78,7 +78,7 @@ class GalleryItem extends \common\db\ActiveRecord
             [['gallery_id'], 'required'],
             [['gallery_id', 'status'], 'integer'],
             [['path', 'url', 'title'], 'string', 'max' => 1024],
-            [['gallery_id'], 'exist', 'skipOnError' => true, 'targetClass' => Gallery::className(), 'targetAttribute' => ['gallery_id' => 'id']],
+            [['gallery_id'], 'exist', 'skipOnError' => true, 'targetClass' => Gallery::class, 'targetAttribute' => ['gallery_id' => 'id']],
             [['image'], 'safe'],
         ];
     }
@@ -104,7 +104,7 @@ class GalleryItem extends \common\db\ActiveRecord
      */
     public function getGallery()
     {
-        return $this->hasOne(Gallery::className(), ['id' => 'gallery_id']);
+        return $this->hasOne(Gallery::class, ['id' => 'gallery_id']);
     }
 
     /**

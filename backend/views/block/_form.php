@@ -20,7 +20,7 @@ $this->registerJs('$(document).on("change", "#block-type_id", function() {$.pjax
 
     <?= $form->field($model, 'vis')->dropDownList(['1'=>Yii::t('common', 'Yes'), '0'=>Yii::t('common', 'No')]) ?>
 
-    <?= $form->field($model, 'type_id')->widget(kartik\select2\Select2::className(), ['data'=>[''=>'-']+ArrayHelper::map(common\models\BlockType::find()->orderBy('pos')->all(), 'id', 'name')]) ?>
+    <?= $form->field($model, 'type_id')->widget(kartik\select2\Select2::class, ['data'=>[''=>'-']+ArrayHelper::map(common\models\BlockType::find()->orderBy('pos')->all(), 'id', 'name')]) ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 

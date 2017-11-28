@@ -10,8 +10,8 @@ class BlockController extends Controller
     public function actions() {
         return [
             'update'=>[
-                'class'=>UpdateAction::className(),
-                'modelClass'=>Block::className(),
+                'class'=>UpdateAction::class,
+                'modelClass'=>Block::class,
             ]
         ];
     }

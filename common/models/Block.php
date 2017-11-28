@@ -41,7 +41,7 @@ class Block extends \common\db\ActiveRecord
     {
         return [
             [
-                'class' => \shirase\tree\TreeBehavior::className(),
+                'class' => \shirase\tree\TreeBehavior::class,
             ],
         ];
     }
@@ -56,8 +56,8 @@ class Block extends \common\db\ActiveRecord
             [['page_id', 'type_id', 'title'], 'required'],
             [['body'], 'string'],
             [['title'], 'string', 'max' => 255],
-            [['page_id'], 'exist', 'skipOnError' => true, 'targetClass' => Page::className(), 'targetAttribute' => ['page_id' => 'id']],
-            [['type_id'], 'exist', 'skipOnError' => true, 'targetClass' => BlockType::className(), 'targetAttribute' => ['type_id' => 'id']],
+            [['page_id'], 'exist', 'skipOnError' => true, 'targetClass' => Page::class, 'targetAttribute' => ['page_id' => 'id']],
+            [['type_id'], 'exist', 'skipOnError' => true, 'targetClass' => BlockType::class, 'targetAttribute' => ['type_id' => 'id']],
         ];
     }
 
@@ -81,7 +81,7 @@ class Block extends \common\db\ActiveRecord
      */
     public function getPage()
     {
-        return $this->hasOne(Page::className(), ['id' => 'page_id']);
+        return $this->hasOne(Page::class, ['id' => 'page_id']);
     }
 
     /**
@@ -89,7 +89,7 @@ class Block extends \common\db\ActiveRecord
      */
     public function getType()
     {
-        return $this->hasOne(BlockType::className(), ['id' => 'type_id']);
+        return $this->hasOne(BlockType::class, ['id' => 'type_id']);
     }
 
     /**

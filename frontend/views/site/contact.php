@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php echo $form->field($model, 'email') ?>
                 <?php echo $form->field($model, 'subject') ?>
                 <?php echo $form->field($model, 'body')->textArea(['rows' => 6]) ?>
-                <?php echo $form->field($model, 'verifyCode')->widget(\himiklab\yii2\recaptcha\ReCaptcha::className())->label(false) ?>
+                <?php echo $form->field($model, 'verifyCode')->widget(\himiklab\yii2\recaptcha\ReCaptcha::class)->label(false) ?>
                 <div class="form-group">
                     <?php echo Html::submitButton(Yii::t('frontend', 'Submit'), ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
                 </div>

@@ -55,11 +55,11 @@ class Page extends \common\db\ActiveRecord
     {
         return [
             [
-                'class' => TimestampBehavior::className(),
+                'class' => TimestampBehavior::class,
                 'value' => function() {return date(DATE_ISO8601);}
             ],
             'slug' => [
-                'class' => SluggableBehavior::className(),
+                'class' => SluggableBehavior::class,
                 'attribute' => 'name',
                 'ensureUnique' => true,
                 'immutable' => true,
@@ -68,10 +68,10 @@ class Page extends \common\db\ActiveRecord
                 ],
             ],
             [
-                'class' => \shirase\tree\TreeBehavior::className(),
+                'class' => \shirase\tree\TreeBehavior::class,
             ],
             [
-                'class' => UriBehavior::className(),
+                'class' => UriBehavior::class,
                 'route' => function($model) {
                     if ($plugin = $model->type->plugin) {
                         return $plugin::route($model);
@@ -99,7 +99,7 @@ class Page extends \common\db\ActiveRecord
             [['slug'], 'string', 'max' => 1024],
             [['slug'], 'unique', 'targetAttribute'=>['slug', 'language']],
             [['name'], 'string', 'max' => 100],
-            [['type_id'], 'exist', 'skipOnError' => true, 'targetClass' => PageType::className(), 'targetAttribute' => ['type_id' => 'id']],
+            [['type_id'], 'exist', 'skipOnError' => true, 'targetClass' => PageType::class, 'targetAttribute' => ['type_id' => 'id']],
         ];
     }
 
@@ -133,7 +133,7 @@ class Page extends \common\db\ActiveRecord
      */
     public function getType()
     {
-        return $this->hasOne(PageType::className(), ['id' => 'type_id']);
+        return $this->hasOne(PageType::class, ['id' => 'type_id']);
     }
 
     /**
@@ -156,11 +156,11 @@ class Page extends \common\db\ActiveRecord
     }
 
     public function getParentPage() {
-        return $this->hasOne(Page::className(), ['id'=>'pid']);
+        return $this->hasOne(Page::class, ['id'=>'pid']);
     }
 
     public function getUris() {
-        return $this->hasMany(Uri::className(), ['id'=>'uri_id'])->viaTable('page_uri', ['page_id'=>'id']);
+        return $this->hasMany(Uri::class, ['id'=>'uri_id'])->viaTable('page_uri', ['page_id'=>'id']);
     }
 
     public function beforeSave($insert)

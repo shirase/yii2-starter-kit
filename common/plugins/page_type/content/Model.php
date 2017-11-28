@@ -23,7 +23,7 @@ class Model extends ActiveRecord {
     public function rules() {
         return [
             [['template_id'], 'integer'],
-            [['template_id'], 'exist', 'skipOnError' => true, 'targetClass' => PageTemplate::className(), 'targetAttribute' => ['template_id' => 'id']],
+            [['template_id'], 'exist', 'skipOnError' => true, 'targetClass' => PageTemplate::class, 'targetAttribute' => ['template_id' => 'id']],
         ];
     }
 

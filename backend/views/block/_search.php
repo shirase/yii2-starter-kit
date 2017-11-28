@@ -25,9 +25,9 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'vis')->dropDownList([''=>'-', '1'=>Yii::t('common', 'Yes'), '0'=>Yii::t('common', 'No')]) ?>
 
-    <?= $form->field($model, 'page_id')->widget(kartik\select2\Select2::className(), ['data'=>[''=>'-']+ArrayHelper::map(common\models\Page::find()->all(), 'id', 'name')]) ?>
+    <?= $form->field($model, 'page_id')->widget(kartik\select2\Select2::class, ['data'=>[''=>'-']+ArrayHelper::map(common\models\Page::find()->all(), 'id', 'name')]) ?>
 
-    <?= $form->field($model, 'type_id')->widget(kartik\select2\Select2::className(), ['data'=>[''=>'-']+ArrayHelper::map(common\models\BlockType::find()->all(), 'id', 'name')]) ?>
+    <?= $form->field($model, 'type_id')->widget(kartik\select2\Select2::class, ['data'=>[''=>'-']+ArrayHelper::map(common\models\BlockType::find()->all(), 'id', 'name')]) ?>
 
     <?php //echo $form->field($model, 'title') ?>
 

@@ -30,7 +30,7 @@ class PageController extends Controller
     {
         return [
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'delete' => ['POST'],
                 ],
@@ -42,8 +42,8 @@ class PageController extends Controller
     {
         return ArrayHelper::merge(parent::actions(), [
             'edit' => [
-                'class' => EditableColumnAction::className(),
-                'modelClass' => Page::className(),
+                'class' => EditableColumnAction::class,
+                'modelClass' => Page::class,
                 'showModelErrors' => true,
             ]
         ]);

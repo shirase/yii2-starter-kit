@@ -33,7 +33,7 @@ $this->registerJs('$(document).on("change", "#page-type_id", function() {$.pjax.
 
         <?= $form->field($model, 'status')->dropDownList(['1'=>Yii::t('backend', 'Yes'), '0'=>Yii::t('backend', 'No')]) ?>
 
-        <?php if ($model->isNewRecord) echo $form->field($model, 'body')->widget(\yii\imperavi\Widget::className()) ?>
+        <?php if ($model->isNewRecord) echo $form->field($model, 'body')->widget(\yii\imperavi\Widget::class) ?>
 
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -47,7 +47,7 @@ $this->registerJs('$(document).on("change", "#page-type_id", function() {$.pjax.
             </div>
         </div>
 
-        <?php if ($model->pid!==null) echo $form->field($model, 'type_id')->widget(kartik\select2\Select2::className(), ['data'=>ArrayHelper::map(common\models\PageType::find()->orderBy('pos')->all(), 'id', 'name')]) ?>
+        <?php if ($model->pid!==null) echo $form->field($model, 'type_id')->widget(kartik\select2\Select2::class, ['data'=>ArrayHelper::map(common\models\PageType::find()->orderBy('pos')->all(), 'id', 'name')]) ?>
 
         <?php Pjax::begin(['id'=>'type_params']) ?>
             <?php

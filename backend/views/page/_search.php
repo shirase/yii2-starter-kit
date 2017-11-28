@@ -26,7 +26,7 @@ use yii\helpers\Url;
 
     <?= $form->field($model, 'body') ?>
 
-    <?php //echo $form->field($model, 'type_id')->widget(kartik\select2\Select2::className(), ['data'=>[''=>'-']+ArrayHelper::map(common\models\PageType::find()->all(), 'id', 'name')]) ?>
+    <?php //echo $form->field($model, 'type_id')->widget(kartik\select2\Select2::class, ['data'=>[''=>'-']+ArrayHelper::map(common\models\PageType::find()->all(), 'id', 'name')]) ?>
 
     <?php echo $form->field($model, 'status')->dropDownList([''=>'-', '1'=>Yii::t('backend', 'Yes'), '0'=>Yii::t('backend', 'No')]) ?>
 

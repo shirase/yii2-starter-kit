@@ -23,8 +23,8 @@ class PageController extends Controller
     public function actions() {
         return [
             'update'=>[
-                'class'=>UpdateAction::className(),
-                'modelClass'=>Page::className(),
+                'class'=>UpdateAction::class,
+                'modelClass'=>Page::class,
             ]
         ];
     }

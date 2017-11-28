@@ -24,7 +24,7 @@ class Widget extends \yii\base\Widget {
         ob_start();
         echo $this->form->field($model, 'page_id')
             ->widget(
-                Select2::className(),
+                Select2::class,
                 [
                     'data'=>
                         [''=>'-']+TreeHelper::tab(

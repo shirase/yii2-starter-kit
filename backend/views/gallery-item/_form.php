@@ -15,13 +15,13 @@ use shirase\form\ActiveForm;
     <?php
     if ($model->isNewRecord) {
         echo $form->field($model, 'images')->widget(
-            \shirase55\filekit\widget\Upload::className(),
+            \shirase55\filekit\widget\Upload::class,
             [
                 'sortable' => true,
                 'maxNumberOfFiles' => 100
             ]);
     } else {
-        echo $form->field($model, 'image')->widget(\shirase55\filekit\widget\Upload::className());
+        echo $form->field($model, 'image')->widget(\shirase55\filekit\widget\Upload::class);
     }
     ?>
 

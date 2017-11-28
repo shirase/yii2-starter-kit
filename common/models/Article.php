@@ -72,18 +72,18 @@ class Article extends ActiveRecord
     public function behaviors()
     {
         return [
-            BlameableBehavior::className(),
+            BlameableBehavior::class,
             [
-                'class' => TimestampBehavior::className(),
+                'class' => TimestampBehavior::class,
                 'value' => function() {return date(DATE_SQL);}
             ],
             [
-                'class' => SluggableBehavior::className(),
+                'class' => SluggableBehavior::class,
                 'attribute' => 'title',
                 'immutable' => true
             ],
             [
-                'class' => UploadBehavior::className(),
+                'class' => UploadBehavior::class,
                 'attribute' => 'attachments',
                 'multiple' => true,
                 'uploadRelation' => 'articleAttachments',
@@ -95,19 +95,19 @@ class Article extends ActiveRecord
                 'nameAttribute' => 'name',
             ],
             [
-                'class' => UploadBehavior::className(),
+                'class' => UploadBehavior::class,
                 'attribute' => 'thumbnail',
                 'pathAttribute' => 'thumbnail_path',
                 'urlAttribute' => 'thumbnail_url',
             ],
             [
-                'class' => \voskobovich\behaviors\ManyToManyBehavior::className(),
+                'class' => \voskobovich\behaviors\ManyToManyBehavior::class,
                 'relations' => [
                     'category_ids' => 'categories',
                 ]
             ],
             [
-                'class' => UriBehavior::className(),
+                'class' => UriBehavior::class,
                 'route' => 'article/view',
                 'parents' => [
                     [
@@ -167,7 +167,7 @@ class Article extends ActiveRecord
      */
     public function getAuthor()
     {
-        return $this->hasOne(User::className(), ['id' => 'created_by']);
+        return $this->hasOne(User::class, ['id' => 'created_by']);
     }
 
     /**
@@ -175,7 +175,7 @@ class Article extends ActiveRecord
      */
     public function getUpdater()
     {
-        return $this->hasOne(User::className(), ['id' => 'updated_by']);
+        return $this->hasOne(User::class, ['id' => 'updated_by']);
     }
 
     /**
@@ -183,15 +183,15 @@ class Article extends ActiveRecord
      */
     public function getArticleAttachments()
     {
-        return $this->hasMany(ArticleAttachment::className(), ['article_id' => 'id']);
+        return $this->hasMany(ArticleAttachment::class, ['article_id' => 'id']);
     }
 
     public function getCategories() {
-        return $this->hasMany(Page::className(), ['id'=>'page'])->viaTable('article_page', ['article'=>'id']);
+        return $this->hasMany(Page::class, ['id'=>'page'])->viaTable('article_page', ['article'=>'id']);
     }
 
     public function getCategory() {
-        return $this->hasOne(Page::className(), ['id'=>'page'])->viaTable('article_page', ['article'=>'id']);
+        return $this->hasOne(Page::class, ['id'=>'page'])->viaTable('article_page', ['article'=>'id']);
     }
 
     public function getThumbnail_url()
@@ -200,6 +200,6 @@ class Article extends ActiveRecord
     }
 
     public function getUris() {
-        return $this->hasMany(Uri::className(), ['id'=>'uri_id'])->viaTable('article_uri', ['article_id'=>'id']);
+        return $this->hasMany(Uri::class, ['id'=>'uri_id'])->viaTable('article_uri', ['article_id'=>'id']);
     }
 }

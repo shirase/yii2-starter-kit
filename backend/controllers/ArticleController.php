@@ -27,7 +27,7 @@ class ArticleController extends Controller
     {
         return [
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'delete' => ['POST'],
                 ],
@@ -39,13 +39,13 @@ class ArticleController extends Controller
     {
         return ArrayHelper::merge(parent::actions(), [
             'edit' => [
-                'class' => EditableColumnAction::className(),
-                'modelClass' => Article::className(),
+                'class' => EditableColumnAction::class,
+                'modelClass' => Article::class,
                 'showModelErrors' => true,
             ],
             'toggle' => [
-                'class' => ToggleAction::className(),
-                'modelClass' => Article::className(),
+                'class' => ToggleAction::class,
+                'modelClass' => Article::class,
                 'attribute' => 'status',
             ]
         ]);

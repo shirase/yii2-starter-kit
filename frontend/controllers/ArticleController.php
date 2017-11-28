@@ -26,8 +26,8 @@ class ArticleController extends Controller
     public function actions() {
         return [
             'update'=>[
-                'class'=>UpdateAction::className(),
-                'modelClass'=>Article::className(),
+                'class'=>UpdateAction::class,
+                'modelClass'=>Article::class,
             ]
         ];
     }

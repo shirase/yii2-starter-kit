@@ -22,7 +22,7 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'gallery_id')->widget(kartik\select2\Select2::className(), ['data'=>[''=>'-']+ArrayHelper::map(common\models\Gallery::find()->all(), 'id', 'name')]) ?>
+    <?= $form->field($model, 'gallery_id')->widget(kartik\select2\Select2::class, ['data'=>[''=>'-']+ArrayHelper::map(common\models\Gallery::find()->all(), 'id', 'name')]) ?>
 
     <?= $form->field($model, 'path') ?>
 

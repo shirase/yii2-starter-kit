@@ -35,12 +35,12 @@ class Gallery extends ActiveRecord
     {
         return [
             'cacheInvalidate' => [
-                'class' => CacheInvalidateBehavior::className(),
+                'class' => CacheInvalidateBehavior::class,
                 'cacheComponent' => 'frontendCache',
                 'keys' => [
                     function ($model) {
                         return [
-                            self::className(),
+                            self::class,
                             $model->key
                         ];
                     }
@@ -79,6 +79,6 @@ class Gallery extends ActiveRecord
      */
     public function getItems()
     {
-        return $this->hasMany(GalleryItem::className(), ['carousel_id' => 'id']);
+        return $this->hasMany(GalleryItem::class, ['carousel_id' => 'id']);
     }
 }

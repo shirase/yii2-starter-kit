@@ -32,7 +32,7 @@ use yii\web\JsExpression;
     if (sizeof($options)>1) {
         echo $form->field($model, 'category_ids')
             ->widget(
-                Select2::className(),
+                Select2::class,
                 [
                     'options'=>['multiple'=>true],
                     'data'=> $options
@@ -47,17 +47,17 @@ use yii\web\JsExpression;
     <?php
     if ($model->isNewRecord) {
         echo $form->field($model, 'body')->widget(
-            \yii\imperavi\Widget::className()
+            \yii\imperavi\Widget::class
         );
     } else {
         echo '<div class="form-group">'.Html::activeLabel($model, 'body').'<br>'.Html::a(Yii::t('backend', 'Edit text on site'), Yii::$app->urlManagerFrontend->createAbsoluteUrl(['article/view', 'slug'=>$model->slug, 'category'=>$model->category->id]), ['target'=>'_blank']).'</div>';
     }
     ?>
 
-    <?php echo $form->field($model, 'thumbnail')->widget(Upload::className()); ?>
+    <?php echo $form->field($model, 'thumbnail')->widget(Upload::class); ?>
 
     <?php echo $form->field($model, 'attachments')->widget(
-        Upload::className(),
+        Upload::class,
         [
             'sortable' => true,
             'maxNumberOfFiles' => 10
@@ -65,10 +65,10 @@ use yii\web\JsExpression;
     ?>
 
     <?php echo $form->field($model, 'published_at')->widget(
-        DateControl::className(),
+        DateControl::class,
         [
             'type'=>DateControl::FORMAT_DATETIME,
-            'widgetClass'=>DateTimeWidget::className(),
+            'widgetClass'=>DateTimeWidget::class,
             'options'=>[
                 'clientOptions'=>['sideBySide'=>true],
                 'clientEvents'=>[

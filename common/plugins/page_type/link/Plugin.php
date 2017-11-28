@@ -34,7 +34,7 @@ class Plugin implements PageTypePlugin
     public static function widget($form, $model, $options=[]) {
         $options = ArrayHelper::merge(['form'=>$form, 'model'=>self::model($model)], $options);
         /** @var Widget $widget */
-        $widget = Widget::className();
+        $widget = Widget::class;
         return $widget::widget($options);
     }
 
