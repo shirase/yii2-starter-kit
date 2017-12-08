@@ -41,6 +41,25 @@ class Menu extends \yii\widgets\Menu
 
     public $activateItemsByController = true;
 
+    protected function normalizeItems($items, &$active)
+    {
+        $items = array_map(function($item) {
+            if (isset($item['items']) && !isset($item['visible'])) {
+                $item['visible'] = array_filter($item['items'], function($row) {
+                    if (isset($row['visible']) && $row['visible'] == false) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                });
+            }
+
+            return $item;
+        }, $items);
+
+        return parent::normalizeItems($items, $active);
+    }
+
     /**
      * @inheritdoc
      */
