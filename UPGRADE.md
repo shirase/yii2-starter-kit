@@ -3,7 +3,7 @@ Upgrading Instructions
 
 3.0.23
 ------
-Update `shirase55/yii2-helpers:3.0` break BC` pull `3.0.23-bc` release for BC
+Update `shirase55/yii2-helpers:3.0` break BC pull `3.0.23-bc` release for BC
 
 3.0.22
 ------
