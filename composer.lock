@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "87ae58e8d523020a458b746e777926a3",
+    "content-hash": "f20e8429093b2952142ccf2c31d9f55a",
     "packages": [
         {
             "name": "2amigos/yii2-ckeditor-widget",
@@ -184,7 +184,7 @@
             "version": "v3.14.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/blueimp/JavaScript-Canvas-to-Blob.git",
+                "url": "git@github.com:blueimp/JavaScript-Canvas-to-Blob.git",
                 "reference": "9f3deb2e710d39c72a988559609d9dc9a319de0b"
             },
             "dist": {
@@ -225,7 +225,7 @@
             "version": "v2.17.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/blueimp/JavaScript-Load-Image.git",
+                "url": "git@github.com:blueimp/JavaScript-Load-Image.git",
                 "reference": "8def72724a432c74536471da3cbac11596231ede"
             },
             "dist": {
@@ -241,7 +241,7 @@
             "version": "v3.11.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/blueimp/JavaScript-Templates.git",
+                "url": "git@github.com:blueimp/JavaScript-Templates.git",
                 "reference": "da7647cb93fff2030e73a701db22c66de76a9919"
             },
             "dist": {
@@ -3682,16 +3682,16 @@
         },
         {
             "name": "shirase55/yii2-helpers",
-            "version": "2.0.6",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shirase/yii2-helpers.git",
-                "reference": "78f5b86c5bb9df23c71a7d8afbf1e6b88f5e2fd5"
+                "reference": "9016722745e3857481f286f910d35c794f2fb474"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shirase/yii2-helpers/zipball/78f5b86c5bb9df23c71a7d8afbf1e6b88f5e2fd5",
-                "reference": "78f5b86c5bb9df23c71a7d8afbf1e6b88f5e2fd5",
+                "url": "https://api.github.com/repos/shirase/yii2-helpers/zipball/9016722745e3857481f286f910d35c794f2fb474",
+                "reference": "9016722745e3857481f286f910d35c794f2fb474",
                 "shasum": ""
             },
             "require": {
@@ -3704,7 +3704,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2017-05-04T14:13:32+00:00"
+            "time": "2017-12-09T21:09:07+00:00"
         },
         {
             "name": "shirase55/yii2-jstree",
