@@ -4,11 +4,23 @@ namespace common\db;
 /**
  * Class ActiveQueryTrait
  * @package common\db
+ * @property $alias string
  * @method \yii\db\ActiveQuery andFilterWhere(array $condition)
  * @property $modelClass string
+ * @property $tablesUsedInFrom string[]
  */
 trait ActiveQueryTrait
 {
+    public function getAlias()
+    {
+        $tables = $this->tablesUsedInFrom;
+        /* @var $modelClass ActiveRecord */
+        $modelClass = $this->modelClass;
+        $tableName = $modelClass::tableName();
+        $alias = array_search($tableName, $tables);
+        return $alias ?: $tableName;
+    }
+
     public function andFilterRange($column, $range) {
         if($range) {
             $range = (string)$range;
