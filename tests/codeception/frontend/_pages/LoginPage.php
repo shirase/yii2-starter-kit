@@ -1,5 +1,5 @@
 <?php
-namespace tests\codeception\backend\_pages;
+namespace tests\codeception\frontend\_pages;
 use tests\codeception\backend\AcceptanceTester;
 use yii\helpers\Url;
 /**
