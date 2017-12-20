@@ -18,7 +18,3 @@ $config = require(__DIR__ . '/../config/common/unit.php');
 new yii\web\Application($config);
 
 Yii::setAlias('@tests', dirname(dirname(__DIR__)));
-
-if (!class_exists('PHPUnit_Framework_TestCase')) {
-    class PHPUnit_Framework_TestCase extends \PHPUnit\Framework\TestCase {}
-}
