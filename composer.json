@@ -85,7 +85,7 @@
         "shirase55/yii2-gii": "dev-master",
         "elisdn/yii2-gii-fixture-generator": "*",
         "yiisoft/yii2-faker": "^2.0.0",
-        "codeception/codeception": "^2.0",
+        "codeception/codeception": "2.3.6",
         "codeception/specify": "^0.4.3",
         "codeception/verify": "^0.4",
         "satooshi/php-coveralls": "^1.0"
