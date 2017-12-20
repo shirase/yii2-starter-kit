@@ -18,7 +18,7 @@ class LoginPage
     public function __construct($actor)
     {
         $this->actor = $actor;
-        $this->actor->amOnPage(Url::to($this->route));
+        $this->actor->amOnPage(Url::to([$this->route]));
     }
     /**
      * @param $actor
