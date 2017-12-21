@@ -79,7 +79,7 @@ class ArticleController extends Controller
     {
         $query = Article::find()->andWhere(['slug'=>$slug]);
         if (!Yii::$app->user->can('manager')) {
-            //$query->published();
+            $query->published();
         }
         $model = $query->one();
         if (!$model)
