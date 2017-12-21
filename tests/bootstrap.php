@@ -7,6 +7,7 @@ require_once( dirname(__DIR__) . '/vendor/autoload.php');
 
 // Set environment
 defined('YII_ENV') or define('YII_ENV', 'test');
+defined('YII_APP_BASE_PATH') or define('YII_APP_BASE_PATH', dirname(__DIR__));
 
 require_once(__DIR__ . '/compatibility.php');
 
