@@ -1,5 +1,6 @@
 <?php
 namespace tests\codeception\frontend;
+use common\models\Article;
 use tests\codeception\frontend\FunctionalTester;
 
 class ArticleCest
@@ -16,6 +17,8 @@ class ArticleCest
 
     public function testArticleView(FunctionalTester $I)
     {
+        $I->seeRecord(Article::class, ['slug' => 'test-article-1']);
+
         $I->amOnPage(['article/view', 'slug' => 'test-article-1']);
         $I->seeResponseCodeIs(200);
         $I->canSee('Test Article 1', 'h1');
