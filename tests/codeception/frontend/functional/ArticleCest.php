@@ -8,11 +8,14 @@ class ArticleCest
     // tests
     public function testArticlesList(FunctionalTester $I)
     {
+        $I->amOnPage(['article/index']);
         $I->seeRecord(Article::class, ['slug' => 'test-article-1']);
     }
 
     public function testArticleView(FunctionalTester $I)
     {
+        $I->amOnPage(['article/index']);
+        $I->seeRecord(Article::class, ['slug' => 'test-article-1']);
         $I->amOnPage(['article/view', 'slug' => 'test-article-1']);
         $I->seeResponseCodeIs(200);
         $I->canSee('Test Article 1', 'h1');
