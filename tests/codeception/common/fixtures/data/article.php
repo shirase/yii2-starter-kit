@@ -11,7 +11,7 @@ return [
         'status' => 1,
         'created_by' => 1,
         'updated_by' => 1,
-        'published_at' => new \yii\db\Expression('NOW()'),
+        'published_at' => new \yii\db\Expression('NOW() - INTERVAL 1 hour'),
         'created_at' => new \yii\db\Expression('NOW()'),
         'updated_at' => new \yii\db\Expression('NOW()'),
     ],
