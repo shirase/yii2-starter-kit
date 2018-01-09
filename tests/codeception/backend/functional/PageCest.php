@@ -6,7 +6,7 @@ use common\models\User;
 
 class PageCest
 {
-    public function _before(AcceptanceTester $I) {
+    public function _before(FunctionalTester $I) {
         \Yii::$app->user->login(User::findOne(1));
     }
 

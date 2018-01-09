@@ -1,45 +1,40 @@
 <?php
-
 namespace tests\codeception\frontend\_pages;
-use yii\base\Component;
-
+use tests\codeception\backend\AcceptanceTester;
+use yii\helpers\Url;
 /**
- * Represents loging page
+ * Represents login page
  */
-class LoginPage extends Component
+class LoginPage
 {
-    /**
-     * @var \Codeception\Actor the testing guy object
-     */
+    /** @var string */
+    public $route = '/user/sign-in/login';
+    /** @var AcceptanceTester */
     protected $actor;
-
-    public function __construct($I)
-    {
-        $this->actor = $I;
-    }
-
     /**
-     * Creates a page instance and sets the test guy to use [[url]].
-     * @param \Codeception\Actor $I the test guy instance
-     * @param array $params the GET parameters to be used to generate [[url]]
-     * @return static the page instance
+     * LoginPage constructor.
+     * @param $actor
      */
-    public static function openBy($I, $params = [])
+    public function __construct($actor)
     {
-        $page = new static($I);
-        $I->amOnPage($page->getUrl($params));
-        return $page;
+        $this->actor = $actor;
+        $this->actor->amOnPage(Url::to([$this->route]));
     }
-
-    public $route = 'user/sign-in/login';
-
     /**
-     * @param string $identity
+     * @param $actor
+     * @return LoginPage
+     */
+    public static function openBy($actor)
+    {
+        return new self($actor);
+    }
+    /**
+     * @param string $username
      * @param string $password
      */
-    public function login($identity, $password)
+    public function login($username, $password)
     {
-        $this->actor->fillField('input[name="LoginForm[identity]"]', $identity);
+        $this->actor->fillField('input[name="LoginForm[username]"]', $username);
         $this->actor->fillField('input[name="LoginForm[password]"]', $password);
         $this->actor->click('login-button');
     }
