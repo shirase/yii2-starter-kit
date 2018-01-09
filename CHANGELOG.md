@@ -1,8 +1,8 @@
 Yii Starter Kit Change Log
 ==========================
 
-3.0.23-dev
-----------
+3.0.23
+------
 - Fix version of `ckeditor/ckeditor: 4.7.1` for editor style bug
 - Change ::className() to ::class
 - Menu check visibility of items
