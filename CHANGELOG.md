@@ -5,6 +5,11 @@ Yii Starter Kit Change Log
 ----------
 - Fix version of `ckeditor/ckeditor: 4.7.1` for editor style bug
 - Change ::className() to ::class
+- Menu check visibility of items
+- `ActiveQueryTrait::getAlias`
+- Fix: `codeception/codeception:2.3.7` tests compatibility
+- Google plus emails are inside an array. So we need to check that and use first one.
+- fix readFromPhpInput on ExtendedMessageController
 
 3.0.22
 ------
