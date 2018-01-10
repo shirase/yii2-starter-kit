@@ -1,6 +1,10 @@
 Yii Starter Kit Change Log
 ==========================
 
+3.0.23.1
+--------
+- Bug: Bad iframe popup close background size for Edge browser
+
 3.0.23
 ------
 - Fix version of `ckeditor/ckeditor: 4.7.1` for editor style bug
