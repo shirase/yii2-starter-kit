@@ -16,7 +16,7 @@ class m140703_123803_article extends Migration
             'id' => $this->primaryKey(),
             'slug' => $this->string(1024)->notNull(),
             'title' => $this->string(255),
-            'body' => $this->text()->notNull(),
+            'body' => $this->text(),
             'thumbnail_path' => $this->string(1024),
             'created_by' => $this->integer(),
             'updated_by' => $this->integer(),
