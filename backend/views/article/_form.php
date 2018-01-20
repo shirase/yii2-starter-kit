@@ -69,7 +69,7 @@ use yii\web\JsExpression;
         [
             'type'=>DateControl::FORMAT_DATETIME,
             'widgetClass'=>DateTimeWidget::class,
-            'options'=>[
+            'widgetOptions'=>[
                 'clientOptions'=>['sideBySide'=>true],
                 'clientEvents'=>[
                     'dp.change'=>new JsExpression('function(event) {$(this).find("input.form-control").trigger("change")}'),
