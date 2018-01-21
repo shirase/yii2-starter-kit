@@ -29,7 +29,7 @@ use shirase\form\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status')->checkbox() ?>
+    <?php echo $form->field($model, 'status')->dropDownList(['1'=>Yii::t('backend', 'Published'), '0'=>Yii::t('backend', 'Draft')]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('backend', 'Create') : Yii::t('backend', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

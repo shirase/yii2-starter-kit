@@ -178,4 +178,6 @@ return [
     'i18n Message' => 'Перевод',
     'i18n Source Message' => 'Текст',
     'Edit text on site' => 'Редактировать текст на сайте',
+    'Published' => 'Опубликовано',
+    'Draft' => 'Черновик',
 ];
