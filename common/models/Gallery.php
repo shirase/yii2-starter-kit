@@ -31,27 +31,6 @@ class Gallery extends ActiveRecord
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
-        return [
-            'cacheInvalidate' => [
-                'class' => CacheInvalidateBehavior::class,
-                'cacheComponent' => 'frontendCache',
-                'keys' => [
-                    function ($model) {
-                        return [
-                            self::class,
-                            $model->key
-                        ];
-                    }
-                ]
-            ]
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [

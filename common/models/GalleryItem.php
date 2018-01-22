@@ -54,18 +54,6 @@ class GalleryItem extends \common\db\ActiveRecord
                 'pathAttribute' => 'path',
                 'urlAttribute' => 'imageUrl'
             ],
-            'cacheInvalidate' => [
-                'class' => CacheInvalidateBehavior::class,
-                'cacheComponent' => 'frontendCache',
-                'keys' => [
-                    function ($model) {
-                        return [
-                            Gallery::class,
-                            $model->gallery->key
-                        ];
-                    }
-                ]
-            ]
         ];
     }
 
