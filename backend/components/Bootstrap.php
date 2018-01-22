@@ -48,7 +48,6 @@ class Bootstrap extends \common\components\Bootstrap
 
         \Yii::$container->set('kartik\grid\GridView', [
             'export' => false,
-            'toggleData' => false,
         ]);
     }
 }
