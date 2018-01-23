@@ -97,6 +97,7 @@
         "process-timeout": 1800,
         "preferred-install": "dist",
         "fxp-asset": {
+            "enabled": false,
             "installer-paths": {
                 "npm-asset-library": "vendor/npm-asset",
                 "bower-asset-library": "vendor/bower-asset"
