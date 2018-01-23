@@ -41,24 +41,30 @@ class UriBehavior extends Behavior
         if (!$slug)
             return;
 
-        $canonicalUriOld = $model->getUris()->andWhere('canonical_id IS NULL AND redirect_id IS NULL')->one();
+        if ($this->uriRelation) {
+            $canonicalUriOld = $model->getRelation($this->uriRelation)->andWhere('canonical_id IS NULL AND redirect_id IS NULL')->one();
+        } else {
+            $canonicalUriOld = null;
+        }
         $canonicalUrisOld = [];
         $canonicalUris = [];
 
         if($this->parents) {
-            foreach ($model->getRelation($this->uriRelation)->andWhere('redirect_id IS NULL')->all() as $Uri) {
-                /** @var Uri $Uri */
-                $fullRoute = $Uri->route;
-                list(, $params_str) = explode('?', $fullRoute);
-                $routeParams = [];
-                parse_str($params_str, $routeParams);
-                $canonicalUrisOld[$Uri->id] = $Uri;
-                $routeParams['slug'] = $slug;
-                $Uri2 = $this->makeUrl($Uri->parent, $routeParams, $model);
-                if ($Uri2->id != $Uri->id) {
-                    $Uri->redirect_id = $Uri2->id;
-                    if (!$Uri->save())
-                        throw new Exception('Uri save error', $Uri2->errors);
+            if ($this->uriRelation) {
+                foreach ($model->getRelation($this->uriRelation)->andWhere('redirect_id IS NULL')->all() as $Uri) {
+                    /** @var Uri $Uri */
+                    $fullRoute = $Uri->route;
+                    list(, $params_str) = explode('?', $fullRoute);
+                    $routeParams = [];
+                    parse_str($params_str, $routeParams);
+                    $canonicalUrisOld[$Uri->id] = $Uri;
+                    $routeParams['slug'] = $slug;
+                    $Uri2 = $this->makeUrl($Uri->parent, $routeParams, $model);
+                    if ($Uri2->id != $Uri->id) {
+                        $Uri->redirect_id = $Uri2->id;
+                        if (!$Uri->save())
+                            throw new Exception('Uri save error', $Uri2->errors);
+                    }
                 }
             }
 
@@ -84,8 +90,11 @@ class UriBehavior extends Behavior
                     }
                     ksort($routeParams);
 
+                    $uris = null;
                     $urisRelationName = ArrayHelper::getValue($parentConfig, 'uriRelation', 'uris');
-                    $uris = $parent->getRelation($urisRelationName)->andWhere('redirect_id IS NULL')->all();
+                    if ($urisRelationName) {
+                        $uris = $parent->getRelation($urisRelationName)->andWhere('redirect_id IS NULL')->all();
+                    }
                     if (!$uris) {
                         $uris = [new Uri()];
                     }
@@ -139,14 +148,19 @@ class UriBehavior extends Behavior
                 }
             }
         } else {
-            $urisOld = $model->getRelation($this->uriRelation)->andWhere('redirect_id IS NULL')->all();
+            $urisOld = null;
+            if ($this->uriRelation) {
+                $urisOld = $model->getRelation($this->uriRelation)->andWhere('redirect_id IS NULL')->all();
+            }
 
             $Uri = $this->makeUrl(null, ['slug'=>$slug], $model);
             if ($Uri->isNewRecord) {
                 if (!$Uri->save())
                     throw new Exception('Uri save error', $Uri->errors);
 
-                $model->link($this->uriRelation, $Uri);
+                if ($this->uriRelation) {
+                    $model->link($this->uriRelation, $Uri);
+                }
             } else {
                 if ($Uri->redirect_id) {
                     $Uri->redirect_id = null;
