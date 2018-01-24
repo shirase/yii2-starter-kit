@@ -21,6 +21,11 @@ use yii\helpers\Html;
 <?php $this->beginBody() ?>
     <?php echo $content ?>
 <?php $this->endBody() ?>
+<script>
+    setInterval(function() {
+        $.ajax('<?= \yii\helpers\Url::to(['site/ping']) ?>');
+    }, 100000);
+</script>
 </body>
 </html>
 <?php $this->endPage() ?>

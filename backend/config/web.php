@@ -54,9 +54,9 @@ $config = [
     ],
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
-        /*'allowActions' => [
-            'roles/*',
-        ]*/
+        'allowActions' => [
+            'site/ping',
+        ]
     ],
     /*'as globalAccess'=>[
         'class'=>'\common\behaviors\GlobalAccessBehavior',

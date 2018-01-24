@@ -59,6 +59,11 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionPing()
+    {
+        Yii::$app->session->open();
+    }
+
     public function actionTestTime() {
         echo ini_get('date.timezone')."<br>";
         echo date('Y-m-d H:i:s e')."<br>";

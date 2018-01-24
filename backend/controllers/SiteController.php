@@ -76,4 +76,9 @@ class SiteController extends \yii\web\Controller
 
         return $this->render('settings', ['model' => $model]);
     }
+
+    public function actionPing()
+    {
+        Yii::$app->session->open();
+    }
 }

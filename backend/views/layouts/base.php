@@ -47,6 +47,11 @@ if (Yii::$app->session->hasFlash('script')) {
     <?php $this->beginBody() ?>
         <?php echo $content ?>
     <?php $this->endBody() ?>
+    <script>
+        setInterval(function() {
+            $.ajax('<?= \yii\helpers\Url::to(['site/ping']) ?>');
+        }, 10000);
+    </script>
 <?php echo Html::endTag('body') ?>
 </html>
 <?php $this->endPage() ?>
