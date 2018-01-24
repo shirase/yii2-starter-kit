@@ -50,7 +50,8 @@ $config = [
         ],
         'request' => [
             'baseUrl' => rtrim(env('FRONTEND_URL'), '/'),
-            'cookieValidationKey' => env('FRONTEND_COOKIE_VALIDATION_KEY')
+            'cookieValidationKey' => env('FRONTEND_COOKIE_VALIDATION_KEY'),
+            'csrfParam' => '_frontendCSRF',
         ],
         'user' => [
             'loginUrl'=>['/user/sign-in/login'],

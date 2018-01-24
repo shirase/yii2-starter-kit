@@ -25,6 +25,7 @@ $config = [
         'request' => [
             'baseUrl' => rtrim(env('BACKEND_URL'), '/'),
             'cookieValidationKey' => env('BACKEND_COOKIE_VALIDATION_KEY'),
+            'csrfParam' => '_backendCSRF',
         ],
         'user' => [
             'loginUrl'=>['sign-in/login'],
