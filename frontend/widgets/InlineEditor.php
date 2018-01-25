@@ -1,7 +1,6 @@
 <?php
 namespace frontend\widgets;
 
-use dosamigos\ckeditor\CKEditorInline;
 use dosamigos\ckeditor\CKEditorWidgetAsset;
 use frontend\assets\CKEditorAsset;
 use frontend\assets\EditableAsset;
@@ -111,6 +110,7 @@ class InlineEditor extends Widget
                 'options' => [
                     'data-saveurl'=>$this->saveUrl,
                     'data-attribute'=>$this->attribute,
+                    'class' => 'cke_editable_inline',
                 ],
                 'preset' => 'custom',
                 'clientOptions' => [
