@@ -42,6 +42,11 @@ class PageQuery extends \common\db\ActiveQuery
         return parent::one($db);
     }
 
+    public function category($id)
+    {
+        return $this->andWhere(['pid' => $id]);
+    }
+
     public function type($pluginClass)
     {
         $pageType = PageType::findOne(['plugin' => $pluginClass]);
