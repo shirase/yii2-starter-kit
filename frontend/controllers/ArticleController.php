@@ -59,9 +59,11 @@ class ArticleController extends Controller
 
         $categoryId = null;
 
+        /** @var ArticleQuery $query */
+        $query = $dataProvider->query;
+        $query->published();
+
         if ($model) {
-            /** @var ArticleQuery $query */
-            $query = $dataProvider->query;
             $query->category($model->id);
         }
 
