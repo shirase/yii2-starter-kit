@@ -1,6 +1,10 @@
 Yii Starter Kit Change Log
 ==========================
 
+3.0.24 under development
+------------------------
+- gallery changes
+
 3.0.23.1
 --------
 - Bug: Bad iframe popup close background size for Edge browser

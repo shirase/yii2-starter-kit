@@ -17,7 +17,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?php if (\Yii::$app->user->can('/'.$this->context->uniqueId.'/create')) echo Html::a(Yii::t('backend', 'Create'), ['create']+$this->context->actionParams, ['class' => 'btn btn-success']) ?>
-        <?= Html::a(Yii::t('backend', 'Back'), ['gallery/index', 'returned'=>true], ['class' => 'btn btn-default']) ?>
     </p>
 
     <?php \shirase\grid\sortable\Sortable::begin(['id'=>'gallery-item-index-sortable', 'dataProvider'=>$dataProvider, 'sortItemsSelector'=>'.item']); ?>

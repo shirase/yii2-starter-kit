@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model common\models\GalleryItem */
 
 $this->title = Yii::t('backend', 'Create');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Widget Carousel Items'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Gallery Items')];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="gallery-item-create">

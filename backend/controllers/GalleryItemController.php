@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\Gallery;
 use Yii;
 use common\models\GalleryItem;
 use common\models\search\GalleryItemSearch;
@@ -47,13 +48,28 @@ class GalleryItemController extends Controller
 
     /**
      * Lists all GalleryItem models.
-     * @param $gallery
+     * @param null $gallery_id
+     * @param null $key
      * @return mixed
+     * @internal param $gallery
      */
-    public function actionIndex($gallery)
+    public function actionIndex($gallery_id = null, $key = null)
     {
+        if ($key) {
+            $gallery = Gallery::findOne(['key' => $key]);
+            if (!$gallery) {
+                $gallery = new Gallery();
+                $gallery->key = $key;
+                $gallery->status = Gallery::STATUS_DRAFT;
+                $gallery->save();
+            }
+
+            $gallery_id = $gallery->id;
+            $this->actionParams = ['gallery_id' => $gallery_id];
+        }
+
         $searchModel = new GalleryItemSearch();
-        $searchModel->gallery_id = $gallery;
+        $searchModel->gallery_id = $gallery_id;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -63,37 +79,18 @@ class GalleryItemController extends Controller
     }
 
     /**
-     * Displays a single GalleryItem model.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionView($id)
-    {
-        $model=$this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            if (!Yii::$app->user->can('/' . \common\components\helpers\Url::normalizeRoute('update'))) {
-                throw new HttpException(403);
-            }
-            Yii::$app->session->setFlash('kv-detail-success', 'Saved record successfully');
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('view', ['model'=>$model]);
-        }
-    }
-
-    /**
      * Creates a new GalleryItem model.
      * If creation is successful, the browser will be redirected to the 'view' page.
-     * @param $gallery
+     * @param $gallery_id
      * @return mixed
      * @throws HttpException
+     * @internal param $gallery
      */
-    public function actionCreate($gallery)
+    public function actionCreate($gallery_id)
     {
         $model = new \backend\models\GalleryItem();
         $model->loadDefaultValues();
-        $model->gallery_id = $gallery;
+        $model->gallery_id = $gallery_id;
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             foreach ($model->images as $image) {
