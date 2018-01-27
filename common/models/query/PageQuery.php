@@ -1,6 +1,7 @@
 <?php
 
 namespace common\models\query;
+use common\models\PageType;
 
 /**
  * This is the ActiveQuery class for [[\common\models\Page]].
@@ -39,5 +40,17 @@ class PageQuery extends \common\db\ActiveQuery
     public function one($db = null)
     {
         return parent::one($db);
+    }
+
+    public function type($pluginClass)
+    {
+        $pageType = PageType::findOne(['plugin' => $pluginClass]);
+        if ($pageType) {
+            $this->andWhere(['type_id' => $pageType->id]);
+        } else {
+            $this->andWhere('1=0');
+        }
+
+        return $this;
     }
 }
