@@ -12,7 +12,7 @@ use common\components\WidgetBuilder;
  */
 class InlineEditorBuilder extends WidgetBuilder
 {
-    protected $class = InlineEditor::class;
+    protected static $class = InlineEditor::class;
 
     public static function build($model, $attribute) {
         $builder = new self();
