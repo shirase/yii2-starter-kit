@@ -28,21 +28,21 @@ class WidgetBuilder
     public function begin()
     {
         /** @var Widget $class */
-        $class = self::class;
+        $class = self::$class;
         return $class::begin($this->data);
     }
 
     public static function end()
     {
         /** @var Widget $class */
-        $class = self::class;
+        $class = self::$class;
         return $class::end();
     }
 
     public function __toString()
     {
         /** @var Widget $class */
-        $class = self::class;
+        $class = self::$class;
         return $class::widget($this->data);
     }
 }
