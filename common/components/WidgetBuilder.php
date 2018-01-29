@@ -8,7 +8,7 @@ use yii\base\Widget;
  */
 class WidgetBuilder
 {
-    protected $class;
+    protected static $class;
     protected $data;
 
     public function setData($data) {
