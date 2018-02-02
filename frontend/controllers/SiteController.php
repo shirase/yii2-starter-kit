@@ -1,6 +1,8 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Page;
+use frontend\components\Seo;
 use Yii;
 use common\commands\SendEmailCommand;
 use common\web\Controller;
@@ -33,6 +35,9 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        $this->view->params['seoKey'] = 'index';
+        Seo::make(new Page());
+
         return $this->render('index');
     }
 
