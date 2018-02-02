@@ -35,6 +35,14 @@ class Url extends \yii\helpers\Url
 
     public static function image($path, $params = [])
     {
+        if (($p = strrpos($path, '.'))!==false) {
+            $ext = strtolower(substr($path, $p + 1));
+
+            if ($ext == 'svg') {
+                return self::storage($path);
+            }
+        }
+
         $params['path'] = $path;
         return \Yii::$app->glide->createSignedUrl($params);
     }
