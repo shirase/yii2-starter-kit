@@ -65,6 +65,7 @@ class UserController extends Controller
     public function actionCreate()
     {
         $model = new UserForm();
+        $model->getUser()->status = User::STATUS_ACTIVE;
         $model->scenario = 'create';
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);

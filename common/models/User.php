@@ -242,7 +242,7 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             self::STATUS_NOT_ACTIVE => Yii::t('common', 'Not Active'),
             self::STATUS_ACTIVE => Yii::t('common', 'Active'),
-            self::STATUS_DELETED => Yii::t('common', 'Deleted')
+            self::STATUS_DELETED => Yii::t('common', 'Blocked')
         ];
     }
 
