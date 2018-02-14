@@ -66,11 +66,24 @@ Required PHP extensions:
 	DB_PASSWORD      = password
 	```
 
-	- Set application canonical urls
+	- Set application urls (for single domain configuration)
 	```
-	FRONTEND_URL    = http://yii2-starter-kit.dev
-	BACKEND_URL     = http://backend.yii2-starter-kit.dev
-	STORAGE_URL     = http://storage.yii2-starter-kit.dev
+	FRONTEND_URL    = /
+	BACKEND_URL     = /admin
+	STORAGE_URL     = /storage
+	FRONTEND_HOST = http://yii2-starter-kit.dev
+    BACKEND_HOST = http://yii2-starter-kit.dev
+    STORAGE_HOST = http://yii2-starter-kit.dev
+	```
+
+	- Set application urls (for multi domain configuration)
+	```
+	FRONTEND_URL    = 
+	BACKEND_URL     = 
+	STORAGE_URL     = 
+	FRONTEND_HOST = http://yii2-starter-kit.dev
+    BACKEND_HOST = http://backend.yii2-starter-kit.dev
+    STORAGE_HOST = http://storage.yii2-starter-kit.dev
 	```
 
 3. Run in command line
@@ -85,35 +98,6 @@ npm run build
 - Build assets, run `npm run build` (install npm before)
 - Build bundle, run `./bin/bundle.sh` (Linux) or `bin\bundle.bat` (Windows)
 - Copy all files to hosting webroot directory
-
-## Single domain installation
-### Setup application
-Adjust settings in `.env` file
-
-```
-FRONTEND_URL    = /
-BACKEND_URL     = /admin
-STORAGE_URL     = /storage/web
-```
-
-Adjust settings in `backend/config/web.php` file
-```
-    ...
-    'components'=>[
-        ...
-        'request' => [
-            'baseUrl' => '/admin',
-        ...
-```
-Adjust settings in `frontend/config/web.php` file
-```
-    ...
-    'components'=>[
-        ...
-        'request' => [
-            'baseUrl' => '',
-        ...
-```
 
 ## Docker installation
 1. Follow [docker install](https://docs.docker.com/engine/installation/) instruction to install docker
@@ -161,7 +145,9 @@ vagrant up
 ```
 That`s all. After provision application will be accessible on http://yii2-starter-kit.dev
 
-#### Single domain apache config
+## Webserver config
+
+### Single domain apache config
 This is an example single domain config for apache
 ```
 <VirtualHost *:80>
@@ -227,7 +213,7 @@ This is an example single domain config for apache
 </VirtualHost>
 ```
 
-#### Single domain nginx config
+### Single domain nginx config
 This is an example single domain config for nginx
 
 ```
