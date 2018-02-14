@@ -93,11 +93,26 @@ npm install
 npm run build
 ```
 
-## Usual hosting installation
+## Apache development installation
+- Use project root as apache webroot directory
+
+## Hosting installation
 - Remove `Assets` section from `.gitignore`
 - Build assets, run `npm run build` (install npm before)
 - Build bundle, run `./bin/bundle.sh` (Linux) or `bin\bundle.bat` (Windows)
-- Copy all files to hosting webroot directory
+- Copy all files to hosting, outside of webroot directory, `app` for example. Use `git` if you can.
+
+### If you have ssh access and can make symlink 
+- Rename or remove current webroot directory
+- Make symlink `frontend/web` to `public_html`
+- Make symlink `backend/web` to `public_html/admin`
+- Make symlink `storage/web` to `public_html/storage`
+
+### If you have only FTP access
+- Change paths in `index.php` files
+- Upload `frontend/web` files to `public_html`
+- Upload `backend/web` files to `public_html/admin`
+- Upload `storage/web` files to `public_html/storage`
 
 ## Docker installation
 1. Follow [docker install](https://docs.docker.com/engine/installation/) instruction to install docker
@@ -144,137 +159,6 @@ vagrant plugin install vagrant-hostmanager
 vagrant up
 ```
 That`s all. After provision application will be accessible on http://yii2-starter-kit.dev
-
-## Webserver config
-
-### Single domain apache config
-This is an example single domain config for apache
-```
-<VirtualHost *:80>
-    ServerName yii2-starter-kit.dev
-
-    RewriteEngine on
-    # the main rewrite rule for the frontend application
-    RewriteCond %{HTTP_HOST} ^yii2-starter-kit.dev$ [NC]
-    RewriteCond %{REQUEST_URI} !^/(backend|admin|storage)
-    RewriteRule !^/frontend/web /frontend/web%{REQUEST_URI} [L]
-    # redirect to the page without a trailing slash (uncomment if necessary)
-    #RewriteCond %{REQUEST_URI} ^/admin/$
-    #RewriteRule ^(admin)/ $1 [L,R=301]
-    # disable the trailing slash redirect
-    RewriteCond %{REQUEST_URI} ^/admin$
-    RewriteRule ^admin /backend/web/index.php [L]
-    # the main rewrite rule for the backend application
-    RewriteCond %{REQUEST_URI} ^/admin
-    RewriteRule ^admin(.*) /backend/web$1 [L]
-    # the main rewrite rule for the storage application
-    RewriteCond %{REQUEST_URI} ^/storage
-    RewriteRule ^storage(.*) /storage/web$1 [L]
-
-    DocumentRoot /your/path/to/yii2-starter-kit
-    <Directory />
-        Options FollowSymLinks
-        AllowOverride None
-        AddDefaultCharset utf-8
-    </Directory>
-    <Directory "/your/path/to/yii2-starter-kit/frontend/web">
-        RewriteEngine on
-        # if a directory or a file exists, use the request directly
-        RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteCond %{REQUEST_FILENAME} !-d
-        # otherwise forward the request to index.php
-        RewriteRule . index.php
-
-        Require all granted
-    </Directory>
-    <Directory "/your/path/to/yii2-starter-kit/backend/web">
-        RewriteEngine on
-        # if a directory or a file exists, use the request directly
-        RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteCond %{REQUEST_FILENAME} !-d
-        # otherwise forward the request to index.php
-        RewriteRule . index.php
-
-        Require all granted
-    </Directory>
-    <Directory "/your/path/to/yii2-starter-kit/storage/web">
-        RewriteEngine on
-        # if a directory or a file exists, use the request directly
-        RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteCond %{REQUEST_FILENAME} !-d
-        # otherwise forward the request to index.php
-        RewriteRule . index.php
-
-        Require all granted
-    </Directory>
-    <FilesMatch \.(htaccess|htpasswd|svn|git)>
-        Require all denied
-    </FilesMatch>
-</VirtualHost>
-```
-
-### Single domain nginx config
-This is an example single domain config for nginx
-
-```
-server {
-    listen 80;
-
-    root /var/www;
-    index index.php index.html;
-
-    server_name yii2-starter-kit.dev;
-
-    charset utf-8;
-
-    # location ~* ^.+\.(jpg|jpeg|gif|png|ico|css|pdf|ppt|txt|bmp|rtf|js)$ {
-    #   access_log off;
-    #   expires max;
-    # }
-
-    location / {
-        rewrite ^(/admin)$ $1/ last;
-        rewrite ^(/storage)$ $1/ last;
-        try_files /frontend/web$uri /frontend/web/index.php?$args;
-    }
-
-    location /admin/ {
-        rewrite ^/admin(.*)$ $1 break;
-        try_files /backend/web$uri /backend/web/index.php?$args;
-    }
-
-    location /storage/ {
-        rewrite ^/storage(.*)$ $1 break;
-        try_files /storage/web$uri /storage/web/index.php?$args;
-    }
-
-    client_max_body_size 32m;
-
-    location ~ \.php$ {
-        fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_pass php-fpm;
-        fastcgi_index index.php;
-        include fastcgi_params;
-
-        ## Cache
-        # fastcgi_pass_header Cookie; # fill cookie valiables, $cookie_phpsessid for exmaple
-        # fastcgi_ignore_headers Cache-Control Expires Set-Cookie; # Use it with caution because it is cause SEO problems
-        # fastcgi_cache_key "$request_method|$server_addr:$server_port$request_uri|$cookie_phpsessid"; # generating unique key
-        # fastcgi_cache fastcgi_cache; # use fastcgi_cache keys_zone
-        # fastcgi_cache_path /tmp/nginx/ levels=1:2 keys_zone=fastcgi_cache:16m max_size=256m inactive=1d;
-        # fastcgi_temp_path  /tmp/nginx/temp 1 2; # temp files folder
-        # fastcgi_cache_use_stale updating error timeout invalid_header http_500; # show cached page if error (even if it is outdated)
-        # fastcgi_cache_valid 200 404 10s; # cache lifetime for 200 404;
-        # or fastcgi_cache_valid any 10s; # use it if you want to cache any responses
-    }
-}
-
-## PHP-FPM Servers ##
-upstream php-fpm {
-    server app:9000;
-}
-```
 
 ## Demo data
 ### Demo Users
