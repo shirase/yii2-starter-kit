@@ -93,7 +93,7 @@ npm install
 npm run build
 ```
 
-## Apache development installation
+## Apache development installation (IMPORTANT! Do not use for production!)
 - Use project root as apache webroot directory
 
 ## Hosting installation
@@ -109,6 +109,10 @@ npm run build
 - Make symlink `storage/web` to `public_html/storage`
 
 ### If you have only FTP access
+- Upload `symlink.php` to webroot directory, run it like `http://example.com/symlink.php`
+- Delete `symlink.php`
+
+#### If not have rights
 - Change paths in `index.php` files
 - Upload `frontend/web` files to `public_html`
 - Upload `backend/web` files to `public_html/admin`
