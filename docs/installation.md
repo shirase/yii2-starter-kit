@@ -99,6 +99,7 @@ npm run build
 ## Hosting installation
 - Remove `Assets` section from `.gitignore`
 - Build assets, run `npm run build` (install npm before)
+- Change `style.scss` to `style.css` in `frontend/assets/FrontendAsset.php` and `backend/assets/BackendAsset.php` files
 - Build bundle, run `./bin/bundle.sh` (Linux) or `bin\bundle.bat` (Windows)
 - Copy all files to hosting, outside of webroot directory, `app` for example. Use `git` if you can.
 
