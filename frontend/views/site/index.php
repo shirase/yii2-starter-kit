@@ -63,13 +63,14 @@ $this->title = Yii::$app->name;
         <div class="row">
             <div class="col-lg-5">
                 <h2><?= \Yii::t('frontend', 'Contact') ?></h2>
-                <?php Pjax::begin(['id' => 'contact_form_container', 'enablePushState' => false]) ?><?php Pjax::end() ?>
+                <?php \yii\widgets\PjaxAsset::register($this) ?>
+                <div id="contact_form_holder"></div>
                 <?php Script::begin() ?>
                 <script>
                     $.pjax({
                         url: '<?= Url::to(['/site/contact']) ?>',
-                        container: '#contact_form_container',
-                        push: false
+                        container: '#contact_form_holder',
+                        history: false
                     });
                 </script>
                 <?php Script::end() ?>

@@ -44,19 +44,27 @@ class SiteController extends Controller
     public function actionContact()
     {
         $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post())) {
-            if ($model->contact(Yii::$app->params['adminEmail'])) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            if (Yii::$app->mailer->compose()
+                ->setTo(Yii::$app->params['adminEmail'])
+                ->setFrom(Yii::$app->params['robotEmail'])
+                ->setReplyTo([$model->email => $model->name])
+                ->setSubject($model->subject)
+                ->setTextBody($model->body)
+                ->send())
+            {
                 Yii::$app->getSession()->setFlash('alert', [
                     'body'=>Yii::t('frontend', 'Thank you for contacting us. We will respond to you as soon as possible.'),
                     'options'=>['class'=>'alert-success']
                 ]);
-                return $this->refresh();
             } else {
                 Yii::$app->getSession()->setFlash('alert', [
                     'body'=>\Yii::t('frontend', 'There was an error sending email.'),
                     'options'=>['class'=>'alert-danger']
                 ]);
             }
+
+            return $this->refresh();
         }
 
         return $this->render('contact', [

@@ -24,13 +24,13 @@ class ContactForm extends Model
     {
         return [
             // name, email, subject and body are required
-            [['name', 'email', 'subject', 'body', 'verifyCode'], 'required'],
+            [['name', 'email', 'subject', 'body'], 'required'],
             // We need to sanitize them
             [['name', 'subject', 'body'], 'filter', 'filter' => 'strip_tags'],
             // email has to be a valid email address
             ['email', 'email'],
             // verifyCode needs to be entered correctly
-            ['verifyCode', ReCaptchaValidator::class],
+            //['verifyCode', ReCaptchaValidator::class],
         ];
     }
 
@@ -46,25 +46,5 @@ class ContactForm extends Model
             'body' => Yii::t('frontend', 'Body'),
             'verifyCode' => Yii::t('frontend', 'Verification Code')
         ];
-    }
-
-    /**
-     * Sends an email to the specified email address using the information collected by this model.
-     * @param  string  $email the target email address
-     * @return boolean whether the model passes validation
-     */
-    public function contact($email)
-    {
-        if ($this->validate()) {
-            return Yii::$app->mailer->compose()
-                ->setTo($email)
-                ->setFrom(Yii::$app->params['robotEmail'])
-                ->setReplyTo([$this->email => $this->name])
-                ->setSubject($this->subject)
-                ->setTextBody($this->body)
-                ->send();
-        } else {
-            return false;
-        }
     }
 }
