@@ -3885,16 +3885,16 @@
         },
         {
             "name": "shirase55/yii2-widgets-activeform",
-            "version": "1.0.1",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shirase/yii2-widgets-activeform.git",
-                "reference": "bbb81a1362d3d1d5e5a0be386792cc487ecd014c"
+                "reference": "6f4cf92223730339c602f5476813182df38a326d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shirase/yii2-widgets-activeform/zipball/bbb81a1362d3d1d5e5a0be386792cc487ecd014c",
-                "reference": "bbb81a1362d3d1d5e5a0be386792cc487ecd014c",
+                "url": "https://api.github.com/repos/shirase/yii2-widgets-activeform/zipball/6f4cf92223730339c602f5476813182df38a326d",
+                "reference": "6f4cf92223730339c602f5476813182df38a326d",
                 "shasum": ""
             },
             "require": {
@@ -3907,7 +3907,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2016-11-24T12:40:44+00:00"
+            "time": "2018-02-22T09:27:18+00:00"
         },
         {
             "name": "studio-42/elfinder",
