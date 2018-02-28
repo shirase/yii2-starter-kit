@@ -7,6 +7,7 @@ use Yii;
 use common\commands\SendEmailCommand;
 use common\web\Controller;
 use frontend\models\ContactForm;
+use yii\web\Cookie;
 
 /**
  * Site controller
@@ -70,6 +71,14 @@ class SiteController extends Controller
         return $this->render('contact', [
             'model' => $model
         ]);
+    }
+
+    public function actionLang($lang) {
+        Yii::$app->response->cookies->add(new Cookie([
+            'name' => Yii::$app->behaviors['locale']->cookieName,
+            'value' => encode($lang),
+            'expire' => strtotime('+1 year'),
+        ]));
     }
 
     public function actionPing()
