@@ -88,6 +88,7 @@ class GalleryController extends Controller
     public function actionCreate()
     {
         $model = new Gallery();
+        $model->status = Gallery::STATUS_ACTIVE;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index', 'returned'=>true]);
