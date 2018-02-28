@@ -16,7 +16,11 @@ class ContextBlockController extends Controller
         if (!\Yii::$app->user->can('administrator'))
             throw new ForbiddenHttpException();
 
-        $model = ContextBlock::get($id);
+        $model = ContextBlock::findOne($id);
+        if (!$model) {
+            $model = new ContextBlock();
+            $model->key = $id;
+        }
 
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
             return \Yii::t('frontend', 'Saved');
