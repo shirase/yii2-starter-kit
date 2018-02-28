@@ -31,7 +31,7 @@ class PageController extends Controller
 
     public function actionView($slug)
     {
-        $query = Page::find()->andWhere(['slug'=>$slug]);
+        $query = Page::find()->andWhere(['slug' => $slug, 'language' => Yii::$app->language]);
         if (!Yii::$app->user->can('manager')) {
             $query->active();
         }
