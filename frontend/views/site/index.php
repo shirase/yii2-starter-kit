@@ -22,12 +22,9 @@ $this->title = Yii::$app->name;
     </div>
 
     <div class="body-content">
-        <div class="context-home">
-            <?php $contextBlock = \common\models\ContextBlock::get('home'); ?>
-            <?= \frontend\widgets\InlineEditorBuilder::build($contextBlock, 'body') ?>
-        </div>
-
         <div class="row">
+            <?php $contextBlock = \common\models\ContextBlock::get('home'); ?>
+            <?php \frontend\widgets\InlineEditorBuilder::build($contextBlock, 'body')->begin() ?>
             <div class="col-lg-4">
                 <h2>Heading</h2>
 
@@ -58,6 +55,7 @@ $this->title = Yii::$app->name;
 
                 <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
             </div>
+            <?php \frontend\widgets\InlineEditorBuilder::end() ?>
         </div>
 
         <div class="row">
