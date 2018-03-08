@@ -125,7 +125,7 @@ rewrite ^(.*)$ /frontend/web$1 break;
 - Upload `symlink.php` to webroot directory, run it like `http://example.com/symlink.php`
 - Delete `symlink.php`
 
-#### If not have rights
+### If not have rights
 - Change paths in `index.php` files
 - Upload `frontend/web` files to `public_html`
 - Upload `backend/web` files to `public_html/admin`
