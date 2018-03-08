@@ -5,7 +5,8 @@
 - [Manual installation](#manual-installation)
     - [Requirements](#requirements)
     - [Setup application](#setup-application)
-- [Usual hosting installation](#usual-hosting-installation)
+- [Server configuration](#server-configuration)
+- [Hosting installation](#hosting-installation)
 - [Docker installation](#docker-installation)
 - [Vagrant installation](#vagrant-installation)
 - [Single domain installtion](#single-domain-installation)
@@ -93,8 +94,19 @@ npm install
 npm run build
 ```
 
-## Apache development installation (IMPORTANT! Do not use for production!)
+## Server configuration
+### Apache
 - Use project root as apache webroot directory
+
+### Nginx
+- Use `docker/nginx/vhost.conf` as example
+
+### Nginx for static
+- Add rewrites to static location
+```
+rewrite ^/admin(.*)$ /backend/web$1 break;
+rewrite ^(.*)$ /frontend/web$1 break;
+```
 
 ## Hosting installation
 - Remove `Assets` section from `.gitignore`
