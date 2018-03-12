@@ -39,7 +39,7 @@ class ArticleAttachment extends ActiveRecord
         return [
             [
                 'class' => TimestampBehavior::class,
-                'value' => function() {return date(DATE_ISO8601);},
+                'value' => function() {return date(DATE_SQL);},
                 'updatedAtAttribute' => false
             ]
         ];

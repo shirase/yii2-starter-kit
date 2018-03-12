@@ -56,7 +56,7 @@ class Page extends \common\db\ActiveRecord
         return [
             [
                 'class' => TimestampBehavior::class,
-                'value' => function() {return date(DATE_ISO8601);}
+                'value' => function() {return date(DATE_SQL);}
             ],
             'slug' => [
                 'class' => SluggableBehavior::class,
