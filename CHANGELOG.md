@@ -1,9 +1,26 @@
 Yii Starter Kit Change Log
 ==========================
 
-3.0.24 under development
-------------------------
+3.0.24
+------
+- Use default for `kartik\grid\GridView::toggleData`
+- composer: disable fxp-asset
+- `common/behaviors/UriBehavior::uriRelation` can be empty
+- request csrfParam
 - gallery changes
+- article index published only
+- `common/components/WidgetBuilder::end` method
+- static `common/components/WidgetBuilder::class`
+- `common/components/helpers/Url::image` use `::storage` for svg
+- index seo
+- Bug: `backend/site/settings` allowed for all and change global
+- docs/installation.md
+- symlink.php
+- `yiisoft/yii2:2.0.14`
+- page/view language condition
+- ContextBlockController update by id
+- site/lang action
+- ajax contact form on main page
 
 3.0.23.1
 --------
