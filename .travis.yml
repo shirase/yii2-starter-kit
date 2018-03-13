@@ -26,6 +26,7 @@ install:
     if [ $TRAVIS_PHP_VERSION != '7.1' ]; then
         phpenv config-rm xdebug.ini
     fi
+  - phpenv config-add travis.php.ini
   - travis_retry composer self-update && composer --version
   - travis_retry composer global require "codeception/codeception" "codeception/specify" "codeception/verify"
   - travis_retry composer update --prefer-dist --no-interaction
