@@ -11,9 +11,6 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Pages'), 'url' =
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="page-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?= Html::a(Yii::t('backend', 'Back'), ['index', 'returned'=>true], ['class' => 'btn btn-default']) ?>
         <?= Html::a(Yii::t('backend', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>

@@ -1,6 +1,7 @@
 <?php
 /**
  * @var $this yii\web\View
+ * @var $content string
  */
 use backend\assets\BackendAsset;
 use backend\widgets\Menu;
@@ -60,6 +61,7 @@ $bundle = BackendAsset::register($this);
                                         <!-- inner menu: contains the actual data -->
                                         <ul class="menu">
                                             <?php foreach(\backend\models\SystemLog::find()->orderBy(['log_time'=>SORT_DESC])->limit(5)->all() as $logEntry): ?>
+                                                <?php /** @var $logEntry \backend\models\SystemLog */ ?>
                                                 <li>
                                                     <a href="<?php echo Yii::$app->urlManager->createUrl(['/log/view', 'id'=>$logEntry->id]) ?>">
                                                         <i class="fa fa-warning <?php echo $logEntry->level == \yii\log\Logger::LEVEL_ERROR ? 'text-red' : 'text-yellow' ?>"></i>

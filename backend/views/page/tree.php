@@ -11,9 +11,6 @@ $this->title = Yii::t('backend', 'Pages');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="page-tree">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <?=  \talma\widgets\JsTree::widget([
         'name' => 'jstree',
         'data' => new JsExpression(

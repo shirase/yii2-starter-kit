@@ -29,7 +29,6 @@ $controller->layout = 'common';
 
     <div class="box">
         <div class="box-body">
-            <h1><?= Html::encode($this->title) ?></h1>
             <?php Pjax::begin(); ?>
             <p>
                 <?php if (\Yii::$app->user->can('/'.$this->context->uniqueId.'/create')) echo Html::a(Yii::t('backend', 'Create'), ['create']+$this->context->actionParams, ['class' => 'btn btn-success', 'data-pjax'=>0]) ?>
