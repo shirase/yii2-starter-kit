@@ -14,6 +14,7 @@ return [
         'published_at' => new \yii\db\Expression('NOW() - INTERVAL 1 hour'),
         'created_at' => new \yii\db\Expression('NOW()'),
         'updated_at' => new \yii\db\Expression('NOW()'),
+        'language' => 'ru-RU',
     ],
     [
         'id' => 2,
@@ -26,5 +27,6 @@ return [
         'published_at' => new \yii\db\Expression('NOW() + INTERVAL 1 year'),
         'created_at' => new \yii\db\Expression('NOW() + INTERVAL 1 year'),
         'updated_at' => new \yii\db\Expression('NOW() + INTERVAL 1 year'),
+        'language' => 'ru-RU',
     ]
 ];
