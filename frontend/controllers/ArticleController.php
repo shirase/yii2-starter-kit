@@ -23,11 +23,12 @@ use yii\web\NotFoundHttpException;
  */
 class ArticleController extends Controller
 {
-    public function actions() {
+    public function actions()
+    {
         return [
-            'update'=>[
-                'class'=>UpdateAction::class,
-                'modelClass'=>Article::class,
+            'update' => [
+                'class' => UpdateAction::class,
+                'modelClass' => Article::class,
             ]
         ];
     }
@@ -37,13 +38,13 @@ class ArticleController extends Controller
      * @return string
      * @throws HttpException
      */
-    public function actionIndex($slug=null)
+    public function actionIndex($slug = null)
     {
         $model = null;
 
         if ($slug) {
-            $model = Page::findOne(['slug' => $slug]);
-            if(!$model) {
+            $model = Page::findOne(['slug' => $slug, 'language' => Yii::$app->language]);
+            if (!$model) {
                 throw new HttpException(404);
             }
 
@@ -68,7 +69,7 @@ class ArticleController extends Controller
         }
 
         $this->trigger('beforeRenderIndex');
-        return $this->render('index', ['dataProvider'=>$dataProvider, 'category'=>$model, 'categoryId'=>$categoryId]);
+        return $this->render('index', ['dataProvider' => $dataProvider, 'category' => $model, 'categoryId' => $categoryId]);
     }
 
     /**
@@ -77,9 +78,9 @@ class ArticleController extends Controller
      * @return string
      * @throws NotFoundHttpException
      */
-    public function actionView($slug, $category=null)
+    public function actionView($slug, $category = null)
     {
-        $query = Article::find()->andWhere(['slug'=>$slug]);
+        $query = Article::find()->andWhere(['slug' => $slug, 'language' => Yii::$app->language]);
         if (!Yii::$app->user->can('manager')) {
             $query->published();
         }
@@ -91,11 +92,11 @@ class ArticleController extends Controller
             Breadcrumbs::make($Category, $model->title);
         }
 
-        $this->view->params['seoKey'] = 'article-'.$model->id;
+        $this->view->params['seoKey'] = 'article-' . $model->id;
         Seo::make($model);
 
         $this->trigger('beforeRenderView');
-        return $this->render('view', ['model'=>$model]);
+        return $this->render('view', ['model' => $model]);
     }
 
     /**
