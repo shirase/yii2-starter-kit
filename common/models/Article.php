@@ -28,6 +28,7 @@ use yii\db\ActiveRecord;
  * @property integer $updated_by
  * @property integer $created_at
  * @property integer $updated_at
+ * @property string $language
  *
  * @property User $author
  * @property User $updater
@@ -134,6 +135,7 @@ class Article extends ActiveRecord
                 return date(DATE_SQL);
             }],
             [['status'], 'integer'],
+            [['language'], 'string', 'max' => 5],
             [['slug', 'thumbnail_path'], 'string', 'max' => 1024],
             [['title'], 'string', 'max' => 255],
             [['attachments', 'thumbnail', 'category_ids'], 'safe']

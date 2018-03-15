@@ -97,6 +97,7 @@ class ArticleController extends Controller
     {
         $model = new Article();
         $model->status = Article::STATUS_PUBLISHED;
+        $model->language = ArrayHelper::getValue(Yii::$app->params['availableLocales'], 0);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('script', '$(document).trigger("action.Create", '.Json::encode(['class'=>get_class($model)]+$model->attributes).');');

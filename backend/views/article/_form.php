@@ -19,6 +19,8 @@ use yii\web\JsExpression;
 
     <?php $form = ActiveForm::begin(['id'=>'article-form']); ?>
 
+    <?php if (sizeof(Yii::$app->params['availableLocales']) > 1) echo $form->field($model, 'language')->dropDownList(Yii::$app->params['availableLocales']) ?>
+
     <?php echo $form->field($model, 'status')->dropDownList(['1'=>Yii::t('backend', 'Published'), '0'=>Yii::t('backend', 'Draft')]) ?>
 
     <?php echo $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
