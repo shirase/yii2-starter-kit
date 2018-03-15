@@ -80,7 +80,7 @@ class ArticleController extends Controller
      */
     public function actionView($slug, $category = null)
     {
-        $query = Article::find()->andWhere(['slug' => $slug, 'language' => Yii::$app->language]);
+        $query = Article::find()->andWhere(['slug' => $slug]);
         if (!Yii::$app->user->can('manager')) {
             $query->published();
         }
