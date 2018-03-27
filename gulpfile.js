@@ -156,6 +156,7 @@ gulp.task('js-frontend', function() {
                 format: 'iife',
             },
             plugins: [
+                'external-helpers',
                 resolve({
                     jsnext: true,
                     browser: true,
