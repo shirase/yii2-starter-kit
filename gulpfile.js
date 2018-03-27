@@ -146,12 +146,14 @@ gulp.task('js-frontend', function() {
         .pipe(rollup({
             input: ['frontend/js/app.js'],
             allowRealFiles: true,
-            format: 'iife',
             external: [
                 'jquery'
             ],
-            globals: {
-                'jquery': 'jQuery'
+            output: {
+                globals: {
+                    'jquery': 'jQuery'
+                },
+                format: 'iife',
             },
             plugins: [
                 resolve({
@@ -165,7 +167,12 @@ gulp.task('js-frontend', function() {
                 rollupBabel({
                     babelrc: false,
                     presets: [
-                        ['babel-preset-es2015-rollup']
+                        [
+                            'env',
+                            {
+                                "modules": false
+                            }
+                        ]
                     ],
                     exclude: ['node_modules', 'vendor/npm-asset', 'vendor/bower-asset']
                 })
