@@ -13,6 +13,7 @@ var gulp = require('gulp'),
     rollupBabel = require('rollup-plugin-babel'),
     resolve = require('rollup-plugin-node-resolve'),
     commonjs = require('rollup-plugin-commonjs'),
+    replace = require('rollup-plugin-replace'),
     uglify = require('gulp-uglify');
 
 var path = require('path');
@@ -165,6 +166,9 @@ gulp.task('js-frontend', function() {
                     }
                 }),
                 commonjs(),
+                replace({
+                    'process.env.NODE_ENV': JSON.stringify('production')
+                }),
                 rollupBabel({
                     babelrc: false,
                     presets: [
