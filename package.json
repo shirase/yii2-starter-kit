@@ -6,7 +6,11 @@
     "css": "gulp css",
     "build": "gulp build"
   },
-  "dependencies": {},
+  "dependencies": {
+    "vee-validate": "^2.0.6",
+    "vue": "^2.5.16",
+    "vuedraggable": "^2.16.0"
+  },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
     "babel-plugin-external-helpers": "^6.22.0",

@@ -22,7 +22,7 @@ var argv = require('yargs').argv;
 
 gulp.task('default', ['watch']);
 
-gulp.task('build', ['sass-frontend', 'sass-backend', 'js-frontend']);
+gulp.task('build', ['sass-frontend', 'sass-backend', 'js-frontend', 'js-backend']);
 
 gulp.task('sass-pre', function() {
     gulp.src('frontend/web/css/*.scss', {base: './'})
@@ -187,8 +187,56 @@ gulp.task('js-frontend', function() {
         .pipe(gulp.dest('frontend/web/bundle'));
 });
 
-gulp.task('watch', ['sass-frontend', 'sass-backend', 'js-frontend'], function() {
+gulp.task('js-backend', function() {
+    return gulp.src('backend/js/**/*.js')
+        .pipe(plumber({
+            errorHandler: function (err) {
+                console.log(err);
+                this.emit('end');
+            }
+        }))
+        .pipe(rollup({
+            input: ['backend/js/vue-bundle.js'],
+            allowRealFiles: true,
+            output: {
+                format: 'iife',
+                globals: {
+                },
+            },
+            plugins: [
+                'external-helpers',
+                resolve({
+                    jsnext: true,
+                    browser: true,
+                    customResolveOptions: {
+                        moduleDirectory: ['node_modules', 'vendor/npm-asset', 'vendor/bower-asset']
+                    }
+                }),
+                commonjs(),
+                replace({
+                    'process.env.NODE_ENV': JSON.stringify('production')
+                }),
+                rollupBabel({
+                    babelrc: false,
+                    presets: [
+                        [
+                            'env',
+                            {
+                                "modules": false
+                            }
+                        ]
+                    ],
+                    exclude: ['node_modules', 'vendor/npm-asset', 'vendor/bower-asset']
+                })
+            ]
+        }))
+        .pipe(uglify())
+        .pipe(gulp.dest('backend/web/bundle'));
+});
+
+gulp.task('watch', ['sass-frontend', 'sass-backend', 'js-frontend', 'js-backend'], function() {
     gulp.watch('frontend/web/css/*.scss', ['sass-frontend']);
     gulp.watch('backend/web/css/*.scss', ['sass-backend']);
     gulp.watch('frontend/js/**/*.js', ['js-frontend']);
+    gulp.watch('backend/js/**/*.js', ['js-backend']);
 });
