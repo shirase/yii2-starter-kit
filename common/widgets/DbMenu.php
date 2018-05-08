@@ -56,13 +56,16 @@ class DbMenu extends Menu
 
         if (!$model) throw new HttpException(500, 'Menu not found');
 
-        $this->activeUrls[] = rtrim(Yii::$app->request->baseUrl, '/') . '/' . Yii::$app->request->pathInfo;
+        $url = rtrim(Yii::$app->request->baseUrl, '/') . '/' . Yii::$app->request->pathInfo;
+        $this->activeUrls[] = $url;
+        $this->activeUrls[] = Yii::$app->urlManagerFrontend->createAbsoluteUrl($url);
 
         $view = \Yii::$app->controller->view;
         if ($breadcrumbs = ArrayHelper::getValue($view->params, 'breadcrumbs')) {
             foreach ($breadcrumbs as $row) {
                 if ($url = ArrayHelper::getValue($row, 'url')) {
                     $this->activeUrls[] = $url;
+                    $this->activeUrls[] = Yii::$app->urlManagerFrontend->createAbsoluteUrl($url);
                 }
             }
         }
