@@ -85,10 +85,10 @@
         "shirase55/yii2-gii": "dev-master",
         "elisdn/yii2-gii-fixture-generator": "*",
         "yiisoft/yii2-faker": "^2.0.0",
-        "codeception/codeception": "^2.0",
-        "codeception/specify": "^0.4.3",
-        "codeception/verify": "^0.4",
-        "satooshi/php-coveralls": "^1.0"
+        "php-coveralls/php-coveralls": "^2.1",
+        "codeception/codeception": "2.3.9",
+        "codeception/specify": "*",
+        "codeception/verify": "*"
     },
     "suggest": {
         "trntv/yii2-debug-xhprof": "dev-master@dev"
