@@ -60,7 +60,11 @@ function sassCompile(src, base) {
             }
         }))
         .pipe(sourcemaps.init())
-        .pipe(sass())
+        .pipe(sass({
+            outputStyle: 'expanded'
+        }))
+        .pipe(sourcemaps.write({includeContent: false}))
+        .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(base64({
             extensions: ['svg', 'png'],
             maxImageSize: 8*1024
