@@ -28,7 +28,8 @@ class ArticleCest
     public function testUpdate(FunctionalTester $I) {
         $model = new Article();
         $model->setAttributes([
-            'title'=>'Test 1',
+            'title' => 'Test 1',
+            'body' => '',
         ], false);
         if (!$model->save())
             throw new Exception(var_export($model->errors, true));
@@ -45,7 +46,8 @@ class ArticleCest
     public function testDelete(FunctionalTester $I) {
         $model = new Article();
         $model->setAttributes([
-            'title'=>'Test 1',
+            'title' => 'Test 1',
+            'body' => '',
         ], false);
         if (!$model->save())
             throw new Exception(var_export($model->errors, true));
@@ -62,7 +64,8 @@ class ArticleCest
     public function testView(FunctionalTester $I) {
         $model = new Article();
         $model->setAttributes([
-            'title'=>'Test 1',
+            'title' => 'Test 1',
+            'body' => '',
         ], false);
         if (!$model->save())
             throw new Exception(var_export($model->errors, true));

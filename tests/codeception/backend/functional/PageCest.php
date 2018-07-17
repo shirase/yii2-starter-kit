@@ -13,8 +13,9 @@ class PageCest
     public function testIndex(FunctionalTester $I) {
         $model = new Page();
         $model->setAttributes([
-            'name'=>'Test 1',
-            'pid'=>null
+            'name' => 'Test 1',
+            'pid' => null,
+            'language' => 'en-US',
         ], false);
         $model->save();
 
@@ -37,8 +38,9 @@ class PageCest
     public function testUpdate(FunctionalTester $I) {
         $model = new Page();
         $model->setAttributes([
-            'name'=>'Test 1',
-            'pid'=>null
+            'name' => 'Test 1',
+            'pid' => null,
+            'language' => 'en-US',
         ], false);
         $model->save();
 
@@ -54,8 +56,9 @@ class PageCest
     public function testDelete(FunctionalTester $I) {
         $model = new Page();
         $model->setAttributes([
-            'name'=>'Test 1',
-            'pid'=>null
+            'name' => 'Test 1',
+            'pid' => null,
+            'language' => 'en-US',
         ], false);
         $model->save();
 
@@ -71,8 +74,9 @@ class PageCest
     public function testView(FunctionalTester $I) {
         $model = new Page();
         $model->setAttributes([
-            'name'=>'Test 1',
-            'pid'=>null
+            'name' => 'Test 1',
+            'pid' => null,
+            'language' => 'en-US',
         ], false);
         $model->save();
 
@@ -103,8 +107,9 @@ class PageCest
     public function testMove(FunctionalTester $I) {
         $model = new Page();
         $model->setAttributes([
-            'name'=>'Test 2',
-            'pid'=>1
+            'name' => 'Test 2',
+            'pid' => 1,
+            'language' => 'en-US',
         ], false);
         $model->save();
 
