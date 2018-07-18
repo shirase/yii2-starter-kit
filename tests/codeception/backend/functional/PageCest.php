@@ -1,11 +1,33 @@
 <?php
-namespace tests\codeception\backend;
+namespace tests\codeception\backend\functional;
 
 use common\models\Page;
 use common\models\User;
+use tests\codeception\backend\FunctionalTester;
+use tests\codeception\common\fixtures\RbacAuthAssignmentFixture;
+use tests\codeception\common\fixtures\UserFixture;
+use tests\codeception\common\fixtures\UserProfileFixture;
 
 class PageCest
 {
+    public function _fixtures()
+    {
+        return [
+            'user' => [
+                'class' => UserFixture::class,
+                'dataFile' => '@tests/codeception/common/fixtures/data/user.php',
+            ],
+            'user_profile' => [
+                'class' => UserProfileFixture::class,
+                'dataFile' => '@tests/codeception/common/fixtures/data/user_profile.php',
+            ],
+            'rbac_auth_assignment' => [
+                'class' => RbacAuthAssignmentFixture::class,
+                'dataFile' => '@tests/codeception/common/fixtures/data/rbac_auth_assignment.php',
+            ],
+        ];
+    }
+
     public function _before(FunctionalTester $I) {
         \Yii::$app->user->login(User::findOne(1));
     }
