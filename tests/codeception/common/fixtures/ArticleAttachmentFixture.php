@@ -12,4 +12,9 @@ class ArticleAttachmentFixture extends ActiveFixture
     public $depends = [
         'tests\codeception\common\fixtures\ArticleFixture'
     ];
+
+    public function load() {
+        $this->resetTable();
+        parent::load();
+    }
 }
