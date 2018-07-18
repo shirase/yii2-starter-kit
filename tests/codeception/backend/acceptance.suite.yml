@@ -8,4 +8,3 @@ modules:
             entryScript: index-test.php
             cleanup: false
             configFile: '../config/backend/acceptance.php'
-        - tests\codeception\common\_support\FixtureHelper

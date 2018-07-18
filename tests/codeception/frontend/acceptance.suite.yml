@@ -10,4 +10,3 @@ modules:
             cleanup: false
             configFile: '../config/frontend/acceptance.php'
         - tests\codeception\frontend\AcceptanceHelper
-        - tests\codeception\common\_support\FixtureHelper
