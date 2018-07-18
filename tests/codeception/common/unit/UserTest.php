@@ -2,6 +2,9 @@
 namespace tests\codeception\common\unit;
 
 use PHPUnit\Framework\TestCase;
+use tests\codeception\common\fixtures\RbacAuthAssignmentFixture;
+use tests\codeception\common\fixtures\UserFixture;
+use tests\codeception\common\fixtures\UserProfileFixture;
 use Yii;
 use Codeception\Specify;
 
@@ -14,6 +17,23 @@ class UserTest extends TestCase
      */
     protected $tester;
 
+    public function _fixtures()
+    {
+        return [
+            'user' => array(
+                'class' => UserFixture::class,
+                'dataFile' => '@tests/codeception/common/fixtures/data/user.php',
+            ),
+            'user_profile' => [
+                'class' => UserProfileFixture::class,
+                'dataFile' => '@tests/codeception/common/fixtures/data/user_profile.php',
+            ],
+            'rbac_auth_assignment' => [
+                'class' => RbacAuthAssignmentFixture::class,
+                'dataFile' => '@tests/codeception/common/fixtures/data/rbac_auth_assignment.php',
+            ],
+        ];
+    }
 
     protected function _before()
     {
