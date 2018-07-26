@@ -327,6 +327,8 @@ class PageController extends Controller
         } else {
             if($node = Page::find()->orderBy('pos')->andWhere(['pid'=>$parent])->one()) {
                 $model->insertBefore($node->id);
+            } elseif($node = Page::find()->andWhere(['id'=>$parent])->one()) {
+                $model->moveTo($node->id);
             }
         }
         return '{}';
