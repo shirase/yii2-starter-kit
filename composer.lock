@@ -359,7 +359,7 @@
             "version": "4.17.47",
             "source": {
                 "type": "git",
-                "url": "git@github.com:Eonasdan/bootstrap-datetimepicker.git",
+                "url": "https://github.com/Eonasdan/bootstrap-datetimepicker.git",
                 "reference": "25c11d79e614bc6463a87c3dd9cbf8280422e006"
             },
             "dist": {
@@ -3857,16 +3857,16 @@
         },
         {
             "name": "shirase55/yii2-tree-behavior",
-            "version": "1.0.9",
+            "version": "1.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shirase/yii2-tree-behavior.git",
-                "reference": "b3b7e0dab4cbe755ddcb8c41f1542e5441f2d2db"
+                "reference": "96f90caf811260dbb31500679e3d2cf209a7bc71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shirase/yii2-tree-behavior/zipball/b3b7e0dab4cbe755ddcb8c41f1542e5441f2d2db",
-                "reference": "b3b7e0dab4cbe755ddcb8c41f1542e5441f2d2db",
+                "url": "https://api.github.com/repos/shirase/yii2-tree-behavior/zipball/96f90caf811260dbb31500679e3d2cf209a7bc71",
+                "reference": "96f90caf811260dbb31500679e3d2cf209a7bc71",
                 "shasum": ""
             },
             "require": {
@@ -3884,7 +3884,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2018-02-14T09:28:32+00:00"
+            "time": "2018-08-21T06:34:02+00:00"
         },
         {
             "name": "shirase55/yii2-widgets-activeform",
