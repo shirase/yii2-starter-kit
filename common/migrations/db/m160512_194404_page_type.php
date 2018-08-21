@@ -58,7 +58,6 @@ class m160512_194404_page_type extends Migration
         $this->insert('{{%page_type}}', ['pos'=>4, 'name'=>'Статьи', 'plugin'=>'common\plugins\page_type\article\Plugin']);
 
         $this->addColumn('{{%page}}', 'type_id', $this->integer()->defaultValue(1)->notNull());
-        $this->createIndex('type_bpath', '{{%page}}', array('type_id', 'bpath(100)'), true);
         $this->addForeignKey('fk_page_type', '{{%page}}', 'type_id', '{{%page_type}}', 'id', 'RESTRICT', 'RESTRICT');
     }
 
