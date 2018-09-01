@@ -100,7 +100,7 @@ class ArticleController extends Controller
         $model->language = ArrayHelper::getValue(Yii::$app->params['availableLocales'], 0);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('script', '$(document).trigger("action.Create", '.Json::encode(['class'=>get_class($model)]+$model->attributes).');');
+            Yii::$app->session->setFlash('script', 'window.parent.postMessage({action: "Create"}, "' . Yii::$app->urlManagerFrontend->createAbsoluteUrl('') . '")');
             return $this->redirect(['index', 'returned'=>true]);
         } else {
             return $this->render('create', [
@@ -120,7 +120,7 @@ class ArticleController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('script', '$(document).trigger("action.Update", '.Json::encode(['class'=>get_class($model)]+$model->attributes).');');
+            Yii::$app->session->setFlash('script', 'window.parent.postMessage({action: "Update"}, "' . Yii::$app->urlManagerFrontend->createAbsoluteUrl('') . '")');
             return $this->redirect(['index', 'returned'=>true]);
         } else {
             return $this->render('update', [
@@ -158,7 +158,7 @@ class ArticleController extends Controller
             return;
         } else {
             $model = $this->findModel($id);
-            Yii::$app->session->setFlash('script', '$(document).trigger("action.Delete", '.Json::encode(['class'=>get_class($model)]+$model->attributes).');');
+            Yii::$app->session->setFlash('script', 'window.parent.postMessage({action: "Delete"}, "' . Yii::$app->urlManagerFrontend->createAbsoluteUrl('') . '")');
             $model->delete();
             if (!Yii::$app->request->isAjax) {
                 $this->redirect(['index', 'returned'=>true]);

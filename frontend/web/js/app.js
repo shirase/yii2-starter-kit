@@ -67,4 +67,11 @@
             });
         }
     });
+
+    function receiveMessage(event) {
+        if (event.data.action) {
+            $(document).trigger('action.' + event.data.action);
+        }
+    }
+    window.addEventListener("message", receiveMessage, false);
 })(jQuery);

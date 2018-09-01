@@ -150,7 +150,7 @@ class PageController extends Controller
                 if ($valid) {
                     $tx->commit();
 
-                    Yii::$app->session->setFlash('script', '$(document).trigger("action.Create", '.Json::encode(['class'=>get_class($model)]+$model->attributes).');');
+                    Yii::$app->session->setFlash('script', 'window.parent.postMessage({action: "Create"}, "' . Yii::$app->urlManagerFrontend->createAbsoluteUrl('') . '")');
                     return $this->redirect($return ? $return : ['index', 'returned'=>true]);
                 } else {
                     $tx->rollBack();
@@ -209,7 +209,7 @@ class PageController extends Controller
                 if ($valid) {
                     $tx->commit();
 
-                    Yii::$app->session->setFlash('script', '$(document).trigger("action.Update", '.Json::encode(['class'=>get_class($model)]+$model->attributes).');');
+                    Yii::$app->session->setFlash('script', 'window.parent.postMessage({action: "Update"}, "' . Yii::$app->urlManagerFrontend->createAbsoluteUrl('') . '")');
                     return $this->redirect($return ? $return : ['index', 'returned'=>true]);
                 } else {
                     $tx->rollBack();
