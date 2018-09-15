@@ -1,6 +1,18 @@
 Yii Starter Kit Change Log
 ==========================
 
+3.0.25 - dev
+------
+- Use language for article
+- Changes in `webpack.config.js`
+- Fix DbMenu absolute url
+- Fix gulp sass sourcemap
+- Fix tests for mysql-5.7
+- Update `codeception/codeception: 2.4.3`
+- Fix page moveTo bug
+- Update shirase55/yii2-tree-behavior
+- Use postMessage for backend -> frontend events
+
 3.0.24
 ------
 - Use default for `kartik\grid\GridView::toggleData`
