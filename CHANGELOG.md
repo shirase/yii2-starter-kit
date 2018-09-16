@@ -1,7 +1,7 @@
 Yii Starter Kit Change Log
 ==========================
 
-3.0.25 - dev
+3.0.25
 ------
 - Use language for article
 - Changes in `webpack.config.js`
