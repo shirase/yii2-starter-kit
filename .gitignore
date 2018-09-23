@@ -45,6 +45,7 @@ tests/codeception/*/_support/_generated/*
 /backend/web/css/style.css.map
 /backend/web/bundle/style.js
 /backend/web/bundle/app.js
+/backend/web/bundle/vue-bundle.js
 /frontend/web/css/style.css
 /frontend/web/css/style.css.map
 /frontend/web/bundle/style.js
