@@ -1,4 +1,4 @@
-var gulp = require('gulp'),
+const gulp = require('gulp'),
     postcss = require('gulp-postcss'),
     base64 = require('gulp-base64'),
     autoprefixer = require('autoprefixer'),
@@ -14,13 +14,14 @@ var gulp = require('gulp'),
     resolve = require('rollup-plugin-node-resolve'),
     commonjs = require('rollup-plugin-commonjs'),
     replace = require('rollup-plugin-replace'),
-    uglify = require('gulp-uglify');
+    uglify = require('gulp-uglify'),
+    rollupVuePlugin = require('rollup-plugin-vue').default;
 
-var path = require('path');
+const path = require('path');
 
-var argv = require('yargs').argv;
+const argv = require('yargs').argv;
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['build']);
 
 gulp.task('build', ['sass-frontend', 'sass-backend', 'js-frontend', 'js-backend']);
 
@@ -47,7 +48,7 @@ function sassCompile(src, base) {
         base = '.';
     }
 
-    var processors = [
+    const processors = [
         autoprefixer({browsers: 'last 2 versions, > 5%'}),
         mergeRules()
     ];
@@ -141,7 +142,9 @@ gulp.task('sass-backend', function() {
 });
 
 gulp.task('js-frontend', function() {
-    return gulp.src('frontend/js/**/*.js')
+    return gulp.src([
+        'frontend/js/**/*.js',
+    ])
         .pipe(plumber({
             errorHandler: function (err) {
                 console.log(err);
@@ -149,7 +152,10 @@ gulp.task('js-frontend', function() {
             }
         }))
         .pipe(rollup({
-            input: ['frontend/js/app.js'],
+            input: [
+                'frontend/js/app.js',
+                'frontend/js/vue-bundle.js',
+            ],
             allowRealFiles: true,
             external: [
                 'jquery'
@@ -161,7 +167,6 @@ gulp.task('js-frontend', function() {
                 format: 'iife',
             },
             plugins: [
-                'external-helpers',
                 resolve({
                     jsnext: true,
                     browser: true,
@@ -173,6 +178,7 @@ gulp.task('js-frontend', function() {
                 replace({
                     'process.env.NODE_ENV': JSON.stringify('production')
                 }),
+                rollupVuePlugin({compileTemplate: true}),
                 rollupBabel({
                     babelrc: false,
                     presets: [
@@ -183,7 +189,10 @@ gulp.task('js-frontend', function() {
                             }
                         ]
                     ],
-                    exclude: ['node_modules', 'vendor/npm-asset', 'vendor/bower-asset']
+                    exclude: ['node_modules', 'vendor/npm-asset', 'vendor/bower-asset'],
+                    plugins: [
+                        'external-helpers',
+                    ]
                 })
             ]
         }))
@@ -192,7 +201,9 @@ gulp.task('js-frontend', function() {
 });
 
 gulp.task('js-backend', function() {
-    return gulp.src('backend/js/**/*.js')
+    return gulp.src([
+        'backend/js/**/*.js',
+    ])
         .pipe(plumber({
             errorHandler: function (err) {
                 console.log(err);
@@ -200,15 +211,20 @@ gulp.task('js-backend', function() {
             }
         }))
         .pipe(rollup({
-            input: ['backend/js/vue-bundle.js'],
+            input: [
+                'backend/js/vue-bundle.js',
+            ],
             allowRealFiles: true,
+            external: [
+                'jquery'
+            ],
             output: {
                 format: 'iife',
                 globals: {
+                    'jquery': 'jQuery'
                 },
             },
             plugins: [
-                'external-helpers',
                 resolve({
                     jsnext: true,
                     browser: true,
@@ -220,6 +236,7 @@ gulp.task('js-backend', function() {
                 replace({
                     'process.env.NODE_ENV': JSON.stringify('production')
                 }),
+                rollupVuePlugin({compileTemplate: true}),
                 rollupBabel({
                     babelrc: false,
                     presets: [
@@ -230,7 +247,10 @@ gulp.task('js-backend', function() {
                             }
                         ]
                     ],
-                    exclude: ['node_modules', 'vendor/npm-asset', 'vendor/bower-asset']
+                    exclude: ['node_modules', 'vendor/npm-asset', 'vendor/bower-asset'],
+                    plugins: [
+                        'external-helpers',
+                    ]
                 })
             ]
         }))
@@ -241,6 +261,6 @@ gulp.task('js-backend', function() {
 gulp.task('watch', ['sass-frontend', 'sass-backend', 'js-frontend', 'js-backend'], function() {
     gulp.watch('frontend/web/css/*.scss', ['sass-frontend']);
     gulp.watch('backend/web/css/*.scss', ['sass-backend']);
-    gulp.watch('frontend/js/**/*.js', ['js-frontend']);
-    gulp.watch('backend/js/**/*.js', ['js-backend']);
+    gulp.watch('frontend/js/**/*', ['js-frontend']);
+    gulp.watch('backend/js/**/*', ['js-backend']);
 });

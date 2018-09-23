@@ -43,5 +43,10 @@ tests/codeception/*/_support/_generated/*
 # Assets
 /backend/web/css/style.css
 /backend/web/css/style.css.map
+/backend/web/bundle/style.js
+/backend/web/bundle/app.js
 /frontend/web/css/style.css
 /frontend/web/css/style.css.map
+/frontend/web/bundle/style.js
+/frontend/web/bundle/app.js
+/frontend/web/bundle/vue-bundle.js
