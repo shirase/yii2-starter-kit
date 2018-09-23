@@ -1,6 +1,8 @@
 import Vue from 'vue';
 window.Vue = Vue;
 
+import 'es6-promise';
+
 import axios from 'axios';
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 const csrfToken = document.querySelector("meta[name=csrf-token]").content;

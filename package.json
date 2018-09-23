@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "es6-promise": "^4.2.5",
     "vee-validate": "^2.0.6",
     "vue": "^2.5.17",
     "vuedraggable": "^2.16.0"
