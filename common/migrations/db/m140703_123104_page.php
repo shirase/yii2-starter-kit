@@ -29,7 +29,7 @@ class m140703_123104_page extends Migration
 
         $this->createIndex('slug', '{{%page}}', array('slug(100)', 'language'), true);
         $this->createIndex('pos', '{{%page}}', array('pos'), false);
-        $this->createIndex('pid_pos', '{{%page}}', array('pid', 'pos'), true);
+        $this->createIndex('pid_pos', '{{%page}}', array('pid', 'pos'), false);
         $this->createIndex('bpath', '{{%page}}', array('bpath(100)'), false);
     }
 
