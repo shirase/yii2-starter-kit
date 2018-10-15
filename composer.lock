@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "925167f0c6f8bd4154db14154dc0a947",
@@ -3819,16 +3819,16 @@
         },
         {
             "name": "shirase55/yii2-tree-behavior",
-            "version": "1.0.10",
+            "version": "1.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shirase/yii2-tree-behavior.git",
-                "reference": "96f90caf811260dbb31500679e3d2cf209a7bc71"
+                "reference": "7bba95c29e1d0feee52f85b9bba0fb18516ff847"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shirase/yii2-tree-behavior/zipball/96f90caf811260dbb31500679e3d2cf209a7bc71",
-                "reference": "96f90caf811260dbb31500679e3d2cf209a7bc71",
+                "url": "https://api.github.com/repos/shirase/yii2-tree-behavior/zipball/7bba95c29e1d0feee52f85b9bba0fb18516ff847",
+                "reference": "7bba95c29e1d0feee52f85b9bba0fb18516ff847",
                 "shasum": ""
             },
             "require": {
@@ -3846,7 +3846,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2018-08-21T06:34:02+00:00"
+            "time": "2018-10-14T10:45:07+00:00"
         },
         {
             "name": "shirase55/yii2-widgets-activeform",
