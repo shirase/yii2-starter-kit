@@ -139,9 +139,40 @@ gulp.task('sass-backend', function() {
     return sassCompile(['backend/web/css/*.scss', '!**/_*.scss'], 'backend/web/css');
 });
 
+let frontendCache = {};
+let frontendPlugins = [
+    resolve({
+        jsnext: true,
+        browser: true,
+        customResolveOptions: {
+            moduleDirectory: ['node_modules', 'vendor/npm-asset', 'vendor/bower-asset']
+        }
+    }),
+    rollupVuePlugin({compileTemplate: true}),
+    commonjs(),
+    replace({
+        'process.env.NODE_ENV': JSON.stringify('production')
+    }),
+    rollupBabel({
+        babelrc: false,
+        presets: [
+            [
+                'env',
+                {
+                    "modules": false
+                }
+            ]
+        ],
+        exclude: ['node_modules', 'vendor/npm-asset', 'vendor/bower-asset'],
+        plugins: [
+            'external-helpers',
+        ]
+    })
+];
+
 gulp.task('js-frontend', function() {
     return gulp.src([
-        'frontend/js/**/*.js',
+        'frontend/js/**/*.*',
     ])
         .pipe(plumber({
             errorHandler: function (err) {
@@ -154,6 +185,7 @@ gulp.task('js-frontend', function() {
                 'frontend/js/app.js',
                 'frontend/js/vue-bundle.js',
             ],
+            separateCaches: frontendCache,
             allowRealFiles: true,
             external: [
                 'jquery'
@@ -164,39 +196,45 @@ gulp.task('js-frontend', function() {
                 },
                 format: 'iife',
             },
-            plugins: [
-                resolve({
-                    jsnext: true,
-                    browser: true,
-                    customResolveOptions: {
-                        moduleDirectory: ['node_modules', 'vendor/npm-asset', 'vendor/bower-asset']
-                    }
-                }),
-                commonjs(),
-                replace({
-                    'process.env.NODE_ENV': JSON.stringify('production')
-                }),
-                rollupVuePlugin({compileTemplate: true}),
-                rollupBabel({
-                    babelrc: false,
-                    presets: [
-                        [
-                            'env',
-                            {
-                                "modules": false
-                            }
-                        ]
-                    ],
-                    exclude: ['node_modules', 'vendor/npm-asset', 'vendor/bower-asset'],
-                    plugins: [
-                        'external-helpers',
-                    ]
-                })
-            ]
+            plugins: frontendPlugins,
         }))
+        .on('bundle', function(bundle, name) {
+            frontendCache[name] = bundle;
+        })
         .pipe(uglify())
         .pipe(gulp.dest('frontend/web/bundle'));
 });
+
+let backendCache = {};
+const backendPlugins = [
+    resolve({
+        jsnext: true,
+        browser: true,
+        customResolveOptions: {
+            moduleDirectory: ['node_modules', 'vendor/npm-asset', 'vendor/bower-asset']
+        }
+    }),
+    commonjs(),
+    replace({
+        'process.env.NODE_ENV': JSON.stringify('production')
+    }),
+    rollupVuePlugin({compileTemplate: true}),
+    rollupBabel({
+        babelrc: false,
+        presets: [
+            [
+                'env',
+                {
+                    "modules": false
+                }
+            ]
+        ],
+        exclude: ['node_modules', 'vendor/npm-asset', 'vendor/bower-asset'],
+        plugins: [
+            'external-helpers',
+        ]
+    })
+]
 
 gulp.task('js-backend', function() {
     return gulp.src([
@@ -212,6 +250,7 @@ gulp.task('js-backend', function() {
             input: [
                 'backend/js/vue-bundle.js',
             ],
+            separateCaches: backendCache,
             allowRealFiles: true,
             external: [
                 'jquery'
@@ -222,36 +261,11 @@ gulp.task('js-backend', function() {
                     'jquery': 'jQuery'
                 },
             },
-            plugins: [
-                resolve({
-                    jsnext: true,
-                    browser: true,
-                    customResolveOptions: {
-                        moduleDirectory: ['node_modules', 'vendor/npm-asset', 'vendor/bower-asset']
-                    }
-                }),
-                commonjs(),
-                replace({
-                    'process.env.NODE_ENV': JSON.stringify('production')
-                }),
-                rollupVuePlugin({compileTemplate: true}),
-                rollupBabel({
-                    babelrc: false,
-                    presets: [
-                        [
-                            'env',
-                            {
-                                "modules": false
-                            }
-                        ]
-                    ],
-                    exclude: ['node_modules', 'vendor/npm-asset', 'vendor/bower-asset'],
-                    plugins: [
-                        'external-helpers',
-                    ]
-                })
-            ]
+            plugins: backendPlugins,
         }))
+        .on('bundle', function(bundle, name) {
+            backendCache[name] = bundle;
+        })
         .pipe(uglify())
         .pipe(gulp.dest('backend/web/bundle'));
 });
