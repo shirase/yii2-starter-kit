@@ -1,6 +1,15 @@
 Yii Starter Kit Change Log
 ==========================
 
+3.0.26
+------
+- Webpack and gulp config for vue
+- common/models/DynamicModel
+- Not unique `pid_pos` index for page migration
+- Fix sourcemap for gulp scss
+- Use css for frontend and backend assets
+- gulp rollup cache fix
+
 3.0.25
 ------
 - Use language for article
