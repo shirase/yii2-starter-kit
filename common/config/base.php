@@ -72,7 +72,10 @@ $config = [
             'messageConfig' => [
                 'charset' => 'UTF-8',
                 'from' => env('ADMIN_EMAIL')
-            ]
+            ],
+            /*'transport' => [
+                'command' => '/usr/sbin/sendmail -i -t',
+            ],*/
         ],
 
         'db' => [
