@@ -1,44 +1,42 @@
 .article_list {
-    &__item {
+    &_item {
         margin-bottom: 1.3em;
-    }
-}
 
-.article_row {
-    display: flex;
-    flex-wrap: wrap;
+        display: flex;
+        flex-wrap: wrap;
 
-    & > div {
-        width: 100%;
-        box-sizing: border-box;
-        flex-shrink: 1;
-        flex-grow: 1;
-    }
-
-    .title {
-        font-size: 1.1em;
-        margin: 0 0 .3em 0;
-    }
-
-    .meta {
-        margin-bottom: 0.3em;
-
-        .date {
-            font-size: 90%;
+        & > div {
+            width: 100%;
+            box-sizing: border-box;
+            flex-shrink: 1;
+            flex-grow: 1;
         }
-    }
 
-    .thumb {
-        flex-basis: 1px;
-        margin-right: 1.3em;
-
-        img {
-            max-width: 100%;
-            display: block;
+        .title {
+            font-size: 1.1em;
+            margin: 0 0 .3em 0;
         }
-    }
 
-    .body {
-        width: 80%;
+        .meta {
+            margin-bottom: 0.3em;
+
+            .date {
+                font-size: 90%;
+            }
+        }
+
+        .thumb {
+            flex-basis: 1px;
+            margin-right: 1.3em;
+
+            img {
+                max-width: 100%;
+                display: block;
+            }
+        }
+
+        .body {
+            width: 80%;
+        }
     }
 }
