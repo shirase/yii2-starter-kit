@@ -19,33 +19,33 @@ $this->title = $this->title ?: Yii::t('frontend', 'Articles');
     <?php if ($models = $dataProvider->getModels()): ?>
         <div class="article_list">
             <?php foreach ($models as $model): ?>
-            <?php /** @var \common\models\Article $model */ ?>
-            <article class="article_list_item" itemscope itemtype="http://schema.org/NewsArticle">
-                <?php if (Yii::$app->user->can('administrator')): ?>
-                    <div class="editor-panel">
-                        <a class="j-frame-dialog link-update" data-type="update" href="<?= Yii::$app->urlManagerBackend->createAbsoluteUrl(['article/update', 'id'=>$model->id]) ?>" target="_blank"><?= Yii::t('frontend', 'Изменить') ?></a>
+                <?php /** @var \common\models\Article $model */ ?>
+                <article class="article_list_item" itemscope itemtype="http://schema.org/NewsArticle">
+                    <?php if (Yii::$app->user->can('administrator')): ?>
+                        <div class="editor-panel">
+                            <a class="j-frame-dialog link-update" data-type="update" href="<?= Yii::$app->urlManagerBackend->createAbsoluteUrl(['article/update', 'id'=>$model->id]) ?>" target="_blank"><?= Yii::t('frontend', 'Изменить') ?></a>
+                        </div>
+                    <?php endif ?>
+                    <h2 class="title" itemprop="name">
+                        <?php echo \yii\helpers\Html::a($model->title, ['view', 'slug'=>$model->slug, 'category'=>$categoryId ?: $model->category->id], ['itemprop' => 'url']) ?>
+                    </h2>
+                    <div class="meta">
+                        <time class="date" datetime="<?= encode($model->published_at) ?>" itemprop="dateline">
+                            <?php echo Yii::$app->formatter->asDatetime($model->published_at) ?>
+                        </time>
                     </div>
-                <?php endif ?>
-                <h2 class="title" itemprop="name">
-                    <?php echo \yii\helpers\Html::a($model->title, ['view', 'slug'=>$model->slug, 'category'=>$categoryId ?: $model->category->id], ['itemprop' => 'url']) ?>
-                </h2>
-                <div class="meta">
-                    <time class="date" datetime="<?= encode($model->published_at) ?>" itemprop="dateline">
-                        <?php echo Yii::$app->formatter->asDatetime($model->published_at) ?>
-                    </time>
-                </div>
-                <?php if ($model->thumbnail_path): ?>
-                    <div class="thumb">
-                        <?php echo \yii\helpers\Html::img(
-                            \common\components\helpers\Url::image($model->thumbnail_path, ['w' => 200]),
-                            ['itemprop' => 'thumbnailUrl']
-                        ) ?>
+                    <?php if ($model->thumbnail_path): ?>
+                        <div class="thumb">
+                            <?php echo \yii\helpers\Html::img(
+                                \common\components\helpers\Url::image($model->thumbnail_path, ['w' => 200]),
+                                ['itemprop' => 'thumbnailUrl']
+                            ) ?>
+                        </div>
+                    <?php endif; ?>
+                    <div class="body" itemprop="description">
+                        <?php echo \yii\helpers\StringHelper::truncateWords(strip_tags($model->body), 25, '...') ?>
                     </div>
-                <?php endif; ?>
-                <div class="body" itemprop="description">
-                    <?php echo \yii\helpers\StringHelper::truncateWords(strip_tags($model->body), 25, '...') ?>
-                </div>
-            </article>
+                </article>
             <?php endforeach ?>
         </div>
         <?= \yii\widgets\LinkPager::widget(['pagination' => $dataProvider->pagination]) ?>
