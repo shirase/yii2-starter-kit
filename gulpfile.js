@@ -15,7 +15,7 @@ const gulp = require('gulp'),
     commonjs = require('rollup-plugin-commonjs'),
     replace = require('rollup-plugin-replace'),
     uglify = require('gulp-uglify'),
-    rollupVuePlugin = require('rollup-plugin-vue').default;
+    rollupVuePlugin = require('rollup-plugin-vue');
 
 const path = require('path');
 
