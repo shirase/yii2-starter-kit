@@ -31,13 +31,14 @@ class PageController extends Controller
 
     public function actionView($slug)
     {
-        $query = Page::find()->andWhere(['slug' => $slug, 'language' => Yii::$app->language]);
-        if (!Yii::$app->user->can('manager')) {
-            $query->active();
-        }
-        $model = $query->one();
-        if (!$model || $model->pid === 0) {
+        $model = Page::find()->andWhere(['slug' => $slug, 'language' => Yii::$app->language])->one();
+        if (!$model) {
             throw new NotFoundHttpException(Yii::t('frontend', 'Page not found'));
+        }
+        if (!Yii::$app->user->can('manager')) {
+            if ($model->pid === 0 && !$model->status) {
+                throw new ForbiddenHttpException(Yii::t('frontend', 'Page not found'));
+            }
         }
 
         Seo::make($model);

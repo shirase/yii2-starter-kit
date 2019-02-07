@@ -15,6 +15,7 @@ use common\web\Controller;
 use yii\db\ActiveQuery;
 use yii\db\Query;
 use yii\helpers\ArrayHelper;
+use yii\web\ForbiddenHttpException;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 
@@ -80,13 +81,15 @@ class ArticleController extends Controller
      */
     public function actionView($slug, $category = null)
     {
-        $query = Article::find()->andWhere(['slug' => $slug, 'language' => Yii::$app->language]);
-        if (!Yii::$app->user->can('manager')) {
-            $query->published();
-        }
-        $model = $query->one();
+        $model = Article::find()->andWhere(['slug' => $slug, 'language' => Yii::$app->language])->one();
         if (!$model)
             throw new NotFoundHttpException();
+
+        if (!Yii::$app->user->can('manager')) {
+            if ($model->status != Article::STATUS_PUBLISHED) {
+                throw new ForbiddenHttpException();
+            }
+        }
 
         if ($category && $Category = Page::findOne($category)) {
             Breadcrumbs::make($Category, $model->title);
