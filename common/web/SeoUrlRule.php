@@ -47,10 +47,10 @@ class SeoUrlRule implements UrlRuleInterface
         if ($category) {
             $routeArray = $this->getPageTypeRoute($category);
 
-            $model = Article::findOne(['slug' => $path1]);
-            if ($model) {
-                if ($routeArray[0] == 'article/view') {
-                    return $routeArray;
+            if ($routeArray[0] == 'article/index') {
+                $model = Article::findOne(['slug' => $path1]);
+                if ($model) {
+                    return ['article/view', ['slug' => $model->slug, 'category' => $category->id]];
                 }
             }
         }
@@ -75,22 +75,20 @@ class SeoUrlRule implements UrlRuleInterface
                 $slug = $params['slug'];
                 unset($params['slug']);
             } else
-            if (isset($params['id'])) {
-                $page = Page::findOne(['id' => $params['id']]);
-                if ($page) {
-                    unset($params['id']);
-                    $slug = $page->slug;
-                } else {
-                    return false;
+                if (isset($params['id'])) {
+                    $page = Page::findOne(['id' => $params['id']]);
+                    if ($page) {
+                        unset($params['id']);
+                        $slug = $page->slug;
+                    } else {
+                        return false;
+                    }
                 }
-            }
 
             if ($slug) {
                 $query = http_build_query($params);
                 return $slug . ($query ? '?' . $query : '');
             }
-
-            return false;
         } elseif ($route == 'article/view') {
             $slug = null;
             $category = null;
@@ -113,15 +111,15 @@ class SeoUrlRule implements UrlRuleInterface
                 $slug = $params['slug'];
                 unset($params['slug']);
             } else
-            if (isset($params['id'])) {
-                $page = Page::findOne(['id' => $params['id']]);
-                if ($page) {
-                    unset($params['id']);
-                    $slug = $page->slug;
-                } else {
-                    return false;
+                if (isset($params['id'])) {
+                    $page = Page::findOne(['id' => $params['id']]);
+                    if ($page) {
+                        unset($params['id']);
+                        $slug = $page->slug;
+                    } else {
+                        return false;
+                    }
                 }
-            }
 
             if (isset($params['category'])) {
                 $category = Page::findOne(['id' => $params['category']]);
@@ -139,8 +137,8 @@ class SeoUrlRule implements UrlRuleInterface
 
                 return $slug . ($query ? '?' . $query : '');
             }
-
-            return false;
         }
+
+        return false;
     }
 }
