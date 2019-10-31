@@ -12,7 +12,6 @@ return [
         ['pattern'=>'article/attachment-download', 'route'=>'article/attachment-download'],
         ['pattern'=>'article/index', 'route'=>'article/index'],
         ['pattern'=>'article/update', 'route'=>'article/update'],
-        ['pattern'=>'article/view', 'route'=>'article/view'],
 
         ['pattern'=>'article/<slug>', 'route'=>'article/view'],
 

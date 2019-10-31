@@ -128,7 +128,7 @@ class SeoUrlRule implements UrlRuleInterface
                 }
             }
 
-            if ($slug) {
+            if ($slug && $category) {
                 $query = http_build_query($params);
 
                 if ($category) {
