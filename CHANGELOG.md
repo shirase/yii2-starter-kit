@@ -1,6 +1,10 @@
 Yii Starter Kit Change Log
 ==========================
 
+3.0.27-dev
+------
+- SeoUrlRule
+
 3.0.26
 ------
 - Webpack and gulp config for vue
