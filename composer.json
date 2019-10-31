@@ -31,7 +31,7 @@
         "ext-openssl": "*",
         "ext-gd": "*",
         "ext-curl": "*",
-        "yiisoft/yii2": "2.0.21",
+        "yiisoft/yii2": "2.0.29",
         "yiisoft/yii2-bootstrap": "^2.0.0",
         "yiisoft/yii2-swiftmailer": "^2.0.0",
         "yiisoft/yii2-authclient": "^2.0.0",
