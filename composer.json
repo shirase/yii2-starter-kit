@@ -24,6 +24,7 @@
         "ext-intl": "*",
         "ext-mbstring": "*",
         "ext-pdo_mysql": "*",
+        "ext-openssl": "*",
         "ext-gd": "*",
         "yiisoft/yii2": "2.0.29",
         "yiisoft/yii2-bootstrap": "^2.0.0",
