@@ -1,6 +1,10 @@
 Upgrading Instructions
 ======================
 
+dev
+---
+Change api location
+
 3.0.24
 ------
 Gallery rename parameter gallery to gallery_id 
