@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\modules\api\v1\resources;
+namespace api\modules\v1\resources;
 
 /**
  * @author Eugene Terentev <eugene@terentev.net>

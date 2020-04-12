@@ -1,10 +1,10 @@
 <?php
 
-namespace frontend\modules\api\v1\resources;
+namespace api\modules\v1\resources;
 
 use yii\helpers\Url;
-use yii\web\Linkable;
 use yii\web\Link;
+use yii\web\Linkable;
 
 /**
  * @author Eugene Terentev <eugene@terentev.net>
@@ -13,12 +13,13 @@ class Article extends \common\models\Article implements Linkable
 {
     public function fields()
     {
-        return ['id', 'slug', 'title', 'body', 'published_at'];
+        return ['id', 'slug', 'thumbnail_base_url', 'thumbnail_path', 'title', 'body', 'status',
+            'published_at', 'created_by', 'updated_by', 'created_at', 'updated_at', 'category', 'articleAttachments'];
     }
 
     public function extraFields()
     {
-        return ['category'];
+        return ['category', 'articleAttachments'];
     }
 
     /**

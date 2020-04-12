@@ -14,6 +14,7 @@ Yii::setAlias('@backend', realpath(__DIR__.'/../../backend'));
 Yii::setAlias('@console', realpath(__DIR__.'/../../console'));
 Yii::setAlias('@storage', realpath(__DIR__.'/../../storage'));
 Yii::setAlias('@tests', realpath(__DIR__.'/../../tests'));
+Yii::setAlias('@api', realpath(__DIR__.'/../../api'));
 
 Yii::setAlias('@frontendWeb', '@frontend/web');
 Yii::setAlias('@backendWeb', '@backend/web');
@@ -25,6 +26,7 @@ Yii::setAlias('@storageWeb', '@storage/web');
 Yii::setAlias('@frontendUrl', env('FRONTEND_HOST') . env('FRONTEND_URL'));
 Yii::setAlias('@backendUrl', env('BACKEND_HOST') . env('BACKEND_URL'));
 Yii::setAlias('@storageUrl', env('STORAGE_HOST') . env('STORAGE_URL'));
+Yii::setAlias('@apiUrl', env('API_HOST') . env('API_URL'));
 
 Swift_DependencyContainer::getInstance()
     ->register('mime.qpcontentencoder')

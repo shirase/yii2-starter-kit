@@ -72,7 +72,8 @@
         "ckeditor/ckeditor": "4.7.1",
         "yiisoft/yii2-queue": "^2.0",
         "himiklab/yii2-recaptcha-widget": "^1.0",
-        "bower-asset/jquery-migrate": "^3.0"
+        "bower-asset/jquery-migrate": "^3.0",
+        "yii2mod/yii2-swagger": "^1.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "^2.0.0",
