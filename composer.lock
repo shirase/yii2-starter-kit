@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c9a1d31c4ed02968c5d872a665f508f1",
+    "content-hash": "d5c4fd65bbb2d4cc6939092a35505fa5",
     "packages": [
         {
             "name": "2amigos/yii2-ckeditor-widget",
@@ -4354,16 +4354,16 @@
         },
         {
             "name": "shirase55/yii2-helpers",
-            "version": "3.0.0",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shirase/yii2-helpers.git",
-                "reference": "9016722745e3857481f286f910d35c794f2fb474"
+                "reference": "da76c7c1609d68763f47d7e199bc85ac28d10857"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shirase/yii2-helpers/zipball/9016722745e3857481f286f910d35c794f2fb474",
-                "reference": "9016722745e3857481f286f910d35c794f2fb474",
+                "url": "https://api.github.com/repos/shirase/yii2-helpers/zipball/da76c7c1609d68763f47d7e199bc85ac28d10857",
+                "reference": "da76c7c1609d68763f47d7e199bc85ac28d10857",
                 "shasum": ""
             },
             "require": {
@@ -4376,7 +4376,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2017-12-09T21:09:07+00:00"
+            "time": "2019-12-24T07:58:55+00:00"
         },
         {
             "name": "shirase55/yii2-jstree",
@@ -6577,12 +6577,12 @@
             "version": "1.7.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/facebook/php-webdriver.git",
+                "url": "https://github.com/php-webdriver/php-webdriver-archive.git",
                 "reference": "e43de70f3c7166169d0f14a374505392734160e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/e43de70f3c7166169d0f14a374505392734160e5",
+                "url": "https://api.github.com/repos/php-webdriver/php-webdriver-archive/zipball/e43de70f3c7166169d0f14a374505392734160e5",
                 "reference": "e43de70f3c7166169d0f14a374505392734160e5",
                 "shasum": ""
             },
@@ -6630,6 +6630,7 @@
                 "selenium",
                 "webdriver"
             ],
+            "abandoned": "php-webdriver/webdriver",
             "time": "2019-06-13T08:02:18+00:00"
         },
         {
