@@ -7,6 +7,7 @@ return [
         // Pages
         ['class'=>'common\web\SeoUrlRule'],
         ['class'=>'common\web\UriRule', 'route'=>'page/view', 'externalParams' => ['page']],
+        ['pattern' => '<slug>', 'route' => 'page/view', 'modelClass' => 'common\models\Page', 'class' => 'common\web\SlugUrlRule'],
 
         // Articles
         ['pattern'=>'article/attachment-download', 'route'=>'article/attachment-download'],
